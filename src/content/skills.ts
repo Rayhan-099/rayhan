@@ -13,14 +13,14 @@ export const skills = [
   },
   {
     category: "Databases & Cloud",
-    items: ["PostgreSQL", "MongoDB", "Firebase", "Google Cloud Platform (GCP)"]
+    items: ["PostgreSQL", "MongoDB", "Firebase", "GCP"]
   },
   {
     category: "Tools & Environments",
-    items: ["Git / GitHub", "CI/CD", "Jupyter / Google Colab", "Postman", "Docker"]
+    items: ["Git/GitHub", "CI/CD", "Jupyter/Colab", "Postman", "Docker"]
   },
   {
     category: "Core Competencies",
-    items: ["Machine Learning", "Generative AI", "Agentic AI", "Data Structures & Algorithms", "REST APIs", "Object-Oriented Programming (OOP)"]
+    items: ["Machine Learning", "Generative AI", "Agentic AI", "Data Structures & Algorithms", "REST APIs", "OOP"]
   }
 ];

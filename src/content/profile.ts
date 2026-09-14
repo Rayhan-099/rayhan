@@ -11,9 +11,5 @@ export const profile = {
     leetcode: "https://leetcode.com/u/Rayhan-099/",
     portfolio: "https://rayhank.vercel.app"
   },
-  about: `I'm a Computer Science undergraduate and Software Engineer passionate about building intelligent, scalable applications that combine modern software engineering with artificial intelligence. I enjoy taking ideas from concept to deployment, designing full-stack applications, developing high-performance backend systems, and integrating machine learning models into real-world products.
-
-My experience spans Python, FastAPI, React, Node.js, PostgreSQL, Docker, and cloud technologies, with a strong focus on AI/ML, computer vision, and Generative AI. I've built production-oriented projects ranging from AI-powered computer vision platforms and finance management systems to healthcare applications, emphasizing clean architecture, security, performance, and user experience.
-
-I love solving complex engineering problems, exploring emerging AI technologies, and continuously improving my skills in Agentic AI, RAG systems, MLOps, and distributed systems. I'm currently seeking opportunities where I can contribute to impactful products, collaborate with talented engineers, and continue growing as a software and AI engineer.`
+  about: `Software Engineer with hands-on experience in full-stack development (MERN) and Machine Learning. Skilled in building scalable AI-integrated web applications and data-driven solutions using Python, React.js, and cloud technologies.`
 };

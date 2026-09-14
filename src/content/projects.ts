@@ -49,9 +49,9 @@ export const projects = [
     title: "Real-Time Hand Tracking Visualizer",
     date: "TBD",
     technologies: ["Three.js", "WebGL", "Google MediaPipe", "React", "Tailwind CSS"],
-    description: "Developed a low-latency Computer Vision application mapping hand gestures to complex 3D particle simulations.",
+    description: "Developed a Computer Vision application mapping hand gestures to 3D particle simulations.",
     details: [
-      "Achieved 60 FPS client-side inference using Edge AI capabilities with Google MediaPipe and WebGL rendering."
+      "Integrated Google MediaPipe and WebGL rendering for client-side inference and visualization."
     ],
     links: {
       live: "https://jujutsu-kaisen-rho.vercel.app/",

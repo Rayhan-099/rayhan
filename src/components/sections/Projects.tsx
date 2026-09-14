@@ -73,7 +73,7 @@ export function Projects() {
               className="relative w-[calc(100%+3rem)] md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] -ml-6 md:-ml-12 lg:-ml-20 aspect-[16/9] overflow-hidden group"
             >
               <Image 
-                src="/media/projects/lumine.webp" 
+                src="/media/projects/lumine.png" 
                 alt={lumine.title} 
                 fill 
                 className="object-cover object-top transition-transform duration-[1.5s] group-hover:scale-[1.03]"
@@ -152,7 +152,7 @@ export function Projects() {
               className="order-1 lg:order-2 relative aspect-square overflow-hidden group"
             >
               <Image 
-                src="/media/projects/current-capital.webp" 
+                src="/media/projects/current-capital.png" 
                 alt={currentCapital.title} 
                 fill 
                 className="object-cover object-left-top transition-transform duration-[1.5s] group-hover:scale-[1.03]"
@@ -178,7 +178,7 @@ export function Projects() {
               className="lg:col-span-7 relative aspect-[3/4] overflow-hidden group"
             >
               <Image 
-                src="/media/projects/health-assistant.webp" 
+                src="/media/projects/health-assistant.png" 
                 alt={healthAssistant.title} 
                 fill 
                 className="object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]"
@@ -233,7 +233,7 @@ export function Projects() {
               className="relative w-[calc(100%+3rem)] md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] -ml-6 md:-ml-12 lg:-ml-20 aspect-[21/9] overflow-hidden group"
             >
               <Image 
-                src="/media/projects/hand-tracking.webp" 
+                src="/media/projects/hand-tracking.png" 
                 alt={handTracking.title} 
                 fill 
                 className="object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]"

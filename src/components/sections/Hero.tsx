@@ -20,9 +20,7 @@ export function Hero() {
 
   useEffect(() => {
     const tl = createTimeline({
-      defaults: {
-        ease: 'outExpo',
-      }
+      defaults: { ease: 'outExpo' }
     });
 
     tl.add('.hero-env-mask', {
@@ -30,6 +28,12 @@ export function Hero() {
       duration: 2200,
       ease: 'linear',
     }, 0)
+    .add('.hero-grid-line', {
+      scaleY: [0, 1],
+      opacity: [0, 1],
+      duration: 1500,
+      delay: utils.stagger(200),
+    }, 400)
     .add('.hero-name-word', {
       translateY: [120, 0],
       opacity: [0, 1],
@@ -47,17 +51,11 @@ export function Hero() {
       opacity: [0, 1],
       duration: 1000,
     }, 1800)
-    .add('.hero-cta', {
-      opacity: [0, 1],
-      translateY: [15, 0],
-      duration: 1000,
-      delay: utils.stagger(100),
-    }, 2000)
-    .add('.hero-scroll-indicator', {
-      opacity: [0, 1],
-      translateY: [10, 0],
-      duration: 800,
-    }, 2400);
+    .add('.hero-kanji', {
+      opacity: [0, 0.05],
+      scale: [0.9, 1],
+      duration: 2000,
+    }, 1000);
     
   }, []);
 
@@ -67,7 +65,7 @@ export function Hero() {
     <section 
       ref={containerRef}
       id="hero" 
-      className="relative w-full min-h-[100dvh] flex flex-col justify-end overflow-hidden"
+      className="relative w-full min-h-[100dvh] flex flex-col justify-end overflow-hidden bg-[#04060A]"
     >
       
       {/* Full-bleed cinematic background media */}
@@ -81,82 +79,89 @@ export function Hero() {
           loop 
           muted 
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-60"
         />
-        {/* Atmospheric depth vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,transparent_0%,rgba(8,10,15,0.7)_60%,rgba(8,10,15,0.95)_100%)]" />
+        <div className="absolute inset-0 bg-[#04060A]/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_0%,rgba(4,6,10,0.8)_70%,rgba(4,6,10,1)_100%)]" />
       </motion.div>
 
-      {/* Black fade-in mask for cinematic entrance */}
-      <div className="hero-env-mask absolute inset-0 z-30 bg-[#080A0F] pointer-events-none" />
+      {/* Grid Lines (Editorial/Architectural Motif) */}
+      <div className="absolute inset-0 z-10 pointer-events-none flex justify-between px-6 md:px-12 xl:px-20">
+        <div className="hero-grid-line w-px h-full bg-[#8DEBFF]/10 origin-top" />
+        <div className="hero-grid-line w-px h-full bg-[#8DEBFF]/10 origin-top hidden md:block" />
+        <div className="hero-grid-line w-px h-full bg-[#8DEBFF]/10 origin-top hidden lg:block" />
+        <div className="hero-grid-line w-px h-full bg-[#8DEBFF]/10 origin-top" />
+      </div>
 
-      {/* Bottom gradient to blend into next section */}
-      <div className="absolute inset-x-0 bottom-0 h-[40%] z-10 bg-gradient-to-t from-[#080A0F] via-[#080A0F]/60 to-transparent pointer-events-none" />
+      <div className="hero-env-mask absolute inset-0 z-30 bg-[#04060A] pointer-events-none" />
 
+      {/* Giant Background Kanji */}
+      <div className="absolute top-1/4 right-[5%] z-0 select-none pointer-events-none overflow-hidden">
+        <span className="hero-kanji font-display text-[40vh] leading-none text-[#F0EEE7] opacity-0 writing-vertical-rl">
+          開発者
+        </span>
+      </div>
 
-
-      {/* Main Content — positioned at bottom for cinematic weight */}
+      {/* Main Content */}
       <motion.div 
         style={{ opacity, y }}
-        className="relative z-20 w-full max-w-[1600px] mx-auto px-6 md:px-12 xl:px-20 pb-16 md:pb-24"
+        className="relative z-20 w-full max-w-[1600px] mx-auto px-6 md:px-12 xl:px-20 pb-16 md:pb-24 flex flex-col justify-end h-full"
       >
-        <div className="flex flex-col gap-6 md:gap-8">
+        <div className="flex flex-col mt-auto gap-8 md:gap-12 relative">
           
-          {/* Giant Name */}
-          <h1 className="font-display text-[clamp(5rem,15vw,20rem)] leading-[0.8] tracking-tighter text-[#F0EEE7] flex flex-col items-start">
-            <div className="overflow-hidden pb-2">
+          {/* Top Label */}
+          <div className="hero-role opacity-0 flex items-center gap-4">
+            <span className="w-12 h-px bg-[#8DEBFF]/40" />
+            <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#B8C0CC]">
+              PORTFOLIO.2026
+            </span>
+          </div>
+
+          {/* Giant Name Lockup */}
+          <h1 className="font-display text-[clamp(6rem,18vw,24rem)] leading-[0.75] tracking-tighter text-[#F0EEE7] uppercase flex flex-col items-start -ml-2">
+            <div className="overflow-hidden pb-4">
               <span className="hero-name-word inline-block origin-bottom-left opacity-0">{firstName}</span>
             </div>
-            <div className="overflow-hidden pb-4 ml-0 md:ml-[10%]">
-              <span className="hero-name-word inline-block origin-bottom-left italic text-[#B8C0CC] opacity-0">{lastName}</span>
+            <div className="overflow-hidden pb-4 md:ml-[15%] flex items-end gap-6">
+              <span className="hero-name-word inline-block origin-bottom-left italic text-[#8DEBFF] opacity-0">{lastName}</span>
+              <span className="hero-name-word inline-block opacity-0 font-sans text-sm tracking-[0.2em] text-[#B8C0CC] mb-6 hidden md:block uppercase max-w-[150px] leading-relaxed">
+                Sys.Eng<br/>AI.Int
+              </span>
             </div>
           </h1>
 
           {/* Role & Statement */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-16 max-w-5xl">
-            <div className="flex flex-col gap-3">
-              <h2 className="hero-role font-sans text-xl md:text-2xl text-[#8DEBFF] tracking-wide font-light opacity-0">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 border-t border-[#8DEBFF]/10 pt-8 mt-4">
+            <div className="flex flex-col gap-4">
+              <h2 className="hero-role font-sans text-xl md:text-2xl text-[#F0EEE7] tracking-wide opacity-0">
                 AI & Full Stack Engineer
               </h2>
-              <p className="hero-statement font-sans text-base md:text-lg text-[#B8C0CC] font-light leading-relaxed max-w-lg opacity-0">
-                Architecting intelligent systems with the curiosity of an engineer and the eye of a storyteller.
+              <p className="hero-statement font-sans text-sm md:text-base text-[#778294] font-light leading-relaxed max-w-md opacity-0">
+                {profile.tagline}
               </p>
             </div>
             
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 hero-cta opacity-0">
+            <div className="flex flex-col gap-4 hero-statement opacity-0 min-w-[200px]">
               <a 
                 href="#projects" 
-                className="group flex items-center gap-3 px-8 py-3.5 bg-[#F0EEE7] text-[#080A0F] font-sans font-medium text-sm tracking-wide transition-all duration-300 hover:bg-[#8DEBFF] active:scale-[0.98]"
+                className="group flex justify-between items-center px-6 py-4 bg-[#F0EEE7] text-[#04060A] font-sans font-medium text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-[#8DEBFF]"
               >
-                View Projects
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span>View Projects</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a 
                 href="/resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-3 px-8 py-3.5 border border-[#F0EEE7]/20 text-[#F0EEE7] font-sans font-medium text-sm tracking-wide transition-all duration-300 hover:border-[#F0EEE7]/60 backdrop-blur-sm active:scale-[0.98]"
+                className="group flex justify-between items-center px-6 py-4 border border-[#F0EEE7]/10 text-[#F0EEE7] font-sans font-medium text-[11px] uppercase tracking-[0.2em] transition-all hover:border-[#F0EEE7]/40"
               >
-                Resume
+                <span>Resume</span>
+                <span className="text-[#8DEBFF]">↓</span>
               </a>
             </div>
           </div>
-        </div>
-      </motion.div>
 
-      {/* Minimal scroll indicator */}
-      <motion.div 
-        style={{ opacity }} 
-        className="hero-scroll-indicator opacity-0 absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
-      >
-        <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#778294]">Scroll</span>
-        <div className="w-px h-10 bg-[#F0EEE7]/20 relative overflow-hidden">
-          <motion.div 
-            className="absolute top-0 left-0 w-full bg-[#8DEBFF]"
-            animate={{ height: ["0%", "100%", "0%"], top: ["0%", "0%", "100%"] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          />
         </div>
       </motion.div>
     </section>

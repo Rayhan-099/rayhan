@@ -86,34 +86,14 @@ export function About() {
 
             <div className="flex flex-col gap-6 max-w-2xl">
               <motion.p 
-                className="text-[#F0EEE7] font-sans text-lg md:text-xl leading-relaxed"
+                className="text-[#F0EEE7] font-sans text-lg md:text-xl leading-relaxed whitespace-pre-wrap"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={revealVariants}
                 custom={1}
               >
-                I am an AI and Full-Stack Software Engineer pursuing my Bachelor of Technology in Computer Science and Engineering at Dr. A.P.J. Abdul Kalam Technical University.
-              </motion.p>
-              <motion.p 
-                className="text-[#B8C0CC] font-sans font-light text-lg md:text-xl leading-relaxed"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={revealVariants}
-                custom={2}
-              >
-                My expertise bridges complex Machine Learning models and robust web architectures. I specialize in developing agentic AI systems, computer vision pipelines, and scalable architectures.
-              </motion.p>
-              <motion.p 
-                className="text-[#778294] font-sans font-light text-base md:text-lg leading-loose border-l-2 border-[#8DEBFF]/15 pl-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={revealVariants}
-                custom={3}
-              >
-                When I&apos;m not coding, I&apos;m exploring Generative AI technologies, optimizing algorithmic performance, and building the next meaningful thing.
+                {profile.about}
               </motion.p>
             </div>
 
