@@ -38,7 +38,7 @@ export function Navigation() {
           scrolled ? "py-4" : ""
         }`}
       >
-        <div className="font-display text-xl text-foreground font-semibold tracking-widest uppercase pointer-events-auto">
+        <div className="font-serif text-xl text-foreground font-semibold tracking-widest uppercase pointer-events-auto">
           RAYHAN
         </div>
         

@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Newsreader, Manrope } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-display" });
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const serif = Newsreader({ subsets: ["latin"], variable: "--font-serif", style: ['normal', 'italic'] });
+const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Rayhan Khan | AI / Full-Stack Engineer",
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#07090e",
+  themeColor: "#110e12",
 };
 
 export default function RootLayout({
@@ -26,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jakarta.variable} ${outfit.variable} ${mono.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-primary`}>
+      <body className={`${sans.variable} ${serif.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary`}>
         <SmoothScroll>
           {children}
         </SmoothScroll>

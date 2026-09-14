@@ -36,13 +36,13 @@ export function Certifications() {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 md:mb-32 gap-12 border-t border-accent/10 pt-16">
             <div>
-              <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.9] tracking-tight">
+              <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.9] tracking-tight">
                 Certifications.
               </h2>
             </div>
             
             <div className="flex flex-col items-start md:items-end gap-6 max-w-sm text-left md:text-right">
-              <span className="font-display text-7xl text-muted/50 leading-none">{String(certifications.length).padStart(2, '0')}</span>
+              <span className="font-serif text-7xl text-muted/50 leading-none">{String(certifications.length).padStart(2, '0')}</span>
               <button 
                 onClick={() => setIsArchiveOpen(true)}
                 className="group flex items-center gap-4 text-xs font-sans uppercase tracking-widest text-accent hover:text-foreground transition-colors pb-2 border-b border-accent/30 hover:border-[var(--text-primary)] mt-4"
@@ -71,7 +71,7 @@ export function Certifications() {
                     <span className="text-accent/60 font-sans text-[11px]">{cert.date}</span>
                   </div>
                   
-                  <h3 className="font-display text-2xl md:text-3xl text-foreground mb-4 group-hover:text-accent transition-colors duration-500 leading-tight">
+                  <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4 group-hover:text-accent transition-colors duration-500 leading-tight">
                     {cert.name}
                   </h3>
                 </div>
@@ -112,7 +112,7 @@ export function Certifications() {
                   <span className="text-foreground-secondary font-sans text-[11px] uppercase tracking-[0.4em] block mb-4">
                     Complete Log
                   </span>
-                  <h2 className="font-display text-5xl md:text-6xl text-foreground">All Certifications</h2>
+                  <h2 className="font-serif text-5xl md:text-6xl text-foreground">All Certifications</h2>
                 </div>
                 <button 
                   onClick={() => setIsArchiveOpen(false)}
@@ -137,7 +137,7 @@ export function Certifications() {
                       <span className="text-foreground-secondary font-sans text-[11px] tracking-widest uppercase">{cert.issuer}</span>
                     </div>
                     <div className="md:col-span-5">
-                      <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors">{cert.name}</h3>
+                      <h3 className="font-serif text-xl text-foreground group-hover:text-accent transition-colors">{cert.name}</h3>
                     </div>
                     <div className="md:col-span-3">
                       <span className="text-muted font-mono text-[11px] tracking-widest break-all select-all">{cert.id}</span>

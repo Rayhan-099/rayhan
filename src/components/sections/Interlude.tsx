@@ -30,7 +30,7 @@ export function Interlude({ text, subtitle }: InterludeProps) {
                {subtitle}
              </span>
            )}
-           <h2 className="font-display text-[clamp(3rem,6vw,6rem)] text-foreground/90 leading-tight whitespace-pre-line mix-blend-screen max-w-5xl mx-auto">
+           <h2 className="font-serif text-[clamp(3rem,6vw,6rem)] text-foreground/90 leading-tight whitespace-pre-line mix-blend-screen max-w-5xl mx-auto">
              {text}
            </h2>
          </motion.div>

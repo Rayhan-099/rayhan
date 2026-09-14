@@ -28,7 +28,7 @@ export function Achievements() {
         >
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight"
           >
             Achievements.
           </motion.h2>
@@ -49,7 +49,7 @@ export function Achievements() {
                 <span className="text-accent font-sans text-[11px] tracking-[0.2em] uppercase">
                   {item.role}
                 </span>
-                <h3 className="font-display text-3xl md:text-4xl text-foreground leading-tight">
+                <h3 className="font-serif text-3xl md:text-4xl text-foreground leading-tight">
                   {item.title}
                 </h3>
               </div>

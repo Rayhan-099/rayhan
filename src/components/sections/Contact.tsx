@@ -36,13 +36,13 @@ export function Contact() {
           <div className="flex items-center gap-4 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary">
-              Initialize Handshake
+              Get in touch
             </span>
           </div>
           
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-display text-[clamp(3.5rem,12vw,14rem)] text-foreground leading-[0.85] tracking-tight mb-12"
+            className="font-serif text-[clamp(3.5rem,12vw,14rem)] text-foreground leading-[0.85] tracking-tight mb-12"
           >
             Contact.
           </motion.h2>
@@ -59,7 +59,7 @@ export function Contact() {
             href={`mailto:${profile.email}`}
             className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground hover:text-primary py-2 transition-colors"
           >
-            <span className="relative z-10">Email Protocol</span>
+            <span className="relative z-10">Email</span>
             <span className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
           </motion.a>
           
@@ -96,7 +96,7 @@ export function Contact() {
             rel="noopener noreferrer"
             className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
           >
-            <span className="relative z-10">Data_Sheet</span>
+            <span className="relative z-10">Resume</span>
             <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
           </motion.a>
         </motion.div>
@@ -110,7 +110,7 @@ export function Contact() {
         transition={{ duration: 1, delay: 0.8 }}
         className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col md:flex-row justify-between items-center text-[10px] text-muted font-mono uppercase tracking-[0.2em] gap-4 relative z-10"
       >
-        <span>SYS.DATE: {new Date().getFullYear()} // RAYHAN KHAN</span>
+        <span>© RAYHAN KHAN</span>
         <div className="flex gap-8">
           <a href="/resume.pdf" target="_blank" className="hover:text-foreground transition-colors">Resume</a>
           <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>

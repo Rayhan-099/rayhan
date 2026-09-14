@@ -28,7 +28,7 @@ export function Education() {
         >
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight"
           >
             Education.
           </motion.h2>
@@ -48,7 +48,7 @@ export function Education() {
               <span className="text-accent font-sans text-[11px] tracking-[0.2em] uppercase">
                 {item.dates}
               </span>
-              <h3 className="font-display text-2xl md:text-3xl text-foreground group-hover:text-accent transition-colors duration-500 leading-tight">
+              <h3 className="font-serif text-2xl md:text-3xl text-foreground group-hover:text-accent transition-colors duration-500 leading-tight">
                 {item.institution}
               </h3>
               <p className="text-muted font-sans text-sm font-light leading-relaxed">

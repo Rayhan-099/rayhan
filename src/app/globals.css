@@ -3,24 +3,23 @@
 @tailwind utilities;
 
 :root {
-  /* Obsidian Relic Palette */
-  --background: #07090e;
-  --background-elevated: #0b0f19;
-  --surface: #0d1322;
-  --surface-glass: rgba(13, 19, 34, 0.7);
+  /* Cinematic Dusk Palette */
+  --background: #110e12;
+  --background-elevated: #161217;
+  --surface: #1c171e;
+  --surface-glass: rgba(28, 23, 30, 0.7);
   
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-primary: #f2ebe8;
+  --text-secondary: #a89f9e;
+  --text-muted: #6b6366;
   
-  --primary: #38bdf8;
-  --secondary: #d4af37;
-  --tertiary: #2dd4bf;
-  --accent-violet: #a78bfa;
+  --primary: #d6a3b6; /* Pale Rose */
+  --secondary: #a3959c; /* Dusty mauve */
+  --tertiary: #b07c8f;
   
-  --accent: #38bdf8; /* Fallback for older variables */
-  --accent-soft: rgba(56, 189, 248, 0.1);
-  --line: rgba(255, 255, 255, 0.04);
+  --accent: #d6a3b6; 
+  --accent-soft: rgba(214, 163, 182, 0.15);
+  --line: rgba(255, 255, 255, 0.05);
 }
 
 body {
