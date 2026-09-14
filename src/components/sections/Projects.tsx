@@ -24,21 +24,18 @@ const fadeUp = {
 function ProjectMeta({ project, index, total }: { project: typeof projects[0]; index: number; total: number }) {
   return (
     <div className="flex flex-col gap-3">
-      <span className="font-sans text-[11px] tracking-[0.4em] uppercase text-[#8DEBFF]/60">
-        {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-      </span>
       <div className="flex flex-wrap gap-2">
         {project.technologies.slice(0, 4).map(tech => (
-          <span key={tech} className="font-sans text-[10px] uppercase tracking-[0.15em] text-[#778294] px-2.5 py-1 border border-[#8DEBFF]/10">
+          <span key={tech} className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted px-2.5 py-1 border border-accent/10">
             {tech}
           </span>
         ))}
       </div>
       <div className="flex gap-6 mt-3">
-        <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#F0EEE7] hover:text-[#8DEBFF] transition-colors border-b border-[#8DEBFF]/20 hover:border-[#8DEBFF] pb-0.5">
+        <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-foreground hover:text-accent transition-colors border-b border-accent/20 hover:border-accent pb-0.5">
           Live ↗
         </a>
-        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#778294] hover:text-[#F0EEE7] transition-colors border-b border-[#8DEBFF]/10 hover:border-[#F0EEE7] pb-0.5">
+        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors border-b border-accent/10 hover:border-[var(--text-primary)] pb-0.5">
           Source ↗
         </a>
       </div>
@@ -79,19 +76,19 @@ export function Projects() {
                 className="object-cover object-top transition-transform duration-[1.5s] group-hover:scale-[1.03]"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A0F] via-[#080A0F]/80 to-[#080A0F]/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/80 to-[var(--background)]/20" />
               
               {/* Overlay text */}
               <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 lg:p-20">
                 <motion.h3 
                   variants={fadeUp} custom={0.2}
-                  className="font-display text-5xl md:text-7xl lg:text-9xl text-[#F0EEE7] leading-[0.85] tracking-tight"
+                  className="font-display text-5xl md:text-7xl lg:text-9xl text-foreground leading-[0.85] tracking-tight"
                 >
                   Lumine
                 </motion.h3>
                 <motion.span 
                   variants={fadeUp} custom={0.35}
-                  className="font-sans text-lg md:text-2xl text-[#8DEBFF] italic block mt-3"
+                  className="font-sans text-lg md:text-2xl text-accent italic block mt-3"
                 >
                   AI-Powered Skin Intelligence
                 </motion.span>
@@ -102,7 +99,7 @@ export function Projects() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 md:mt-16">
               <motion.p 
                 variants={fadeUp} custom={0.4}
-                className="font-sans text-base md:text-lg text-[#778294] font-light leading-relaxed max-w-xl"
+                className="font-sans text-base md:text-lg text-muted font-light leading-relaxed max-w-xl"
               >
                 {lumine.description}
               </motion.p>
@@ -127,17 +124,17 @@ export function Projects() {
             <div className="order-2 lg:order-1 flex flex-col gap-6">
               <motion.h3 
                 variants={fadeUp} custom={0}
-                className="font-display text-5xl md:text-7xl text-[#F0EEE7] leading-[0.9] tracking-tight"
+                className="font-display text-5xl md:text-7xl text-foreground leading-[0.9] tracking-tight"
               >
                 Current <br/>
-                <span className="text-[#778294]">Capital</span>
+                <span className="text-muted">Capital</span>
               </motion.h3>
-              <motion.span variants={fadeUp} custom={0.1} className="font-sans text-lg text-[#8DEBFF] italic">
+              <motion.span variants={fadeUp} custom={0.1} className="font-sans text-lg text-accent italic">
                 Finance Manager
               </motion.span>
               <motion.p 
                 variants={fadeUp} custom={0.2}
-                className="font-sans text-base text-[#778294] font-light leading-relaxed max-w-md"
+                className="font-sans text-base text-muted font-light leading-relaxed max-w-md"
               >
                 {currentCapital.description}
               </motion.p>
@@ -184,21 +181,21 @@ export function Projects() {
                 className="object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]"
                 sizes="(max-width: 1024px) 100vw, 58vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A0F] via-[#080A0F]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent" />
             </motion.div>
 
             {/* Text — offset down for asymmetry */}
             <div className="lg:col-span-5 flex flex-col gap-6 lg:pt-32">
               <motion.h3 
                 variants={fadeUp} custom={0}
-                className="font-display text-4xl md:text-6xl text-[#F0EEE7] leading-[0.95] tracking-tight"
+                className="font-display text-4xl md:text-6xl text-foreground leading-[0.95] tracking-tight"
               >
                 Health <br/>
-                <span className="text-[#778294]">Assistant</span>
+                <span className="text-muted">Assistant</span>
               </motion.h3>
               <motion.p 
                 variants={fadeUp} custom={0.15}
-                className="font-sans text-base text-[#778294] font-light leading-relaxed border-l-2 border-[#8DEBFF]/10 pl-5"
+                className="font-sans text-base text-muted font-light leading-relaxed border-l-2 border-accent/10 pl-5"
               >
                 {healthAssistant.description}
               </motion.p>
@@ -220,10 +217,10 @@ export function Projects() {
             viewport={{ once: true, amount: 0.15 }}
           >
             <motion.div variants={fadeUp} custom={0} className="text-center mb-10 md:mb-16">
-              <span className="font-sans text-[11px] tracking-[0.4em] uppercase text-[#8DEBFF]/60 block mb-4">04 / {String(total).padStart(2, "0")}</span>
-              <h3 className="font-display text-4xl md:text-6xl lg:text-7xl text-[#F0EEE7] tracking-tight">
+              
+              <h3 className="font-display text-4xl md:text-6xl lg:text-7xl text-foreground tracking-tight">
                 Real-Time Hand <br className="hidden md:block" />
-                <span className="text-[#778294]">Tracking Visualizer</span>
+                <span className="text-muted">Tracking Visualizer</span>
               </h3>
             </motion.div>
             
@@ -239,19 +236,19 @@ export function Projects() {
                 className="object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A0F] via-[#080A0F]/70 to-[#080A0F]/10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/70 to-[var(--background)]/10" />
             </motion.div>
 
             {/* Description */}
             <div className="mt-10 md:mt-16 max-w-2xl text-center flex flex-col items-center gap-6">
-              <motion.p variants={fadeUp} custom={0.2} className="font-sans text-base md:text-lg text-[#778294] font-light leading-relaxed">
+              <motion.p variants={fadeUp} custom={0.2} className="font-sans text-base md:text-lg text-muted font-light leading-relaxed">
                 {handTracking.description} {handTracking.details[0]}
               </motion.p>
               <motion.div variants={fadeUp} custom={0.3} className="flex gap-6">
-                <a href={handTracking.links.live} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#F0EEE7] hover:text-[#8DEBFF] transition-colors border-b border-[#8DEBFF]/20 hover:border-[#8DEBFF] pb-0.5">
+                <a href={handTracking.links.live} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-foreground hover:text-accent transition-colors border-b border-accent/20 hover:border-accent pb-0.5">
                   Live Demo ↗
                 </a>
-                <a href={handTracking.links.github} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#778294] hover:text-[#F0EEE7] transition-colors border-b border-[#8DEBFF]/10 hover:border-[#F0EEE7] pb-0.5">
+                <a href={handTracking.links.github} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors border-b border-accent/10 hover:border-[var(--text-primary)] pb-0.5">
                   Source ↗
                 </a>
               </motion.div>

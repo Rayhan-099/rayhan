@@ -3,20 +3,19 @@
 @tailwind utilities;
 
 :root {
-  /* Primary palette - Hollow Knight/Genshin cinematic influence */
-  --background: #080A0F;
-  --background-elevated: #0D1118;
-  --surface: #101A2B;
-  --surface-glass: rgba(16, 26, 43, 0.4);
+  /* Editorial / Premium Palette */
+  --background: #0d0a0b;
+  --background-elevated: #171113;
+  --surface: #24181a;
+  --surface-glass: rgba(36, 24, 26, 0.4);
   
-  --text-primary: #F0EEE7;
-  --text-secondary: #B8C0CC;
-  --text-muted: #778294;
+  --text-primary: #F5F2EB;
+  --text-secondary: #C8BDBE;
+  --text-muted: #8A7C7E;
   
-  /* Moon Cyan accent */
-  --accent: #8DEBFF;
-  --accent-soft: rgba(141, 235, 255, 0.15);
-  --line: rgba(240, 238, 231, 0.06);
+  --accent: #D9A0A0;
+  --accent-soft: rgba(217, 160, 160, 0.15);
+  --line: rgba(245, 242, 235, 0.08);
 }
 
 body {

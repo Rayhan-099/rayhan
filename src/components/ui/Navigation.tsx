@@ -4,9 +4,14 @@ import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { label: "Work", href: "#projects" },
+  { label: "Home", href: "#" },
   { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Achievements", href: "#achievements" },
+  { label: "Education", href: "#education" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
 

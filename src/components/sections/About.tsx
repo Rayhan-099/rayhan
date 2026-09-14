@@ -60,13 +60,13 @@ export function About() {
                 />
               </motion.div>
               {/* Cinematic treatment — subtle desaturation on rest, full color on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080A0F] via-transparent to-transparent opacity-70" />
-              <div className="absolute inset-0 bg-[#101A2B]/20 mix-blend-color hover:opacity-0 transition-opacity duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-70" />
+              <div className="absolute inset-0 bg-surface/20 mix-blend-color hover:opacity-0 transition-opacity duration-1000" />
             </div>
             {/* Thin caption line */}
-            <div className="mt-4 border-t border-[#8DEBFF]/10 pt-3 flex justify-between">
-              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#B8C0CC]">Rayhan Khan</span>
-              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#778294]">Engineer</span>
+            <div className="mt-4 border-t border-accent/10 pt-3 flex justify-between">
+              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-foreground-secondary">Rayhan Khan</span>
+              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted">Engineer</span>
             </div>
           </motion.div>
 
@@ -74,7 +74,7 @@ export function About() {
           <div className="lg:col-span-7 flex flex-col justify-center lg:pt-16 lg:pl-8">
             
             <motion.h2 
-              className="font-display text-5xl md:text-7xl lg:text-8xl text-[#F0EEE7] leading-[1] tracking-tight mb-12"
+              className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground leading-[1] tracking-tight mb-12"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -86,7 +86,7 @@ export function About() {
 
             <div className="flex flex-col gap-6 max-w-2xl">
               <motion.p 
-                className="text-[#F0EEE7] font-sans text-lg md:text-xl leading-relaxed whitespace-pre-wrap"
+                className="text-foreground font-sans text-lg md:text-xl leading-relaxed whitespace-pre-wrap"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}

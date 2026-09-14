@@ -30,7 +30,7 @@ function DustMotes() {
     <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#8DEBFF"
+        color="var(--accent)"
         size={0.015}
         sizeAttenuation={true}
         depthWrite={false}
