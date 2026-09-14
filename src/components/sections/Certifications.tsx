@@ -31,7 +31,7 @@ export function Certifications() {
 
   return (
     <>
-      <section id="certifications" className="py-32 md:py-48 relative z-10">
+      <section id="certifications" className="py-32 md:py-48 relative z-10 bg-[#121013]">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 md:mb-32 gap-12 border-t border-accent/10 pt-16">

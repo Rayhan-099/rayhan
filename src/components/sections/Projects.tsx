@@ -7,24 +7,24 @@ import { projects } from "@/content/projects";
 
 function ProjectMeta({ project }: { project: typeof projects[0] }) {
   return (
-    <div className="flex flex-col gap-4 w-full mt-6 pt-6 border-t border-line">
+    <div className="flex flex-col gap-4 w-full mt-6 pt-6 border-t border-white/10">
       <div className="flex flex-wrap gap-2">
         {project.technologies.slice(0, 5).map(tech => (
-          <span key={tech} className="font-sans text-[11px] text-text-secondary px-3 py-1.5 bg-surface/50 rounded-full border border-line">
+          <span key={tech} className="font-sans text-[11px] text-[#a3959c] px-3 py-1.5 bg-white/5 rounded-full border border-white/10">
             {tech}
           </span>
         ))}
       </div>
       <div className="flex gap-6 mt-2">
         {project.links.live && (
-          <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-text-primary hover:text-primary transition-colors">
-            <span className="border-b border-transparent group-hover:border-primary pb-0.5 transition-colors">Visit Site</span>
-            <span className="text-primary transition-transform group-hover:translate-x-1">→</span>
+          <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-white hover:text-[#d6a3b6] transition-colors">
+            <span className="border-b border-transparent group-hover:border-[#d6a3b6] pb-0.5 transition-colors">Visit Site</span>
+            <span className="text-[#d6a3b6] transition-transform group-hover:translate-x-1">→</span>
           </a>
         )}
         {project.links.github && (
-          <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-text-secondary hover:text-text-primary transition-colors">
-            <span className="border-b border-transparent group-hover:border-text-primary pb-0.5 transition-colors">Source</span>
+          <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#a3959c] hover:text-white transition-colors">
+            <span className="border-b border-transparent group-hover:border-white pb-0.5 transition-colors">Source</span>
             <span className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
           </a>
         )}
@@ -33,103 +33,53 @@ function ProjectMeta({ project }: { project: typeof projects[0] }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
+export function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-
+  
   const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
+    target: sectionRef,
+    offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const isEven = index % 2 === 0;
+  const backgroundColor = useTransform(scrollYProgress, [0.1, 0.4, 0.8], ["#121013", "#0d0b0c", "#161214"]);
+
+  // Project 1 (Lumine) Animations
+  const p1Ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: p1Scroll } = useScroll({ target: p1Ref, offset: ["start end", "end start"] });
+  const p1ClipPath = useTransform(p1Scroll, [0.2, 0.5], ["inset(10% 20% 10% 20%)", "inset(0% 0% 0% 0%)"]);
+  const p1Scale = useTransform(p1Scroll, [0.2, 0.5], [1.1, 1]);
+  const p1TextY = useTransform(p1Scroll, [0.2, 0.8], ["20%", "-20%"]);
+
+  // Project 2 (Current Capital) Animations
+  const p2Ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: p2Scroll } = useScroll({ target: p2Ref, offset: ["start end", "end start"] });
+  const p2ImgY = useTransform(p2Scroll, [0, 1], ["-15%", "15%"]);
+  
+  // Project 3 (Health Assistant) Animations
+  const p3Ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: p3Scroll } = useScroll({ target: p3Ref, offset: ["start end", "end start"] });
+  const p3Grayscale = useTransform(p3Scroll, [0.3, 0.6], ["100%", "0%"]);
+
+  // Project 4 (Hand Tracking) Animations
+  const p4Ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: p4Scroll } = useScroll({ target: p4Ref, offset: ["start end", "end start"] });
+  const p4Scale = useTransform(p4Scroll, [0, 1], [0.95, 1.05]);
 
   return (
-    <motion.div
-      ref={cardRef}
-      className="relative w-full py-20 md:py-32 flex items-center justify-center border-t border-line/50 first:border-t-0"
+    <motion.section 
+      style={{ backgroundColor }}
+      ref={sectionRef} 
+      id="projects" 
+      className="relative z-10 pt-24 md:pt-40 pb-24 border-t border-white/5 overflow-hidden"
     >
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20">
-        
-        <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center`}>
-          
-          {/* Visual Container */}
-          <div className={`lg:col-span-7 relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-            <motion.div 
-              initial={reduceMotion ? false : { opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-sm"
-            >
-              <motion.div style={!reduceMotion ? { y: imgY } : {}} className="absolute inset-0 h-[120%] -top-[10%]">
-                <Image 
-                  src={`/media/projects/${project.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}.png`}
-                  alt={project.title} 
-                  fill 
-                  className="object-cover object-top transition-transform duration-1000 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  onError={(e) => {
-                    e.currentTarget.src = `https://picsum.photos/seed/${project.title.toLowerCase().replace(/\s+/g, '')}/1600/1000`;
-                  }}
-                />
-              </motion.div>
-              {/* Soft overlay to match dusk atmosphere */}
-              <div className="absolute inset-0 bg-[#d6a3b6]/5 mix-blend-color pointer-events-none" />
-            </motion.div>
-          </div>
-
-          {/* Typography & Metadata */}
-          <div className={`lg:col-span-5 flex flex-col ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <span className="font-sans text-xs text-text-secondary uppercase tracking-widest">
-                  No. {String(index + 1).padStart(2, '0')}
-                </span>
-                <span className="h-px bg-line flex-1" />
-              </div>
-
-              <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl text-text-primary leading-[1.1] mb-6 italic">
-                {project.title}
-              </h3>
-              
-              <div className="relative">
-                <p className="font-sans text-base text-text-secondary leading-relaxed">
-                  {project.description}
-                </p>
-                {project.details && project.details.length > 0 && (
-                  <p className="font-sans text-sm text-text-muted mt-4">
-                    {project.details[0]}
-                  </p>
-                )}
-              </div>
-
-              <ProjectMeta project={project} />
-            </motion.div>
-          </div>
-
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-export function Projects() {
-  return (
-    <section id="projects" className="relative z-10 bg-background pt-24 md:pt-40">
       {/* Introduction */}
-      <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pb-32">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-4xl md:text-6xl text-text-primary tracking-tight"
+          className="font-serif text-5xl md:text-7xl text-white tracking-tight italic"
         >
           Selected Works
         </motion.h2>
@@ -138,22 +88,98 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-sans text-base md:text-lg text-text-secondary mt-6 max-w-lg"
+          className="font-sans text-base md:text-lg text-[#a3959c] mt-6 max-w-lg"
         >
           High-performance systems and interactive experiences engineered for scale and aesthetic precision.
         </motion.p>
       </div>
 
-      {/* Editorial Scroll Container */}
-      <div className="relative pb-24 border-t border-line">
-        {projects.map((project, idx) => (
-          <ProjectCard 
-            key={project.title} 
-            project={project} 
-            index={idx} 
-          />
-        ))}
+      <div className="flex flex-col gap-32 md:gap-48 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        
+        {/* Project 01: Lumine (Huge cinematic reveal) */}
+        {projects[0] && (
+          <div ref={p1Ref} className="relative w-full min-h-[90vh] flex flex-col justify-center">
+            <motion.div 
+              style={reduceMotion ? {} : { clipPath: p1ClipPath }} 
+              className="absolute inset-0 w-full h-[70vh] md:h-[90vh] origin-center overflow-hidden z-0"
+            >
+              <motion.div style={reduceMotion ? {} : { scale: p1Scale }} className="absolute inset-0 w-full h-full">
+                <Image src="/media/projects/lumine.png" alt="Lumine" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/lumine/1600/1000'; }} />
+                <div className="absolute inset-0 bg-[#0d0b0c]/40 mix-blend-color pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0b0c] via-transparent to-transparent opacity-80" />
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              style={reduceMotion ? {} : { y: p1TextY }} 
+              className="relative z-10 w-full max-w-2xl mt-auto pt-64 md:pt-[50vh]"
+            >
+              <h3 className="font-serif text-5xl md:text-7xl text-white italic mb-6">Lumine</h3>
+              <p className="font-sans text-lg text-[#f2ebe8] leading-relaxed max-w-xl">{projects[0].description}</p>
+              <ProjectMeta project={projects[0]} />
+            </motion.div>
+          </div>
+        )}
+
+        {/* Project 02: Current Capital (Asymmetric vertical layout) */}
+        {projects[1] && (
+          <div ref={p2Ref} className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center relative w-full">
+            <div className="md:col-span-5 flex flex-col order-2 md:order-1">
+              <h3 className="font-serif text-4xl md:text-5xl text-white italic mb-6">Current Capital</h3>
+              <p className="font-sans text-base md:text-lg text-[#a3959c] leading-relaxed mb-4">{projects[1].description}</p>
+              <p className="font-sans text-sm text-[#a3959c]/70 leading-relaxed">{projects[1].details?.[0]}</p>
+              <ProjectMeta project={projects[1]} />
+            </div>
+            <div className="md:col-span-7 relative order-1 md:order-2 h-[60vh] md:h-[80vh] w-full overflow-hidden">
+              <motion.div style={reduceMotion ? {} : { y: p2ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
+                <Image src="/media/projects/current-capital.png" alt="Current Capital" fill className="object-cover object-left-top" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/currentcapital/800/1200'; }} />
+                <div className="absolute inset-0 bg-[#121013]/20 mix-blend-color pointer-events-none" />
+              </motion.div>
+            </div>
+          </div>
+        )}
+
+        {/* Project 03: Health Assistant (Wide format with color grade transition) */}
+        {projects[2] && (
+          <div ref={p3Ref} className="flex flex-col relative w-full pt-12 md:pt-24">
+            <motion.div 
+              style={reduceMotion ? {} : { filter: `grayscale(${p3Grayscale})` }}
+              className="relative w-full aspect-[21/9] overflow-hidden mb-12"
+            >
+              <Image src="/media/projects/health-assistant.png" alt="Health Assistant" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/healthassistant/1600/900'; }} />
+              <div className="absolute inset-0 bg-[#d6a3b6]/10 mix-blend-color pointer-events-none" />
+            </motion.div>
+            <div className="w-full max-w-3xl ml-auto border-t border-white/10 pt-8 flex flex-col md:flex-row gap-8 justify-between">
+              <div>
+                <h3 className="font-serif text-4xl text-white italic mb-4">Health Assistant</h3>
+                <p className="font-sans text-base text-[#a3959c] leading-relaxed max-w-xl">{projects[2].description}</p>
+              </div>
+              <div className="min-w-[200px]">
+                <ProjectMeta project={projects[2]} />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Project 04: Hand Tracking (Interactive square scale) */}
+        {projects[3] && (
+          <div ref={p4Ref} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center relative w-full pt-12 md:pt-24 pb-24">
+            <div className="relative aspect-square w-full overflow-hidden">
+              <motion.div style={reduceMotion ? {} : { scale: p4Scale }} className="absolute inset-0 w-full h-full origin-center">
+                <Image src="/media/projects/hand-tracking.png" alt="Hand Tracking" fill className="object-cover" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/handtracking/1000/1000'; }} />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#121013] via-transparent to-[#121013]/50 pointer-events-none" />
+              </motion.div>
+            </div>
+            <div className="flex flex-col">
+              <h3 className="font-serif text-4xl text-white italic mb-6">Hand Tracking</h3>
+              <p className="font-sans text-base md:text-lg text-[#a3959c] leading-relaxed mb-4">{projects[3].description}</p>
+              <p className="font-sans text-sm text-[#a3959c]/70 leading-relaxed">{projects[3].details?.[0]}</p>
+              <ProjectMeta project={projects[3]} />
+            </div>
+          </div>
+        )}
+
       </div>
-    </section>
+    </motion.section>
   );
 }

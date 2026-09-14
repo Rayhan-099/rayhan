@@ -38,7 +38,7 @@ export function Navigation() {
           scrolled ? "py-4" : ""
         }`}
       >
-        <div className="font-serif text-xl text-foreground font-semibold tracking-widest uppercase pointer-events-auto">
+        <div className="font-serif text-xl text-white font-semibold tracking-widest uppercase pointer-events-auto">
           RAYHAN
         </div>
         
@@ -47,7 +47,7 @@ export function Navigation() {
             <a 
               key={item.label} 
               href={item.href}
-              className="text-[11px] font-sans uppercase tracking-[0.2em] text-foreground-secondary hover:text-foreground transition-colors"
+              className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#a3959c] hover:text-white transition-colors"
             >
               {item.label}
             </a>
@@ -55,7 +55,7 @@ export function Navigation() {
         </div>
 
         <div className="hidden lg:flex items-center pointer-events-auto">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-[11px] font-sans uppercase tracking-[0.2em] text-accent hover:text-accent-soft transition-colors">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#d6a3b6] hover:text-white transition-colors">
             [ Download Resume ]
           </a>
         </div>
@@ -68,14 +68,14 @@ export function Navigation() {
         transition={{ duration: 0.5 }}
         className="fixed bottom-12 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-4 mix-blend-difference pointer-events-none"
       >
-        <span className="text-[9px] font-mono tracking-widest uppercase text-foreground-secondary">
+        <span className="text-[9px] font-sans tracking-widest uppercase text-[#a3959c]">
           SCROLL
         </span>
         <motion.div 
-          className="w-px h-12 bg-line relative overflow-hidden"
+          className="w-px h-12 bg-white/10 relative overflow-hidden"
         >
           <motion.div 
-            className="absolute top-0 left-0 w-full h-full bg-foreground"
+            className="absolute top-0 left-0 w-full h-full bg-white"
             animate={{ y: ["-100%", "100%"] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />

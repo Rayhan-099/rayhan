@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
-const serif = Newsreader({ subsets: ["latin"], variable: "--font-serif", style: ['normal', 'italic'] });
+const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ['300', '400', '500', '600', '700'], variable: "--font-serif", style: ['normal', 'italic'] });
 const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {

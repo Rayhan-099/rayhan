@@ -16,13 +16,21 @@ export function Contact() {
   return (
     <section 
       id="contact" 
-      className="relative min-h-[100dvh] flex flex-col justify-between py-16 md:py-24 overflow-hidden z-10 bg-background"
+      className="relative min-h-[100dvh] flex flex-col justify-between py-16 md:py-24 overflow-hidden z-10 bg-[#121013]"
     >
       {/* Abyssal environment background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#07090e] via-[#0b0f19] to-[#07090e]" />
-        {/* Cold luminescent glow from bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-primary/[0.03] to-transparent pointer-events-none" />
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="object-cover w-full h-full scale-[1.02] transform-gpu opacity-20"
+        >
+          <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#121013] via-[#121013]/80 to-[#07090e]" />
+        <div className="absolute inset-0 bg-[#d6a3b6]/5 mix-blend-color" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex-1 flex flex-col justify-center relative z-10">
@@ -34,17 +42,17 @@ export function Contact() {
           className="max-w-5xl"
         >
           <div className="flex items-center gap-4 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f2ebe8] animate-pulse" />
+            <span className="font-sans text-xs tracking-[0.2em] uppercase text-[#a3959c]">
               Get in touch
             </span>
           </div>
           
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-serif text-[clamp(3.5rem,12vw,14rem)] text-foreground leading-[0.85] tracking-tight mb-12"
+            className="font-serif text-[clamp(3.5rem,10vw,12rem)] text-white leading-[0.85] tracking-tight mb-12 italic"
           >
-            Contact.
+            Let's build<br />something.
           </motion.h2>
         </motion.div>
 
@@ -57,10 +65,10 @@ export function Contact() {
           <motion.a
             variants={fadeUp} custom={0.3}
             href={`mailto:${profile.email}`}
-            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground hover:text-primary py-2 transition-colors"
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-white py-2 transition-colors"
           >
             <span className="relative z-10">Email</span>
-            <span className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+            <span className="absolute bottom-0 left-0 w-full h-px bg-[#d6a3b6] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
           </motion.a>
           
           {profile.social.github && (
@@ -69,7 +77,7 @@ export function Contact() {
               href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-[#a3959c] hover:text-white py-2 transition-colors"
             >
               <span className="relative z-10">GitHub</span>
               <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
@@ -82,7 +90,7 @@ export function Contact() {
               href={profile.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-[#a3959c] hover:text-white py-2 transition-colors"
             >
               <span className="relative z-10">LinkedIn</span>
               <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
@@ -94,7 +102,7 @@ export function Contact() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-[#a3959c] hover:text-white py-2 transition-colors"
           >
             <span className="relative z-10">Resume</span>
             <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
@@ -112,9 +120,7 @@ export function Contact() {
       >
         <span>© RAYHAN KHAN</span>
         <div className="flex gap-8">
-          <a href="/resume.pdf" target="_blank" className="hover:text-foreground transition-colors">Resume</a>
-          <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>
-          <a href="/terms" className="hover:text-foreground transition-colors">Terms</a>
+          <a href="/resume.pdf" target="_blank" className="hover:text-white transition-colors">Resume</a>
         </div>
       </motion.div>
     </section>

@@ -14,10 +14,26 @@ export function About() {
     offset: ["start end", "end start"],
   });
   const portraitY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+  const backgroundColor = useTransform(scrollYProgress, [0, 0.3], ["#110e12", "#1d1216"]);
+  const portraitGrayscale = useTransform(scrollYProgress, [0.2, 0.5], ["100%", "0%"]);
+  const watermarkY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
 
   return (
-    <section ref={sectionRef} id="about" className="relative z-10 py-24 md:py-40 bg-[#110e12] border-t border-line">
+    <motion.section 
+      style={{ backgroundColor }}
+      ref={sectionRef} 
+      id="about" 
+      className="relative z-10 py-24 md:py-40 overflow-hidden"
+    >
       
+      {/* Large background typography exiting viewport */}
+      <motion.div 
+        style={reduceMotion ? {} : { y: watermarkY }}
+        className="absolute top-0 left-0 w-full pt-10 flex justify-center text-[15vw] font-serif italic text-white/[0.02] whitespace-nowrap pointer-events-none select-none z-0"
+      >
+        Biography
+      </motion.div>
+
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         
         {/* Magazine Spread: asymmetric portrait + editorial text */}
@@ -32,7 +48,10 @@ export function About() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-[#161217]">
-              <motion.div style={reduceMotion ? {} : { y: portraitY }} className="absolute inset-[-10%] w-[120%] h-[120%]">
+              <motion.div 
+                style={reduceMotion ? {} : { y: portraitY, filter: `grayscale(${portraitGrayscale})` }} 
+                className="absolute inset-[-10%] w-[120%] h-[120%]"
+              >
                 <Image
                   src="/rayhan-headshot.jpg"
                   alt={profile.name}
@@ -69,17 +88,20 @@ export function About() {
             </motion.h2>
 
             <motion.div 
-              className="text-text-secondary font-sans text-base md:text-lg leading-relaxed space-y-6"
+              className="text-[#a3959c] font-sans text-base md:text-lg leading-relaxed space-y-6 max-w-prose"
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <p>
-                I am a Software Engineer who merges technical rigor with aesthetic sensitivity. My work spans full-stack development, artificial intelligence, and interactive frontend experiences.
+                Rayhan Khan is a Software Engineer focused on full-stack development and Machine Learning.
               </p>
               <p>
-                Rather than treating software as merely functional, I approach it as an environment—a space where architecture, data, and design coexist to create something memorable. Whether optimizing machine learning pipelines or refining UI micro-interactions, the goal is always a seamless, cohesive experience.
+                He is pursuing a Bachelor of Technology in Computer Science and Engineering at Dr. A.P.J. Abdul Kalam Technical University.
+              </p>
+              <p>
+                His technical work spans Python, React, backend systems, Machine Learning, Generative AI, Computer Vision, and cloud technologies.
               </p>
             </motion.div>
 
@@ -88,6 +110,6 @@ export function About() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

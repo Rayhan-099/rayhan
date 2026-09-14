@@ -114,30 +114,45 @@ export function Hero() {
           {/* Role & Statement Box */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 relative pt-8 md:pt-12 border-t border-line">
             <div className="flex flex-col gap-6 max-w-xl">
-              <h2 className="hero-role font-sans text-xl md:text-2xl text-primary font-medium tracking-tight opacity-0">
-                AI &amp; Full Stack Engineer
+              <h2 className="hero-role font-sans text-xl md:text-2xl text-[#f2ebe8] font-medium tracking-wide opacity-0 uppercase">
+                AI & Full Stack Engineer
               </h2>
-              <p className="hero-statement font-serif text-lg md:text-xl text-text-secondary leading-relaxed opacity-0 max-w-md">
-                I build software with the curiosity of an engineer and the eye of a storyteller. Engineering digital experiences where systems, interaction, and atmosphere meet.
+              <p className="hero-statement font-sans text-lg md:text-xl text-[#a3959c] leading-relaxed opacity-0 max-w-md font-light">
+                Engineering digital experiences where systems, interaction, and atmosphere meet.
               </p>
             </div>
             
             {/* CTAs */}
-            <div className="flex flex-row flex-wrap gap-6 min-w-[200px] items-center">
+            <div className="flex flex-row flex-wrap gap-8 items-center pt-2">
               <a 
                 href="#projects" 
-                className="hero-cta opacity-0 group relative overflow-hidden flex justify-between items-center px-8 py-4 bg-transparent border border-primary/30 text-text-primary font-sans text-sm tracking-wide transition-all hover:border-primary hover:bg-primary/5 rounded-full"
+                className="hero-cta opacity-0 group relative overflow-hidden flex justify-between items-center px-8 py-3.5 bg-transparent border border-white/20 text-white font-sans text-xs uppercase tracking-widest transition-all hover:border-white hover:bg-white/5 rounded-full"
               >
-                <span className="relative z-10 mr-4">View Selected Works</span>
-                <span className="relative z-10 transition-transform group-hover:translate-x-1 text-primary">→</span>
+                <span className="relative z-10">View Projects</span>
               </a>
               <a 
                 href="/resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hero-cta opacity-0 group flex justify-between items-center text-text-secondary font-sans text-sm transition-colors hover:text-text-primary"
+                className="hero-cta opacity-0 group flex justify-between items-center text-[#a3959c] font-sans text-xs uppercase tracking-widest transition-colors hover:text-white"
               >
-                <span className="mr-2 border-b border-transparent group-hover:border-text-primary transition-colors pb-0.5">Resume</span>
+                Resume
+              </a>
+              <a 
+                href="https://github.com/Rayhan-099" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hero-cta opacity-0 group flex justify-between items-center text-[#a3959c] font-sans text-xs uppercase tracking-widest transition-colors hover:text-white"
+              >
+                GitHub
+              </a>
+              <a 
+                href="https://linkedin.com/in/rayhan-khan" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hero-cta opacity-0 group flex justify-between items-center text-[#a3959c] font-sans text-xs uppercase tracking-widest transition-colors hover:text-white"
+              >
+                LinkedIn
               </a>
             </div>
           </div>
