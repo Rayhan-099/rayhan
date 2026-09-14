@@ -22,9 +22,13 @@ const config: Config = {
           secondary: "var(--text-secondary)",
           muted: "var(--text-muted)",
         },
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        tertiary: "var(--tertiary)",
         accent: {
           DEFAULT: "var(--accent)",
           soft: "var(--accent-soft)",
+          violet: "var(--accent-violet)",
         },
         border: {
           DEFAULT: "var(--line)",

@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/outfit": "^5.3.0",
+    "@fontsource/plus-jakarta-sans": "^5.3.0",
     "@liquidglassjs/core": "^0.5.2",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
@@ -38,8 +41,12 @@
     "eslint-config-next": "16.3.5",
     "playwright": "^1.63.0",
     "postcss": "^8.5.28",
+    "puppeteer": "^25.11.0",
     "tailwindcss": "^3.4.19",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "puppeteer@25.11.0": true
   }
 }

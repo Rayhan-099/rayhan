@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-display" });
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#080A0F",
+  themeColor: "#07090e",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${display.variable} ${mono.variable} font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-accent`}>
+      <body className={`${jakarta.variable} ${outfit.variable} ${mono.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-primary`}>
         <SmoothScroll>
           {children}
         </SmoothScroll>

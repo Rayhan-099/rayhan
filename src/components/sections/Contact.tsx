@@ -16,16 +16,16 @@ export function Contact() {
   return (
     <section 
       id="contact" 
-      className="relative min-h-[100dvh] flex flex-col justify-between py-16 md:py-24 overflow-hidden z-10"
+      className="relative min-h-[100dvh] flex flex-col justify-between py-16 md:py-24 overflow-hidden z-10 bg-background"
     >
-      {/* Warm dawn environment background */}
+      {/* Abyssal environment background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-[#0D1118] to-[#101A2B]/60" />
-        {/* Warm glow from bottom */}
-        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[var(--accent)]/[0.08] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#07090e] via-[#0b0f19] to-[#07090e]" />
+        {/* Cold luminescent glow from bottom */}
+        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-primary/[0.03] to-transparent pointer-events-none" />
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 w-full flex-1 flex flex-col justify-center relative z-10">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex-1 flex flex-col justify-center relative z-10">
         
         <motion.div
           initial="hidden"
@@ -33,6 +33,13 @@ export function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           className="max-w-5xl"
         >
+          <div className="flex items-center gap-4 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-primary">
+              Initialize Handshake
+            </span>
+          </div>
+          
           <motion.h2 
             variants={fadeUp} custom={0}
             className="font-display text-[clamp(3.5rem,12vw,14rem)] text-foreground leading-[0.85] tracking-tight mb-12"
@@ -50,10 +57,10 @@ export function Contact() {
           <motion.a
             variants={fadeUp} custom={0.3}
             href={`mailto:${profile.email}`}
-            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground hover:text-accent py-2 transition-colors"
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground hover:text-primary py-2 transition-colors"
           >
-            <span className="relative z-10">Email</span>
-            <span className="absolute bottom-0 left-0 w-full h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+            <span className="relative z-10">Email Protocol</span>
+            <span className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
           </motion.a>
           
           {profile.social.github && (
@@ -62,10 +69,10 @@ export function Contact() {
               href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
             >
               <span className="relative z-10">GitHub</span>
-              <span className="absolute bottom-0 left-0 w-full h-px bg-accent/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+              <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
             </motion.a>
           )}
           
@@ -75,10 +82,10 @@ export function Contact() {
               href={profile.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
             >
               <span className="relative z-10">LinkedIn</span>
-              <span className="absolute bottom-0 left-0 w-full h-px bg-accent/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+              <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
             </motion.a>
           )}
 
@@ -87,10 +94,10 @@ export function Contact() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-secondary-foreground hover:text-foreground py-2 transition-colors"
           >
-            <span className="relative z-10">Resume</span>
-            <span className="absolute bottom-0 left-0 w-full h-px bg-accent/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+            <span className="relative z-10">Data_Sheet</span>
+            <span className="absolute bottom-0 left-0 w-full h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
           </motion.a>
         </motion.div>
       </div>
@@ -101,9 +108,9 @@ export function Contact() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.8 }}
-        className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col md:flex-row justify-between items-center text-[11px] text-muted font-sans uppercase tracking-[0.2em] gap-4 relative z-10"
+        className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex flex-col md:flex-row justify-between items-center text-[10px] text-muted font-mono uppercase tracking-[0.2em] gap-4 relative z-10"
       >
-        <span>© {new Date().getFullYear()} Rayhan Khan</span>
+        <span>SYS.DATE: {new Date().getFullYear()} // RAYHAN KHAN</span>
         <div className="flex gap-8">
           <a href="/resume.pdf" target="_blank" className="hover:text-foreground transition-colors">Resume</a>
           <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>

@@ -1,16 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
 
 const categories = [
   {
@@ -46,85 +37,83 @@ const categories = [
 ];
 
 export function Skills() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="skills" className="relative z-10 py-32 md:py-48">
+    <section id="skills" className="relative z-10 py-32 md:py-48 bg-background">
       
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 relative">
         
         <motion.div 
-          className="mb-24 md:mb-40"
-          initial="hidden"
-          whileInView="visible"
+          className="mb-24 md:mb-32 flex flex-col items-center text-center"
+          initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <motion.h2 
-            variants={fadeUp} custom={0}
-            className="font-display text-6xl md:text-8xl lg:text-9xl text-foreground leading-[0.85] tracking-tight"
-          >
-            Skills.
-          </motion.h2>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="w-1 h-1 bg-tertiary shadow-[0_0_10px_rgba(45,212,191,0.5)]" />
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-tertiary">
+              Capabilities
+            </span>
+            <span className="w-1 h-1 bg-tertiary shadow-[0_0_10px_rgba(45,212,191,0.5)]" />
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.9] tracking-tight">
+            Technical Arsenal.
+          </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-32 md:gap-40">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {categories.map((category, catIdx) => (
             <motion.div 
               key={category.number}
-              className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start border-t border-accent/10 pt-12 md:pt-16"
-              initial="hidden"
-              whileInView="visible"
+              className="flex flex-col gap-8 bg-[#0b0f19] p-8 md:p-10 rounded-sm border border-white/5 relative overflow-hidden group hover:border-tertiary/30 transition-colors duration-500"
+              initial={reduceMotion ? false : { opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.8, delay: catIdx * 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Category label */}
-              <div className="w-full lg:w-1/3 flex-shrink-0">
-                <motion.span 
-                  variants={fadeUp} custom={0}
-                  className="font-sans text-[11px] tracking-[0.4em] uppercase text-accent/60 mb-4 block"
-                >
-                  {category.number}
-                </motion.span>
-                <motion.h3 
-                  variants={fadeUp} custom={0.08}
-                  className="font-display text-5xl md:text-7xl text-foreground leading-[0.9]"
-                >
+              {/* Subtle background glow on hover */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,212,191,0.05)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              
+              {/* Header */}
+              <div className="flex items-end justify-between border-b border-white/10 pb-6 relative z-10">
+                <h3 className="font-display text-3xl md:text-4xl text-foreground leading-none">
                   {category.title}
-                </motion.h3>
+                </h3>
+                <span className="font-mono text-xs tracking-[0.2em] uppercase text-tertiary/60">
+                  SEC.{category.number}
+                </span>
               </div>
 
-              {/* Skill items */}
-              <div className="w-full lg:w-2/3">
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-12 md:gap-x-16">
-                  {category.items.map((item, itemIdx) => (
-                    <motion.li 
-                      key={item.name} 
-                      variants={fadeUp}
-                      custom={0.1 + itemIdx * 0.08}
-                      className="flex flex-col gap-3 group"
-                    >
-                      <div className="flex items-center gap-3">
-                        {item.icon ? (
-                          <Image 
-                            src={item.icon} 
-                            alt={item.name} 
-                            width={22} 
-                            height={22} 
-                            className="opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
-                          />
-                        ) : (
-                          <span className="w-[22px] h-[22px] rounded-sm border border-accent/20 flex items-center justify-center text-[8px] text-accent/60 font-sans">
-                            AI
-                          </span>
-                        )}
-                        <span className="font-sans text-lg tracking-wide text-foreground group-hover:text-accent transition-colors duration-300">
-                          {item.name}
+              {/* Items */}
+              <ul className="flex flex-col gap-8 relative z-10">
+                {category.items.map((item, itemIdx) => (
+                  <li key={item.name} className="flex flex-col gap-2">
+                    <div className="flex items-center gap-3">
+                      {item.icon ? (
+                        <Image 
+                          src={item.icon} 
+                          alt={item.name} 
+                          width={16} 
+                          height={16} 
+                          className="opacity-70 group-hover:opacity-100 transition-opacity duration-300" 
+                        />
+                      ) : (
+                        <span className="font-mono text-[10px] text-tertiary font-bold tracking-widest">
+                          [+]
                         </span>
-                      </div>
-                      <span className="font-sans text-sm text-muted font-light leading-relaxed border-l border-accent/8 pl-4">
-                        {item.desc}
+                      )}
+                      <span className="font-sans text-base text-foreground group-hover:text-tertiary transition-colors duration-300">
+                        {item.name}
                       </span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
+                    </div>
+                    <p className="font-sans text-sm text-secondary-foreground font-light leading-relaxed pl-7">
+                      {item.desc}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

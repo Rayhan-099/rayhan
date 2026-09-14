@@ -1,261 +1,174 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import Image from "next/image";
+import { useRef } from "react";
 import { projects } from "@/content/projects";
 
-const imageReveal = {
-  hidden: { clipPath: "inset(0 0 100% 0)" },
-  visible: {
-    clipPath: "inset(0 0 0% 0)",
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
-
-function ProjectMeta({ project, index, total }: { project: typeof projects[0]; index: number; total: number }) {
+function ProjectMeta({ project }: { project: typeof projects[0] }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-6 w-full max-w-sm">
       <div className="flex flex-wrap gap-2">
-        {project.technologies.slice(0, 4).map(tech => (
-          <span key={tech} className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted px-2.5 py-1 border border-accent/10">
+        {project.technologies.slice(0, 5).map(tech => (
+          <span key={tech} className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary px-3 py-1 bg-[#0b0f19] border border-white/5 rounded-sm">
             {tech}
           </span>
         ))}
       </div>
-      <div className="flex gap-6 mt-3">
-        <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-foreground hover:text-accent transition-colors border-b border-accent/20 hover:border-accent pb-0.5">
-          Live ↗
-        </a>
-        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors border-b border-accent/10 hover:border-[var(--text-primary)] pb-0.5">
-          Source ↗
-        </a>
+      <div className="flex gap-6 mt-4">
+        {project.links.live && (
+          <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors">
+            <span>Launch Sequence</span>
+            <span className="text-primary transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        )}
+        {project.links.github && (
+          <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-secondary-foreground hover:text-foreground transition-colors">
+            <span>Source Code</span>
+            <span className="transition-transform group-hover:translate-x-1">↗</span>
+          </a>
+        )}
       </div>
     </div>
   );
 }
 
-export function Projects() {
-  const total = projects.length;
-  const lumine = projects[0];
-  const currentCapital = projects[1];
-  const healthAssistant = projects[2];
-  const handTracking = projects[3];
+function ProjectCard({ project, index, total }: { project: typeof projects[0]; index: number; total: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "start start"]
+  });
+
+  // Calculate the scale and opacity of THIS card as the NEXT card scrolls over it.
+  // Wait, native sticky handles the pinning, we just fade out slightly when scrolling past.
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: cardRef,
+    offset: ["start start", "end start"]
+  });
+
+  const scale = useTransform(exitProgress, [0, 1], [1, 0.95]);
+  const opacity = useTransform(exitProgress, [0, 1], [1, 0.4]);
+  const yOffset = useTransform(exitProgress, [0, 1], ["0%", "5%"]);
+
+  const isEven = index % 2 === 0;
 
   return (
-    <section id="projects" className="relative z-10 py-24 md:py-40">
-      <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+    <motion.div
+      ref={cardRef}
+      style={!reduceMotion && index < total - 1 ? { scale, opacity, y: yOffset } : {}}
+      className="sticky top-0 w-full min-h-[100dvh] flex items-center justify-center bg-background py-24"
+    >
+      <div className="absolute inset-0 bg-background mix-blend-multiply" />
+      {/* Subtle top border for visual separation when stacked */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50" />
+      
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
-        {/* ═══════════════════════════════════════════════════════════
-            PROJECT 01: LUMINE — Full-width cinematic hero
-           ═══════════════════════════════════════════════════════════ */}
-        {lumine && (
-          <motion.div 
-            className="mb-40 md:mb-56"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            {/* Giant image — 90vw+ */}
+        <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center ${isEven ? '' : 'lg:grid-flow-col-dense'}`}>
+          
+          {/* Visual Container */}
+          <div className={`lg:col-span-7 relative ${isEven ? 'lg:col-start-1' : 'lg:col-start-6'}`}>
             <motion.div 
-              variants={imageReveal}
-              className="relative w-[calc(100%+3rem)] md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] -ml-6 md:-ml-12 lg:-ml-20 aspect-[16/9] overflow-hidden group"
+              initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)", opacity: 0 }}
+              whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative aspect-[16/10] overflow-hidden group rounded-md border border-white/5"
             >
               <Image 
-                src="/media/projects/lumine.png" 
-                alt={lumine.title} 
+                src={`/media/projects/${project.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}.png`}
+                alt={project.title} 
                 fill 
-                className="object-cover object-top transition-transform duration-[1.5s] group-hover:scale-[1.03]"
-                sizes="100vw"
+                className="object-cover object-top transition-transform duration-1000 group-hover:scale-[1.03] opacity-80 group-hover:opacity-100"
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                onError={(e) => {
+                  e.currentTarget.src = `https://picsum.photos/seed/${project.title.toLowerCase().replace(/\s+/g, '')}/1600/1000`;
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/80 to-[var(--background)]/20" />
-              
-              {/* Overlay text */}
-              <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 lg:p-20">
-                <motion.h3 
-                  variants={fadeUp} custom={0.2}
-                  className="font-display text-5xl md:text-7xl lg:text-9xl text-foreground leading-[0.85] tracking-tight"
-                >
-                  Lumine
-                </motion.h3>
-                <motion.span 
-                  variants={fadeUp} custom={0.35}
-                  className="font-sans text-lg md:text-2xl text-accent italic block mt-3"
-                >
-                  AI-Powered Skin Intelligence
-                </motion.span>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#07090e]/80 via-transparent to-transparent pointer-events-none" />
+              {/* Corner ticks */}
+              <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary/50" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary/50" />
+            </motion.div>
+          </div>
+
+          {/* Typography & Metadata */}
+          <div className={`lg:col-span-5 flex flex-col gap-6 ${isEven ? 'lg:col-start-8' : 'lg:col-start-1'}`}>
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, x: isEven ? 30 : -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <span className="font-mono text-xs text-primary/70 uppercase tracking-widest">
+                  {String(index + 1).padStart(2, '0')} // {project.technologies[0]}
+                </span>
+                <span className="h-px bg-white/10 flex-1" />
               </div>
-            </motion.div>
 
-            {/* Description row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 md:mt-16">
-              <motion.p 
-                variants={fadeUp} custom={0.4}
-                className="font-sans text-base md:text-lg text-muted font-light leading-relaxed max-w-xl"
-              >
-                {lumine.description}
-              </motion.p>
-              <motion.div variants={fadeUp} custom={0.5} className="md:flex md:justify-end">
-                <ProjectMeta project={lumine} index={0} total={total} />
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* ═══════════════════════════════════════════════════════════
-            PROJECT 02: CURRENT CAPITAL — Asymmetric 50/50 split
-           ═══════════════════════════════════════════════════════════ */}
-        {currentCapital && (
-          <motion.div 
-            className="mb-40 md:mb-56 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {/* Text side */}
-            <div className="order-2 lg:order-1 flex flex-col gap-6">
-              <motion.h3 
-                variants={fadeUp} custom={0}
-                className="font-display text-5xl md:text-7xl text-foreground leading-[0.9] tracking-tight"
-              >
-                Current <br/>
-                <span className="text-muted">Capital</span>
-              </motion.h3>
-              <motion.span variants={fadeUp} custom={0.1} className="font-sans text-lg text-accent italic">
-                Finance Manager
-              </motion.span>
-              <motion.p 
-                variants={fadeUp} custom={0.2}
-                className="font-sans text-base text-muted font-light leading-relaxed max-w-md"
-              >
-                {currentCapital.description}
-              </motion.p>
-              <motion.div variants={fadeUp} custom={0.3}>
-                <ProjectMeta project={currentCapital} index={1} total={total} />
-              </motion.div>
-            </div>
-
-            {/* Image side — square crop */}
-            <motion.div 
-              variants={imageReveal}
-              className="order-1 lg:order-2 relative aspect-square overflow-hidden group"
-            >
-              <Image 
-                src="/media/projects/current-capital.png" 
-                alt={currentCapital.title} 
-                fill 
-                className="object-cover object-left-top transition-transform duration-[1.5s] group-hover:scale-[1.03]"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-
-        {/* ═══════════════════════════════════════════════════════════
-            PROJECT 03: HEALTH ASSISTANT — Reverse split, vertical image
-           ═══════════════════════════════════════════════════════════ */}
-        {healthAssistant && (
-          <motion.div 
-            className="mb-40 md:mb-56 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            {/* Tall editorial image */}
-            <motion.div 
-              variants={imageReveal}
-              className="lg:col-span-7 relative aspect-[3/4] overflow-hidden group"
-            >
-              <Image 
-                src="/media/projects/health-assistant.png" 
-                alt={healthAssistant.title} 
-                fill 
-                className="object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent" />
-            </motion.div>
-
-            {/* Text — offset down for asymmetry */}
-            <div className="lg:col-span-5 flex flex-col gap-6 lg:pt-32">
-              <motion.h3 
-                variants={fadeUp} custom={0}
-                className="font-display text-4xl md:text-6xl text-foreground leading-[0.95] tracking-tight"
-              >
-                Health <br/>
-                <span className="text-muted">Assistant</span>
-              </motion.h3>
-              <motion.p 
-                variants={fadeUp} custom={0.15}
-                className="font-sans text-base text-muted font-light leading-relaxed border-l-2 border-accent/10 pl-5"
-              >
-                {healthAssistant.description}
-              </motion.p>
-              <motion.div variants={fadeUp} custom={0.25}>
-                <ProjectMeta project={healthAssistant} index={2} total={total} />
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* ═══════════════════════════════════════════════════════════
-            PROJECT 04: HAND TRACKING — Cinematic ultra-wide
-           ═══════════════════════════════════════════════════════════ */}
-        {handTracking && (
-          <motion.div
-            className="flex flex-col items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            <motion.div variants={fadeUp} custom={0} className="text-center mb-10 md:mb-16">
-              
-              <h3 className="font-display text-4xl md:text-6xl lg:text-7xl text-foreground tracking-tight">
-                Real-Time Hand <br className="hidden md:block" />
-                <span className="text-muted">Tracking Visualizer</span>
+              <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1] tracking-tight mb-6">
+                {project.title}
               </h3>
-            </motion.div>
-            
-            {/* Ultra-wide image */}
-            <motion.div 
-              variants={imageReveal}
-              className="relative w-[calc(100%+3rem)] md:w-[calc(100%+6rem)] lg:w-[calc(100%+10rem)] -ml-6 md:-ml-12 lg:-ml-20 aspect-[21/9] overflow-hidden group"
-            >
-              <Image 
-                src="/media/projects/hand-tracking.png" 
-                alt={handTracking.title} 
-                fill 
-                className="object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]"
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/70 to-[var(--background)]/10" />
-            </motion.div>
+              
+              <div className="relative pl-6 border-l border-primary/20 mb-8">
+                <p className="font-sans text-base lg:text-lg text-secondary-foreground font-light leading-relaxed">
+                  {project.description}
+                </p>
+                {project.details && project.details.length > 0 && (
+                  <p className="font-sans text-sm text-muted font-light leading-relaxed mt-4">
+                    {project.details[0]}
+                  </p>
+                )}
+              </div>
 
-            {/* Description */}
-            <div className="mt-10 md:mt-16 max-w-2xl text-center flex flex-col items-center gap-6">
-              <motion.p variants={fadeUp} custom={0.2} className="font-sans text-base md:text-lg text-muted font-light leading-relaxed">
-                {handTracking.description} {handTracking.details[0]}
-              </motion.p>
-              <motion.div variants={fadeUp} custom={0.3} className="flex gap-6">
-                <a href={handTracking.links.live} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-foreground hover:text-accent transition-colors border-b border-accent/20 hover:border-accent pb-0.5">
-                  Live Demo ↗
-                </a>
-                <a href={handTracking.links.github} target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors border-b border-accent/10 hover:border-[var(--text-primary)] pb-0.5">
-                  Source ↗
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
+              <ProjectMeta project={project} />
+            </motion.div>
+          </div>
 
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export function Projects() {
+  return (
+    <section id="projects" className="relative z-10 bg-background">
+      {/* Introduction */}
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 md:py-32">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-display text-5xl md:text-7xl text-foreground tracking-tighter"
+        >
+          Selected Architecture
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="font-sans text-lg text-secondary-foreground mt-6 max-w-xl"
+        >
+          High-performance systems and interactive experiences engineered for scale and aesthetic precision.
+        </motion.p>
+      </div>
+
+      {/* Sticky Stack Container */}
+      <div className="relative pb-24">
+        {projects.map((project, idx) => (
+          <ProjectCard 
+            key={project.title} 
+            project={project} 
+            index={idx} 
+            total={projects.length} 
+          />
+        ))}
       </div>
     </section>
   );

@@ -3,19 +3,24 @@
 @tailwind utilities;
 
 :root {
-  /* Editorial / Premium Palette */
-  --background: #0d0a0b;
-  --background-elevated: #171113;
-  --surface: #24181a;
-  --surface-glass: rgba(36, 24, 26, 0.4);
+  /* Obsidian Relic Palette */
+  --background: #07090e;
+  --background-elevated: #0b0f19;
+  --surface: #0d1322;
+  --surface-glass: rgba(13, 19, 34, 0.7);
   
-  --text-primary: #F5F2EB;
-  --text-secondary: #C8BDBE;
-  --text-muted: #8A7C7E;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
   
-  --accent: #D9A0A0;
-  --accent-soft: rgba(217, 160, 160, 0.15);
-  --line: rgba(245, 242, 235, 0.08);
+  --primary: #38bdf8;
+  --secondary: #d4af37;
+  --tertiary: #2dd4bf;
+  --accent-violet: #a78bfa;
+  
+  --accent: #38bdf8; /* Fallback for older variables */
+  --accent-soft: rgba(56, 189, 248, 0.1);
+  --line: rgba(255, 255, 255, 0.04);
 }
 
 body {
