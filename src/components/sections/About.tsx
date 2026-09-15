@@ -23,6 +23,19 @@ export function About() {
       id="about" 
       className="relative z-10 py-24 md:py-40 overflow-hidden"
     >
+      {/* Environmental Haze / Subtle moving gradient */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen">
+        <motion.div 
+          animate={{ x: ["-5%", "5%"], y: ["0%", "-5%"] }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
+          className="absolute top-[-20%] left-[-10%] w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_center,var(--primary)_0%,transparent_50%)] opacity-10 blur-3xl"
+        />
+        <motion.div 
+          animate={{ x: ["5%", "-5%"], y: ["-5%", "0%"] }}
+          transition={{ duration: 25, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,var(--secondary)_0%,transparent_50%)] opacity-10 blur-3xl"
+        />
+      </div>
       
       {/* Large background typography exiting viewport */}
       <motion.div 
@@ -68,7 +81,7 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* RIGHT: Statement & Biography */}
+          {/* RIGHT: Statement & Details */}
           <div className="lg:col-span-7 flex flex-col justify-center lg:pl-8">
             
             <span className="font-sans text-xs tracking-widest uppercase text-foreground-muted mb-4">

@@ -27,6 +27,8 @@ interface StarFieldProps {
 
 function StarField({ count, size, color, speed, radiusOuter, radiusInner }: StarFieldProps) {
   const ref = useRef<THREE.Points>(null);
+  const { theme } = useTheme();
+  const isDawn = theme === "dawn";
 
   const points = useMemo(() => {
     const rand = seededRandom(42); 
@@ -65,8 +67,8 @@ function StarField({ count, size, color, speed, radiusOuter, radiusInner }: Star
         size={size}
         sizeAttenuation={true}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
-        opacity={0.6}
+        blending={isDawn ? THREE.NormalBlending : THREE.AdditiveBlending}
+        opacity={isDawn ? 0.8 : 0.6}
       />
     </Points>
   );
@@ -111,9 +113,9 @@ function Scene() {
   const fogColor = isDawn ? "#fdfaf6" : "#171415";
   
   // Motes/Particles Theme
-  const starColor1 = isDawn ? "#9c7889" : "#b08e9e"; // Muted mauve vs Dusty mauve
-  const starColor2 = isDawn ? "#7d4d62" : "#966173"; // Soft wine vs Wine
-  const starColor3 = isDawn ? "#5c5553" : "#f2ebe8"; // Soft charcoal vs Soft cream
+  const starColor1 = isDawn ? "#6D3C52" : "#b08e9e"; // Soft burgundy vs Dusty mauve
+  const starColor2 = isDawn ? "#4B2138" : "#966173"; // Deep wine vs Wine
+  const starColor3 = isDawn ? "#2D222F" : "#f2ebe8"; // Warm charcoal vs Soft cream
 
   return (
     <>

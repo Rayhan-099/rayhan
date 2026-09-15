@@ -100,21 +100,50 @@ function ThemeToggle() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, delay: 0.5 }}
       onClick={toggleTheme}
-      className="fixed bottom-6 right-6 md:bottom-12 md:right-12 z-50 flex items-center gap-3 mix-blend-difference group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white rounded-full px-4 py-2 border border-white/20 hover:border-white/50 transition-colors pointer-events-auto bg-transparent backdrop-blur-md"
-      aria-label="Toggle theme"
-      title={`Switch to ${isDawn ? 'Dusk' : 'Dawn'}`}
+      className="fixed bottom-6 right-6 md:bottom-12 md:right-12 z-50 flex items-center justify-center w-12 h-12 rounded-full mix-blend-difference group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white border border-white/20 hover:border-white/50 transition-all duration-500 pointer-events-auto bg-transparent backdrop-blur-md overflow-hidden"
+      aria-label={isDawn ? "Switch to Dusk" : "Switch to Dawn"}
+      title={isDawn ? "Switch to Dusk" : "Switch to Dawn"}
     >
-      <div className="relative w-4 h-4 rounded-full border border-white flex items-center justify-center overflow-hidden">
-        <motion.div 
-          animate={{ x: isDawn ? "0%" : "-100%" }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="absolute inset-0 bg-white" 
-        />
-      </div>
-      <div className="flex gap-1.5 font-sans text-[10px] uppercase tracking-[0.2em] text-white">
-        <span className={`transition-opacity duration-300 ${!isDawn ? 'opacity-100' : 'opacity-40'}`}>Dusk</span>
-        <span className="opacity-30">/</span>
-        <span className={`transition-opacity duration-300 ${isDawn ? 'opacity-100 font-medium' : 'opacity-40'}`}>Dawn</span>
+      <div className="relative w-full h-full flex items-center justify-center">
+        {/* Sun Icon (Dawn) */}
+        <motion.div
+          initial={false}
+          animate={{ 
+            scale: isDawn ? 1 : 0, 
+            rotate: isDawn ? 0 : -90,
+            opacity: isDawn ? 1 : 0 
+          }}
+          transition={{ duration: 0.5, ease: "backOut" }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </motion.div>
+
+        {/* Moon Icon (Dusk) */}
+        <motion.div
+          initial={false}
+          animate={{ 
+            scale: !isDawn ? 1 : 0, 
+            rotate: !isDawn ? 0 : 90,
+            opacity: !isDawn ? 1 : 0 
+          }}
+          transition={{ duration: 0.5, ease: "backOut" }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </motion.div>
       </div>
     </motion.button>
   );

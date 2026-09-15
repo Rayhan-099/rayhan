@@ -86,15 +86,6 @@ export function Projects() {
         >
           Projects
         </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="font-sans text-base md:text-lg text-foreground-secondary mt-6 max-w-lg"
-        >
-          High-performance systems and interactive experiences engineered for scale and aesthetic precision.
-        </motion.p>
       </div>
 
       <div className="flex flex-col gap-32 md:gap-48 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">

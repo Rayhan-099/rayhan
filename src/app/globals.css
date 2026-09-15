@@ -24,22 +24,22 @@
 
 [data-theme="dawn"] {
   /* Dawn (Light) Palette */
-  --background: #fdfaf6; /* Warm cream */
-  --background-elevated: #f4efe9; /* Parchment */
-  --surface: #eae4de;
-  --surface-glass: rgba(234, 228, 222, 0.7);
+  --background: #f2e7de; /* Warm parchment */
+  --background-elevated: #f6eee7; /* Warm cream */
+  --surface: #eadcd3;
+  --surface-glass: rgba(246, 238, 231, 0.7);
   
-  --text-primary: #2d2629; /* Warm dark text */
-  --text-secondary: #6e6166;
-  --text-muted: #96898d;
+  --text-primary: #2d222f; /* Warm charcoal */
+  --text-secondary: #4b2138; /* Deep wine */
+  --text-muted: #6d3c52; /* Soft burgundy */
   
-  --primary: #c2889e; /* Pale rose */
-  --secondary: #9c7889; /* Muted mauve */
-  --tertiary: #7d4d62; /* Soft wine */
+  --primary: #9e777f; /* Muted mauve */
+  --secondary: #d7b5b0; /* Dusty rose */
+  --tertiary: #facdc5; /* Pale blush */
   
-  --accent: #c2889e;
-  --accent-soft: rgba(194, 136, 158, 0.15);
-  --line: rgba(0, 0, 0, 0.08);
+  --accent: #6d3c52;
+  --accent-soft: rgba(109, 60, 82, 0.15);
+  --line: rgba(45, 34, 47, 0.1);
 }
 
 

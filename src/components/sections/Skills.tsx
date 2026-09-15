@@ -22,6 +22,15 @@ export function Skills() {
       id="skills" 
       className="relative z-10 py-24 md:py-40 border-t border-border overflow-hidden"
     >
+      {/* Environmental Texture - Wind / Light Movement */}
+      <div className="absolute inset-0 z-0 pointer-events-none mix-blend-screen">
+        <div className="absolute top-0 right-0 w-full h-[50vh] bg-gradient-to-bl from-primary/5 via-transparent to-transparent opacity-50" />
+        <motion.div 
+          animate={{ opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--accent)_0%,transparent_60%)] opacity-10 blur-3xl"
+        />
+      </div>
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 relative">
         
         <motion.div 
@@ -35,7 +44,7 @@ export function Skills() {
             Skills
           </span>
           <h2 className="font-serif text-5xl md:text-7xl text-foreground leading-[1] tracking-tight italic">
-            Capabilities
+            Skills
           </h2>
         </motion.div>
 

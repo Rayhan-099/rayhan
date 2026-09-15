@@ -23,7 +23,11 @@ export function Contact() {
         <div className="absolute inset-0 bg-background" />
         
         {/* Soft horizon glow */}
-        <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-primary/10 via-primary/5 to-transparent mix-blend-overlay opacity-60" />
+        <motion.div 
+          animate={{ opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-primary/20 via-primary/5 to-transparent mix-blend-overlay" 
+        />
         
         <video 
           autoPlay 

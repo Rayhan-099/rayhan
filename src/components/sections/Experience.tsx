@@ -19,6 +19,19 @@ export function Experience() {
       id="experience" 
       className="py-24 md:py-40 relative z-10 overflow-hidden"
     >
+      {/* Restrained Atmospheric Movement / Horizon */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <motion.div 
+          style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "20%"]) }}
+          className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <motion.div 
+          animate={{ opacity: [0.03, 0.08, 0.03] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 w-full h-[60vh] bg-gradient-to-t from-primary/10 via-secondary/5 to-transparent blur-3xl mix-blend-screen"
+        />
+      </div>
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 relative">
         
         {/* Section header */}

@@ -47,7 +47,7 @@ export function Certifications() {
                 onClick={() => setIsArchiveOpen(true)}
                 className="group flex items-center gap-4 text-xs font-sans uppercase tracking-widest text-accent hover:text-foreground transition-colors pb-2 border-b border-accent/30 hover:border-[var(--text-primary)] mt-4"
               >
-                View All 31
+                View All {certifications.length}
                 <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
               </button>
             </div>
