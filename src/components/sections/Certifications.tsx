@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { certifications } from "@/content/certifications";
 import { motion, AnimatePresence } from "motion/react";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,6 +18,8 @@ const featuredCerts = certifications.filter(c => c.featured);
 
 export function Certifications() {
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionTracker(sectionRef, "certifications");
 
   useEffect(() => {
     if (isArchiveOpen) {
@@ -31,7 +34,7 @@ export function Certifications() {
 
   return (
     <>
-      <section id="certifications" className="py-32 md:py-48 relative z-10">
+      <section ref={sectionRef} id="certifications" className="py-32 md:py-48 relative z-10">
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 md:mb-32 gap-12 border-t border-accent/10 pt-16">
@@ -47,7 +50,7 @@ export function Certifications() {
                 onClick={() => setIsArchiveOpen(true)}
                 className="group flex items-center gap-4 text-xs font-sans uppercase tracking-widest text-accent hover:text-foreground transition-colors pb-2 border-b border-accent/30 hover:border-[var(--text-primary)] mt-4"
               >
-                View All {certifications.length}
+                View Archive
                 <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
               </button>
             </div>
@@ -103,7 +106,7 @@ export function Certifications() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
-            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-xl overflow-y-auto"
+            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-xl overflow-y-auto overscroll-contain touch-pan-y"
           >
             <div className="min-h-screen py-24 px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto relative z-10">
               

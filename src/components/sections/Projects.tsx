@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 import Image from "next/image";
 import { useRef } from "react";
 import { projects } from "@/content/projects";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 function ProjectMeta({ project }: { project: typeof projects[0] }) {
   return (
@@ -36,6 +37,7 @@ function ProjectMeta({ project }: { project: typeof projects[0] }) {
 export function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  useSectionTracker(sectionRef, "projects");
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -142,7 +144,7 @@ export function Projects() {
                 className="absolute inset-0 w-full h-[130%] -top-[15%]"
               >
                 <Image src="/media/projects/health-assistant.png" alt="Health Assistant" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/healthassistant/1600/900'; }} />
-                <div className="absolute inset-0 bg-[#d6a3b6]/10 mix-blend-color pointer-events-none" />
+                <div className="absolute inset-0 bg-[#765D67]/20 mix-blend-color pointer-events-none" />
               </motion.div>
             </div>
             <motion.div style={reduceMotion ? {} : { y: p3TextY }} className="w-full max-w-3xl ml-auto border-t border-line pt-8 flex flex-col md:flex-row gap-8 justify-between">

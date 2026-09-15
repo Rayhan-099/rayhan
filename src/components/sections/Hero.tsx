@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { createTimeline, utils } from "animejs";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  useSectionTracker(containerRef, "hero");
 
   const { scrollYProgress } = useScroll({
     target: containerRef,

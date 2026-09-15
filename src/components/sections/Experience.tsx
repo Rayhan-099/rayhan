@@ -3,10 +3,12 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { experience } from "@/content/experience";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 export function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  useSectionTracker(sectionRef, "experience");
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,

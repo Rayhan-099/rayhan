@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useRef, useEffect, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { PointMaterial, Points } from "@react-three/drei";
 import * as THREE from "three";
 import { useTheme } from "@/context/ThemeContext";
+import { useEnvironmentStore } from "@/store/environmentStore";
 
-// Seedable pseudo-random number generator (Mulberry32)
 function seededRandom(seed: number) {
   return function() {
     let t = seed += 0x6D2B79F5;
@@ -23,15 +23,16 @@ interface StarFieldProps {
   speed: number;
   radiusOuter: number;
   radiusInner: number;
+  layerIndex: number;
 }
 
-function StarField({ count, size, color, speed, radiusOuter, radiusInner }: StarFieldProps) {
+function StarField({ count, size, color, speed, radiusOuter, radiusInner, layerIndex }: StarFieldProps) {
   const ref = useRef<THREE.Points>(null);
   const { theme } = useTheme();
   const isDawn = theme === "dawn";
 
   const points = useMemo(() => {
-    const rand = seededRandom(42); 
+    const rand = seededRandom(42 + layerIndex); 
     const p = new Float32Array(count * 3);
     let added = 0;
     while (added < count) {
@@ -48,14 +49,16 @@ function StarField({ count, size, color, speed, radiusOuter, radiusInner }: Star
       }
     }
     return p;
-  }, [count, radiusOuter, radiusInner]);
+  }, [count, radiusOuter, radiusInner, layerIndex]);
 
   useFrame((state, delta) => {
     if (ref.current) {
-      // Atmospheric drift rather than rapid orbit
       ref.current.rotation.y -= delta * speed * 0.5;
       ref.current.rotation.x -= delta * (speed * 0.1);
       ref.current.rotation.z -= delta * (speed * 0.15);
+      
+      const scrollY = window.scrollY || 0;
+      ref.current.position.y = (scrollY * 0.001) * layerIndex;
     }
   });
 
@@ -74,99 +77,136 @@ function StarField({ count, size, color, speed, radiusOuter, radiusInner }: Star
   );
 }
 
-function ParallaxGroup({ children }: { children: React.ReactNode }) {
+function CinematicWorld({ children }: { children: React.ReactNode }) {
   const groupRef = useRef<THREE.Group>(null);
-  const scrollRef = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      scrollRef.current = window.scrollY;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const activeSection = useEnvironmentStore((state) => state.activeSection);
+  
+  // Target rotations and positions based on section
+  const targets = useMemo(() => ({
+    hero: { x: 0, y: 0, z: 0 },
+    about: { x: 0.1, y: 0.2, z: -1 },
+    skills: { x: -0.1, y: -0.2, z: 0.5 },
+    projects: { x: 0.2, y: 0.5, z: -2 },
+    experience: { x: 0, y: -0.1, z: 0 },
+    certifications: { x: -0.2, y: 0.1, z: -1 },
+    contact: { x: 0, y: -2, z: 4 }, // deep horizon zoom
+  }), []);
 
   useFrame((state) => {
     if (groupRef.current) {
-      // Damped parallax effect following pointer and scroll
-      const targetX = (state.pointer.x * Math.PI) / 40;
-      const targetY = (state.pointer.y * Math.PI) / 40;
-      const scrollY = scrollRef.current * 0.0005;
+      const targetX = (state.pointer.x * Math.PI) / 80;
+      const targetY = (state.pointer.y * Math.PI) / 80;
+      
+      const sectionTarget = targets[activeSection as keyof typeof targets] || targets.hero;
 
-      // Smooth damping
-      groupRef.current.rotation.y += 0.02 * (targetX - groupRef.current.rotation.y);
-      groupRef.current.rotation.x += 0.02 * ((targetY + scrollY) - groupRef.current.rotation.x);
+      groupRef.current.rotation.y += 0.015 * (targetX + sectionTarget.y - groupRef.current.rotation.y);
+      groupRef.current.rotation.x += 0.015 * (targetY + sectionTarget.x - groupRef.current.rotation.x);
+      
+      groupRef.current.position.z += 0.02 * (sectionTarget.z - groupRef.current.position.z);
+      groupRef.current.position.y += 0.02 * (-sectionTarget.y - groupRef.current.position.y);
       
       // Global breathing
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.2) * 0.3;
+      groupRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.15) * 0.002;
     }
   });
 
-  return <group ref={groupRef} rotation={[0, 0, Math.PI / 12]}>{children}</group>;
+  return <group ref={groupRef}>{children}</group>;
 }
 
 function Scene() {
   const { theme } = useTheme();
   const isDawn = theme === "dawn";
+  const activeSection = useEnvironmentStore((state) => state.activeSection);
 
-  // Fog matching global CSS background
-  const fogColor = isDawn ? "#fdfaf6" : "#171415";
+  // V20 Cinematic Colors
+  // #765D67, #6D3C52, #4B2138, #1B0C1A, #2D222F, #FACDC5
+  const baseFogColor = isDawn ? "#fdfaf6" : "#171415"; 
   
-  // Motes/Particles Theme
-  const starColor1 = isDawn ? "#6D3C52" : "#b08e9e"; // Soft burgundy vs Dusty mauve
-  const starColor2 = isDawn ? "#4B2138" : "#966173"; // Deep wine vs Wine
-  const starColor3 = isDawn ? "#2D222F" : "#f2ebe8"; // Warm charcoal vs Soft cream
+  // Dynamic colors based on active section
+  const fogColors: Record<string, string> = {
+    hero: baseFogColor,
+    about: isDawn ? "#fdfaf6" : "#1B0C1A",
+    skills: isDawn ? "#fdfaf6" : "#1B0C1A",
+    projects: isDawn ? "#fdfaf6" : "#2D222F", // deeper for projects
+    experience: baseFogColor,
+    certifications: isDawn ? "#fdfaf6" : "#1B0C1A",
+    contact: isDawn ? "#FACDC5" : "#4B2138", // atmospheric climax
+  };
+
+  const currentFogColor = fogColors[activeSection] || baseFogColor;
+  const fogColorRef = useRef(new THREE.Color(currentFogColor));
+
+  const starColor1 = isDawn ? "#6D3C52" : "#765D67";
+  const starColor2 = isDawn ? "#4B2138" : "#6D3C52"; 
+  const starColor3 = isDawn ? "#2D222F" : "#FACDC5"; 
+
+  const lightRef = useRef<THREE.DirectionalLight>(null);
+  
+  useFrame(() => {
+    const scrollY = window.scrollY || 0;
+    const maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+    
+    // Smooth fog transition
+    fogColorRef.current.lerp(new THREE.Color(fogColors[activeSection] || baseFogColor), 0.02);
+
+    if (lightRef.current) {
+      lightRef.current.position.y = 10 - progress * 15;
+      lightRef.current.position.x = 5 + progress * 10;
+      const intensity = isDawn ? 1.0 : 0.6;
+      lightRef.current.intensity = intensity - (Math.sin(progress * Math.PI) * 0.2);
+    }
+  });
 
   return (
     <>
-      <color attach="background" args={[fogColor]} />
-      <fog attach="fog" args={[fogColor, 5, 25]} />
+      <color attach="background" args={[fogColorRef.current]} />
+      <fog attach="fog" args={[fogColorRef.current, 5, 25]} />
       
       <ambientLight intensity={isDawn ? 0.9 : 0.4} />
       <directionalLight 
+        ref={lightRef}
         position={[5, 10, 5]} 
         intensity={isDawn ? 1.0 : 0.6} 
-        color={isDawn ? "#ffffff" : "#d6a3b6"} 
+        color={isDawn ? "#ffffff" : "#FACDC5"} 
       />
 
-      {/* Deep Environment Layers (Distant Mountains/Haze) */}
-      <ParallaxGroup>
+      <CinematicWorld>
         <mesh position={[0, -5, -15]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[100, 100]} />
+          <planeGeometry args={[120, 120]} />
           <meshBasicMaterial 
-            color={isDawn ? "#eae4de" : "#171415"} 
+            color={isDawn ? "#eae4de" : "#1B0C1A"} 
             transparent 
-            opacity={isDawn ? 0.8 : 0.9} 
+            opacity={isDawn ? 0.8 : 0.95} 
             fog={true}
           />
         </mesh>
         
-        {/* Soft atmospheric gradient/haze planes standing upright */}
-        <mesh position={[0, 0, -12]}>
-          <planeGeometry args={[40, 20]} />
+        <mesh position={[0, -2, -12]}>
+          <planeGeometry args={[50, 25]} />
           <meshBasicMaterial 
-            color={isDawn ? "#c2889e" : "#d6a3b6"} 
+            color={isDawn ? "#FACDC5" : "#6D3C52"} 
             transparent 
-            opacity={0.03} 
+            opacity={isDawn ? 0.05 : 0.08} 
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
         <mesh position={[-5, 2, -8]}>
-          <planeGeometry args={[30, 15]} />
+          <planeGeometry args={[40, 20]} />
           <meshBasicMaterial 
-            color={isDawn ? "#9c7889" : "#b08e9e"} 
+            color={isDawn ? "#6D3C52" : "#765D67"} 
             transparent 
-            opacity={0.04} 
+            opacity={isDawn ? 0.04 : 0.06} 
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
 
-        <StarField count={400} size={0.05} color={starColor1} speed={0.04} radiusInner={2} radiusOuter={12} />
-        <StarField count={150} size={0.08} color={starColor2} speed={0.06} radiusInner={3} radiusOuter={15} />
-        <StarField count={800} size={0.02} color={starColor3} speed={0.02} radiusInner={1} radiusOuter={18} />
-      </ParallaxGroup>
+        <StarField count={400} size={0.06} color={starColor1} speed={0.04} radiusInner={2} radiusOuter={12} layerIndex={0.5} />
+        <StarField count={150} size={0.1} color={starColor2} speed={0.06} radiusInner={3} radiusOuter={15} layerIndex={1.0} />
+        <StarField count={800} size={0.03} color={starColor3} speed={0.02} radiusInner={1} radiusOuter={18} layerIndex={0.2} />
+      </CinematicWorld>
     </>
   );
 }

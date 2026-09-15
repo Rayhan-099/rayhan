@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { education } from "@/content/education";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,6 +16,7 @@ const fadeUp = {
 
 export function Education() {
   const sectionRef = useRef<HTMLElement>(null);
+  useSectionTracker(sectionRef, "education");
   
   return (
     <section ref={sectionRef} id="education" className="py-24 md:py-32 relative z-10">

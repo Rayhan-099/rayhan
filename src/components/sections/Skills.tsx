@@ -3,11 +3,13 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { skills } from "@/content/skills";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 export function Skills() {
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  useSectionTracker(sectionRef, "skills");
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -84,7 +86,7 @@ export function Skills() {
                     >
                       {item.icon && (
                         <img 
-                          src={`https://cdn.simpleicons.org/${item.icon}/a89f9e/d6a3b6`} 
+                          src={`https://cdn.simpleicons.org/${item.icon}/765D67/FACDC5`} 
                           alt={item.name}
                           className="w-4 h-4 opacity-70 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all duration-300"
                         />

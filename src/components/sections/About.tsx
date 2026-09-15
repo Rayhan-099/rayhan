@@ -4,10 +4,12 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 import Image from "next/image";
 import { useRef } from "react";
 import { profile } from "@/content/profile";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  useSectionTracker(sectionRef, "about");
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -72,7 +74,7 @@ export function About() {
                 />
               </motion.div>
               {/* Soft color grade overlay */}
-              <div className="absolute inset-0 bg-[#d6a3b6]/5 mix-blend-color pointer-events-none" />
+              <div className="absolute inset-0 bg-[#765D67]/10 mix-blend-color pointer-events-none" />
             </div>
             
             <div className="mt-4 flex justify-between items-center text-foreground-secondary">

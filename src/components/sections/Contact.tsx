@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { profile } from "@/content/profile";
+import { useRef } from "react";
+import { useSectionTracker } from "@/hooks/useSectionTracker";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,8 +15,12 @@ const fadeUp = {
 };
 
 export function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionTracker(sectionRef, "contact");
+
   return (
     <section 
+      ref={sectionRef}
       id="contact" 
       className="relative min-h-[100dvh] flex flex-col justify-between py-16 md:py-24 overflow-hidden z-10"
     >
