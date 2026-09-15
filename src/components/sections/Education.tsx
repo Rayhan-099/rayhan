@@ -45,16 +45,16 @@ export function Education() {
               custom={index * 0.1}
               className="flex flex-col gap-3 group border-t border-accent/10 pt-8 hover:border-accent/30 transition-colors"
             >
-              <span className="text-text-secondary font-sans text-[11px] tracking-[0.2em] uppercase">
+              <span className="text-foreground-secondary font-sans text-[11px] tracking-[0.2em] uppercase">
                 {item.dates}
               </span>
-              <h3 className="font-serif text-2xl md:text-3xl text-foreground group-hover:text-text-primary transition-colors duration-500 leading-tight">
+              <h3 className="font-serif text-2xl md:text-3xl text-foreground group-hover:text-foreground transition-colors duration-500 leading-tight">
                 {item.institution}
               </h3>
-              <p className="text-text-secondary font-sans text-sm font-light leading-relaxed">
+              <p className="text-foreground-secondary font-sans text-sm font-light leading-relaxed">
                 {item.degree}
               </p>
-              <span className="text-text-secondary/50 font-sans text-[11px] uppercase tracking-widest mt-2">
+              <span className="text-foreground-secondary/50 font-sans text-[11px] uppercase tracking-widest mt-2">
                 {item.location}
               </span>
             </motion.div>

@@ -46,7 +46,7 @@ export function Achievements() {
               className="flex flex-col lg:flex-row gap-8 lg:gap-16 border-t border-accent/10 pt-8"
             >
               <div className="w-full lg:w-1/3 flex flex-col gap-2">
-                <span className="text-text-secondary font-sans text-[11px] tracking-[0.2em] uppercase">
+                <span className="text-foreground-secondary font-sans text-[11px] tracking-[0.2em] uppercase">
                   {item.role}
                 </span>
                 <h3 className="font-serif text-3xl md:text-4xl text-foreground leading-tight">
@@ -54,7 +54,7 @@ export function Achievements() {
                 </h3>
               </div>
               <div className="w-full lg:w-2/3">
-                <ul className="flex flex-col gap-4 text-text-secondary font-sans font-light text-[15px] leading-relaxed max-w-xl">
+                <ul className="flex flex-col gap-4 text-foreground-secondary font-sans font-light text-[15px] leading-relaxed max-w-xl">
                   {item.details.map((detail, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <span className="w-1 h-1 rounded-full bg-primary/50 mt-2.5 flex-shrink-0" />

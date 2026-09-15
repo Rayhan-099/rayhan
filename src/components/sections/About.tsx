@@ -62,7 +62,7 @@ export function About() {
               <div className="absolute inset-0 bg-[#d6a3b6]/5 mix-blend-color pointer-events-none" />
             </div>
             
-            <div className="mt-4 flex justify-between items-center text-text-secondary">
+            <div className="mt-4 flex justify-between items-center text-foreground-secondary">
               <span className="font-sans text-xs tracking-wider uppercase">Rayhan Khan</span>
               <span className="font-serif italic text-sm">Engineer</span>
             </div>
@@ -71,12 +71,12 @@ export function About() {
           {/* RIGHT: Statement & Biography */}
           <div className="lg:col-span-7 flex flex-col justify-center lg:pl-8">
             
-            <span className="font-sans text-xs tracking-widest uppercase text-text-muted mb-4">
+            <span className="font-sans text-xs tracking-widest uppercase text-foreground-muted mb-4">
               Biography
             </span>
 
             <motion.h2 
-              className="font-serif text-4xl md:text-5xl lg:text-6xl text-text-primary leading-[1.1] tracking-tight mb-8"
+              className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.1] tracking-tight mb-8"
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

@@ -4,18 +4,18 @@
 
 :root {
   /* Cinematic Dusk Palette */
-  --background: #110e12;
-  --background-elevated: #161217;
-  --surface: #1c171e;
-  --surface-glass: rgba(28, 23, 30, 0.7);
+  --background: #171415; /* Warm charcoal */
+  --background-elevated: #1c181a;
+  --surface: #241e21;
+  --surface-glass: rgba(36, 30, 33, 0.7);
   
   --text-primary: #f2ebe8;
   --text-secondary: #a89f9e;
   --text-muted: #6b6366;
   
   --primary: #d6a3b6; /* Pale Rose */
-  --secondary: #a3959c; /* Dusty mauve */
-  --tertiary: #b07c8f;
+  --secondary: #b08e9e; /* Dusty mauve */
+  --tertiary: #966173; /* Wine */
   
   --accent: #d6a3b6; 
   --accent-soft: rgba(214, 163, 182, 0.15);
@@ -24,22 +24,22 @@
 
 [data-theme="dawn"] {
   /* Dawn (Light) Palette */
-  --background: #fdfaf6;
-  --background-elevated: #f4efe9;
-  --surface: #ffffff;
-  --surface-glass: rgba(255, 255, 255, 0.7);
+  --background: #fdfaf6; /* Warm cream */
+  --background-elevated: #f4efe9; /* Parchment */
+  --surface: #eae4de;
+  --surface-glass: rgba(234, 228, 222, 0.7);
   
-  --text-primary: #1c1a19;
-  --text-secondary: #5c5553;
-  --text-muted: #8c8582;
+  --text-primary: #2d2629; /* Warm dark text */
+  --text-secondary: #6e6166;
+  --text-muted: #96898d;
   
-  --primary: #c2889e; /* slightly deeper pale rose for contrast */
-  --secondary: #8a7a82; 
-  --tertiary: #966173;
+  --primary: #c2889e; /* Pale rose */
+  --secondary: #9c7889; /* Muted mauve */
+  --tertiary: #7d4d62; /* Soft wine */
   
   --accent: #c2889e;
   --accent-soft: rgba(194, 136, 158, 0.15);
-  --line: rgba(0, 0, 0, 0.05);
+  --line: rgba(0, 0, 0, 0.08);
 }
 
 

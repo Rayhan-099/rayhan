@@ -3,7 +3,7 @@ export const experience = [
     id: "synk-ai",
     role: "Artificial Intelligence Intern",
     company: "SYNK",
-    date: "July 2026 – September 2026",
+    date: "July 2026 – Present",
     location: "Remote",
     description: [
       "Developing AI/ML solutions using Python, Pandas, NumPy, and deep learning techniques for data-driven applications.",

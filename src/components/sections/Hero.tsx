@@ -101,7 +101,7 @@ export function Hero() {
         <div className="flex flex-col relative">
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-8 md:mb-12">
-            <h1 className="font-serif text-[clamp(4rem,10vw,12rem)] font-light leading-[0.85] tracking-tight text-text-primary flex flex-col items-start -ml-2 select-none">
+            <h1 className="font-serif text-[clamp(4rem,10vw,12rem)] font-light leading-[0.85] tracking-tight text-foreground flex flex-col items-start -ml-2 select-none">
               <div className="overflow-hidden pb-4">
                 <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-[#f2ebe8]">Rayhan</span>
               </div>

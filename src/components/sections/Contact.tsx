@@ -43,7 +43,7 @@ export function Contact() {
         >
           <div className="flex items-center gap-4 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-text-primary animate-pulse" />
-            <span className="font-sans text-xs tracking-[0.2em] uppercase text-text-secondary">
+            <span className="font-sans text-xs tracking-[0.2em] uppercase text-foreground-secondary">
               Get in touch
             </span>
           </div>
@@ -77,7 +77,7 @@ export function Contact() {
               href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-text-secondary hover:text-foreground py-2 transition-colors"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
             >
               <span className="relative z-10">GitHub</span>
               <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
@@ -90,7 +90,7 @@ export function Contact() {
               href={profile.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-text-secondary hover:text-foreground py-2 transition-colors"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
             >
               <span className="relative z-10">LinkedIn</span>
               <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
@@ -102,7 +102,7 @@ export function Contact() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-text-secondary hover:text-foreground py-2 transition-colors"
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
           >
             <span className="relative z-10">Resume</span>
             <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
