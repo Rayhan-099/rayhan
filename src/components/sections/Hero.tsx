@@ -66,7 +66,7 @@ export function Hero() {
     <section 
       ref={containerRef}
       id="hero" 
-      className="relative w-full min-h-[100dvh] flex flex-col justify-end overflow-hidden bg-[#110e12]"
+      className="relative w-full min-h-[100dvh] flex flex-col justify-end overflow-hidden"
     >
       {/* Cinematic Environment Video */}
       <motion.div 
@@ -85,13 +85,13 @@ export function Hero() {
           <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Soft atmospheric gradient masks */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#110e12] via-[#110e12]/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#110e12]/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
         {/* Color grading tint */}
-        <div className="absolute inset-0 bg-[#d6a3b6]/5 mix-blend-color" />
+        <div className="absolute inset-0 bg-primary/5 mix-blend-color" />
       </motion.div>
 
-      <div className="hero-env-mask absolute inset-0 z-30 bg-[#110e12] pointer-events-none" />
+      <div className="hero-env-mask absolute inset-0 z-30 bg-background pointer-events-none" />
 
       {/* Editorial Content */}
       <motion.div 

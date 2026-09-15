@@ -14,13 +14,11 @@ export function About() {
     offset: ["start end", "end start"],
   });
   const portraitY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
-  const backgroundColor = useTransform(scrollYProgress, [0, 0.3], ["#110e12", "#1d1216"]);
   const portraitGrayscale = useTransform(scrollYProgress, [0.2, 0.5], ["100%", "0%"]);
   const watermarkY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
 
   return (
     <motion.section 
-      style={{ backgroundColor }}
       ref={sectionRef} 
       id="about" 
       className="relative z-10 py-24 md:py-40 overflow-hidden"
@@ -47,7 +45,7 @@ export function About() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-[#161217]">
+            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-background-elevated">
               <motion.div 
                 style={reduceMotion ? {} : { y: portraitY, filter: `grayscale(${portraitGrayscale})` }} 
                 className="absolute inset-[-10%] w-[120%] h-[120%]"

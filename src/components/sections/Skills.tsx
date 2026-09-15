@@ -46,15 +46,13 @@ export function Skills() {
     offset: ["start end", "end start"],
   });
   
-  const backgroundColor = useTransform(scrollYProgress, [0.3, 0.5, 0.8], ["#1d1216", "#1a1618", "#121013"]);
   const listY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
 
   return (
     <motion.section 
-      style={{ backgroundColor }}
       ref={sectionRef} 
       id="skills" 
-      className="relative z-10 py-24 md:py-40 border-t border-white/5 overflow-hidden"
+      className="relative z-10 py-24 md:py-40 border-t border-line overflow-hidden"
     >
       
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 relative">
@@ -66,10 +64,10 @@ export function Skills() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="font-sans text-xs tracking-[0.2em] uppercase text-[#a3959c] mb-4">
+          <span className="font-sans text-xs tracking-[0.2em] uppercase text-text-secondary mb-4">
             Domain Expertise
           </span>
-          <h2 className="font-serif text-5xl md:text-7xl text-white leading-[1] tracking-tight italic">
+          <h2 className="font-serif text-5xl md:text-7xl text-foreground leading-[1] tracking-tight italic">
             Capabilities
           </h2>
         </motion.div>
@@ -88,12 +86,11 @@ export function Skills() {
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.8, delay: catIdx * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Header */}
               <div className="flex items-baseline gap-4 md:w-1/3 pt-2">
-                <span className="font-sans text-xs text-[#a3959c]/50">
+                <span className="font-sans text-xs text-text-secondary/50">
                   {category.number}
                 </span>
-                <h3 className="font-serif text-3xl md:text-4xl text-[#f2ebe8] leading-none italic">
+                <h3 className="font-serif text-3xl md:text-4xl text-text-primary leading-none italic">
                   {category.title}
                 </h3>
               </div>
@@ -111,13 +108,13 @@ export function Skills() {
                   return (
                     <li 
                       key={item.name} 
-                      className={`group py-6 md:py-8 flex flex-col gap-2 border-b border-white/10 transition-all duration-500 cursor-default ${opacityClass}`}
+                      className={`group py-6 md:py-8 flex flex-col gap-2 border-b border-line transition-all duration-500 cursor-default ${opacityClass}`}
                       onMouseEnter={() => setHoveredIdx(id)}
                     >
-                      <span className="font-sans text-2xl md:text-3xl font-light text-white transition-transform duration-500 origin-left group-hover:translate-x-2">
+                      <span className="font-sans text-2xl md:text-3xl font-light text-foreground transition-transform duration-500 origin-left group-hover:translate-x-2">
                         {item.name}
                       </span>
-                      <p className="font-sans text-sm md:text-base text-[#a3959c] leading-relaxed max-w-xl transition-all duration-500 opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:mt-2">
+                      <p className="font-sans text-sm md:text-base text-text-secondary leading-relaxed max-w-xl transition-all duration-500 opacity-0 h-0 overflow-hidden group-hover:opacity-100 group-hover:h-auto group-hover:mt-2">
                         {item.desc}
                       </p>
                     </li>

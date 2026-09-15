@@ -17,7 +17,7 @@ export function Achievements() {
   const sectionRef = useRef<HTMLElement>(null);
   
   return (
-    <section ref={sectionRef} id="achievements" className="py-24 md:py-32 relative z-10 bg-[#121013]">
+    <section ref={sectionRef} id="achievements" className="py-24 md:py-32 relative z-10">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
         <motion.div 
@@ -28,7 +28,7 @@ export function Achievements() {
         >
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[0.85] tracking-tight italic"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight italic"
           >
             Achievements.
           </motion.h2>
@@ -46,18 +46,18 @@ export function Achievements() {
               className="flex flex-col lg:flex-row gap-8 lg:gap-16 border-t border-accent/10 pt-8"
             >
               <div className="w-full lg:w-1/3 flex flex-col gap-2">
-                <span className="text-[#a3959c] font-sans text-[11px] tracking-[0.2em] uppercase">
+                <span className="text-text-secondary font-sans text-[11px] tracking-[0.2em] uppercase">
                   {item.role}
                 </span>
-                <h3 className="font-serif text-3xl md:text-4xl text-white leading-tight">
+                <h3 className="font-serif text-3xl md:text-4xl text-foreground leading-tight">
                   {item.title}
                 </h3>
               </div>
               <div className="w-full lg:w-2/3">
-                <ul className="flex flex-col gap-4 text-[#a3959c] font-sans font-light text-[15px] leading-relaxed max-w-xl">
+                <ul className="flex flex-col gap-4 text-text-secondary font-sans font-light text-[15px] leading-relaxed max-w-xl">
                   {item.details.map((detail, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="w-1 h-1 rounded-full bg-[#d6a3b6]/50 mt-2.5 flex-shrink-0" />
+                      <span className="w-1 h-1 rounded-full bg-primary/50 mt-2.5 flex-shrink-0" />
                       <span>{detail}</span>
                     </li>
                   ))}

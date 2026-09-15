@@ -8,10 +8,12 @@ import { Achievements } from "@/components/sections/Achievements";
 import { Education } from "@/components/sections/Education";
 import { Certifications } from "@/components/sections/Certifications";
 import { Contact } from "@/components/sections/Contact";
+import { AtmosphericScene } from "@/components/canvas/AtmosphericScene";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <AtmosphericScene />
       <Navigation />
       
       <div className="flex flex-col w-full relative z-10">

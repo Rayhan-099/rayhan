@@ -42,8 +42,6 @@ export function Projects() {
     offset: ["start end", "end start"],
   });
 
-  const backgroundColor = useTransform(scrollYProgress, [0.1, 0.4, 0.8], ["#121013", "#0d0b0c", "#161214"]);
-
   // Project 1 (Lumine) Animations
   const p1Ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress: p1Scroll } = useScroll({ target: p1Ref, offset: ["start end", "end start"] });
@@ -68,10 +66,9 @@ export function Projects() {
 
   return (
     <motion.section 
-      style={{ backgroundColor }}
       ref={sectionRef} 
       id="projects" 
-      className="relative z-10 pt-24 md:pt-40 pb-24 border-t border-white/5 overflow-hidden"
+      className="relative z-10 pt-24 md:pt-40 pb-24 border-t border-line overflow-hidden"
     >
       {/* Introduction */}
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pb-32">
@@ -79,7 +76,7 @@ export function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-serif text-5xl md:text-7xl text-white tracking-tight italic"
+          className="font-serif text-5xl md:text-7xl text-foreground tracking-tight italic"
         >
           Selected Works
         </motion.h2>
@@ -88,7 +85,7 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-sans text-base md:text-lg text-[#a3959c] mt-6 max-w-lg"
+          className="font-sans text-base md:text-lg text-text-secondary mt-6 max-w-lg"
         >
           High-performance systems and interactive experiences engineered for scale and aesthetic precision.
         </motion.p>
@@ -114,8 +111,8 @@ export function Projects() {
               style={reduceMotion ? {} : { y: p1TextY }} 
               className="relative z-10 w-full max-w-2xl mt-auto pt-64 md:pt-[50vh]"
             >
-              <h3 className="font-serif text-5xl md:text-7xl text-white italic mb-6">Lumine</h3>
-              <p className="font-sans text-lg text-[#f2ebe8] leading-relaxed max-w-xl">{projects[0].description}</p>
+              <h3 className="font-serif text-5xl md:text-7xl text-foreground italic mb-6">Lumine</h3>
+              <p className="font-sans text-lg text-text-primary leading-relaxed max-w-xl">{projects[0].description}</p>
               <ProjectMeta project={projects[0]} />
             </motion.div>
           </div>
@@ -125,9 +122,9 @@ export function Projects() {
         {projects[1] && (
           <div ref={p2Ref} className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center relative w-full">
             <div className="md:col-span-5 flex flex-col order-2 md:order-1">
-              <h3 className="font-serif text-4xl md:text-5xl text-white italic mb-6">Current Capital</h3>
-              <p className="font-sans text-base md:text-lg text-[#a3959c] leading-relaxed mb-4">{projects[1].description}</p>
-              <p className="font-sans text-sm text-[#a3959c]/70 leading-relaxed">{projects[1].details?.[0]}</p>
+              <h3 className="font-serif text-4xl md:text-5xl text-foreground italic mb-6">Current Capital</h3>
+              <p className="font-sans text-base md:text-lg text-text-secondary leading-relaxed mb-4">{projects[1].description}</p>
+              <p className="font-sans text-sm text-text-secondary/70 leading-relaxed">{projects[1].details?.[0]}</p>
               <ProjectMeta project={projects[1]} />
             </div>
             <div className="md:col-span-7 relative order-1 md:order-2 h-[60vh] md:h-[80vh] w-full overflow-hidden">
@@ -151,8 +148,8 @@ export function Projects() {
             </motion.div>
             <div className="w-full max-w-3xl ml-auto border-t border-white/10 pt-8 flex flex-col md:flex-row gap-8 justify-between">
               <div>
-                <h3 className="font-serif text-4xl text-white italic mb-4">Health Assistant</h3>
-                <p className="font-sans text-base text-[#a3959c] leading-relaxed max-w-xl">{projects[2].description}</p>
+                <h3 className="font-serif text-4xl text-foreground italic mb-4">Health Assistant</h3>
+                <p className="font-sans text-base text-text-secondary leading-relaxed max-w-xl">{projects[2].description}</p>
               </div>
               <div className="min-w-[200px]">
                 <ProjectMeta project={projects[2]} />
@@ -171,9 +168,9 @@ export function Projects() {
               </motion.div>
             </div>
             <div className="flex flex-col">
-              <h3 className="font-serif text-4xl text-white italic mb-6">Hand Tracking</h3>
-              <p className="font-sans text-base md:text-lg text-[#a3959c] leading-relaxed mb-4">{projects[3].description}</p>
-              <p className="font-sans text-sm text-[#a3959c]/70 leading-relaxed">{projects[3].details?.[0]}</p>
+              <h3 className="font-serif text-4xl text-foreground italic mb-6">Hand Tracking</h3>
+              <p className="font-sans text-base md:text-lg text-text-secondary leading-relaxed mb-4">{projects[3].description}</p>
+              <p className="font-sans text-sm text-text-secondary/70 leading-relaxed">{projects[3].details?.[0]}</p>
               <ProjectMeta project={projects[3]} />
             </div>
           </div>

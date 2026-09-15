@@ -22,6 +22,27 @@
   --line: rgba(255, 255, 255, 0.05);
 }
 
+[data-theme="dawn"] {
+  /* Dawn (Light) Palette */
+  --background: #fdfaf6;
+  --background-elevated: #f4efe9;
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  
+  --text-primary: #1c1a19;
+  --text-secondary: #5c5553;
+  --text-muted: #8c8582;
+  
+  --primary: #c2889e; /* slightly deeper pale rose for contrast */
+  --secondary: #8a7a82; 
+  --tertiary: #966173;
+  
+  --accent: #c2889e;
+  --accent-soft: rgba(194, 136, 158, 0.15);
+  --line: rgba(0, 0, 0, 0.05);
+}
+
+
 body {
   @apply bg-background text-foreground;
   /* Add global film grain/noise */

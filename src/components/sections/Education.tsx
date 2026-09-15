@@ -17,7 +17,7 @@ export function Education() {
   const sectionRef = useRef<HTMLElement>(null);
   
   return (
-    <section ref={sectionRef} id="education" className="py-24 md:py-32 relative z-10 bg-[#121013]">
+    <section ref={sectionRef} id="education" className="py-24 md:py-32 relative z-10">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
         <motion.div 
@@ -28,7 +28,7 @@ export function Education() {
         >
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[0.85] tracking-tight italic"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.85] tracking-tight italic"
           >
             Education.
           </motion.h2>
@@ -45,16 +45,16 @@ export function Education() {
               custom={index * 0.1}
               className="flex flex-col gap-3 group border-t border-accent/10 pt-8 hover:border-accent/30 transition-colors"
             >
-              <span className="text-[#a3959c] font-sans text-[11px] tracking-[0.2em] uppercase">
+              <span className="text-text-secondary font-sans text-[11px] tracking-[0.2em] uppercase">
                 {item.dates}
               </span>
-              <h3 className="font-serif text-2xl md:text-3xl text-white group-hover:text-[#f2ebe8] transition-colors duration-500 leading-tight">
+              <h3 className="font-serif text-2xl md:text-3xl text-foreground group-hover:text-text-primary transition-colors duration-500 leading-tight">
                 {item.institution}
               </h3>
-              <p className="text-[#a3959c] font-sans text-sm font-light leading-relaxed">
+              <p className="text-text-secondary font-sans text-sm font-light leading-relaxed">
                 {item.degree}
               </p>
-              <span className="text-[#a3959c]/50 font-sans text-[11px] uppercase tracking-widest mt-2">
+              <span className="text-text-secondary/50 font-sans text-[11px] uppercase tracking-widest mt-2">
                 {item.location}
               </span>
             </motion.div>
