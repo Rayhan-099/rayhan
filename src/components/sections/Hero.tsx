@@ -108,10 +108,10 @@ export function Hero() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-8 md:mb-12">
             <h1 className="font-serif text-[clamp(4rem,10vw,12rem)] font-light leading-[0.85] tracking-tight text-foreground flex flex-col items-start -ml-2 select-none">
               <div className="overflow-hidden pb-4">
-                <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-[#f2ebe8]">Rayhan</span>
+                <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-foreground">Rayhan</span>
               </div>
               <div className="overflow-hidden pb-4 md:ml-24">
-                <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-[#a3959c] italic">Khan.</span>
+                <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-foreground-secondary italic">Khan.</span>
               </div>
             </h1>
           </div>
@@ -120,7 +120,7 @@ export function Hero() {
             <div className="flex flex-col gap-6 max-w-xl relative">
               {/* Subtle text glow / haze */}
               <div className="absolute -inset-10 bg-background/50 blur-3xl rounded-full z-0 pointer-events-none" />
-              <h2 className="hero-role font-sans text-xl md:text-2xl text-[#f2ebe8] font-medium tracking-wide opacity-0 uppercase relative z-10">
+              <h2 className="hero-role font-sans text-xl md:text-2xl text-foreground font-medium tracking-wide opacity-0 uppercase relative z-10">
                 AI & Full Stack Engineer
               </h2>
             </div>

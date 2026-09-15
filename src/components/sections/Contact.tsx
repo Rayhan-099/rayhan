@@ -24,9 +24,9 @@ export function Contact() {
         
         {/* Soft horizon glow */}
         <motion.div 
-          animate={{ opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-primary/20 via-primary/5 to-transparent mix-blend-overlay" 
+          animate={{ opacity: [0.6, 0.9, 0.6] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-0 w-full h-[90vh] bg-gradient-to-t from-primary/30 via-primary/10 to-transparent mix-blend-overlay" 
         />
         
         <video 
@@ -34,11 +34,11 @@ export function Contact() {
           muted 
           loop 
           playsInline
-          className="object-cover w-full h-full scale-[1.05] transform-gpu opacity-10 mix-blend-screen"
+          className="object-cover w-full h-full scale-[1.05] transform-gpu opacity-20 mix-blend-screen"
         >
           <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background-elevated/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-transparent" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex-1 flex flex-col justify-center relative z-10">
@@ -58,9 +58,9 @@ export function Contact() {
           
           <motion.h2 
             variants={fadeUp} custom={0}
-            className="font-serif text-[clamp(3.5rem,10vw,12rem)] text-foreground leading-[0.85] tracking-tight mb-12 italic"
+            className="font-serif text-[clamp(4rem,12vw,15rem)] text-foreground leading-[0.85] tracking-tight mb-12 italic"
           >
-            Let's build<br />something.
+            Connect.
           </motion.h2>
         </motion.div>
 
