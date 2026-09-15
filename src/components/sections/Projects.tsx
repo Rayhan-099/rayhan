@@ -7,24 +7,24 @@ import { projects } from "@/content/projects";
 
 function ProjectMeta({ project }: { project: typeof projects[0] }) {
   return (
-    <div className="flex flex-col gap-4 w-full mt-6 pt-6 border-t border-white/10">
+    <div className="flex flex-col gap-4 w-full mt-6 pt-6 border-t border-line">
       <div className="flex flex-wrap gap-2">
         {project.technologies.slice(0, 5).map(tech => (
-          <span key={tech} className="font-sans text-[11px] text-[#a3959c] px-3 py-1.5 bg-white/5 rounded-full border border-white/10">
+          <span key={tech} className="font-sans text-[11px] text-foreground-secondary px-3 py-1.5 bg-foreground/5 rounded-full border border-line">
             {tech}
           </span>
         ))}
       </div>
       <div className="flex gap-6 mt-2">
         {project.links.live && (
-          <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-white hover:text-[#d6a3b6] transition-colors">
-            <span className="border-b border-transparent group-hover:border-[#d6a3b6] pb-0.5 transition-colors">Visit Site</span>
-            <span className="text-[#d6a3b6] transition-transform group-hover:translate-x-1">→</span>
+          <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-foreground hover:text-primary transition-colors">
+            <span className="border-b border-transparent group-hover:border-primary pb-0.5 transition-colors">Visit Site</span>
+            <span className="text-primary transition-transform group-hover:translate-x-1">→</span>
           </a>
         )}
         {project.links.github && (
-          <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#a3959c] hover:text-white transition-colors">
-            <span className="border-b border-transparent group-hover:border-white pb-0.5 transition-colors">Source</span>
+          <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-foreground-secondary hover:text-foreground transition-colors">
+            <span className="border-b border-transparent group-hover:border-foreground pb-0.5 transition-colors">Source</span>
             <span className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
           </a>
         )}
@@ -108,8 +108,8 @@ export function Projects() {
             >
               <motion.div style={reduceMotion ? {} : { scale: p1Scale, y: p1ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
                 <Image src="/media/projects/lumine.png" alt="Lumine" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/lumine/1600/1000'; }} />
-                <div className="absolute inset-0 bg-[#0d0b0c]/40 mix-blend-color pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0b0c] via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-background/20 mix-blend-color pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
               </motion.div>
             </motion.div>
             
@@ -154,7 +154,7 @@ export function Projects() {
                 <div className="absolute inset-0 bg-[#d6a3b6]/10 mix-blend-color pointer-events-none" />
               </motion.div>
             </div>
-            <motion.div style={reduceMotion ? {} : { y: p3TextY }} className="w-full max-w-3xl ml-auto border-t border-white/10 pt-8 flex flex-col md:flex-row gap-8 justify-between">
+            <motion.div style={reduceMotion ? {} : { y: p3TextY }} className="w-full max-w-3xl ml-auto border-t border-line pt-8 flex flex-col md:flex-row gap-8 justify-between">
               <div>
                 <h3 className="font-serif text-4xl text-foreground italic mb-4">Health Assistant</h3>
                 <p className="font-sans text-base text-foreground-secondary leading-relaxed max-w-xl">{projects[2].description}</p>

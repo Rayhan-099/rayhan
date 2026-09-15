@@ -54,7 +54,7 @@ export function Skills() {
             return (
               <motion.div 
                 key={skillGroup.category}
-                className={`group flex flex-col md:flex-row md:items-center justify-between py-8 md:py-12 border-b border-border transition-all duration-500 cursor-default ${opacityClass}`}
+                className={`group flex flex-col md:flex-row md:items-center justify-between py-8 md:py-12 border-b border-line transition-all duration-500 cursor-default ${opacityClass}`}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,19 +62,28 @@ export function Skills() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 {/* Category Title */}
-                <h3 className="font-serif text-3xl md:text-5xl text-foreground transition-transform duration-500 origin-left group-hover:translate-x-4 italic mb-6 md:mb-0 md:w-5/12">
+                <h3 className="font-serif text-3xl md:text-5xl text-foreground transition-transform duration-500 origin-left group-hover:translate-x-4 italic mb-6 md:mb-0 md:w-4/12">
                   {skillGroup.category}
                 </h3>
 
                 {/* Items List */}
-                <div className="flex flex-wrap gap-x-6 gap-y-3 md:w-7/12 md:justify-end transition-all duration-500 md:opacity-40 md:group-hover:opacity-100">
+                <div className="flex flex-wrap gap-4 gap-y-6 md:w-8/12 md:justify-end transition-all duration-500">
                   {skillGroup.items.map((item) => (
-                    <span 
-                      key={item} 
-                      className="font-sans text-sm md:text-base text-foreground-secondary tracking-wide group-hover:text-foreground transition-colors duration-300"
+                    <div 
+                      key={item.name} 
+                      className="flex items-center gap-2 group/item px-4 py-2 rounded-full border border-line/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                     >
-                      {item}
-                    </span>
+                      {item.icon && (
+                        <img 
+                          src={`https://cdn.simpleicons.org/${item.icon}/a89f9e/d6a3b6`} 
+                          alt={item.name}
+                          className="w-4 h-4 opacity-70 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all duration-300"
+                        />
+                      )}
+                      <span className="font-sans text-xs md:text-sm text-foreground-secondary tracking-wide group-hover/item:text-foreground transition-colors duration-300">
+                        {item.name}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </motion.div>

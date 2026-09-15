@@ -118,7 +118,7 @@ function Scene() {
   return (
     <>
       <color attach="background" args={[fogColor]} />
-      <fog attach="fog" args={[fogColor, 5, 20]} />
+      <fog attach="fog" args={[fogColor, 5, 25]} />
       
       <ambientLight intensity={isDawn ? 0.9 : 0.4} />
       <directionalLight 
@@ -127,7 +127,40 @@ function Scene() {
         color={isDawn ? "#ffffff" : "#d6a3b6"} 
       />
 
+      {/* Deep Environment Layers (Distant Mountains/Haze) */}
       <ParallaxGroup>
+        <mesh position={[0, -5, -15]} rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[100, 100]} />
+          <meshBasicMaterial 
+            color={isDawn ? "#eae4de" : "#171415"} 
+            transparent 
+            opacity={isDawn ? 0.8 : 0.9} 
+            fog={true}
+          />
+        </mesh>
+        
+        {/* Soft atmospheric gradient/haze planes standing upright */}
+        <mesh position={[0, 0, -12]}>
+          <planeGeometry args={[40, 20]} />
+          <meshBasicMaterial 
+            color={isDawn ? "#c2889e" : "#d6a3b6"} 
+            transparent 
+            opacity={0.03} 
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
+        </mesh>
+        <mesh position={[-5, 2, -8]}>
+          <planeGeometry args={[30, 15]} />
+          <meshBasicMaterial 
+            color={isDawn ? "#9c7889" : "#b08e9e"} 
+            transparent 
+            opacity={0.04} 
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
+        </mesh>
+
         <StarField count={400} size={0.05} color={starColor1} speed={0.04} radiusInner={2} radiusOuter={12} />
         <StarField count={150} size={0.08} color={starColor2} speed={0.06} radiusInner={3} radiusOuter={15} />
         <StarField count={800} size={0.02} color={starColor3} speed={0.02} radiusInner={1} radiusOuter={18} />

@@ -15,6 +15,8 @@ const NAV_ITEMS = [
   { label: "Contact", href: "#contact" },
 ];
 
+import { useTheme } from "@/context/ThemeContext";
+
 export function Navigation() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
@@ -61,6 +63,9 @@ export function Navigation() {
         </div>
       </motion.nav>
       
+      {/* Theme Toggle (Bottom Right or Top Right) */}
+      <ThemeToggle />
+      
       {/* Scroll Line Indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -82,5 +87,35 @@ export function Navigation() {
         </motion.div>
       </motion.div>
     </>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  const isDawn = theme === "dawn";
+
+  return (
+    <motion.button
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, delay: 0.5 }}
+      onClick={toggleTheme}
+      className="fixed bottom-6 right-6 md:bottom-12 md:right-12 z-50 flex items-center gap-3 mix-blend-difference group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white rounded-full px-4 py-2 border border-white/20 hover:border-white/50 transition-colors pointer-events-auto bg-transparent backdrop-blur-md"
+      aria-label="Toggle theme"
+      title={`Switch to ${isDawn ? 'Dusk' : 'Dawn'}`}
+    >
+      <div className="relative w-4 h-4 rounded-full border border-white flex items-center justify-center overflow-hidden">
+        <motion.div 
+          animate={{ x: isDawn ? "0%" : "-100%" }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="absolute inset-0 bg-white" 
+        />
+      </div>
+      <div className="flex gap-1.5 font-sans text-[10px] uppercase tracking-[0.2em] text-white">
+        <span className={`transition-opacity duration-300 ${!isDawn ? 'opacity-100' : 'opacity-40'}`}>Dusk</span>
+        <span className="opacity-30">/</span>
+        <span className={`transition-opacity duration-300 ${isDawn ? 'opacity-100 font-medium' : 'opacity-40'}`}>Dawn</span>
+      </div>
+    </motion.button>
   );
 }

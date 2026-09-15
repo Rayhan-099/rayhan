@@ -29,7 +29,7 @@ export function About() {
         style={reduceMotion ? {} : { y: watermarkY }}
         className="absolute top-0 left-0 w-full pt-10 flex justify-center text-[15vw] font-serif italic text-white/[0.02] whitespace-nowrap pointer-events-none select-none z-0"
       >
-        Biography
+        About
       </motion.div>
 
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
@@ -72,17 +72,17 @@ export function About() {
           <div className="lg:col-span-7 flex flex-col justify-center lg:pl-8">
             
             <span className="font-sans text-xs tracking-widest uppercase text-foreground-muted mb-4">
-              Biography
+              About
             </span>
 
             <motion.h2 
-              className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.1] tracking-tight mb-8"
+              className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.1] tracking-tight mb-8 italic"
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              Building digital <span className="italic text-primary">environments</span> and intelligent <span className="italic text-primary">systems</span>.
+              Rayhan Khan
             </motion.h2>
 
             <motion.div 
@@ -93,13 +93,13 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <p>
-                Rayhan Khan is a Software Engineer focused on full-stack development and Machine Learning.
+                Software Engineer focused on full-stack development and Machine Learning.
               </p>
               <p>
-                He is pursuing a Bachelor of Technology in Computer Science and Engineering at Dr. A.P.J. Abdul Kalam Technical University.
+                Pursuing a Bachelor of Technology in Computer Science and Engineering at Dr. A.P.J. Abdul Kalam Technical University.
               </p>
               <p>
-                His technical work spans Python, React, backend systems, Machine Learning, Generative AI, Computer Vision, and cloud technologies.
+                Technical work spans Python, React, backend systems, Machine Learning, Generative AI, Computer Vision, and cloud technologies.
               </p>
             </motion.div>
 

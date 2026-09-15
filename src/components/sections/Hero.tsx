@@ -87,11 +87,16 @@ export function Hero() {
         {/* Soft atmospheric gradient masks */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
+        
+        {/* Environmental Depth Planes */}
+        <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-background to-transparent mix-blend-multiply opacity-50" />
+        <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-primary/10 to-transparent mix-blend-overlay opacity-30" />
+        
         {/* Color grading tint */}
         <div className="absolute inset-0 bg-primary/5 mix-blend-color" />
       </motion.div>
 
-      <div className="hero-env-mask absolute inset-0 z-30 bg-background pointer-events-none" />
+      <div className="hero-env-mask absolute inset-0 z-10 bg-background pointer-events-none" />
 
       {/* Editorial Content */}
       <motion.div 
@@ -111,15 +116,13 @@ export function Hero() {
             </h1>
           </div>
 
-          {/* Role & Statement Box */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 relative pt-8 md:pt-12 border-t border-line">
-            <div className="flex flex-col gap-6 max-w-xl">
-              <h2 className="hero-role font-sans text-xl md:text-2xl text-[#f2ebe8] font-medium tracking-wide opacity-0 uppercase">
+            <div className="flex flex-col gap-6 max-w-xl relative">
+              {/* Subtle text glow / haze */}
+              <div className="absolute -inset-10 bg-background/50 blur-3xl rounded-full z-0 pointer-events-none" />
+              <h2 className="hero-role font-sans text-xl md:text-2xl text-[#f2ebe8] font-medium tracking-wide opacity-0 uppercase relative z-10">
                 AI & Full Stack Engineer
               </h2>
-              <p className="hero-statement font-sans text-lg md:text-xl text-[#a3959c] leading-relaxed opacity-0 max-w-md font-light">
-                Engineering digital experiences where systems, interaction, and atmosphere meet.
-              </p>
             </div>
             
             {/* CTAs */}

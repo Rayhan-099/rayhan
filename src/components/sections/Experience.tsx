@@ -74,7 +74,7 @@ export function Experience() {
                     <ul className="flex flex-col gap-4 text-foreground-secondary font-sans text-[15px] md:text-base leading-relaxed max-w-2xl">
                       {item.description.map((detail, i) => (
                         <li key={i} className="flex items-start gap-4">
-                          <span className="text-line text-[10px] mt-2 flex-shrink-0">✦</span>
+                          <span className="text-primary text-[10px] mt-2 flex-shrink-0 opacity-50">✦</span>
                           <span>{detail}</span>
                         </li>
                       ))}

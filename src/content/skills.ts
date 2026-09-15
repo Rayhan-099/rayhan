@@ -1,26 +1,66 @@
 export const skills = [
   {
     category: "Languages",
-    items: ["Python", "JavaScript", "TypeScript", "Java", "C++", "C", "SQL", "HTML/CSS"]
+    items: [
+      { name: "Python", icon: "python" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Java", icon: "java" },
+      { name: "C++", icon: "cplusplus" },
+      { name: "C", icon: "c" },
+      { name: "SQL", icon: "mysql" },
+      { name: "HTML/CSS", icon: "html5" }
+    ]
   },
   {
     category: "AI & Data Science",
-    items: ["PyTorch", "TensorFlow", "Scikit-learn", "Pandas", "NumPy", "Matplotlib", "OpenCV", "MediaPipe"]
+    items: [
+      { name: "PyTorch", icon: "pytorch" },
+      { name: "TensorFlow", icon: "tensorflow" },
+      { name: "Scikit-learn", icon: "scikitlearn" },
+      { name: "Pandas", icon: "pandas" },
+      { name: "NumPy", icon: "numpy" },
+      { name: "OpenCV", icon: "opencv" }
+    ]
   },
   {
     category: "Web Frameworks",
-    items: ["React.js", "Node.js", "Express.js", "Django", "FastAPI"]
+    items: [
+      { name: "React.js", icon: "react" },
+      { name: "Next.js", icon: "nextdotjs" },
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "Express.js", icon: "express" },
+      { name: "Django", icon: "django" },
+      { name: "FastAPI", icon: "fastapi" }
+    ]
   },
   {
     category: "Databases & Cloud",
-    items: ["PostgreSQL", "MongoDB", "Firebase", "GCP"]
+    items: [
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "Firebase", icon: "firebase" },
+      { name: "Google Cloud", icon: "googlecloud" }
+    ]
   },
   {
     category: "Tools & Environments",
-    items: ["Git/GitHub", "CI/CD", "Jupyter/Colab", "Postman", "Docker"]
+    items: [
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github" },
+      { name: "Docker", icon: "docker" },
+      { name: "Jupyter", icon: "jupyter" },
+      { name: "Postman", icon: "postman" }
+    ]
   },
   {
     category: "Core Competencies",
-    items: ["Machine Learning", "Generative AI", "Agentic AI", "Data Structures & Algorithms", "REST APIs", "OOP"]
+    items: [
+      { name: "Machine Learning", icon: null },
+      { name: "Generative AI", icon: null },
+      { name: "Agentic AI", icon: null },
+      { name: "REST APIs", icon: null },
+      { name: "System Design", icon: null }
+    ]
   }
 ];
