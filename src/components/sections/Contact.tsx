@@ -60,6 +60,57 @@ export function Contact() {
           </motion.h2>
         </motion.div>
 
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 mt-12"
+        >
+          <motion.a
+            variants={fadeUp} custom={0.3}
+            href={`mailto:${profile.email}`}
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground py-2 transition-colors"
+          >
+            <span className="relative z-10">Email</span>
+            <span className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+          </motion.a>
+          
+          {profile.social.github && (
+            <motion.a
+              variants={fadeUp} custom={0.4}
+              href={profile.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
+            >
+              <span className="relative z-10">GitHub</span>
+              <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+            </motion.a>
+          )}
+          
+          {profile.social.linkedin && (
+            <motion.a
+              variants={fadeUp} custom={0.5}
+              href={profile.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
+            >
+              <span className="relative z-10">LinkedIn</span>
+              <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+            </motion.a>
+          )}
+
+          <motion.a
+            variants={fadeUp} custom={0.6}
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative font-sans text-sm tracking-[0.2em] uppercase text-foreground-secondary hover:text-foreground py-2 transition-colors"
+          >
+            <span className="relative z-10">Resume</span>
+            <span className="absolute bottom-0 left-0 w-full h-px bg-foreground/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+          </motion.a>
         </motion.div>
       </div>
 
