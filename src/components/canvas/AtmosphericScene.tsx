@@ -51,14 +51,34 @@ function StarField({ count, size, color, speed, radiusOuter, radiusInner, layerI
     return p;
   }, [count, radiusOuter, radiusInner, layerIndex]);
 
+  const lastScrollY = useRef(0);
+  const smoothedVelocity = useRef(0);
+
   useFrame((state, delta) => {
     if (ref.current) {
-      ref.current.rotation.y -= delta * speed * 0.5;
-      ref.current.rotation.x -= delta * (speed * 0.1);
-      ref.current.rotation.z -= delta * (speed * 0.15);
-      
       const scrollY = window.scrollY || 0;
+      // Calculate instantaneous velocity
+      const velocity = scrollY - lastScrollY.current;
+      lastScrollY.current = scrollY;
+      
+      // Smooth the velocity using lerp for natural inertia
+      smoothedVelocity.current = THREE.MathUtils.lerp(smoothedVelocity.current, velocity, 0.05);
+
+      // Base rotation + velocity-induced tilt
+      ref.current.rotation.y -= delta * speed * 0.5;
+      ref.current.rotation.x -= delta * (speed * 0.1) + (smoothedVelocity.current * 0.0002 * layerIndex);
+      ref.current.rotation.z -= delta * (speed * 0.15) + (smoothedVelocity.current * 0.0001 * layerIndex);
+      
+      // Depth position reacts to scroll
       ref.current.position.y = (scrollY * 0.001) * layerIndex;
+      
+      // Parallax forward thrust based on scroll momentum
+      // Pushes the particles toward the camera when scrolling fast
+      ref.current.position.z = THREE.MathUtils.lerp(
+        ref.current.position.z,
+        smoothedVelocity.current * 0.01 * layerIndex,
+        0.1
+      );
     }
   });
 

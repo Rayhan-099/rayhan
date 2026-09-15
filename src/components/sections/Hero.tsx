@@ -28,39 +28,53 @@ export function Hero() {
 
   useEffect(() => {
     if (!isVideoLoaded) return;
+    
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      createTimeline()
+        .add('.hero-env-mask', { opacity: 0, duration: 500, ease: 'linear' }, 0)
+        .add('.hero-name-word', { opacity: 1, duration: 500, ease: 'linear' }, 0)
+        .add('.hero-role', { opacity: 1, duration: 500, ease: 'linear' }, 0)
+        .add('.hero-cta', { opacity: 1, duration: 500, ease: 'linear' }, 0);
+      return;
+    }
 
     const tl = createTimeline({
-      defaults: { ease: 'outExpo' }
+      defaults: { ease: 'easeOutExpo' }
     });
 
     tl.add('.hero-env-mask', {
       opacity: [1, 0],
-      duration: 3000,
+      duration: 2500,
       ease: 'linear',
     }, 0)
+    // Cinematic environment scale pull
+    .add('.hero-video-wrap', {
+      scale: [1.05, 1],
+      duration: 4000,
+      ease: 'easeOutSine',
+    }, 0)
     .add('.hero-name-word', {
-      translateY: [80, 0],
+      translateY: [100, 0],
       opacity: [0, 1],
-      rotateZ: [1, 0],
-      duration: 2000,
-      delay: utils.stagger(120, { start: 500 }),
+      rotateZ: [2, 0],
+      duration: 2200,
+      delay: utils.stagger(150, { start: 600 }),
     }, 0)
     .add('.hero-role', {
-      translateY: [20, 0],
+      translateY: [30, 0],
       opacity: [0, 1],
-      duration: 1600,
-    }, 1000)
-    .add('.hero-statement', {
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: 1600,
+      duration: 1800,
+      ease: 'easeOutQuart'
     }, 1200)
     .add('.hero-cta', {
-      translateY: [15, 0],
+      translateY: [20, 0],
       opacity: [0, 1],
-      duration: 1200,
-      delay: utils.stagger(150)
-    }, 1400);
+      duration: 1500,
+      delay: utils.stagger(120),
+      ease: 'easeOutQuart'
+    }, 1600);
     
   }, [isVideoLoaded]);
 
@@ -73,7 +87,7 @@ export function Hero() {
       {/* Cinematic Environment Video */}
       <motion.div 
         style={{ scale, opacity: videoOpacity }} 
-        className="absolute inset-0 z-0 overflow-hidden"
+        className="hero-video-wrap absolute inset-0 z-0 overflow-hidden"
       >
         <video 
           autoPlay 

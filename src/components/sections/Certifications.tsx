@@ -21,16 +21,8 @@ export function Certifications() {
   const sectionRef = useRef<HTMLElement>(null);
   useSectionTracker(sectionRef, "certifications");
 
-  useEffect(() => {
-    if (isArchiveOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isArchiveOpen]);
+  // Using overscroll-contain in the modal instead of body scroll locking
+  // to prevent mobile scroll-jacking issues and respect the architectural UX.
 
   return (
     <>
