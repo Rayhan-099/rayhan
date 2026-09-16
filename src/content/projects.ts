@@ -15,6 +15,22 @@ export const projects = [
     }
   },
   {
+    id: "satquery-ai",
+    title: "SatQuery AI – Multimodal Remote Sensing Assistant",
+    description: "Engineered a multimodal EO assistant using Next.js and FastAPI for natural-language satellite analysis across NDVI, NDWI, and SAR.",
+    details: [
+      "Implemented raster analysis with Rasterio and NumPy, generating spatial statistics and validating numerical AI claims.",
+      "Designed query orchestration mapping natural-language intent to NDVI, NDWI, and Sentinel-1 SAR analytical tools.",
+      "Validated 7/7 curated benchmark cases spanning NDVI, NDWI, SAR, unsupported queries, and evidence-grounded responses."
+    ],
+    technologies: ["Next.js", "FastAPI", "PyTorch", "Rasterio"],
+    links: {
+      live: "https://aisatquery.vercel.app/",
+      github: "https://github.com/Rayhan-099/satquery-ai"
+    },
+    contextLabel: "SIH 2026"
+  },
+  {
     id: "current-capital",
     title: "Current Capital – Finance Manager",
     date: "February 2026",
@@ -42,20 +58,6 @@ export const projects = [
     links: {
       live: "https://health-assistant-azure.vercel.app/",
       github: "https://github.com/Rayhan-099/health-assistant"
-    }
-  },
-  {
-    id: "hand-tracking",
-    title: "Real-Time Hand Tracking Visualizer",
-    date: "TBD",
-    technologies: ["Three.js", "WebGL", "Google MediaPipe", "React", "Tailwind CSS"],
-    description: "Developed a Computer Vision application mapping hand gestures to 3D particle simulations.",
-    details: [
-      "Integrated Google MediaPipe and WebGL rendering for client-side inference and visualization."
-    ],
-    links: {
-      live: "https://jujutsu-kaisen-rho.vercel.app/",
-      github: "https://github.com/Rayhan-099/Hand-Tracking-Visualizer"
     }
   }
 ];

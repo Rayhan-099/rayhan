@@ -117,7 +117,7 @@ export function Projects() {
       className="relative z-10 pt-24 md:pt-40 pb-24 border-t border-line overflow-hidden"
     >
       {/* Introduction */}
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pb-32">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export function Projects() {
         </motion.h2>
       </div>
 
-      <div className="flex flex-col gap-32 md:gap-48 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div className="flex flex-col gap-16 md:gap-32 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         
         {/* Project 01: Lumine (Huge cinematic reveal) */}
         {projects[0] && (
@@ -144,7 +144,7 @@ export function Projects() {
               </motion.div>
             </motion.div>
             
-            <div className="relative z-10 w-full max-w-2xl mt-auto pt-64 md:pt-[50vh]">
+            <div className="relative z-10 w-full max-w-2xl mt-auto pt-48 md:pt-[40vh]">
               <h3 className="anim-reveal font-serif text-5xl md:text-7xl text-foreground italic mb-6">Lumine</h3>
               <p className="anim-reveal font-sans text-lg text-foreground leading-relaxed max-w-xl">{projects[0].description}</p>
               <div className="anim-reveal"><ProjectMeta project={projects[0]} /></div>
@@ -152,25 +152,30 @@ export function Projects() {
           </div>
         )}
 
-        {/* Project 02: Current Capital (Asymmetric vertical layout) */}
+        {/* Project 02: SatQuery AI (Asymmetric vertical layout) */}
         {projects[1] && (
           <div ref={p2Ref} className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center relative w-full">
             <div className="md:col-span-5 flex flex-col order-2 md:order-1">
-              <h3 className="anim-reveal font-serif text-4xl md:text-5xl text-foreground italic mb-6">Current Capital</h3>
+              <div className="anim-reveal mb-2">
+                <span className="font-sans text-[10px] tracking-widest uppercase text-primary border border-primary/20 px-2 py-1 rounded-sm">
+                  {projects[1].contextLabel || "Featured"}
+                </span>
+              </div>
+              <h3 className="anim-reveal font-serif text-4xl md:text-5xl text-foreground italic mb-6">{projects[1].title.split('–')[0]}</h3>
               <p className="anim-reveal font-sans text-base md:text-lg text-foreground-secondary leading-relaxed mb-4">{projects[1].description}</p>
               <p className="anim-reveal font-sans text-sm text-foreground-secondary/70 leading-relaxed">{projects[1].details?.[0]}</p>
               <div className="anim-reveal"><ProjectMeta project={projects[1]} /></div>
             </div>
             <div className="md:col-span-7 relative order-1 md:order-2 h-[60vh] md:h-[80vh] w-full overflow-hidden">
               <motion.div style={reduceMotion ? {} : { y: p2ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
-                <Image src="/media/projects/current-capital.png" unoptimized={true} alt="Current Capital" fill className="object-cover object-left-top" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/currentcapital/800/1200'; }} />
+                <Image src="/media/projects/satquery.png" unoptimized={true} alt="SatQuery AI" fill className="object-cover object-left-top" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/satquery/800/1200'; }} />
                 <div className="absolute inset-0 bg-[#121013]/20 mix-blend-color pointer-events-none" />
               </motion.div>
             </div>
           </div>
         )}
 
-        {/* Project 03: Health Assistant (Wide format with color grade transition) */}
+        {/* Project 03: Current Capital (Wide format with color grade transition) */}
         {projects[2] && (
           <div ref={p3Ref} className="flex flex-col relative w-full pt-12 md:pt-24">
             <div className="relative w-full aspect-[21/9] overflow-hidden mb-12">
@@ -178,13 +183,13 @@ export function Projects() {
                 style={reduceMotion ? {} : { filter: `grayscale(${p3Grayscale})`, y: p3ImgY }}
                 className="absolute inset-0 w-full h-[130%] -top-[15%]"
               >
-                <Image src="/media/projects/health-assistant.png" unoptimized={true} alt="Health Assistant" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/healthassistant/1600/900'; }} />
+                <Image src="/media/projects/current-capital.png" unoptimized={true} alt="Current Capital" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/currentcapital/1600/900'; }} />
                 <div className="absolute inset-0 bg-[#765D67]/20 mix-blend-color pointer-events-none" />
               </motion.div>
             </div>
             <div className="w-full max-w-3xl ml-auto border-t border-line pt-8 flex flex-col md:flex-row gap-8 justify-between">
               <div>
-                <h3 className="anim-reveal font-serif text-4xl text-foreground italic mb-4">Health Assistant</h3>
+                <h3 className="anim-reveal font-serif text-4xl text-foreground italic mb-4">Current Capital</h3>
                 <p className="anim-reveal font-sans text-base text-foreground-secondary leading-relaxed max-w-xl">{projects[2].description}</p>
               </div>
               <div className="anim-reveal min-w-[200px]">
@@ -194,17 +199,17 @@ export function Projects() {
           </div>
         )}
 
-        {/* Project 04: Hand Tracking (Interactive square scale) */}
+        {/* Project 04: Health Assistant (Interactive square scale) */}
         {projects[3] && (
           <div ref={p4Ref} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center relative w-full pt-12 md:pt-24 pb-24">
             <div className="relative aspect-square w-full overflow-hidden">
               <motion.div style={reduceMotion ? {} : { scale: p4Scale, y: p4ImgY }} className="absolute inset-0 w-full h-[130%] -top-[15%] origin-center">
-                <Image src="/media/projects/hand-tracking.png" unoptimized={true} alt="Hand Tracking" fill className="object-cover" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/handtracking/1000/1000'; }} />
+                <Image src="/media/projects/health-assistant.png" unoptimized={true} alt="Health Assistant" fill className="object-cover object-left-top" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/healthassistant/1000/1000'; }} />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#121013] via-transparent to-[#121013]/50 pointer-events-none" />
               </motion.div>
             </div>
             <div className="flex flex-col">
-              <h3 className="anim-reveal font-serif text-4xl text-foreground italic mb-6">Hand Tracking</h3>
+              <h3 className="anim-reveal font-serif text-4xl text-foreground italic mb-6">Health Assistant</h3>
               <p className="anim-reveal font-sans text-base md:text-lg text-foreground-secondary leading-relaxed mb-4">{projects[3].description}</p>
               <p className="anim-reveal font-sans text-sm text-foreground-secondary/70 leading-relaxed">{projects[3].details?.[0]}</p>
               <div className="anim-reveal"><ProjectMeta project={projects[3]} /></div>

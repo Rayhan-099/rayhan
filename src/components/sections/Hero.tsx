@@ -81,7 +81,7 @@ export function Hero() {
     <section 
       ref={containerRef}
       id="hero" 
-      className="relative w-full min-h-[100dvh] flex flex-col justify-end overflow-hidden"
+      className="relative w-full min-h-[100svh] flex flex-col justify-end overflow-hidden"
     >
       {/* 
         The global Three.js AtmosphericScene lives behind this component. 
@@ -92,16 +92,16 @@ export function Hero() {
       {/* Editorial Content */}
       <motion.div 
         style={{ opacity, y }}
-        className="relative z-20 w-full max-w-[1400px] mx-auto px-6 md:px-12 xl:px-20 pb-20 md:pb-32 flex flex-col justify-end h-full"
+        className="relative z-20 w-full max-w-[1400px] mx-auto px-6 md:px-12 xl:px-20 pb-24 md:pb-32 flex flex-col justify-end flex-1"
       >
         <div className="flex flex-col relative">
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-8 md:mb-12">
             <h1 className="font-serif text-[clamp(4rem,10vw,12rem)] font-light leading-[0.85] tracking-tight text-foreground flex flex-col items-start -ml-2 select-none">
-              <div className="overflow-hidden pb-4">
+              <div className="overflow-hidden pb-6">
                 <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-foreground">Rayhan</span>
               </div>
-              <div className="overflow-hidden pb-4 md:ml-24">
+              <div className="overflow-hidden pb-6 md:ml-24">
                 <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-foreground-secondary italic">Khan.</span>
               </div>
             </h1>

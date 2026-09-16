@@ -22,26 +22,6 @@
   --line: rgba(255, 255, 255, 0.05);
 }
 
-[data-theme="dawn"] {
-  /* Dawn (Light) Palette */
-  --background: #f2e7de; /* Warm parchment */
-  --background-elevated: #f6eee7; /* Warm cream */
-  --surface: #eadcd3;
-  --surface-glass: rgba(246, 238, 231, 0.7);
-  
-  --text-primary: #2d222f; /* Warm charcoal */
-  --text-secondary: #4b2138; /* Deep wine */
-  --text-muted: #6d3c52; /* Soft burgundy */
-  
-  --primary: #9e777f; /* Muted mauve */
-  --secondary: #d7b5b0; /* Dusty rose */
-  --tertiary: #facdc5; /* Pale blush */
-  
-  --accent: #6d3c52;
-  --accent-soft: rgba(109, 60, 82, 0.15);
-  --line: rgba(45, 34, 47, 0.1);
-}
-
 
 body {
   @apply bg-background text-foreground;

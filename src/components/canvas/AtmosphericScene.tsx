@@ -4,7 +4,6 @@ import { useMemo, useRef, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { PointMaterial, Points } from "@react-three/drei";
 import * as THREE from "three";
-import { useTheme } from "@/context/ThemeContext";
 import { useEnvironmentStore } from "@/store/environmentStore";
 
 function seededRandom(seed: number) {
@@ -28,8 +27,6 @@ interface StarFieldProps {
 
 function StarField({ count, size, color, speed, radiusOuter, radiusInner, layerIndex }: StarFieldProps) {
   const ref = useRef<THREE.Points>(null);
-  const { theme } = useTheme();
-  const isDawn = theme === "dawn";
 
   const points = useMemo(() => {
     const rand = seededRandom(42 + layerIndex); 
@@ -96,8 +93,8 @@ function StarField({ count, size, color, speed, radiusOuter, radiusInner, layerI
         size={size}
         sizeAttenuation={true}
         depthWrite={false}
-        blending={isDawn ? THREE.NormalBlending : THREE.AdditiveBlending}
-        opacity={isDawn ? 0.8 : 0.6}
+        blending={THREE.AdditiveBlending}
+        opacity={0.6}
       />
     </Points>
   );
@@ -140,31 +137,29 @@ function CinematicWorld({ children }: { children: React.ReactNode }) {
 }
 
 function Scene() {
-  const { theme } = useTheme();
-  const isDawn = theme === "dawn";
   const activeSection = useEnvironmentStore((state) => state.activeSection);
 
   // V20 Cinematic Colors
   // #765D67, #6D3C52, #4B2138, #1B0C1A, #2D222F, #FACDC5
-  const baseFogColor = isDawn ? "#fdfaf6" : "#171415"; 
+  const baseFogColor = "#171415"; 
   
   // Dynamic colors based on active section
   const fogColors: Record<string, string> = {
     hero: baseFogColor,
-    about: isDawn ? "#fdfaf6" : "#1B0C1A",
-    skills: isDawn ? "#fdfaf6" : "#1B0C1A",
-    projects: isDawn ? "#fdfaf6" : "#2D222F", // deeper for projects
+    about: "#1B0C1A",
+    skills: "#1B0C1A",
+    projects: "#2D222F", // deeper for projects
     experience: baseFogColor,
-    certifications: isDawn ? "#fdfaf6" : "#1B0C1A",
-    contact: isDawn ? "#FACDC5" : "#4B2138", // atmospheric climax
+    certifications: "#1B0C1A",
+    contact: "#4B2138", // atmospheric climax
   };
 
   const currentFogColor = fogColors[activeSection] || baseFogColor;
   const fogColorRef = useRef(new THREE.Color(currentFogColor));
 
-  const starColor1 = isDawn ? "#6D3C52" : "#765D67";
-  const starColor2 = isDawn ? "#4B2138" : "#6D3C52"; 
-  const starColor3 = isDawn ? "#2D222F" : "#FACDC5"; 
+  const starColor1 = "#765D67";
+  const starColor2 = "#6D3C52"; 
+  const starColor3 = "#FACDC5"; 
 
   const lightRef = useRef<THREE.DirectionalLight>(null);
   
@@ -179,7 +174,7 @@ function Scene() {
     if (lightRef.current) {
       lightRef.current.position.y = 10 - progress * 15;
       lightRef.current.position.x = 5 + progress * 10;
-      const intensity = isDawn ? 1.0 : 0.6;
+      const intensity = 0.6;
       lightRef.current.intensity = intensity - (Math.sin(progress * Math.PI) * 0.2);
     }
   });
@@ -189,21 +184,21 @@ function Scene() {
       {/* Background is removed to allow video underneath. Fog remains to blend objects out. */}
       <fog attach="fog" args={[fogColorRef.current, 5, 25]} />
       
-      <ambientLight intensity={isDawn ? 0.9 : 0.4} />
+      <ambientLight intensity={0.4} />
       <directionalLight 
         ref={lightRef}
         position={[5, 10, 5]} 
-        intensity={isDawn ? 1.0 : 0.6} 
-        color={isDawn ? "#ffffff" : "#FACDC5"} 
+        intensity={0.6} 
+        color="#FACDC5" 
       />
 
       <CinematicWorld>
         <mesh position={[0, -5, -15]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[120, 120]} />
           <meshBasicMaterial 
-            color={isDawn ? "#eae4de" : "#1B0C1A"} 
+            color="#1B0C1A" 
             transparent 
-            opacity={isDawn ? 0.8 : 0.95} 
+            opacity={0.95} 
             fog={true}
           />
         </mesh>
@@ -211,9 +206,9 @@ function Scene() {
         <mesh position={[0, -2, -12]}>
           <planeGeometry args={[50, 25]} />
           <meshBasicMaterial 
-            color={isDawn ? "#FACDC5" : "#6D3C52"} 
+            color="#6D3C52" 
             transparent 
-            opacity={isDawn ? 0.05 : 0.08} 
+            opacity={0.08} 
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
@@ -221,9 +216,9 @@ function Scene() {
         <mesh position={[-5, 2, -8]}>
           <planeGeometry args={[40, 20]} />
           <meshBasicMaterial 
-            color={isDawn ? "#6D3C52" : "#765D67"} 
+            color="#765D67" 
             transparent 
-            opacity={isDawn ? 0.04 : 0.06} 
+            opacity={0.06} 
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />

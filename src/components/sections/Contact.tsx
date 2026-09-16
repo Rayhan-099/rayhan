@@ -36,6 +36,20 @@ export function Contact() {
         />
         
         {/* The global WebGL scene handles the deep horizon visual here */}
+        
+        {/* Darkened Video Background for Finale */}
+        <div className="absolute inset-0 z-[-1] opacity-40 mix-blend-screen pointer-events-none overflow-hidden bg-black">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-[1.02]"
+            poster="/media/hero/v22-poster.jpg"
+          >
+            <source src="/media/hero/hero-video.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex-1 flex flex-col justify-center relative z-10">

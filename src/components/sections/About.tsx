@@ -42,7 +42,7 @@ export function About() {
       {/* Large background typography exiting viewport */}
       <motion.div 
         style={reduceMotion ? {} : { y: watermarkY }}
-        className="absolute top-0 left-0 w-full pt-10 flex justify-center text-[15vw] font-serif italic text-white/[0.02] whitespace-nowrap pointer-events-none select-none z-0"
+        className="absolute top-0 left-0 w-full pt-10 flex justify-center text-[15vw] font-serif italic text-white/[0.04] whitespace-nowrap pointer-events-none select-none z-0"
       >
         About
       </motion.div>
@@ -101,7 +101,7 @@ export function About() {
             </motion.h2>
 
             <motion.div 
-              className="text-[#a3959c] font-sans text-base md:text-lg leading-relaxed space-y-6 max-w-prose"
+              className="text-foreground-secondary font-sans text-base md:text-lg leading-relaxed space-y-6 max-w-prose"
               initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

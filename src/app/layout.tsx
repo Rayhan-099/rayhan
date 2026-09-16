@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
-import { ThemeProvider } from "@/context/ThemeContext";
 
 const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ['300', '400', '500', '600', '700'], variable: "--font-serif", style: ['normal', 'italic'] });
 const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
@@ -27,11 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.variable} ${serif.variable} font-sans antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary`}>
-        <ThemeProvider>
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
-        </ThemeProvider>
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
