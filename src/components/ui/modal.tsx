@@ -93,13 +93,13 @@ export type UseModalOptions = {
 };
 
 export type ModalOverlayProps = {
-  ref: React.RefObject<HTMLDivElement | null>;
+  ref: React.RefObject<HTMLDivElement>;
   onPointerDown: (event: React.PointerEvent) => void;
   onClick: (event: React.MouseEvent) => void;
 };
 
 export type ModalPanelProps = {
-  ref: React.RefObject<HTMLDivElement | null>;
+  ref: React.RefObject<HTMLDivElement>;
   role: "dialog";
   "aria-modal": true;
   "aria-labelledby": string;
