@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { certifications } from "@/content/certifications";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useSectionTracker } from "@/hooks/useSectionTracker";
+import { Modal } from "@/components/ui/modal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -90,83 +91,67 @@ export function Certifications() {
         </div>
       </section>
 
-      {/* Full Archive Overlay */}
-      <AnimatePresence>
-        {isArchiveOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
-            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-xl overflow-y-auto overscroll-contain touch-pan-y"
-          >
-            <div className="min-h-screen py-24 px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto relative z-10">
-              
-              <div className="flex justify-between items-end mb-16 border-b border-accent/10 pb-8 sticky top-0 bg-background/90 backdrop-blur-md pt-8 z-20">
-                <div>
-                  <span className="text-foreground-secondary font-sans text-[11px] uppercase tracking-[0.4em] block mb-4">
-                    Complete Log
+      {/* Full Archive Overlay using robust 21st.dev Modal */}
+      <Modal
+        open={isArchiveOpen}
+        onClose={() => setIsArchiveOpen(false)}
+        title={
+          <span className="font-serif text-3xl md:text-5xl text-foreground">
+            All Certifications
+          </span>
+        }
+        description="Complete log of completed courses, degrees, and professional certifications."
+        maxWidth={1200}
+        maxHeight="90vh"
+        className="bg-background/95 backdrop-blur-xl border-accent/20"
+      >
+        <div className="flex flex-col mt-4">
+          <div className="grid grid-cols-12 gap-4 py-4 border-b border-accent/10 text-foreground-secondary font-sans text-[11px] uppercase tracking-widest mb-4 hidden md:grid">
+            <div className="col-span-2">Issuer</div>
+            <div className="col-span-5">Credential</div>
+            <div className="col-span-3">ID Number</div>
+            <div className="col-span-1">Year</div>
+            <div className="col-span-1 text-right">Action</div>
+          </div>
+
+          {certifications.map((cert) => (
+            <div key={cert.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center py-6 border-b border-accent/5 hover:border-accent/20 hover:bg-accent/[0.02] transition-colors group px-4 -mx-4">
+              <div className="md:col-span-2">
+                <span className="text-foreground-secondary font-sans text-[11px] tracking-widest uppercase">{cert.issuer}</span>
+              </div>
+              <div className="md:col-span-5">
+                <h3 className="font-serif text-xl text-foreground group-hover:text-accent transition-colors">{cert.name}</h3>
+              </div>
+              <div className="md:col-span-3">
+                <span className="text-muted font-mono text-[11px] tracking-widest break-all select-all">{cert.id}</span>
+              </div>
+              <div className="md:col-span-1">
+                <span className="text-foreground-secondary font-sans text-xs">{cert.date}</span>
+              </div>
+              <div className="md:col-span-1 md:text-right mt-4 md:mt-0">
+                {cert.link !== "#" ? (
+                  <a 
+                    href={cert.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-sans tracking-widest uppercase text-accent hover:text-foreground transition-colors inline-block border-b border-transparent hover:border-[var(--text-primary)] pb-1"
+                  >
+                    Verify ↗
+                  </a>
+                ) : (
+                  <span className="text-[10px] font-sans tracking-widest uppercase text-muted">
+                    Internal
                   </span>
-                  <h2 className="font-serif text-5xl md:text-6xl text-foreground">All Certifications</h2>
-                </div>
-                <button 
-                  onClick={() => setIsArchiveOpen(false)}
-                  className="text-[11px] font-sans uppercase tracking-[0.2em] text-accent hover:text-foreground transition-colors pb-2 border-b border-transparent hover:border-[var(--text-primary)]"
-                >
-                  Close
-                </button>
-              </div>
-
-              <div className="flex flex-col">
-                <div className="grid grid-cols-12 gap-4 py-4 border-b border-accent/10 text-foreground-secondary font-sans text-[11px] uppercase tracking-widest mb-4 hidden md:grid">
-                  <div className="col-span-2">Issuer</div>
-                  <div className="col-span-5">Credential</div>
-                  <div className="col-span-3">ID Number</div>
-                  <div className="col-span-1">Year</div>
-                  <div className="col-span-1 text-right">Action</div>
-                </div>
-
-                {certifications.map((cert) => (
-                  <div key={cert.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center py-6 border-b border-accent/5 hover:border-accent/20 hover:bg-accent/[0.02] transition-colors group px-4 -mx-4">
-                    <div className="md:col-span-2">
-                      <span className="text-foreground-secondary font-sans text-[11px] tracking-widest uppercase">{cert.issuer}</span>
-                    </div>
-                    <div className="md:col-span-5">
-                      <h3 className="font-serif text-xl text-foreground group-hover:text-accent transition-colors">{cert.name}</h3>
-                    </div>
-                    <div className="md:col-span-3">
-                      <span className="text-muted font-mono text-[11px] tracking-widest break-all select-all">{cert.id}</span>
-                    </div>
-                    <div className="md:col-span-1">
-                      <span className="text-foreground-secondary font-sans text-xs">{cert.date}</span>
-                    </div>
-                    <div className="md:col-span-1 md:text-right mt-4 md:mt-0">
-                      {cert.link !== "#" ? (
-                        <a 
-                          href={cert.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-[10px] font-sans tracking-widest uppercase text-accent hover:text-foreground transition-colors inline-block border-b border-transparent hover:border-[var(--text-primary)] pb-1"
-                        >
-                          Verify ↗
-                        </a>
-                      ) : (
-                        <span className="text-[10px] font-sans tracking-widest uppercase text-muted">
-                          Internal
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="mt-24 text-center">
-                <span className="text-foreground-secondary font-sans text-[11px] tracking-widest uppercase">End of Archive</span>
+                )}
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+          
+          <div className="mt-24 mb-12 text-center">
+            <span className="text-foreground-secondary font-sans text-[11px] tracking-widest uppercase">End of Archive</span>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

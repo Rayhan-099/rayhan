@@ -25,26 +25,17 @@ export function Contact() {
       className="relative min-h-[100dvh] flex flex-col justify-between py-16 md:py-24 overflow-hidden z-10"
     >
       {/* Cinematic Final Environment */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent opacity-80" />
         
         {/* Soft horizon glow */}
         <motion.div 
           animate={{ opacity: [0.6, 0.9, 0.6] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-0 w-full h-[90vh] bg-gradient-to-t from-primary/30 via-primary/10 to-transparent mix-blend-overlay" 
+          className="absolute bottom-0 left-0 w-full h-[90vh] bg-gradient-to-t from-primary/20 via-transparent to-transparent mix-blend-overlay" 
         />
         
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="object-cover w-full h-full scale-[1.05] transform-gpu opacity-20 mix-blend-screen"
-        >
-          <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-transparent" />
+        {/* The global WebGL scene handles the deep horizon visual here */}
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 w-full flex-1 flex flex-col justify-center relative z-10">

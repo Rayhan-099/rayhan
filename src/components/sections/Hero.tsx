@@ -18,11 +18,10 @@ export function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.2]);
 
   useEffect(() => {
-    // Only run animation after video loads or after a short delay
-    const timer = setTimeout(() => setIsVideoLoaded(true), 2000);
+    // Run animation immediately (simulating video load delay)
+    const timer = setTimeout(() => setIsVideoLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -84,34 +83,10 @@ export function Hero() {
       id="hero" 
       className="relative w-full min-h-[100dvh] flex flex-col justify-end overflow-hidden"
     >
-      {/* Cinematic Environment Video */}
-      <motion.div 
-        style={{ scale, opacity: videoOpacity }} 
-        className="hero-video-wrap absolute inset-0 z-0 overflow-hidden"
-      >
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          poster="/media/atmosphere/hero-poster.png"
-          className="object-cover w-full h-full scale-[1.02] transform-gpu"
-          onCanPlay={() => setIsVideoLoaded(true)}
-        >
-          <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
-        </video>
-        {/* Soft atmospheric gradient masks */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
-        
-        {/* Environmental Depth Planes */}
-        <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-background to-transparent mix-blend-multiply opacity-50" />
-        <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-primary/10 to-transparent mix-blend-overlay opacity-30" />
-        
-        {/* Color grading tint */}
-        <div className="absolute inset-0 bg-primary/5 mix-blend-color" />
-      </motion.div>
-
+      {/* 
+        The global Three.js AtmosphericScene lives behind this component. 
+        We use a mask that fades out on load for a cinematic entrance.
+      */}
       <div className="hero-env-mask absolute inset-0 z-10 bg-background pointer-events-none" />
 
       {/* Editorial Content */}
