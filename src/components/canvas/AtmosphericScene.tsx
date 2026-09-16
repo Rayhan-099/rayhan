@@ -186,7 +186,7 @@ function Scene() {
 
   return (
     <>
-      <color attach="background" args={[fogColorRef.current]} />
+      {/* Background is removed to allow video underneath. Fog remains to blend objects out. */}
       <fog attach="fog" args={[fogColorRef.current, 5, 25]} />
       
       <ambientLight intensity={isDawn ? 0.9 : 0.4} />
@@ -251,7 +251,7 @@ export function AtmosphericScene() {
       <Canvas 
         camera={{ position: [0, 0, 8], fov: 50 }}
         dpr={[1, 2]}
-        gl={{ antialias: false, alpha: false }}
+        gl={{ antialias: false, alpha: true }}
       >
         <Scene />
       </Canvas>

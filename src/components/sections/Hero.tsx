@@ -87,7 +87,7 @@ export function Hero() {
         The global Three.js AtmosphericScene lives behind this component. 
         We use a mask that fades out on load for a cinematic entrance.
       */}
-      <div className="hero-env-mask absolute inset-0 z-10 bg-background pointer-events-none" />
+      <div className="hero-env-mask absolute inset-0 z-20 bg-background pointer-events-none" />
 
       {/* Editorial Content */}
       <motion.div 

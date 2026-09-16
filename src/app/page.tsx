@@ -9,10 +9,12 @@ import { Education } from "@/components/sections/Education";
 import { Certifications } from "@/components/sections/Certifications";
 import { Contact } from "@/components/sections/Contact";
 import { AtmosphericScene } from "@/components/canvas/AtmosphericScene";
+import { HeroVideo } from "@/components/canvas/HeroVideo";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <HeroVideo />
       <AtmosphericScene />
       <Navigation />
       
