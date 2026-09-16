@@ -6,8 +6,8 @@ import { createTimeline } from "animejs";
 
 export function HeroVideo() {
   const { scrollY } = useScroll();
-  // Hero section is 100vh. Fade out by 80vh.
-  const videoOpacity = useTransform(scrollY, [0, 800], [1, 0]);
+  // Hero section is 100vh. Fade out slowly as user scrolls into the dark content.
+  const videoOpacity = useTransform(scrollY, [0, 900], [1, 0]);
   const scale = useTransform(scrollY, [0, 1000], [1, 1.05]);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const reduceMotion = useReducedMotion();
@@ -44,16 +44,17 @@ export function HeroVideo() {
       >
         <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
       </video>
-      {/* Soft atmospheric gradient masks */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent" />
+      
+      {/* Soft atmospheric gradient masks for dark layout transition */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-transparent" />
       
       {/* Environmental Depth Planes */}
-      <div className="absolute bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-background to-transparent mix-blend-multiply opacity-50" />
-      <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-primary/10 to-transparent mix-blend-overlay opacity-30" />
+      <div className="absolute bottom-0 left-0 w-full h-[60vh] bg-gradient-to-t from-background to-transparent mix-blend-multiply opacity-70" />
+      <div className="absolute bottom-0 left-0 w-full h-[80vh] bg-gradient-to-t from-[#6D3C52]/20 to-transparent mix-blend-overlay opacity-50" />
       
       {/* Color grading tint */}
-      <div className="absolute inset-0 bg-primary/5 mix-blend-color" />
+      <div className="absolute inset-0 bg-[#2D222F]/10 mix-blend-color" />
     </motion.div>
   );
 }

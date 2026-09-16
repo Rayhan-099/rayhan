@@ -16,7 +16,7 @@ export const projects = [
   },
   {
     id: "satquery-ai",
-    title: "SatQuery AI – Multimodal Remote Sensing Assistant",
+    title: "SatQuery AI",
     description: "Engineered a multimodal EO assistant using Next.js and FastAPI for natural-language satellite analysis across NDVI, NDWI, and SAR.",
     details: [
       "Implemented raster analysis with Rasterio and NumPy, generating spatial statistics and validating numerical AI claims.",

@@ -167,9 +167,31 @@ export function Projects() {
               <div className="anim-reveal"><ProjectMeta project={projects[1]} /></div>
             </div>
             <div className="md:col-span-7 relative order-1 md:order-2 h-[60vh] md:h-[80vh] w-full overflow-hidden">
-              <motion.div style={reduceMotion ? {} : { y: p2ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
-                <Image src="/media/projects/satquery.png" unoptimized={true} alt="SatQuery AI" fill className="object-cover object-left-top" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/satquery/800/1200'; }} />
+              <motion.div style={reduceMotion ? {} : { y: p2ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%] bg-[#121013] border border-line flex items-center justify-center overflow-hidden">
+                
+                {/* Abstract Data Viz for SatQuery */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                  {/* Grid */}
+                  <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(#765D67 1px, transparent 1px), linear-gradient(90deg, #765D67 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+                  {/* Radar Sweep */}
+                  <motion.div 
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-1/2 left-1/2 w-[150%] aspect-square -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(118,93,103,0.4)_360deg)] rounded-full" 
+                  />
+                  {/* Topographic Rings */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] aspect-square rounded-full border border-[#765D67]/30" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] aspect-square rounded-full border border-[#765D67]/40" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20%] aspect-square rounded-full border border-[#765D67]/50" />
+                </div>
+                
+                <div className="z-10 font-mono text-[10px] text-foreground-secondary/50 uppercase tracking-[0.3em] flex flex-col items-center gap-2">
+                  <span>[ Spatial Analysis Active ]</span>
+                  <span>NDVI • NDWI • SAR</span>
+                </div>
+                
                 <div className="absolute inset-0 bg-[#121013]/20 mix-blend-color pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
               </motion.div>
             </div>
           </div>

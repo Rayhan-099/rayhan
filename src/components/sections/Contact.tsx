@@ -38,17 +38,24 @@ export function Contact() {
         {/* The global WebGL scene handles the deep horizon visual here */}
         
         {/* Darkened Video Background for Finale */}
-        <div className="absolute inset-0 z-[-1] opacity-40 mix-blend-screen pointer-events-none overflow-hidden bg-black">
+        <div className="absolute inset-0 z-[-1] overflow-hidden">
           <video
             autoPlay
             loop
             muted
             playsInline
             className="w-full h-full object-cover scale-[1.02]"
-            poster="/media/hero/v22-poster.jpg"
+            poster="/media/atmosphere/hero-poster.png"
           >
-            <source src="/media/hero/hero-video.mp4" type="video/mp4" />
+            <source src="/media/atmosphere/hero-video.mp4" type="video/mp4" />
           </video>
+          
+          {/* Atmospheric treatment: strong tasteful darkness, reduced saturation */}
+          <div className="absolute inset-0 bg-black/70 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-background/80" />
+          <div className="absolute inset-0 bg-[#4B2138]/20 mix-blend-overlay" />
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
       </div>
 

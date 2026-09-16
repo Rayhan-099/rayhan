@@ -193,16 +193,6 @@ function Scene() {
       />
 
       <CinematicWorld>
-        <mesh position={[0, -5, -15]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[120, 120]} />
-          <meshBasicMaterial 
-            color="#1B0C1A" 
-            transparent 
-            opacity={0.95} 
-            fog={true}
-          />
-        </mesh>
-        
         <mesh position={[0, -2, -12]}>
           <planeGeometry args={[50, 25]} />
           <meshBasicMaterial 

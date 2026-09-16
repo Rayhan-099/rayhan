@@ -96,22 +96,22 @@ export function Hero() {
       >
         <div className="flex flex-col relative">
           
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-8 md:mb-12">
-            <h1 className="font-serif text-[clamp(4rem,10vw,12rem)] font-light leading-[0.85] tracking-tight text-foreground flex flex-col items-start -ml-2 select-none">
-              <div className="overflow-hidden pb-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-6 md:mb-8">
+            <h1 className="font-serif text-[clamp(4.5rem,11vw,13rem)] font-light leading-[0.82] tracking-tight text-foreground flex flex-col items-start -ml-2 select-none">
+              <div className="overflow-hidden pb-4 md:pb-6">
                 <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-foreground">Rayhan</span>
               </div>
-              <div className="overflow-hidden pb-6 md:ml-24">
+              <div className="overflow-hidden pb-4 md:pb-6 md:ml-24">
                 <span className="hero-name-word inline-block origin-bottom-left opacity-0 text-foreground-secondary italic">Khan.</span>
               </div>
             </h1>
           </div>
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 relative pt-8 md:pt-12 border-t border-line">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 relative pt-6 md:pt-8">
             <div className="flex flex-col gap-6 max-w-xl relative">
               {/* Subtle text glow / haze */}
               <div className="absolute -inset-10 bg-background/50 blur-3xl rounded-full z-0 pointer-events-none" />
-              <h2 className="hero-role font-sans text-xl md:text-2xl text-foreground font-medium tracking-wide opacity-0 uppercase relative z-10">
+              <h2 className="hero-role font-sans text-lg md:text-xl text-foreground-secondary font-medium tracking-wide opacity-0 uppercase relative z-10">
                 AI & Full Stack Engineer
               </h2>
             </div>
