@@ -86,7 +86,7 @@ export function Skills() {
                     >
                       {item.icon && (
                         <img 
-                          src={`https://cdn.simpleicons.org/${item.icon}/765D67/FACDC5`} 
+                          src={item.icon.startsWith('/') ? item.icon : `https://cdn.simpleicons.org/${item.icon}/765D67/FACDC5`} 
                           alt={item.name}
                           className="w-4 h-4 opacity-70 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all duration-300"
                         />
