@@ -1,3 +1,13 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | Rayhan Khan',
+  description: 'Terms of service for Rayhan Khan\'s portfolio.',
+  alternates: {
+    canonical: '/terms',
+  },
+};
+
 export default function TermsPage() {
   return (
     <main className="min-h-screen pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto">

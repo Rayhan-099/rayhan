@@ -12,8 +12,33 @@ import { AtmosphericScene } from "@/components/canvas/AtmosphericScene";
 import { HeroVideo } from "@/components/canvas/HeroVideo";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Rayhan Khan",
+        "url": "https://rayhank.vercel.app",
+        "jobTitle": ["Software Engineer", "AI Engineer", "Full-Stack Developer"],
+        "sameAs": [
+          "https://github.com/Rayhan-099",
+          "https://www.linkedin.com/in/rayhan-khan-081851340/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Rayhan Khan Portfolio",
+        "url": "https://rayhank.vercel.app"
+      }
+    ]
+  };
+
   return (
     <main className="relative min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroVideo />
       <AtmosphericScene />
       <Navigation />

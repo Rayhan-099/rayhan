@@ -1,3 +1,13 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Rayhan Khan',
+  description: 'Privacy policy for Rayhan Khan\'s portfolio.',
+  alternates: {
+    canonical: '/privacy',
+  },
+};
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto">

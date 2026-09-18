@@ -147,7 +147,7 @@ export function Projects() {
               className="absolute inset-0 w-full h-[70vh] md:h-[90vh] origin-center overflow-hidden z-0"
             >
               <motion.div style={reduceMotion ? {} : { scale: p1Scale, y: p1ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
-                <Image src="/media/projects/lumine.png" unoptimized={true} alt="Lumine" fill className="object-cover" sizes="100vw" />
+                <Image src="/media/projects/lumine.png" alt="Lumine - Real-time AI environment tracking platform interface." fill className="object-cover" sizes="(max-width: 768px) 100vw, 90vw" />
                 <div className="absolute inset-0 bg-background/20 mix-blend-color pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
               </motion.div>
@@ -214,7 +214,7 @@ export function Projects() {
                 style={reduceMotion ? {} : { filter: `grayscale(${p3Grayscale})`, y: p3ImgY }}
                 className="absolute inset-0 w-full h-[130%] -top-[15%]"
               >
-                <Image src="/media/projects/current-capital.png" unoptimized={true} alt="Current Capital" fill className="object-cover" sizes="100vw" />
+                <Image src="/media/projects/current-capital.png" alt="Current Capital - Finance dashboard showing monthly spending, budget progress, and transactions." fill className="object-cover" sizes="(max-width: 768px) 100vw, 80vw" />
                 <div className="absolute inset-0 bg-[#765D67]/20 mix-blend-color pointer-events-none" />
               </motion.div>
             </div>
@@ -235,7 +235,7 @@ export function Projects() {
           <div ref={p4Ref} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center relative w-full pt-12 md:pt-24 pb-24">
             <div className="relative aspect-square w-full overflow-hidden">
               <motion.div style={reduceMotion ? {} : { scale: p4Scale, y: p4ImgY }} className="absolute inset-0 w-full h-[130%] -top-[15%] origin-center">
-                <Image src="/media/projects/health-assistant.png" unoptimized={true} alt="Health Assistant" fill className="object-cover object-left-top" sizes="50vw" />
+                <Image src="/media/projects/health-assistant.png" alt="Health Assistant - Interactive medical analysis platform interface." fill className="object-cover object-left-top" sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#121013] via-transparent to-[#121013]/50 pointer-events-none" />
               </motion.div>
             </div>

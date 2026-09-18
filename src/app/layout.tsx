@@ -7,9 +7,35 @@ const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ['300', '400', '5
 const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Rayhan Khan | AI / Full-Stack Engineer",
+  metadataBase: new URL("https://rayhank.vercel.app"),
+  title: "Rayhan Khan — Software Engineer & AI Engineer",
   description: "Portfolio of Rayhan Khan, a Software Engineer specializing in AI/ML, Backend, and Full-Stack Development.",
   keywords: ["Software Engineer", "AI/ML", "React", "Python", "Rayhan Khan", "Full-Stack Developer"],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Rayhan Khan — Software Engineer & AI Engineer",
+    description: "Portfolio of Rayhan Khan, a Software Engineer specializing in AI/ML, Backend, and Full-Stack Development.",
+    url: "https://rayhank.vercel.app",
+    siteName: "Rayhan Khan Portfolio",
+    images: [
+      {
+        url: "/media/atmosphere/hero-poster.png",
+        width: 1920,
+        height: 1080,
+        alt: "Rayhan Khan — Software Engineer & AI Engineer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rayhan Khan — Software Engineer & AI Engineer",
+    description: "Portfolio of Rayhan Khan, a Software Engineer specializing in AI/ML, Backend, and Full-Stack Development.",
+    images: ["/media/atmosphere/hero-poster.png"],
+  },
 };
 
 export const viewport: Viewport = {
