@@ -107,15 +107,9 @@ export function About() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p>
-                Software Engineer focused on full-stack development and Machine Learning.
-              </p>
-              <p>
-                Pursuing a Bachelor of Technology in Computer Science and Engineering at Dr. A.P.J. Abdul Kalam Technical University.
-              </p>
-              <p>
-                Technical work spans Python, React, backend systems, Machine Learning, Generative AI, Computer Vision, and cloud technologies.
-              </p>
+              {profile.about.split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </motion.div>
 
           </div>

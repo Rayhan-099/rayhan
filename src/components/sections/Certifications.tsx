@@ -35,6 +35,9 @@ export function Certifications() {
               <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[0.9] tracking-tight">
                 Certifications.
               </h2>
+              <p className="font-sans text-sm md:text-base text-foreground-secondary mt-6 max-w-xl leading-relaxed">
+                Continued learning across data science, MLOps, and Agentic AI.
+              </p>
             </div>
             
             <div className="flex flex-col items-start md:items-end gap-6 max-w-sm text-left md:text-right">

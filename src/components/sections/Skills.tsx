@@ -48,6 +48,9 @@ export function Skills() {
           <h2 className="font-serif text-5xl md:text-7xl text-foreground leading-[1] tracking-tight italic">
             Skills
           </h2>
+          <p className="font-sans text-sm md:text-base text-foreground-secondary mt-4 max-w-xl leading-relaxed">
+            Technologies and frameworks utilized across full-stack engineering and machine learning.
+          </p>
         </motion.div>
 
         <motion.div 

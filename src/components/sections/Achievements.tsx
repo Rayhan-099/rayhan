@@ -34,6 +34,12 @@ export function Achievements() {
           >
             Achievements.
           </motion.h2>
+          <motion.p
+            variants={fadeUp} custom={0.1}
+            className="font-sans text-sm md:text-base text-foreground-secondary mt-6 max-w-xl leading-relaxed"
+          >
+            Collaborative engineering experiences, hackathons, and competitive technical challenges.
+          </motion.p>
         </motion.div>
 
         <div className="flex flex-col gap-16">

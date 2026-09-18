@@ -34,6 +34,12 @@ export function Education() {
           >
             Education.
           </motion.h2>
+          <motion.p
+            variants={fadeUp} custom={0.1}
+            className="font-sans text-sm md:text-base text-foreground-secondary mt-6 max-w-xl leading-relaxed"
+          >
+            Academic background and formal computer science training.
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">

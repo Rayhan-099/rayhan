@@ -50,6 +50,9 @@ export function Experience() {
           <h2 className="font-serif text-5xl md:text-7xl text-foreground leading-[1] tracking-tight italic">
             Experience
           </h2>
+          <p className="font-sans text-sm md:text-base text-foreground-secondary mt-2 max-w-xl leading-relaxed">
+            Professional roles focused on data-driven application development and engineering practical AI solutions.
+          </p>
         </motion.div>
 
         {/* Chronology List */}

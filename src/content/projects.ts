@@ -4,10 +4,10 @@ export const projects = [
     title: "Lumine – AI-Powered Skin Intelligence",
     date: "July 2026",
     technologies: ["React", "FastAPI", "PostgreSQL", "Hugging Face", "DINOv2", "Google Gemini"],
-    description: "Developed a full-stack AI platform using React and FastAPI, integrating DINOv2 to classify 31 visual skin conditions. Engineered a PostgreSQL backend with JWT authentication to manage history, track trends, and enforce data privacy.",
+    description: "Engineered a full-stack AI platform to classify visual skin conditions, mapping image inputs to diagnostic insight. Built with a React frontend and a resilient PostgreSQL backend to securely manage user history, track trends, and enforce data privacy.",
     details: [
-      "Integrated Google Gemini and Hugging Face APIs for personalized insights and a context-aware assistant using history.",
-      "Deployed on Vercel and Render with API rate limiting, secure image validation, and 40+ automated Pytest tests."
+      "Integrated DINOv2 alongside Google Gemini and Hugging Face APIs to build a context-aware assistant capable of providing personalized, history-informed insights.",
+      "Developed a robust API using FastAPI, deployed across Vercel and Render with strict rate limiting, secure image validation, and comprehensive automated testing via Pytest."
     ],
     links: {
       live: "https://lumineai.vercel.app/",
@@ -17,11 +17,11 @@ export const projects = [
   {
     id: "satquery-ai",
     title: "SatQuery AI",
-    description: "Engineered a multimodal EO assistant using Next.js and FastAPI for natural-language satellite analysis across NDVI, NDWI, and SAR.",
+    description: "Developed a multimodal Earth Observation assistant that translates natural-language queries into deterministic remote sensing analysis.",
     details: [
-      "Implemented raster analysis with Rasterio and NumPy, generating spatial statistics and validating numerical AI claims.",
-      "Designed query orchestration mapping natural-language intent to NDVI, NDWI, and Sentinel-1 SAR analytical tools.",
-      "Validated 7/7 curated benchmark cases spanning NDVI, NDWI, SAR, unsupported queries, and evidence-grounded responses."
+      "Architected an orchestration layer mapping human intent directly to analytical tools for NDVI, NDWI, and Sentinel-1 SAR processing.",
+      "Implemented robust raster analysis using Rasterio and NumPy, dynamically generating spatial statistics and validating numerical claims against the source imagery.",
+      "Demonstrated consistent accuracy across curated benchmark cases, strictly grounding the AI responses in verifiable geospatial evidence."
     ],
     technologies: ["Next.js", "FastAPI", "PyTorch", "Rasterio"],
     links: {
@@ -35,11 +35,11 @@ export const projects = [
     title: "Current Capital – Finance Manager",
     date: "February 2026",
     technologies: ["React", "Node.js", "Express", "Tailwind CSS", "Gemini AI", "Context API"],
-    description: "Built a full-stack personal finance web app for automated expense tracking and dynamic envelope budgeting. Engineered a low-latency REST API with Node.js and Express, protected by stateless JWT authentication.",
+    description: "Architected a full-stack personal finance application addressing the problem of manual expense tracking through dynamic envelope budgeting and automated categorization.",
     details: [
-      "Enabled real-time financial analytics using custom Recharts to render interactive data visualizations.",
-      "Designed a responsive, glassmorphism-themed frontend architecture using React, Context API, and Tailwind CSS.",
-      "Integrated Google Gemini Vision AI to automatically extract and categorize transaction data from receipt images."
+      "Engineered a low-latency Node.js and Express REST API, secured by stateless JWT authentication, to reliably serve user financial data.",
+      "Enabled real-time financial analytics by integrating customized Recharts into a responsive, glassmorphism-themed React interface.",
+      "Integrated Google Gemini Vision AI to parse receipt images and automatically extract and categorize transaction data."
     ],
     links: {
       live: "https://finance-manager-zeta.vercel.app/",
@@ -51,9 +51,10 @@ export const projects = [
     title: "Health Assistant Platform",
     date: "September 2025",
     technologies: ["React", "Supabase", "Medical APIs"],
-    description: "Led a team to build a full-stack health platform, clearing the SIH 2025 internal round. Architected a fault-tolerant Supabase backend with medical APIs, achieving <250ms response times.",
+    description: "Led the collaborative development of a comprehensive healthcare platform to clear the Smart India Hackathon 2025 internal selection round under a strict 48-hour deadline.",
     details: [
-      "Engineered 5+ React modules and a real-time medical reminder system with >95% reliability."
+      "Architected a fault-tolerant Supabase backend integrated with specialized medical APIs, consistently achieving <250ms response times.",
+      "Engineered a scalable React frontend comprising multiple independent modules and a highly reliable real-time medical reminder system."
     ],
     links: {
       live: "https://health-assistant-azure.vercel.app/",

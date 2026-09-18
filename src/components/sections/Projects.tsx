@@ -103,7 +103,7 @@ export function Projects() {
   const p3ImgY = useTransform(p3Scroll, [0, 1], ["-15%", "15%"]);
   useProjectReveal(p3Ref, 300);
 
-  // Project 4 (Hand Tracking) Animations
+  // Project 4 Animations
   const p4Ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress: p4Scroll } = useScroll({ target: p4Ref, offset: ["start end", "end start"] });
   const p4Scale = useTransform(p4Scroll, [0, 1], [0.95, 1.05]);
@@ -126,6 +126,15 @@ export function Projects() {
         >
           Projects
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="font-sans text-sm md:text-base text-foreground-secondary mt-6 max-w-xl leading-relaxed"
+        >
+          A selection of engineered systems spanning computer vision, full-stack architecture, and multimodal analysis.
+        </motion.p>
       </div>
 
       <div className="flex flex-col gap-16 md:gap-32 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
@@ -138,7 +147,7 @@ export function Projects() {
               className="absolute inset-0 w-full h-[70vh] md:h-[90vh] origin-center overflow-hidden z-0"
             >
               <motion.div style={reduceMotion ? {} : { scale: p1Scale, y: p1ImgY }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
-                <Image src="/media/projects/lumine.png" unoptimized={true} alt="Lumine" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/lumine/1600/1000'; }} />
+                <Image src="/media/projects/lumine.png" unoptimized={true} alt="Lumine" fill className="object-cover" sizes="100vw" />
                 <div className="absolute inset-0 bg-background/20 mix-blend-color pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
               </motion.div>
@@ -205,7 +214,7 @@ export function Projects() {
                 style={reduceMotion ? {} : { filter: `grayscale(${p3Grayscale})`, y: p3ImgY }}
                 className="absolute inset-0 w-full h-[130%] -top-[15%]"
               >
-                <Image src="/media/projects/current-capital.png" unoptimized={true} alt="Current Capital" fill className="object-cover" sizes="100vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/currentcapital/1600/900'; }} />
+                <Image src="/media/projects/current-capital.png" unoptimized={true} alt="Current Capital" fill className="object-cover" sizes="100vw" />
                 <div className="absolute inset-0 bg-[#765D67]/20 mix-blend-color pointer-events-none" />
               </motion.div>
             </div>
@@ -226,7 +235,7 @@ export function Projects() {
           <div ref={p4Ref} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center relative w-full pt-12 md:pt-24 pb-24">
             <div className="relative aspect-square w-full overflow-hidden">
               <motion.div style={reduceMotion ? {} : { scale: p4Scale, y: p4ImgY }} className="absolute inset-0 w-full h-[130%] -top-[15%] origin-center">
-                <Image src="/media/projects/health-assistant.png" unoptimized={true} alt="Health Assistant" fill className="object-cover object-left-top" sizes="50vw" onError={(e) => { e.currentTarget.src = 'https://picsum.photos/seed/healthassistant/1000/1000'; }} />
+                <Image src="/media/projects/health-assistant.png" unoptimized={true} alt="Health Assistant" fill className="object-cover object-left-top" sizes="50vw" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#121013] via-transparent to-[#121013]/50 pointer-events-none" />
               </motion.div>
             </div>
