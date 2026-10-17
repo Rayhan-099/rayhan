@@ -54,3 +54,5 @@ graphify-out/
 .references/
 _old-portfolio-reference/
 *.jpeg
+.shannon/
+.playwright/

@@ -149,9 +149,9 @@ export function Contact() {
           <a href="/privacy" className="hover:text-foreground transition-colors">Privacy</a>
           <a href="/terms" className="hover:text-foreground transition-colors">Terms</a>
           <a href={`mailto:${profile.email}`} className="hover:text-foreground transition-colors text-primary">Email</a>
-          <a href={profile.social.github} target="_blank" className="hover:text-foreground transition-colors">GitHub</a>
-          <a href={profile.social.linkedin} target="_blank" className="hover:text-foreground transition-colors">LinkedIn</a>
-          <a href="/resume.pdf" target="_blank" className="hover:text-foreground transition-colors">Resume</a>
+          <a href={profile.social.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+          <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Resume</a>
         </div>
       </motion.div>
     </section>

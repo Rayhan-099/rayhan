@@ -1,5 +1,17 @@
 export const experience = [
   {
+    id: "bcg-data-science",
+    role: "Data Science Job Simulation",
+    company: "BCG",
+    date: "October 2026",
+    location: "Remote",
+    description: [
+      "Analyzed customer churn for XYZ Analytics, identifying key data requirements and developing a strategic investigation approach.",
+      "Performed data analysis using Python, Pandas, and NumPy, applying visualizations to uncover meaningful trends.",
+      "Built and optimized a Random Forest model achieving 50% recall for churn prediction, translating findings into actionable recommendations."
+    ]
+  },
+  {
     id: "synk-ai",
     role: "Artificial Intelligence Intern",
     company: "SYNK",
