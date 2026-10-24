@@ -1,0 +1,60 @@
+@import "@fontsource/plus-jakarta-sans/300.css";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-eclipse-black: #110D13;
+  --color-infernal-burgundy: #42151F;
+  --color-scarlet-crimson: #A51F30;
+  --color-phoenix-ember: #FF493D;
+  --color-porcelain-silver: #F5E8E8;
+  --color-ashen-steel: #A9A5B2;
+  --color-gunmetal: #29252E;
+}
+
+html {
+  background-color: #110D13;
+  color: #F5E8E8;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #110D13;
+  color: #F5E8E8;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #A51F30;
+  color: #F5E8E8;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #110D13;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #29252E;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A51F30;
+}
