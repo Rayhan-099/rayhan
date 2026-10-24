@@ -6,7 +6,7 @@ const require = createRequire("/mnt/d/Vyuk Projects/Rayhan-099/package.json");
 const puppeteer = require("puppeteer");
 
 const chromePath = "/home/rayhan/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome";
-const OUTPUT_DIR = path.resolve("./screenshots/scroll_audit");
+const OUTPUT_DIR = "/mnt/d/Vyuk Projects/Rayhan-Portfolio/screenshots/scroll_audit";
 
 async function run() {
   if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -196,7 +196,7 @@ The captured frames are preserved in \`screenshots/scroll_audit/\`:
 - \`08_reverse_validation.png\`
 `;
 
-  const outPath = path.resolve("./docs/SCROLL-ANIMATION-AUDIT.md");
+  const outPath = path.resolve("/mnt/d/Vyuk Projects/Rayhan-Portfolio/docs/SCROLL-ANIMATION-AUDIT.md");
   fs.writeFileSync(outPath, md, "utf8");
   console.log(`Scroll animation audit complete! Report generated at: ${outPath}`);
 }

@@ -48,7 +48,7 @@ const config: Config = {
       fontFamily: {
         sans: ["Instrument Sans", "sans-serif"],
         syne: ["Syne", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        mono: ["Chivo Mono", "monospace"],
       },
       letterSpacing: {
         tighter: "-0.04em",

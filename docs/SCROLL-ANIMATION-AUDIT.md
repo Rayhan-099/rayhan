@@ -3,7 +3,7 @@
 This document records the empirical verification of the reconstructed **`ScrollExpandMedia`** scroll-pinned transformation in Rayhan Khan's portfolio, compared directly against the reference implementation at `/mnt/d/Vyuk Projects/ECHO-WEBSITE/scroll-expand-media.js`.
 
 **Inspection Environment:** Headless Chromium (/home/rayhan/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome) at 1440x900 viewport.  
-**Audit Timestamp:** 2026-10-24T14:37:30.359Z  
+**Audit Timestamp:** 2026-10-24T15:29:55.570Z  
 **Target Component:** `src/components/sections/About.tsx`  
 **Engine:** GSAP 3.12 + ScrollTrigger 3.12 + Lenis Smooth Scroll
 

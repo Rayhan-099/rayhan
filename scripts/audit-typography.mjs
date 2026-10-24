@@ -14,7 +14,7 @@ const ROUTES = [
   { name: "404 Route", url: "http://localhost:3000/non-existent-route" },
 ];
 
-const TARGET_FAMILIES = ["Syne", "Instrument Sans", "JetBrains Mono"];
+const TARGET_FAMILIES = ["Syne", "Instrument Sans", "Chivo Mono"];
 
 async function run() {
   console.log("Launching Chromium for comprehensive Typography Audit...");
@@ -74,7 +74,8 @@ async function run() {
           let resolvedFamily = "Unknown";
           if (rawFamily.includes("Syne")) resolvedFamily = "Syne";
           else if (rawFamily.includes("Instrument Sans")) resolvedFamily = "Instrument Sans";
-          else if (rawFamily.includes("JetBrains Mono")) resolvedFamily = "JetBrains Mono";
+          else if (rawFamily.includes("Chivo Mono")) resolvedFamily = "Chivo Mono";
+          else if (rawFamily.includes("JetBrains Mono")) resolvedFamily = "JetBrains Mono (Old Prohibited)";
           else resolvedFamily = rawFamily;
 
           records.push({
@@ -115,7 +116,7 @@ This document records the empirical browser inspection of computed font families
 **Intended Typography System:**
 - **Display Headlines:** Syne (Weights 700, 800)
 - **Body & UI Interface:** Instrument Sans (Weights 400, 500, 600, 700)
-- **Technical Telemetry & Metadata:** JetBrains Mono (Weights 400, 500, 600, 700)
+- **Technical Telemetry & Metadata:** Chivo Mono (Weights 400, 500, 600, 700, 800)
 
 ---
 
@@ -154,7 +155,7 @@ This document records the empirical browser inspection of computed font families
    Floating pill navigation links and mobile drawer links explicitly resolve to \`font-mono\` or \`font-syne\`, matching the architectural branding.
 `;
 
-  const outPath = path.resolve("./docs/TYPOGRAPHY-AUDIT.md");
+  const outPath = path.resolve("/mnt/d/Vyuk Projects/Rayhan-Portfolio/docs/TYPOGRAPHY-AUDIT.md");
   fs.writeFileSync(outPath, md, "utf8");
   console.log(`Typography audit complete! Report generated at: ${outPath}`);
 }

@@ -79,14 +79,14 @@ export function Hero() {
       className="relative min-h-screen flex flex-col justify-between pt-28 pb-16 px-6 md:px-12 max-w-7xl mx-auto"
     >
       {/* Top Telemetry Header */}
-      <div className="hero-top-tag flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gunmetal/60 text-xs font-mono text-steel select-none">
-        <div className="flex items-center gap-2">
-          <IconCrosshair className="w-3.5 h-3.5 text-ember" />
+      <div className="hero-top-tag flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gunmetal/60 text-xs font-mono text-steel select-none">
+        <div className="flex items-center gap-2 flex-wrap">
+          <IconCrosshair className="w-3.5 h-3.5 text-ember shrink-0" />
           <span>LOCATION: {profile.coordinates}</span>
-          <span className="text-steel/50">|</span>
-          <span>NOIDA, UTTAR PRADESH</span>
+          <span className="text-steel/40 hidden sm:inline">|</span>
+          <span className="text-steel-light">NOIDA, UTTAR PRADESH</span>
         </div>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-ember animate-pulse" />
           <span className="text-porcelain uppercase tracking-widest text-[11px] font-semibold">
             AVAILABLE FOR ENGINEERING ROLES
@@ -94,38 +94,38 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Big Display Title Header (ECHO-inspired Typography Architecture) */}
-      <div className="text-center w-full my-4 md:my-6 relative z-0 select-none">
-        <h1 className="text-[14vw] md:text-[9rem] lg:text-[11rem] font-syne font-extrabold uppercase leading-[0.85] tracking-tighter">
-          <span className="hero-title-first block text-porcelain">
-            RAYHAN
+      {/* Commanding Editorial Typography Masthead */}
+      <div className="text-center w-full my-6 md:my-10 relative z-0 select-none">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-syne font-extrabold uppercase leading-[0.9] tracking-tight text-porcelain">
+          <span className="hero-title-first inline-block">
+            RAYHAN{" "}
           </span>
-          <span className="hero-title-second block metallic-title">
+          <span className="hero-title-second inline-block metallic-title">
             KHAN
           </span>
         </h1>
+        <p className="font-mono text-xs sm:text-sm text-ember tracking-telemetry uppercase mt-3">
+          Full-Stack Systems & Applied Machine Learning Engineer
+        </p>
       </div>
 
-      {/* Symmetrical / Balanced Editorial Stage */}
-      <div className="relative grid grid-cols-1 md:grid-cols-12 items-end mt-2 md:-mt-28 z-10">
-        {/* Left Column: Role Details & Scroll CTA */}
-        <div className="hero-col-left md:col-span-3 flex flex-col items-start order-2 md:order-1 pt-6 md:pt-0 space-y-6">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-ember block mb-1">
-              ENGINEERING ROLES
+      {/* Balanced Editorial Three-Column Stage */}
+      <div className="relative grid grid-cols-1 md:grid-cols-12 gap-8 items-center z-10">
+        {/* Left Column: Role Overview & Scroll CTA */}
+        <div className="hero-col-left md:col-span-4 flex flex-col items-start space-y-6 order-2 md:order-1">
+          <div className="space-y-2">
+            <span className="font-mono text-xs uppercase tracking-widest text-crimson font-bold block">
+              ENGINEERING ETHOS
             </span>
-            <p className="font-syne font-bold text-base md:text-lg text-porcelain uppercase leading-tight">
-              Software Engineer
-            </p>
-            <p className="text-xs text-steel mt-1">
-              Full-Stack Systems & Applied Machine Learning
+            <p className="font-sans text-sm md:text-base text-porcelain/90 leading-relaxed max-w-sm">
+              Engineering resilient backend architectures and integrating deep learning inference models into production applications.
             </p>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-1">
             <a
               href="#about"
-              className="group inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gunmetal hover:border-crimson bg-eclipse-surface/80 transition-all"
+              className="group inline-flex items-center gap-3 px-4 py-2.5 rounded-full border border-gunmetal hover:border-crimson bg-eclipse-surface/90 transition-all shadow-sm"
               aria-label="Scroll to About Section"
             >
               <span className="font-mono text-xs uppercase tracking-wider text-steel group-hover:text-porcelain">
@@ -138,39 +138,45 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Center Column: Stylized Depth-Masked Portrait Overlapping Masthead */}
-        <div className="hero-portrait-wrap md:col-span-6 flex justify-center order-1 md:order-2 relative z-20 -mt-12 md:-mt-20">
-          <div className="relative w-[280px] sm:w-[340px] md:w-[420px] aspect-[4/5] hero-portrait-mask">
+        {/* Center Column: Stylized Portrait Frame with Bottom Fade */}
+        <div className="hero-portrait-wrap md:col-span-4 flex justify-center order-1 md:order-2 relative z-20">
+          <div className="relative w-[240px] sm:w-[280px] md:w-[320px] aspect-[4/5] hero-portrait-mask rounded-2xl overflow-hidden border border-gunmetal/60 shadow-2xl bg-eclipse-elevated">
             <Image
               src="/rayhan-headshot.jpg"
               alt="Rayhan Khan | Software Engineer"
               fill
               priority
-              sizes="(max-width: 768px) 300px, 420px"
-              className="object-cover object-top grayscale contrast-125 select-none hover:scale-[1.02] transition-transform duration-700 ease-out"
+              sizes="(max-width: 768px) 260px, 320px"
+              className="object-cover object-top grayscale contrast-125 select-none hover:scale-[1.03] transition-transform duration-700 ease-out"
             />
           </div>
         </div>
 
-        {/* Right Column: Technical Pitch and Core Disciplines */}
-        <div className="hero-col-right md:col-span-3 flex flex-col items-start md:items-end text-left md:text-right order-3 pt-6 md:pt-0 space-y-6">
-          <p className="text-xs font-medium uppercase leading-relaxed tracking-wider text-steel-light max-w-[240px]">
-            Engineering resilient backend architectures and integrating deep learning inference models into production applications.
-          </p>
-
-          <div className="flex flex-col space-y-2 text-xs font-mono uppercase tracking-widest text-steel">
-            <span className="hover:text-porcelain transition-colors">
-              Full-Stack Architecture
-            </span>
-            <span className="hover:text-porcelain transition-colors">
-              Computer Vision & DINOv2
-            </span>
-            <span className="hover:text-porcelain transition-colors text-ember font-semibold">
-              Remote Sensing & SAR
-            </span>
+        {/* Right Column: Technical Disciplines and Contact CTA */}
+        <div className="hero-col-right md:col-span-4 flex flex-col items-start md:items-end text-left md:text-right space-y-6 order-3">
+          <div className="space-y-2.5 font-mono text-xs uppercase tracking-wider text-steel">
+            <div className="text-steel-light border-b border-gunmetal/60 pb-1 w-full md:w-auto">
+              CORE SPECIALIZATIONS
+            </div>
+            <div className="hover:text-porcelain transition-colors flex items-center md:justify-end gap-2">
+              <span className="text-crimson font-bold">01 //</span>
+              <span>Full-Stack Architecture</span>
+            </div>
+            <div className="hover:text-porcelain transition-colors flex items-center md:justify-end gap-2">
+              <span className="text-crimson font-bold">02 //</span>
+              <span>Computer Vision & DINOv2</span>
+            </div>
+            <div className="hover:text-porcelain transition-colors flex items-center md:justify-end gap-2">
+              <span className="text-crimson font-bold">03 //</span>
+              <span>Remote Sensing & SAR</span>
+            </div>
+            <div className="hover:text-porcelain transition-colors flex items-center md:justify-end gap-2">
+              <span className="text-ember font-bold">04 //</span>
+              <span>Edge AI & Hand Tracking</span>
+            </div>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-1">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider transition-colors shadow-sm"

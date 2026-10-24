@@ -13,7 +13,7 @@ const VIEWPORTS = [
   { name: "narrow_320", width: 320, height: 640 },
 ];
 
-const OUTPUT_DIR = path.resolve("./screenshots");
+const OUTPUT_DIR = "/mnt/d/Vyuk Projects/Rayhan-Portfolio/screenshots";
 
 async function run() {
   if (!fs.existsSync(OUTPUT_DIR)) {
