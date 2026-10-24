@@ -60,7 +60,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
             <h2
               id="modal-project-title"
-              className="text-2xl md:text-3xl font-extrabold tracking-tight text-porcelain uppercase"
+              className="text-2xl md:text-3xl font-syne font-extrabold tracking-tight text-porcelain uppercase"
             >
               {project.title}
             </h2>

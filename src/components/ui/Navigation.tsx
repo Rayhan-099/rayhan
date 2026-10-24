@@ -53,7 +53,7 @@ export function Navigation() {
         {/* Brand signature */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-eclipse-surface/80 border border-gunmetal/70 backdrop-blur-md text-porcelain focus:outline-none"
+          className="group flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-eclipse-surface border border-gunmetal text-porcelain focus:outline-none"
         >
           <div className="w-2 h-2 bg-ember rounded-full group-hover:scale-125 transition-transform" />
           <span className="font-syne font-bold tracking-tight text-xs md:text-sm uppercase group-hover:text-ember transition-colors">
@@ -61,10 +61,10 @@ export function Navigation() {
           </span>
         </Link>
 
-        {/* Center Floating Pill Navigation (ECHO-inspired) */}
+        {/* Center Floating Pill Navigation (Restrained opaque surface, no glassmorphism) */}
         <nav
-          className="hidden lg:flex items-center gap-1 p-1 bg-eclipse-surface/90 border border-gunmetal/80 rounded-full shadow-lg backdrop-blur-md text-xs font-semibold tracking-wider text-steel"
           aria-label="Main navigation"
+          className="hidden lg:flex items-center gap-1 p-1 bg-eclipse-surface border border-gunmetal/90 rounded-full shadow-xl font-mono text-xs uppercase tracking-wider text-steel"
         >
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
@@ -86,7 +86,7 @@ export function Navigation() {
 
         {/* Right CTA Actions & External Outlets */}
         <div className="flex items-center gap-2">
-          <div className="hidden sm:flex items-center gap-1 p-1 bg-eclipse-surface/80 border border-gunmetal/70 rounded-full backdrop-blur-md">
+          <div className="hidden sm:flex items-center gap-1 p-1 bg-eclipse-surface border border-gunmetal rounded-full">
             <a
               href={profile.social.github}
               target="_blank"
@@ -111,7 +111,7 @@ export function Navigation() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-porcelain bg-crimson hover:bg-crimson-hover transition-colors shadow-sm focus:outline-none focus:ring-1 focus:ring-ember"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider text-porcelain bg-crimson hover:bg-crimson-hover transition-colors shadow-sm focus:outline-none focus:ring-1 focus:ring-ember"
           >
             <span>Resume</span>
             <IconExternalLink className="w-3 h-3 text-porcelain/80" />
@@ -129,16 +129,16 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Restrained opaque surface, no glassmorphism) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-4 top-[70px] bg-eclipse-surface/95 backdrop-blur-xl border border-gunmetal/90 rounded-2xl p-6 shadow-2xl z-50">
+        <div className="lg:hidden fixed inset-x-4 top-[70px] bg-eclipse-surface border border-gunmetal/90 rounded-2xl p-6 shadow-2xl z-50">
           <nav className="flex flex-col space-y-3" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-syne text-sm uppercase tracking-wider text-steel hover:text-porcelain py-2 border-b border-gunmetal/40"
+                className="font-syne font-bold text-sm uppercase tracking-wider text-steel hover:text-porcelain py-2 border-b border-gunmetal/40"
               >
                 {item.label}
               </a>

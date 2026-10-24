@@ -1,3 +1,6 @@
+@import "@fontsource/syne/400.css";
+@import "@fontsource/syne/500.css";
+@import "@fontsource/syne/600.css";
 @import "@fontsource/syne/700.css";
 @import "@fontsource/syne/800.css";
 @import "@fontsource/instrument-sans/400.css";
@@ -6,6 +9,8 @@
 @import "@fontsource/instrument-sans/700.css";
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/jetbrains-mono/700.css";
 
 @tailwind base;
 @tailwind components;
@@ -25,15 +30,33 @@ html {
   background-color: #110D13;
   color: #F5E8E8;
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background-color: #110D13;
   color: #F5E8E8;
-  font-family: 'Instrument Sans', sans-serif;
-  overflow-x: hidden;
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure buttons, inputs, textareas, and select elements inherit the designated font system */
+button, input, textarea, select, optgroup {
+  font-family: inherit;
+}
+
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-sans {
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
 }
 
 ::selection {

@@ -76,7 +76,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col justify-between pt-28 pb-16 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-between pt-28 pb-16 px-6 md:px-12 max-w-7xl mx-auto"
     >
       {/* Top Telemetry Header */}
       <div className="hero-top-tag flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gunmetal/60 text-xs font-mono text-steel select-none">
