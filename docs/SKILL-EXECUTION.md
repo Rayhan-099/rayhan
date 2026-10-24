@@ -155,3 +155,12 @@ This document tracks all 14 mandatory skill repositories, libraries, and agent i
 - **Files/Decisions Influenced:** Whole application markup, removal of generic card wrappers.
 - **Validation Results:** Clean, authoritative, scan-friendly engineering presentation.
 - **Limitations:** None.
+
+---
+
+## 15. Visual Rebirth Phase Execution & Browser Verification Audit
+- **Typography Rebirth:** Purged `@fontsource/plus-jakarta-sans`. Configured `Syne` (display headers, geometric brutalist aesthetic) + `Instrument Sans` (editorial body/UI) + `JetBrains Mono` (technical telemetry).
+- **ECHO-WEBSITE Kinetic Unblur Stage:** Integrated `ScrollExpandMedia` in `About.tsx` featuring 220vh pinned stage, dual-layer hardware unblur (`opacity` transition of pre-blurred layer avoiding CSS filter thrashing), aspect ratio scaling from 320x420 to viewport dimensions, and perimeter content reveal.
+- **GSAP Skills Client Registration:** Grounded by `gsap-skills` best practices, resolved hydration timing race condition by moving `gsap.registerPlugin(ScrollTrigger)` to module-level client execution (`src/lib/gsap.ts` and component module roots), resolving uninitialized core context and ensuring 100% clean browser console.
+- **Constraint Enforcement:** Automated scanning verified 0 em dashes, 0 emojis, 0 Lucide icon imports, and 0 prohibited fonts across the codebase.
+- **Multi-Device Puppeteer Inspection:** Verified 1440px desktop, 1280px laptop, 768px tablet, 390px mobile, and 320px narrow mobile viewports. Verified modal interaction, Terms page, Privacy page, and 404 page. Body scroll height: 13,585px with all 9 core sections active.

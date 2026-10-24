@@ -5,6 +5,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { profile } from "@/content/profile";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import {
   IconGitHub,
   IconLinkedIn,
@@ -55,21 +59,21 @@ export function Contact() {
         {/* Left: Closing Bold Statement */}
         <div className="lg:col-span-7 space-y-6 contact-fade">
           <div className="font-mono text-xs uppercase tracking-telemetry text-ember">
-            08 / Transmission and Direct Outreach
+            08 / Direct Communication & Contact
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.88] text-porcelain">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-extrabold uppercase tracking-tighter leading-[0.88] text-porcelain">
             LET&apos;S BUILD SOMETHING.
           </h2>
 
           <p className="text-base md:text-lg text-steel max-w-xl leading-relaxed">
-            I am currently open to engineering roles, collaborative systems research, and challenging full-stack or machine learning initiatives.
+            I am currently open to software engineering opportunities, collaborative systems research, and challenging full-stack or machine learning initiatives.
           </p>
 
           <div className="pt-4 flex flex-wrap gap-4">
             <button
               onClick={copyEmail}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider rounded transition-colors focus:ring-1 focus:ring-ember"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider transition-colors shadow-sm focus:ring-1 focus:ring-ember"
             >
               <IconTerminal className="w-4 h-4" />
               <span>{copied ? "Address Copied to Clipboard" : "Copy Direct Email"}</span>
@@ -77,7 +81,7 @@ export function Contact() {
 
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gunmetal hover:bg-gunmetal-border text-porcelain font-mono text-xs uppercase tracking-wider rounded transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-mono text-xs uppercase tracking-wider transition-colors"
             >
               <span>Open Mail Client</span>
               <IconExternalLink className="w-3.5 h-3.5 text-steel" />
@@ -86,8 +90,8 @@ export function Contact() {
         </div>
 
         {/* Right: Verified Coordinates & Profiles */}
-        <div className="lg:col-span-5 contact-fade p-6 md:p-8 rounded-xl bg-eclipse-surface border border-gunmetal space-y-6">
-          <h3 className="font-mono text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
+        <div className="lg:col-span-5 contact-fade p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal space-y-6">
+          <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
             Direct Routing
           </h3>
 
@@ -129,7 +133,7 @@ export function Contact() {
                 href={profile.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
+                className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <IconGitHub className="w-4 h-4 text-crimson" />
@@ -142,7 +146,7 @@ export function Contact() {
                 href={profile.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
+                className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <IconLinkedIn className="w-4 h-4 text-crimson" />
@@ -155,7 +159,7 @@ export function Contact() {
                 href={profile.social.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
+                className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <IconLeetCode className="w-4 h-4 text-crimson" />

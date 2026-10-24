@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="6" fill="#110D13" />
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="#42151F" stroke-width="1" />
+  <text x="16" y="21" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#F5E8E8" text-anchor="middle" letter-spacing="-0.5">RK</text>
+  <circle cx="25" cy="8" r="2" fill="#FF493D" />
+</svg>

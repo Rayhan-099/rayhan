@@ -10,7 +10,7 @@ export default function NotFound() {
         <span>Telemetry Fault 404 / Route Missing</span>
       </div>
 
-      <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-porcelain mb-4">
+      <h1 className="text-6xl md:text-8xl font-syne font-extrabold uppercase tracking-tighter text-porcelain mb-4">
         OUT OF BOUNDS
       </h1>
 

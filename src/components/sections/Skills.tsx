@@ -6,6 +6,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { skills } from "@/content/skills";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function Skills() {
   const containerRef = useRef<HTMLElement>(null);
 
@@ -35,20 +39,20 @@ export function Skills() {
     <section
       id="skills"
       ref={containerRef}
-      className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
+      className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
     >
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
           <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
-            04 / Technical Capabilities and Systems Focus
+            04 / Technical Skills & Disciplines
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-porcelain">
-            Arsenal.
+          <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
+            Technical Skills.
           </h2>
         </div>
         <p className="text-xs font-mono text-steel max-w-sm">
-          Disciplined selection of languages, machine learning frameworks, databases, and architectural competencies.
+          Disciplined selection of programming languages, machine learning frameworks, data backends, and systems architecture.
         </p>
       </div>
 
@@ -57,14 +61,14 @@ export function Skills() {
         {skills.map((category, index) => (
           <div
             key={category.category}
-            className="skill-category-block p-6 rounded-xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
+            className="skill-category-block p-6 rounded-2xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-gunmetal/60">
-                <span className="font-mono text-xs uppercase tracking-wider text-crimson">
-                  0{index + 1}
+                <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
+                  DOMAIN 0{index + 1}
                 </span>
-                <h3 className="font-mono text-xs uppercase tracking-wider text-porcelain font-bold">
+                <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold">
                   {category.category}
                 </h3>
               </div>
@@ -73,7 +77,7 @@ export function Skills() {
                 {category.items.map((item) => (
                   <span
                     key={item.name}
-                    className="px-3 py-1 text-xs font-mono bg-eclipse-elevated text-steel-light border border-gunmetal/70 rounded hover:border-crimson/50 hover:text-porcelain transition-colors"
+                    className="px-3 py-1.5 text-xs font-mono bg-eclipse-elevated text-steel-light border border-gunmetal/70 rounded hover:border-crimson/50 hover:text-porcelain transition-colors"
                   >
                     {item.name}
                   </span>

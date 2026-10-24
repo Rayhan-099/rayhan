@@ -12,7 +12,7 @@ const config: Config = {
         eclipse: {
           black: "#110D13",
           surface: "#17121A",
-          elevated: "#1D1721",
+          elevated: "#1E1822",
         },
         burgundy: {
           DEFAULT: "#42151F",
@@ -46,8 +46,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-plus-jakarta)", "Plus Jakarta Sans", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "JetBrains Mono", "monospace"],
+        sans: ["Instrument Sans", "sans-serif"],
+        syne: ["Syne", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       letterSpacing: {
         tighter: "-0.04em",
@@ -56,8 +57,8 @@ const config: Config = {
         telemetry: "0.2em",
       },
       lineHeight: {
-        headline: "0.88",
-        section: "0.92",
+        headline: "0.85",
+        section: "0.90",
       },
     },
   },

@@ -5,11 +5,15 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Register ScrollTrigger once on client
+    // Re-verify registration on mount
     gsap.registerPlugin(ScrollTrigger);
 
     // Guard: respect reduced motion

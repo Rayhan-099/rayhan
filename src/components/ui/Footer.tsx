@@ -10,13 +10,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-gunmetal/60">
           {/* Identity & Status */}
           <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <div className="w-2 h-2 rounded-full bg-ember animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-telemetry text-porcelain">
                 System Status: Operational
               </span>
             </div>
-            <h2 className="text-2xl font-black uppercase tracking-tight text-porcelain">
+            <h2 className="text-2xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
               Rayhan Khan
             </h2>
             <p className="text-sm text-steel max-w-md leading-relaxed">
@@ -26,38 +26,38 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div className="md:col-span-3 space-y-3">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-porcelain">
-              Index
+            <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold">
+              Navigation
             </h3>
             <ul className="space-y-2 text-xs font-mono">
               <li>
                 <a href="#about" className="hover:text-ember transition-colors">
-                  01 / Identity
+                  01 / About
                 </a>
               </li>
               <li>
                 <a href="#projects" className="hover:text-ember transition-colors">
-                  02 / Selected Systems
+                  02 / Projects
                 </a>
               </li>
               <li>
                 <a href="#experience" className="hover:text-ember transition-colors">
-                  03 / Professional Chronology
+                  03 / Experience
                 </a>
               </li>
               <li>
                 <a href="#skills" className="hover:text-ember transition-colors">
-                  04 / Technical Capabilities
+                  04 / Technical Skills
                 </a>
               </li>
               <li>
                 <a href="#certifications" className="hover:text-ember transition-colors">
-                  05 / Verified Credentials
+                  05 / Certifications
                 </a>
               </li>
               <li>
                 <a href="#contact" className="hover:text-ember transition-colors">
-                  06 / Transmission
+                  06 / Contact
                 </a>
               </li>
             </ul>
@@ -65,8 +65,8 @@ export function Footer() {
 
           {/* Social and Verified Outlets */}
           <div className="md:col-span-3 space-y-3">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-porcelain">
-              Connected Networks
+            <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold">
+              Connected Profiles
             </h3>
             <div className="flex flex-col space-y-2 text-xs font-mono">
               <a

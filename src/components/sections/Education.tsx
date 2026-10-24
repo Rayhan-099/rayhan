@@ -6,6 +6,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { education } from "@/content/education";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function Education() {
   const containerRef = useRef<HTMLElement>(null);
 
@@ -33,8 +37,9 @@ export function Education() {
 
   return (
     <section
+      id="education"
       ref={containerRef}
-      className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
+      className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
     >
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
@@ -42,7 +47,7 @@ export function Education() {
           <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
             06 / Academic Foundation
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-porcelain">
+          <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
             Education.
           </h2>
         </div>
@@ -55,13 +60,13 @@ export function Education() {
         {education.map((item, index) => (
           <div
             key={item.institution + index}
-            className="edu-block p-6 rounded-xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
+            className="edu-block p-6 rounded-2xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
           >
             <div>
               <span className="font-mono text-xs text-crimson font-bold block mb-2">
                 CREDENTIAL 0{index + 1}
               </span>
-              <h3 className="text-lg font-bold uppercase tracking-tight text-porcelain mb-2">
+              <h3 className="text-lg font-syne font-bold uppercase tracking-tight text-porcelain mb-2">
                 {item.degree}
               </h3>
               <p className="text-sm text-steel-light font-medium mb-3">

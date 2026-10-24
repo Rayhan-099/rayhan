@@ -37,7 +37,7 @@ async function run() {
     await page.setViewport({ width: vp.width, height: vp.height });
     await page.goto("http://localhost:3000", { waitUntil: "networkidle0" });
 
-    // Wait a brief moment for fonts and GSAP entrance
+    // Wait for fonts and entrance animation
     await new Promise((r) => setTimeout(r, 1200));
 
     // Full page screenshot
@@ -46,9 +46,59 @@ async function run() {
       fullPage: true,
     });
 
-    // Hero screenshot
+    // Hero screenshot (above the fold)
     await page.screenshot({
       path: path.join(OUTPUT_DIR, `hero_${vp.name}.png`),
+      fullPage: false,
+    });
+  }
+
+  // Section specific captures on desktop 1440
+  await page.setViewport({ width: 1440, height: 900 });
+  await page.goto("http://localhost:3000", { waitUntil: "networkidle0" });
+  await new Promise((r) => setTimeout(r, 800));
+
+  // Scroll to About section
+  console.log("Capturing About section...");
+  await page.evaluate(() => {
+    const el = document.getElementById("about");
+    if (el) el.scrollIntoView({ behavior: "instant" });
+  });
+  await new Promise((r) => setTimeout(r, 600));
+  await page.screenshot({
+    path: path.join(OUTPUT_DIR, "about_desktop_1440.png"),
+    fullPage: false,
+  });
+
+  // Scroll to Projects section
+  console.log("Capturing Projects section...");
+  await page.evaluate(() => {
+    const el = document.getElementById("projects");
+    if (el) el.scrollIntoView({ behavior: "instant" });
+  });
+  await new Promise((r) => setTimeout(r, 600));
+  await page.screenshot({
+    path: path.join(OUTPUT_DIR, "projects_desktop_1440.png"),
+    fullPage: false,
+  });
+
+  // Click Inspect Architecture button on Lumine AI to test modal
+  console.log("Testing Project Architecture Modal...");
+  const inspectButtons = await page.$$("button");
+  let clicked = false;
+  for (const btn of inspectButtons) {
+    const text = await page.evaluate((el) => el.innerText, btn);
+    if (text.includes("Inspect Architecture")) {
+      await btn.click();
+      clicked = true;
+      break;
+    }
+  }
+
+  if (clicked) {
+    await new Promise((r) => setTimeout(r, 600));
+    await page.screenshot({
+      path: path.join(OUTPUT_DIR, "modal_inspection.png"),
       fullPage: false,
     });
   }

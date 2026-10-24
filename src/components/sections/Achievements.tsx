@@ -6,6 +6,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { achievements } from "@/content/achievements";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function Achievements() {
   const containerRef = useRef<HTMLElement>(null);
 
@@ -33,17 +37,18 @@ export function Achievements() {
 
   return (
     <section
+      id="achievements"
       ref={containerRef}
-      className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
+      className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
     >
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
           <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
-            05 / Leadership and Competitive Engineering
+            05 / Verified Achievements & Leadership
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-porcelain">
-            Milestones.
+          <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
+            Achievements.
           </h2>
         </div>
         <p className="text-xs font-mono text-steel max-w-sm">
@@ -55,19 +60,19 @@ export function Achievements() {
         {achievements.map((item, index) => (
           <div
             key={item.id || index}
-            className="achievement-card p-6 md:p-8 rounded-xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
+            className="achievement-card p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-gunmetal/60">
                 <span className="font-mono text-xs text-crimson font-bold">
                   MILESTONE 0{index + 1}
                 </span>
-                <span className="px-2.5 py-0.5 text-xs font-mono bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
+                <span className="px-3 py-1 text-xs font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded-full">
                   {item.role}
                 </span>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-4">
+              <h3 className="text-xl md:text-2xl font-syne font-bold uppercase tracking-tight text-porcelain mb-4">
                 {item.title}
               </h3>
 

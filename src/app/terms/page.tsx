@@ -21,7 +21,7 @@ export default function TermsPage() {
         <span className="font-mono text-xs uppercase tracking-telemetry text-crimson block mb-2">
           Legal Framework
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-porcelain">
+        <h1 className="text-4xl md:text-5xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
           Terms of Service.
         </h1>
         <p className="font-mono text-xs text-steel mt-2">

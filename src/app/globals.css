@@ -1,9 +1,9 @@
-@import "@fontsource/plus-jakarta-sans/300.css";
-@import "@fontsource/plus-jakarta-sans/400.css";
-@import "@fontsource/plus-jakarta-sans/500.css";
-@import "@fontsource/plus-jakarta-sans/600.css";
-@import "@fontsource/plus-jakarta-sans/700.css";
-@import "@fontsource/plus-jakarta-sans/800.css";
+@import "@fontsource/syne/700.css";
+@import "@fontsource/syne/800.css";
+@import "@fontsource/instrument-sans/400.css";
+@import "@fontsource/instrument-sans/500.css";
+@import "@fontsource/instrument-sans/600.css";
+@import "@fontsource/instrument-sans/700.css";
 @import "@fontsource/jetbrains-mono/400.css";
 @import "@fontsource/jetbrains-mono/500.css";
 
@@ -30,7 +30,7 @@ html {
 body {
   background-color: #110D13;
   color: #F5E8E8;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -41,7 +41,36 @@ body {
   color: #F5E8E8;
 }
 
-/* Custom minimal scrollbar */
+/* ============================================================
+   ECHO-INSPIRED EDITORIAL COMPOSITION UTILITIES
+   ============================================================ */
+
+/* Metallic title gradient clipping */
+.metallic-title {
+  display: inline-block;
+  background: linear-gradient(180deg, #F5E8E8 0%, #DEC8C8 35%, #A9A5B2 70%, #5E1E2C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Portrait mask fading bottom seamlessly into canvas */
+.hero-portrait-mask {
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+/* Subtle radar sweep animation for SatQuery AI */
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.radar-sweep-beam {
+  animation: radarSweep 6s linear infinite;
+  transform-origin: center center;
+}
+
+/* Minimalist scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
