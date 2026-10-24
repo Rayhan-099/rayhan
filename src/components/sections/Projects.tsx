@@ -62,16 +62,16 @@ export function Projects() {
       className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-6 border-b border-gunmetal/60 gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-6 border-b border-gunmetal/60 gap-6">
         <div>
-          <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
+          <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
             02 / Flagship Systems & Applied Research
           </div>
           <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-            Projects.
+            Flagship Systems
           </h2>
         </div>
-        <p className="text-xs font-mono text-steel max-w-md">
+        <p className="font-sans text-sm md:text-base text-steel-light max-w-xl leading-relaxed">
           Deep architectural investigations spanning self-supervised computer vision, multimodal remote sensing, and low-latency client-side Edge AI.
         </p>
       </div>
@@ -100,7 +100,7 @@ export function Projects() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setActiveProject(lumine)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
               >
                 <span>Inspect Dossier</span>
                 <IconArrowRight className="w-3.5 h-3.5" />
@@ -110,7 +110,7 @@ export function Projects() {
                   href={lumine.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-mono text-xs uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
                 >
                   <span>Live Site</span>
                   <IconExternalLink className="w-3 h-3 text-steel" />
@@ -232,10 +232,10 @@ export function Projects() {
               {satquery.description}
             </p>
 
-            <ul className="space-y-2 text-xs font-mono text-steel-light">
+            <ul className="space-y-2 text-xs md:text-sm font-sans text-steel-light leading-relaxed">
               {satquery.details.map((d, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-crimson mt-0.5">›</span>
+                  <span className="text-crimson font-mono mt-0.5 select-none">›</span>
                   <span>{d}</span>
                 </li>
               ))}
@@ -255,7 +255,7 @@ export function Projects() {
             <div className="flex items-center gap-4 pt-4 border-t border-gunmetal">
               <button
                 onClick={() => setActiveProject(satquery)}
-                className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-porcelain hover:text-ember transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors"
               >
                 <span>Inspect Architecture</span>
                 <IconArrowRight className="w-3.5 h-3.5" />
@@ -265,7 +265,7 @@ export function Projects() {
                   href={satquery.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-steel hover:text-porcelain transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors"
                 >
                   <span>Live Assistant</span>
                   <IconExternalLink className="w-3.5 h-3.5" />
@@ -295,11 +295,11 @@ export function Projects() {
             </p>
 
             <div className="p-4 rounded-lg bg-eclipse-surface border border-gunmetal space-y-2 text-xs font-mono">
-              <div className="flex items-center gap-2 text-porcelain font-semibold">
+              <div className="flex items-center gap-2 text-porcelain font-semibold font-mono text-xs">
                 <IconTerminal className="w-3.5 h-3.5 text-ember" />
                 <span>GEMINI VISION AI RECEIPT INGESTION</span>
               </div>
-              <p className="text-steel leading-relaxed">
+              <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed">
                 Automated parsing of vendor names, itemized lines, taxes, and dynamic envelope budgeting allocation in sub-100ms API response loops.
               </p>
             </div>
@@ -318,7 +318,7 @@ export function Projects() {
             <div className="flex items-center gap-4 pt-4 border-t border-gunmetal/60">
               <button
                 onClick={() => setActiveProject(capital)}
-                className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-porcelain hover:text-ember transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors"
               >
                 <span>Inspect Ledger Engine</span>
                 <IconArrowRight className="w-3.5 h-3.5" />
@@ -328,7 +328,7 @@ export function Projects() {
                   href={capital.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-steel hover:text-porcelain transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors"
                 >
                   <span>Live App</span>
                   <IconExternalLink className="w-3.5 h-3.5" />
@@ -404,7 +404,7 @@ export function Projects() {
             <div className="pt-6 mt-6 border-t border-gunmetal flex items-center justify-between">
               <button
                 onClick={() => setActiveProject(handTracking)}
-                className="text-xs font-mono uppercase tracking-wider text-porcelain hover:text-ember transition-colors inline-flex items-center gap-1.5"
+                className="text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors inline-flex items-center gap-1.5"
               >
                 <span>Inspect Shader Loop</span>
                 <IconArrowRight className="w-3.5 h-3.5" />
@@ -414,7 +414,7 @@ export function Projects() {
                   href={handTracking.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-mono uppercase tracking-wider text-steel hover:text-porcelain transition-colors inline-flex items-center gap-1"
+                  className="text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors inline-flex items-center gap-1"
                 >
                   <span>Simulation</span>
                   <IconExternalLink className="w-3 h-3" />
@@ -465,7 +465,7 @@ export function Projects() {
             <div className="pt-6 mt-6 border-t border-gunmetal flex items-center justify-between">
               <button
                 onClick={() => setActiveProject(health)}
-                className="text-xs font-mono uppercase tracking-wider text-porcelain hover:text-ember transition-colors inline-flex items-center gap-1.5"
+                className="text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors inline-flex items-center gap-1.5"
               >
                 <span>Inspect Hackathon Dossier</span>
                 <IconArrowRight className="w-3.5 h-3.5" />
@@ -475,7 +475,7 @@ export function Projects() {
                   href={health.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-mono uppercase tracking-wider text-steel hover:text-porcelain transition-colors inline-flex items-center gap-1"
+                  className="text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors inline-flex items-center gap-1"
                 >
                   <span>Portal</span>
                   <IconExternalLink className="w-3 h-3" />

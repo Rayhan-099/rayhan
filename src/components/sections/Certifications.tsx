@@ -49,14 +49,14 @@ export function Certifications() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
+          <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
             07 / Verified Certifications & Credentials
           </div>
           <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-            Certifications.
+            Certifications
           </h2>
         </div>
-        <p className="text-xs font-mono text-steel max-w-sm">
+        <p className="font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed">
           30+ verified industry specializations spanning agentic systems, vector databases, deep learning, and cloud infrastructure.
         </p>
       </div>
@@ -106,7 +106,7 @@ export function Certifications() {
       <div className="mt-10 text-center">
         <button
           onClick={() => setShowAll(!showAll)}
-          className="inline-flex items-center gap-2 px-6 py-3 font-mono text-xs uppercase tracking-wider bg-gunmetal hover:bg-gunmetal-border text-porcelain rounded-full transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 font-sans font-medium text-xs uppercase tracking-wider bg-gunmetal hover:bg-gunmetal-border text-porcelain rounded-full transition-colors"
         >
           <span>
             {showAll

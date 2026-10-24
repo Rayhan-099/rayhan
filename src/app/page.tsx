@@ -1,7 +1,6 @@
 import React from "react";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
-import { ScrollImageSequence } from "@/components/ScrollImageSequence";
 import { Projects } from "@/components/sections/Projects";
 import { Experience } from "@/components/sections/Experience";
 import { Skills } from "@/components/sections/Skills";
@@ -15,7 +14,6 @@ export default function Home() {
     <div className="relative w-full">
       <Hero />
       <About />
-      <ScrollImageSequence />
       <Projects />
       <Experience />
       <Skills />

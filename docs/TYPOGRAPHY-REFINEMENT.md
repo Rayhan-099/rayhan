@@ -1,4 +1,4 @@
-# Typography Refinement & Font Replacement Report
+# Typography Refinement & Semantic Role Overhaul Report
 
 **Project:** Rayhan Khan Engineering Portfolio  
 **Audit Date:** 2026-10-24  
@@ -6,89 +6,95 @@
 
 ---
 
-## 1. Diagnosis of the Original Font
+## 1. Diagnosis of the Typography Problem
 
 ### Target Sentence
 > *"Deep architectural investigations spanning self-supervised computer vision, multimodal remote sensing, and low-latency client-side Edge AI."*
 
-### Empirical Browser Inspection (Headless Chromium)
-- **DOM Location:** `src/components/sections/Projects.tsx:75`
-- **Markup:** `<p className="text-xs font-mono text-steel max-w-md">`
-- **Computed Font Family:** `"JetBrains Mono", monospace`
+### Historical Progression & Diagnosis of Failure
+1. **Initial Baseline:** The sentence was set in `text-xs font-mono text-steel` (`JetBrains Mono`). It read like an IDE code comment or debugging log.
+2. **Mission 4 Attempt:** JetBrains Mono was replaced by Chivo Mono. However, because Chivo Mono is still a fixed-width monospace typeface, the core aesthetic flaw remained: multi-line prose, section subtitles, project narratives, navigation buttons, and legal pages were still forced into monospace formatting. Multi-line descriptions looked like terminal dumps rather than intentional editorial prose.
+3. **Mission 5 Resolution:** Complete semantic role reset. Rather than using monospace as an indiscriminate catch-all, we established three strict, unambiguous typographic roles across the entire application:
+
+| Typographic Role | Assigned Typeface | Weight Spectrum | Semantic Application |
+| :--- | :--- | :--- | :--- |
+| **Display / Masthead** | **Syne** (`font-syne`) | `700` (Bold), `800` (ExtraBold) | Hero masthead (`RAYHAN KHAN`), Section titles (`FLAGSHIP SYSTEMS`, `EXPERIENCE`, `SKILLS`), Card titles, Modal dossiers. |
+| **Editorial Prose & Interface** | **Instrument Sans** (`font-sans`) | `400` (Regular), `500` (Medium), `600` (SemiBold) | Target sentence, all section subtitles, project narratives, experience bullets, navigation links, buttons, modal descriptions, and legal pages. |
+| **Technical Telemetry & Tokens** | **Chivo Mono** (`font-mono`) | `400` (Regular), `500` (Medium), `700` (Bold) | Strictly reserved for real technical tokens: geographic coordinates (`28.5355° N, 77.3910° E`), numeric metrics (`<12ms`, `60 FPS`), stack pills (`[PyTorch]`, `[FastAPI]`), credential IDs (`ID: cert-...`), and step indices (`01 / ABOUT`). |
+
+---
+
+## 2. Empirical Browser Inspection (Headless Chromium)
+
+### Target Sentence Computed Style Verification
+- **DOM Selector:** `p` containing `"Deep architectural investigations"` inside `#projects`
+- **Computed Font Family:** `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
 - **Computed Font Weight:** `400`
-- **Computed Font Size:** `12px`
-- **Computed Line Height:** `16px`
-- **Computed Color:** `rgb(169, 165, 178)` (`#A9A5B2` / Ashen Steel)
-
-### Diagnostic Analysis
-The sentence was rendered in **JetBrains Mono** via Tailwind's `font-mono` utility class. While JetBrains Mono is an exceptional monospace font for programming IDEs and code blocks, its fixed-pitch character widths and developer-centric glyph proportions made multi-line prose, section subtitles, and editorial descriptions look like IDE comments or terminal diagnostics rather than refined architectural copy.
-
-Furthermore, `font-mono` had been applied uniformly across navigation links, project subtitles, skill matrices, modal dossiers, legal headers, and footer links, producing visual stiffness across the website.
+- **Computed Font Size:** `14px` (`text-sm`, scaling to `16px` on `md` viewports)
+- **Computed Line Height:** `22.75px` (`leading-relaxed`)
+- **Computed Color:** `rgb(197, 194, 204)` (`#C5C2CC` / Ashen Steel Light)
+- **Class Applied:** `font-sans text-sm md:text-base text-steel-light max-w-xl leading-relaxed`
+- **Verification Status:** **100% Verified (Prose rendered cleanly in proportional sans-serif)**
 
 ---
 
-## 2. Selection of the New Typeface: Chivo Mono
+## 3. Scope of Semantic Replacement Across the Project
 
-### Selected Family: **Chivo Mono** (designed by Héctor Gatti / Omnibus-Type)
-- **Classification:** Neo-Grotesque Monospace / Technical Editorial Family
-- **Available Weights Imported:** 400 (Regular), 500 (Medium), 600 (SemiBold), 700 (Bold), 800 (ExtraBold)
-- **Package:** `@fontsource/chivo-mono` (v5.3.0)
+The semantic role restructuring was applied across all components:
 
-### Typographic Rationale
-1. **Neo-Grotesque Heritage:** Unlike standard coding typefaces, Chivo Mono was specifically crafted by Omnibus-Type with high-x-height and open apertures, preserving the visual rhythm of modern grotesque typography while maintaining monospace alignment.
-2. **Superior Prose Readability:** Multi-line text such as the target sentence reads smoothly without character crowding or awkward glyph stretching.
-3. **Weight Versatility:** With full weight coverage from 400 to 800, section labels (`font-bold`), interactive pills (`font-normal`), and modal specs (`font-medium`) render with true typographic hierarchy without browser synthetic bolding.
-4. **Architectural & Telemetry Aesthetic:** Coordinates (`28.5355° N, 77.3910° E`), system identifiers (`SYS.01 // LUMINE AI`), and status tokens gain a sharp, cinematic feel that harmonizes with Syne (display headlines) and Instrument Sans (body copy).
+1. **`src/components/sections/Projects.tsx`:**
+   - Target sentence converted from `font-mono text-xs` to `font-sans text-sm md:text-base text-steel-light max-w-xl leading-relaxed`.
+   - Project descriptions and bullet points converted to `font-sans text-sm leading-relaxed`.
+   - Action buttons converted from `font-mono` to `font-sans font-medium text-xs uppercase tracking-wider`.
+   - Monospace strictly retained for technology tags (`[DINOv2]`, `[FastAPI]`) and status metrics.
+2. **`src/components/sections/About.tsx`:**
+   - Subtitle prompt converted to `font-sans text-[11px] uppercase tracking-wider text-steel`.
+   - Expanded card narrative converted to `font-sans text-sm leading-relaxed`.
+   - Architectural pillar descriptions converted to `font-sans text-[11px] text-steel`.
+   - Monospace reserved for `01 / ABOUT` and `PILLAR 01` indices.
+3. **`src/components/sections/Skills.tsx`:**
+   - Header subtitle converted to `font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed`.
+   - Matrix skill tags retain `font-mono text-xs` for technical token presentation.
+4. **`src/components/sections/Experience.tsx`:**
+   - Subtitle converted to `font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed`.
+   - Responsibility bullet narratives rendered in `font-sans text-sm leading-relaxed`.
+   - Dates and role indices retain `font-mono`.
+5. **`src/components/sections/Achievements.tsx`:**
+   - Subtitle converted to `font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed`.
+   - Detailed achievement narratives rendered in `font-sans text-sm text-steel leading-relaxed`.
+6. **`src/components/sections/Education.tsx`:**
+   - Subtitle converted to `font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed`.
+   - Credential index and dates retain `font-mono`.
+7. **`src/components/sections/Certifications.tsx`:**
+   - Subtitle converted to `font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed`.
+   - Credential archive toggle button converted to `font-sans font-medium text-xs uppercase tracking-wider`.
+   - Credential IDs and dates retain `font-mono`.
+8. **`src/components/sections/Contact.tsx`:**
+   - Lead paragraph rendered in `font-sans text-base md:text-lg text-steel max-w-xl leading-relaxed`.
+   - Action buttons converted to `font-sans font-medium text-xs uppercase tracking-wider`.
+   - Verified profile links converted to `font-sans font-medium text-xs`.
+   - Trailing period on headline removed (`LET'S BUILD SOMETHING`).
+9. **`src/components/ui/Navigation.tsx`:**
+   - Nav pill items and Resume action button converted to `font-sans font-medium text-xs uppercase tracking-wider`.
+10. **`src/components/ui/ProjectModal.tsx`:**
+    - Modal dossier section headers (`System Purpose`, `Engineering Decisions`, `Verified Deliverables`) converted to `font-sans font-semibold text-xs uppercase tracking-wider`.
+    - Deliverable lists and descriptions rendered in `font-sans`.
+    - Removed `backdrop-blur-md` in strict adherence to zero glassmorphism constraint.
+11. **`src/components/ui/Footer.tsx`:**
+    - Navigation link lists and connected profile links converted to `font-sans text-xs text-steel`.
+    - Legal bar converted to `font-sans text-xs text-steel/70`.
+12. **`src/app/privacy/page.tsx` & `src/app/terms/page.tsx`:**
+    - Legal prose bodies, section subheadings, and return links converted to `font-sans`.
+    - Headline trailing periods removed.
+13. **`src/app/not-found.tsx`:**
+    - Return button converted to `font-sans font-medium text-xs uppercase tracking-wider`.
 
 ---
 
-## 3. Scope of Replacement Across the Project
+## 4. Full-Site Typography Audit (`docs/TYPOGRAPHY-AUDIT.md`)
 
-The replacement of `JetBrains Mono` was executed globally across all configuration files, stylesheets, and rendered components:
-
-1. **Dependency Management (`package.json`):**
-   - Removed: `@fontsource/jetbrains-mono`
-   - Added: `@fontsource/chivo-mono`
-2. **Global Stylesheet (`src/app/globals.css`):**
-   - Replaced imports with `@fontsource/chivo-mono/400.css` through `800.css`.
-   - Updated `.font-mono { font-family: 'Chivo Mono', monospace; }`.
-3. **Tailwind Design System (`tailwind.config.ts`):**
-   - Configured `fontFamily.mono: ["Chivo Mono", "monospace"]`.
-4. **All Components & Routes:**
-   - `src/components/sections/Projects.tsx` (Flagship project headers, subtitles, tags, modal triggers)
-   - `src/components/sections/Skills.tsx` (Matrix categories, telemetry badges, proficiency tokens)
-   - `src/components/sections/About.tsx` (Coordinates, system metadata, kinetic unblur markers)
-   - `src/components/sections/Experience.tsx` (Timeline chronology, dates, company tags)
-   - `src/components/sections/Achievements.tsx` (Competition ranks, dates, metrics)
-   - `src/components/sections/Certifications.tsx` (Credential IDs, verification links)
-   - `src/components/sections/Contact.tsx` (Coordinate indices, transmission telemetry)
-   - `src/components/ui/Navigation.tsx` (Floating pill links, active indicators, mobile menu items)
-   - `src/components/ui/ProjectModal.tsx` (Dossier technical specifications, stack tags, status flags)
-   - `src/components/ui/Footer.tsx` (Timestamp telemetry, copyright badges, legal navigation)
-   - `src/app/privacy/page.tsx` & `src/app/terms/page.tsx` (Section headers, version tokens, clauses)
-   - `src/app/not-found.tsx` (404 status indicator, telemetry return button)
-
----
-
-## 4. Post-Replacement Verification (Empirical Headless Chromium)
-
-### Target Sentence Computed Style
-```json
-{
-  "text": "Deep architectural investigations spanning self-supervised computer vision, multimodal remote sensing, and low-latency client-side Edge AI.",
-  "fontFamily": "\"Chivo Mono\", monospace",
-  "fontSize": "12px",
-  "fontWeight": "400",
-  "lineHeight": "16px",
-  "letterSpacing": "normal",
-  "color": "rgb(169, 165, 178)",
-  "className": "text-xs font-mono text-steel max-w-md"
-}
-```
-
-### Full-Site Typography Audit (`docs/TYPOGRAPHY-AUDIT.md`)
-- **Total Elements Inspected:** 116 elements across 4 routes (`/`, `/terms`, `/privacy`, `/404`)
-- **Unexpected / Prohibited Fonts Detected:** **0**
-- **Prohibited Fonts Check:** Inter, Roboto, Arial, Helvetica, Space Grotesk, Geist, Instrument Serif, and Plus Jakarta Sans are **0% present**.
-- **Faux Bold Check:** All weights verified against actual imported `@fontsource` files.
-- **Computed Font Compliance:** **100% Verified**
+- **Total Elements Inspected:** 113 elements across 4 routes (`/`, `/terms`, `/privacy`, `/404`)
+- **Prohibited Fonts Found:** **0** (Inter, Roboto, Arial, Helvetica, Space Grotesk, Geist, Instrument Serif, and Plus Jakarta Sans are 0% present).
+- **Target Sentence Status:** **✓ Valid** (`Instrument Sans`, weight 400).
+- **Synthetic Bold / Faux Bold Check:** All weights verified against actual imported `@fontsource` files (400, 500, 600, 700, 800).
+- **Computed Font Compliance:** **100% Verified**.

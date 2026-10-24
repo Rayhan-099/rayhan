@@ -63,7 +63,7 @@ export function Contact() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-extrabold uppercase tracking-tighter leading-[0.88] text-porcelain">
-            LET&apos;S BUILD SOMETHING.
+            LET&apos;S BUILD SOMETHING
           </h2>
 
           <p className="text-base md:text-lg text-steel max-w-xl leading-relaxed">
@@ -73,7 +73,7 @@ export function Contact() {
           <div className="pt-4 flex flex-wrap gap-4">
             <button
               onClick={copyEmail}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider transition-colors shadow-sm focus:ring-1 focus:ring-ember"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm focus:ring-1 focus:ring-ember"
             >
               <IconTerminal className="w-4 h-4" />
               <span>{copied ? "Address Copied to Clipboard" : "Copy Direct Email"}</span>
@@ -81,7 +81,7 @@ export function Contact() {
 
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-mono text-xs uppercase tracking-wider transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
             >
               <span>Open Mail Client</span>
               <IconExternalLink className="w-3.5 h-3.5 text-steel" />
@@ -125,10 +125,10 @@ export function Contact() {
           </div>
 
           <div className="pt-4 border-t border-gunmetal/60">
-            <span className="text-xs font-mono text-steel/70 uppercase block mb-3">
+            <span className="text-xs font-sans text-steel/70 uppercase block mb-3">
               Verified Profiles
             </span>
-            <div className="flex flex-col space-y-2 text-xs font-mono">
+            <div className="flex flex-col space-y-2 text-xs font-sans font-medium">
               <a
                 href={profile.social.github}
                 target="_blank"

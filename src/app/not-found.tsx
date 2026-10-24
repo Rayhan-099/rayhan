@@ -20,7 +20,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider rounded transition-colors"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded transition-colors"
       >
         <span>Return to Primary System</span>
         <IconArrowRight className="w-4 h-4" />

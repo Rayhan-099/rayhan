@@ -29,7 +29,7 @@ export function Footer() {
             <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold">
               Navigation
             </h3>
-            <ul className="space-y-2 text-xs font-mono">
+            <ul className="space-y-2 text-xs font-sans text-steel">
               <li>
                 <a href="#about" className="hover:text-ember transition-colors">
                   01 / About
@@ -68,7 +68,7 @@ export function Footer() {
             <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold">
               Connected Profiles
             </h3>
-            <div className="flex flex-col space-y-2 text-xs font-mono">
+            <div className="flex flex-col space-y-2 text-xs font-sans text-steel">
               <a
                 href={profile.social.github}
                 target="_blank"
@@ -101,7 +101,7 @@ export function Footer() {
         </div>
 
         {/* Legal & Attribution Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-steel/70 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-sans text-steel/70 gap-4">
           <p>© {new Date().getFullYear()} Rayhan Khan. All rights reserved.</p>
 
           <div className="flex items-center gap-6">

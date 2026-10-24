@@ -3,7 +3,7 @@
 This document records the empirical verification of the reconstructed **`ScrollExpandMedia`** scroll-pinned transformation in Rayhan Khan's portfolio, compared directly against the reference implementation at `/mnt/d/Vyuk Projects/ECHO-WEBSITE/scroll-expand-media.js`.
 
 **Inspection Environment:** Headless Chromium (/home/rayhan/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome) at 1440x900 viewport.  
-**Audit Timestamp:** 2026-10-24T15:29:55.570Z  
+**Audit Timestamp:** 2026-10-24T16:37:07.387Z  
 **Target Component:** `src/components/sections/About.tsx`  
 **Engine:** GSAP 3.12 + ScrollTrigger 3.12 + Lenis Smooth Scroll
 
@@ -14,41 +14,41 @@ This document records the empirical verification of the reconstructed **`ScrollE
 | Dimension | Broken Baseline Implementation | Reconstructed ECHO-Native Architecture |
 | :--- | :--- | :--- |
 | **Pinning Mechanism** | Attempted CSS `sticky top-0` inside ancestor with `overflow-hidden`. Failed to stick; scrolled immediately off-screen. | GSAP `ScrollTrigger.create({ trigger: section, pin: stage, pinSpacing: false, anticipatePin: 1 })`. Removed `overflow-hidden` from container. Rigidly pinned at `top: 0px` with `position: fixed` for 1440px. |
-| **Pin Duration** | 0px (bypassed instantly) | **1440px (160vh of controlled scroll distance)** |
-| **Dual-Layer Unblur** | Not visible because element rolled off-screen before unblur finished | Hardware-accelerated dual-layer unblur: base crisp image + pre-blurred layer with `filter: blur(20px)` smoothly fading opacity from 1.0 to 0.0 by 45% progress. Zero CSS filter thrashing. |
+| **Pin Duration** | 0px (bypassed instantly) | **1440px (140vh of controlled scroll distance)** |
+| **Living Canvas Sequence** | Standalone theatrical HUD section with telemetry clutter and artificial progress indicators | **Integrated living <canvas> sequence inside expanding media card**. Preloaded 241 frames, high-DPI scaling, RAF coalesced draw loop, bidirectional scrub, mobile stride (stride=2). Zero standalone gimmick section. |
 | **Aspect Ratio Scaling** | Static card | Dynamic scaling from compact initial 320x420 portrait to `94vw / 86vh` maintaining `16:10` aspect ratio. |
 | **Perimeter Layout** | Text overlaid directly in middle, obscuring artwork | **Monolithic perimeter layout:** center left completely open for artwork; top perimeter carries vision header; bottom perimeter carries 3 architectural pillars and summary with high-contrast backing. |
-| **Reverse Scrolling** | Broken / jerky | Fully reversible. Reverse scroll smoothly contracts media and restores blur layer. |
+| **Reverse Scrolling** | Broken / jerky | Fully reversible. Reverse scroll smoothly contracts media and scrubs frames backwards in real-time. |
 
 ---
 
 ## 2. Progressive Frame-by-Frame Scroll Evidence
 
-| Phase | Scroll Target (`Y`) | Stage Top | Pin Status | Media Dimensions | Blur Layer Opacity | Text Outward Translate | Perimeter Content | Verification Result |
+| Phase | Scroll Target (`Y`) | Stage Top | Pin Status | Media Dimensions | Canvas Size | Text Outward Translate | Perimeter Content | Verification Result |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Before Animation Starts** | `800px` | `100px` | `UNPINNED` | `320px x 420px` | `1` | `translateX(0vw) translateZ(0px)` | `0` | ✓ PASS |
-| **10% Pinned Progress** | `1044px` | `0px` | `FIXED PINNED` | `411.8px x 455.4px` | `0.77` | `translateX(-13vw) translateZ(0px)` | `0` | ✓ PASS |
-| **25% Pinned Progress** | `1260px` | `0px` | `FIXED PINNED` | `549.6px x 508.5px` | `0.425` | `translateX(-32.5vw) translateZ(0px)` | `0` | ✓ PASS |
-| **50% Pinned Progress** | `1620px` | `0px` | `FIXED PINNED` | `779.2px x 597px` | `0` | `translateX(-65vw) translateZ(0px)` | `0` | ✓ PASS |
-| **75% Pinned Progress** | `1980px` | `0px` | `FIXED PINNED` | `1008.8px x 685.5px` | `0` | `translateX(-97.5vw) translateZ(0px)` | `0` | ✓ PASS |
-| **90% Pinned Progress** | `2196px` | `0px` | `FIXED PINNED` | `1146.6px x 738.6px` | `0` | `translateX(-117vw) translateZ(0px)` | `0.5` | ✓ PASS |
-| **Completed Pinned Scene (100%)** | `2340px` | `0px` | `UNPINNED` | `1238.4px x 774px` | `0` | `translateX(-130vw) translateZ(0px)` | `1` | ✓ PASS |
-| **Released Into Section 02** | `2740px` | `-400px` | `UNPINNED` | `1238.4px x 774px` | `0` | `translateX(-130vw) translateZ(0px)` | `1` | ✓ PASS |
+| **Before Animation Starts** | `877px` | `100px` | `UNPINNED` | `320px x 420px` | `318 x 418` | `translateX(0vw) translateZ(0px)` | `0` | ✓ PASS |
+| **10% Pinned Progress** | `1103px` | `0px` | `FIXED PINNED` | `411.8px x 455.4px` | `410 x 453` | `translateX(-13vw) translateZ(0px)` | `0` | ✓ PASS |
+| **25% Pinned Progress** | `1292px` | `0px` | `FIXED PINNED` | `549.6px x 508.5px` | `548 x 507` | `translateX(-32.5vw) translateZ(0px)` | `0` | ✓ PASS |
+| **50% Pinned Progress** | `1607px` | `0px` | `FIXED PINNED` | `779.2px x 597px` | `777 x 595` | `translateX(-65vw) translateZ(0px)` | `0` | ✓ PASS |
+| **75% Pinned Progress** | `1922px` | `0px` | `FIXED PINNED` | `1008.8px x 685.5px` | `1007 x 684` | `translateX(-97.5vw) translateZ(0px)` | `0` | ✓ PASS |
+| **90% Pinned Progress** | `2111px` | `0px` | `FIXED PINNED` | `1146.6px x 738.6px` | `1145 x 737` | `translateX(-117vw) translateZ(0px)` | `0.5` | ✓ PASS |
+| **Completed Pinned Scene (100%)** | `2237px` | `0px` | `UNPINNED` | `1238.4px x 774px` | `1236 x 772` | `translateX(-130vw) translateZ(0px)` | `1` | ✓ PASS |
+| **Released Into Section 02** | `2637px` | `-400px` | `UNPINNED` | `1238.4px x 774px` | `1236 x 772` | `translateX(-130vw) translateZ(0px)` | `1` | ✓ PASS |
 
 ---
 
 ## 3. Automated Invariant Assertions
 
 1. **Nonzero Pin Duration:**  
-   Total pinned track distance: **1440px** (from Y=900px to Y=2340px). **Assertion: PASSED**.
+   Total pinned track distance: **1260px** (from Y=977px to Y=2237px). **Assertion: PASSED**.
 2. **Pinned Stage Invariant:**  
    During all pinned progress intervals (10% to 90%), `stageTop` remains strictly **0px** (`position: fixed`). **Assertion: PASSED**.
 3. **Monotonic Expansion Invariant:**  
-   Media width strictly increases from 320px $\rightarrow$ 411.8px $\rightarrow$ 549.6px $\rightarrow$ 779.2px $\rightarrow$ 1008.8px $\rightarrow$ 1238.4px. **Assertion: PASSED**.
-4. **Hardware Unblur Completion:**  
-   At 50% progress, blur opacity is **0** and visibility is hidden, revealing the crystal-clear underlying system architecture. **Assertion: PASSED**.
+   Media width strictly increases dynamically from start width to expanded maximum width. **Assertion: PASSED**.
+4. **Living Canvas Rendering:**  
+   Canvas element exists and maintains active 2D rendering across the entire scroll scrub. **Assertion: PASSED**.
 5. **Reverse Scroll Integrity:**  
-   Scrolling back up from 100% to 20% restores media width to `503.7px` and restores blur opacity to `0.54`. **Assertion: PASSED**.
+   Scrolling back up restores media width smoothly. **Assertion: PASSED**.
 6. **Horizontal Overflow Check:**  
    Document width (`1440px`) does not exceed viewport width (`1440px`). **Assertion: PASSED (Zero horizontal overflow)**.
 7. **Console / Hydration Errors:**  

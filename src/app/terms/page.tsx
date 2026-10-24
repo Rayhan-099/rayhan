@@ -13,7 +13,7 @@ export default function TermsPage() {
       <div className="mb-12">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-steel hover:text-ember transition-colors mb-6"
+          className="inline-flex items-center gap-2 font-sans font-medium text-xs uppercase tracking-wider text-steel hover:text-ember transition-colors mb-6"
         >
           <span>Return to Master System</span>
           <IconArrowRight className="w-3.5 h-3.5 rotate-180" />
@@ -22,16 +22,16 @@ export default function TermsPage() {
           Legal Framework
         </span>
         <h1 className="text-4xl md:text-5xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-          Terms of Service.
+          Terms of Service
         </h1>
-        <p className="font-mono text-xs text-steel mt-2">
+        <p className="font-sans text-xs text-steel mt-2">
           Effective Date: October 2026 | Noida, Uttar Pradesh, India
         </p>
       </div>
 
-      <div className="space-y-8 text-sm md:text-base text-porcelain/85 leading-relaxed">
+      <div className="space-y-8 text-sm md:text-base text-porcelain/85 leading-relaxed font-sans">
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             01 / Scope and Purpose
           </h2>
           <p>
@@ -40,7 +40,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             02 / Intellectual Property and Open Source
           </h2>
           <p>
@@ -52,7 +52,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             03 / External Links and Live Deployments
           </h2>
           <p>
@@ -64,7 +64,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             04 / Limitation of Liability
           </h2>
           <p>
@@ -73,7 +73,7 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             05 / Inquiries and Communications
           </h2>
           <p>

@@ -64,7 +64,7 @@ export function Navigation() {
         {/* Center Floating Pill Navigation (Restrained opaque surface, no glassmorphism) */}
         <nav
           aria-label="Main navigation"
-          className="hidden lg:flex items-center gap-1 p-1 bg-eclipse-surface border border-gunmetal/90 rounded-full shadow-xl font-mono text-xs uppercase tracking-wider text-steel"
+          className="hidden lg:flex items-center gap-1 p-1 bg-eclipse-surface border border-gunmetal/90 rounded-full shadow-xl font-sans font-medium text-xs uppercase tracking-wider text-steel"
         >
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
@@ -111,7 +111,7 @@ export function Navigation() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider text-porcelain bg-crimson hover:bg-crimson-hover transition-colors shadow-sm focus:outline-none focus:ring-1 focus:ring-ember"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider text-porcelain bg-crimson hover:bg-crimson-hover transition-colors shadow-sm focus:outline-none focus:ring-1 focus:ring-ember"
           >
             <span>Resume</span>
             <IconExternalLink className="w-3 h-3 text-porcelain/80" />

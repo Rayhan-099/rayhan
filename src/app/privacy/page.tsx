@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <div className="mb-12">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-steel hover:text-ember transition-colors mb-6"
+          className="inline-flex items-center gap-2 font-sans font-medium text-xs uppercase tracking-wider text-steel hover:text-ember transition-colors mb-6"
         >
           <span>Return to Master System</span>
           <IconArrowRight className="w-3.5 h-3.5 rotate-180" />
@@ -22,16 +22,16 @@ export default function PrivacyPage() {
           Data Governance
         </span>
         <h1 className="text-4xl md:text-5xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-          Privacy Policy.
+          Privacy Policy
         </h1>
-        <p className="font-mono text-xs text-steel mt-2">
+        <p className="font-sans text-xs text-steel mt-2">
           Effective Date: October 2026 | Noida, Uttar Pradesh, India
         </p>
       </div>
 
-      <div className="space-y-8 text-sm md:text-base text-porcelain/85 leading-relaxed">
+      <div className="space-y-8 text-sm md:text-base text-porcelain/85 leading-relaxed font-sans">
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             01 / Principles of Transparency
           </h2>
           <p>
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             02 / Cookies and Tracking Technologies
           </h2>
           <p>
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             03 / Hosting Infrastructure and Server Telemetry
           </h2>
           <p>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             04 / User-Initiated Contact
           </h2>
           <p>
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-mono text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
             05 / Data Protection Inquiries
           </h2>
           <p>

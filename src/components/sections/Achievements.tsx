@@ -44,14 +44,14 @@ export function Achievements() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
+          <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
             05 / Verified Achievements & Leadership
           </div>
           <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-            Achievements.
+            Achievements
           </h2>
         </div>
-        <p className="text-xs font-mono text-steel max-w-sm">
+        <p className="font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed">
           Verified hackathon leadership records and national selection results.
         </p>
       </div>

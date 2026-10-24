@@ -104,7 +104,7 @@ export function Hero() {
             KHAN
           </span>
         </h1>
-        <p className="font-mono text-xs sm:text-sm text-ember tracking-telemetry uppercase mt-3">
+        <p className="font-sans font-medium text-xs sm:text-sm text-ember tracking-wider uppercase mt-3">
           Full-Stack Systems & Applied Machine Learning Engineer
         </p>
       </div>
@@ -128,7 +128,7 @@ export function Hero() {
               className="group inline-flex items-center gap-3 px-4 py-2.5 rounded-full border border-gunmetal hover:border-crimson bg-eclipse-surface/90 transition-all shadow-sm"
               aria-label="Scroll to About Section"
             >
-              <span className="font-mono text-xs uppercase tracking-wider text-steel group-hover:text-porcelain">
+              <span className="font-sans font-medium text-xs uppercase tracking-wider text-steel group-hover:text-porcelain">
                 Explore Systems
               </span>
               <div className="w-6 h-6 rounded-full bg-gunmetal group-hover:bg-crimson flex items-center justify-center transition-colors">
@@ -179,7 +179,7 @@ export function Hero() {
           <div className="pt-1">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-mono text-xs uppercase tracking-wider transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
             >
               <span>Transmit Message</span>
               <IconArrowRight className="w-3.5 h-3.5" />

@@ -33,7 +33,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-eclipse-black/85 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-eclipse-black/90"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
@@ -64,7 +64,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             >
               {project.title}
             </h2>
-            <p className="text-sm text-steel mt-1">{project.subtitle}</p>
+            <p className="text-sm font-sans text-steel mt-1">{project.subtitle}</p>
           </div>
 
           <button
@@ -85,20 +85,20 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Body content */}
         <div className="space-y-6 text-sm text-porcelain/90">
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-steel mb-2">
+            <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
               System Purpose
             </h3>
-            <p className="leading-relaxed text-porcelain/80">{project.description}</p>
+            <p className="leading-relaxed text-porcelain/80 font-sans">{project.description}</p>
           </div>
 
           {project.details && project.details.length > 0 && (
             <div>
-              <h3 className="font-mono text-xs uppercase tracking-wider text-steel mb-2">
+              <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
                 Engineering Decisions
               </h3>
               <ul className="space-y-2">
                 {project.details.map((detail, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-steel-light leading-relaxed">
+                  <li key={idx} className="flex items-start gap-2 text-steel-light leading-relaxed font-sans">
                     <span className="font-mono text-xs text-crimson mt-1 select-none">›</span>
                     <span>{detail}</span>
                   </li>
@@ -109,14 +109,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {project.deliverables && project.deliverables.length > 0 && (
             <div>
-              <h3 className="font-mono text-xs uppercase tracking-wider text-steel mb-2">
+              <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
                 Verified Deliverables
               </h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {project.deliverables.map((item, idx) => (
                   <li
                     key={idx}
-                    className="p-2.5 bg-eclipse-elevated/80 border border-gunmetal rounded text-xs font-mono text-steel-light"
+                    className="p-2.5 bg-eclipse-elevated/80 border border-gunmetal rounded text-xs font-sans text-steel-light"
                   >
                     {item}
                   </li>
@@ -127,7 +127,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Technologies */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-wider text-steel mb-2">
+            <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
               Technologies Used
             </h3>
             <div className="flex flex-wrap gap-1.5">
@@ -150,7 +150,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-crimson hover:bg-crimson-hover text-porcelain text-xs font-mono uppercase tracking-wider rounded transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-crimson hover:bg-crimson-hover text-porcelain text-xs font-sans font-medium uppercase tracking-wider rounded transition-colors"
             >
               <span>Live Deployment</span>
               <IconExternalLink className="w-3.5 h-3.5" />
@@ -161,7 +161,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gunmetal hover:bg-gunmetal-border text-porcelain text-xs font-mono uppercase tracking-wider rounded transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gunmetal hover:bg-gunmetal-border text-porcelain text-xs font-sans font-medium uppercase tracking-wider rounded transition-colors"
             >
               <IconGitHub className="w-3.5 h-3.5" />
               <span>Source Repository</span>

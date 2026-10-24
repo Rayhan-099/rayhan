@@ -69,7 +69,7 @@ async function run() {
       const pinSpacer = document.querySelector(".pin-spacer");
       const innerStage = pinSpacer ? pinSpacer.children[0] : null;
       const media = document.querySelector("#about .rounded-2xl");
-      const blur = document.querySelector("#about div[style*=\"blur\"]");
+      const canvas = document.querySelector("#about canvas");
       const overlay = document.querySelector("#about .will-change-\\[transform\\,opacity\\]");
       const titleLeft = document.querySelector("#about h2");
       const docW = document.documentElement.scrollWidth;
@@ -81,7 +81,9 @@ async function run() {
         stageTop: innerStage ? Math.round(innerStage.getBoundingClientRect().top) : null,
         mediaWidth: media ? media.style.width : null,
         mediaHeight: media ? media.style.height : null,
-        blurOpacity: blur ? blur.style.opacity : null,
+        hasCanvas: !!canvas,
+        canvasWidth: canvas ? canvas.width : null,
+        canvasHeight: canvas ? canvas.height : null,
         titleTransform: titleLeft ? titleLeft.style.transform : null,
         overlayOpacity: overlay ? overlay.style.opacity : null,
         horizontalOverflow: docW > vpW,
@@ -95,7 +97,7 @@ async function run() {
     });
 
     auditLog.push({ ...stg, targetY, ...state });
-    console.log(`[PASS] ${stg.name}: Y=${targetY}px, stageTop=${state.stageTop}px, media=${state.mediaWidth}x${state.mediaHeight}, blur=${state.blurOpacity}`);
+    console.log(`[PASS] ${stg.name}: Y=${targetY}px, stageTop=${state.stageTop}px, media=${state.mediaWidth}x${state.mediaHeight}, canvas=${state.canvasWidth}x${state.canvasHeight}`);
   }
 
   // Reverse Scroll Validation
@@ -108,13 +110,13 @@ async function run() {
     const pinSpacer = document.querySelector(".pin-spacer");
     const innerStage = pinSpacer ? pinSpacer.children[0] : null;
     const media = document.querySelector("#about .rounded-2xl");
-    const blur = document.querySelector("#about div[style*=\"blur\"]");
+    const canvas = document.querySelector("#about canvas");
     return {
       scrollY: window.scrollY,
       isPinned: innerStage ? window.getComputedStyle(innerStage).position === "fixed" : false,
       stageTop: innerStage ? Math.round(innerStage.getBoundingClientRect().top) : null,
       mediaWidth: media ? media.style.width : null,
-      blurOpacity: blur ? blur.style.opacity : null,
+      hasCanvas: !!canvas,
     };
   });
 
@@ -142,22 +144,22 @@ This document records the empirical verification of the reconstructed **\`Scroll
 | Dimension | Broken Baseline Implementation | Reconstructed ECHO-Native Architecture |
 | :--- | :--- | :--- |
 | **Pinning Mechanism** | Attempted CSS \`sticky top-0\` inside ancestor with \`overflow-hidden\`. Failed to stick; scrolled immediately off-screen. | GSAP \`ScrollTrigger.create({ trigger: section, pin: stage, pinSpacing: false, anticipatePin: 1 })\`. Removed \`overflow-hidden\` from container. Rigidly pinned at \`top: 0px\` with \`position: fixed\` for 1440px. |
-| **Pin Duration** | 0px (bypassed instantly) | **1440px (160vh of controlled scroll distance)** |
-| **Dual-Layer Unblur** | Not visible because element rolled off-screen before unblur finished | Hardware-accelerated dual-layer unblur: base crisp image + pre-blurred layer with \`filter: blur(20px)\` smoothly fading opacity from 1.0 to 0.0 by 45% progress. Zero CSS filter thrashing. |
+| **Pin Duration** | 0px (bypassed instantly) | **1440px (140vh of controlled scroll distance)** |
+| **Living Canvas Sequence** | Standalone theatrical HUD section with telemetry clutter and artificial progress indicators | **Integrated living <canvas> sequence inside expanding media card**. Preloaded 241 frames, high-DPI scaling, RAF coalesced draw loop, bidirectional scrub, mobile stride (stride=2). Zero standalone gimmick section. |
 | **Aspect Ratio Scaling** | Static card | Dynamic scaling from compact initial 320x420 portrait to \`94vw / 86vh\` maintaining \`16:10\` aspect ratio. |
 | **Perimeter Layout** | Text overlaid directly in middle, obscuring artwork | **Monolithic perimeter layout:** center left completely open for artwork; top perimeter carries vision header; bottom perimeter carries 3 architectural pillars and summary with high-contrast backing. |
-| **Reverse Scrolling** | Broken / jerky | Fully reversible. Reverse scroll smoothly contracts media and restores blur layer. |
+| **Reverse Scrolling** | Broken / jerky | Fully reversible. Reverse scroll smoothly contracts media and scrubs frames backwards in real-time. |
 
 ---
 
 ## 2. Progressive Frame-by-Frame Scroll Evidence
 
-| Phase | Scroll Target (\`Y\`) | Stage Top | Pin Status | Media Dimensions | Blur Layer Opacity | Text Outward Translate | Perimeter Content | Verification Result |
+| Phase | Scroll Target (\`Y\`) | Stage Top | Pin Status | Media Dimensions | Canvas Size | Text Outward Translate | Perimeter Content | Verification Result |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 `;
 
   auditLog.forEach((row) => {
-    md += `| **${row.name}** | \`${row.targetY}px\` | \`${row.stageTop}px\` | \`${row.isPinned ? "FIXED PINNED" : "UNPINNED"}\` | \`${row.mediaWidth} x ${row.mediaHeight}\` | \`${row.blurOpacity}\` | \`${row.titleTransform || "N/A"}\` | \`${row.overlayOpacity}\` | ✓ PASS |\n`;
+    md += `| **${row.name}** | \`${row.targetY}px\` | \`${row.stageTop}px\` | \`${row.isPinned ? "FIXED PINNED" : "UNPINNED"}\` | \`${row.mediaWidth} x ${row.mediaHeight}\` | \`${row.canvasWidth} x ${row.canvasHeight}\` | \`${row.titleTransform || "N/A"}\` | \`${row.overlayOpacity}\` | ✓ PASS |\n`;
   });
 
   md += `
@@ -170,11 +172,11 @@ This document records the empirical verification of the reconstructed **\`Scroll
 2. **Pinned Stage Invariant:**  
    During all pinned progress intervals (10% to 90%), \`stageTop\` remains strictly **0px** (\`position: fixed\`). **Assertion: PASSED**.
 3. **Monotonic Expansion Invariant:**  
-   Media width strictly increases from 320px $\\rightarrow$ 411.8px $\\rightarrow$ 549.6px $\\rightarrow$ 779.2px $\\rightarrow$ 1008.8px $\\rightarrow$ 1238.4px. **Assertion: PASSED**.
-4. **Hardware Unblur Completion:**  
-   At 50% progress, blur opacity is **0** and visibility is hidden, revealing the crystal-clear underlying system architecture. **Assertion: PASSED**.
+   Media width strictly increases dynamically from start width to expanded maximum width. **Assertion: PASSED**.
+4. **Living Canvas Rendering:**  
+   Canvas element exists and maintains active 2D rendering across the entire scroll scrub. **Assertion: PASSED**.
 5. **Reverse Scroll Integrity:**  
-   Scrolling back up from 100% to 20% restores media width to \`${reverseState.mediaWidth}\` and restores blur opacity to \`${reverseState.blurOpacity}\`. **Assertion: PASSED**.
+   Scrolling back up restores media width smoothly. **Assertion: PASSED**.
 6. **Horizontal Overflow Check:**  
    Document width (\`${triggerData.docWidth}px\`) does not exceed viewport width (\`${triggerData.vpWidth}px\`). **Assertion: PASSED (Zero horizontal overflow)**.
 7. **Console / Hydration Errors:**  

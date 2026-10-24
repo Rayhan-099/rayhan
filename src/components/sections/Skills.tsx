@@ -44,14 +44,14 @@ export function Skills() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <div className="font-mono text-xs uppercase tracking-telemetry text-ember mb-2">
+          <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
             04 / Technical Skills & Disciplines
           </div>
           <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-            Technical Skills.
+            Technical Skills
           </h2>
         </div>
-        <p className="text-xs font-mono text-steel max-w-sm">
+        <p className="font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed">
           Disciplined selection of programming languages, machine learning frameworks, data backends, and systems architecture.
         </p>
       </div>

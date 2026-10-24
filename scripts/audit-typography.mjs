@@ -62,6 +62,23 @@ async function run() {
 
       const records = [];
 
+      // Check specific target sentence
+      const targetSentenceEl = Array.from(document.querySelectorAll("p")).find((p) =>
+        p.innerText.includes("Deep architectural investigations")
+      );
+      if (targetSentenceEl) {
+        const style = window.getComputedStyle(targetSentenceEl);
+        records.push({
+          route: routeName,
+          category: "Target Sentence (Mission 5 Refinement)",
+          tag: "p",
+          sampleText: targetSentenceEl.innerText.slice(0, 35).trim(),
+          computedFamily: style.fontFamily,
+          resolvedFamily: style.fontFamily.includes("Instrument Sans") ? "Instrument Sans" : (style.fontFamily.includes("Chivo Mono") ? "Chivo Mono (WRONG)" : style.fontFamily),
+          computedWeight: style.fontWeight,
+        });
+      }
+
       selectors.forEach(({ selector, category }) => {
         const els = document.querySelectorAll(selector);
         els.forEach((el, idx) => {
