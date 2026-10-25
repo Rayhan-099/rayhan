@@ -81,10 +81,40 @@ button, input, textarea, select, optgroup {
    ECHO-INSPIRED EDITORIAL COMPOSITION UTILITIES
    ============================================================ */
 
-/* Solid highlight title */
+/* Specular metallic titanium / ember gradient title */
 .metallic-title {
   display: inline-block;
-  color: #FF493D;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FF8A7A 25%, #FF493D 55%, #F5E8E8 75%, #A51F30 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #FF493D; /* fallback */
+  text-shadow: 0 0 30px rgba(255, 73, 61, 0.25);
+}
+
+/* Analog film frame and corner bracket marks */
+.film-bracket {
+  position: relative;
+}
+.film-bracket::before,
+.film-bracket::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(255, 73, 61, 0.4);
+  pointer-events: none;
+}
+.film-bracket::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid rgba(255, 73, 61, 0.6);
+  border-left: 1.5px solid rgba(255, 73, 61, 0.6);
+}
+.film-bracket::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid rgba(255, 73, 61, 0.6);
+  border-right: 1.5px solid rgba(255, 73, 61, 0.6);
 }
 
 /* Portrait mask fading bottom seamlessly into canvas */
