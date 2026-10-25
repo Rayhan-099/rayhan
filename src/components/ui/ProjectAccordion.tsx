@@ -51,26 +51,37 @@ export function ProjectAccordion({ projects, onSelectProject }: ProjectAccordion
               }`}
             >
               {/* Background Atmospheric Media Gradient */}
-              <div className="absolute inset-0 pointer-events-none opacity-20">
+              <div
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
+                  isActive ? "opacity-30" : "opacity-15"
+                }`}
+              >
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="40vw"
-                  className="object-cover object-center grayscale contrast-125"
+                  className="object-cover object-top grayscale contrast-125 transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black via-eclipse-black/80 to-eclipse-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black via-eclipse-black/85 to-eclipse-black/40" />
               </div>
 
               {/* Card Header Top */}
               <div className="relative z-10 flex items-center justify-between pb-3 border-b border-gunmetal/60">
-                <span
-                  className={`font-mono text-xs uppercase tracking-wider font-bold transition-colors duration-300 ${
-                    isActive ? "text-ember" : "text-steel"
-                  }`}
-                >
-                  {item.contextLabel || item.date}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`font-mono text-xs uppercase tracking-wider font-bold transition-colors duration-300 ${
+                      isActive ? "text-ember" : "text-steel"
+                    }`}
+                  >
+                    {item.contextLabel || item.date}
+                  </span>
+                  {item.id === "current-capital" && isActive && (
+                    <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
+                      FINANCIAL COMMAND
+                    </span>
+                  )}
+                </div>
 
                 <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-eclipse-black/80 border border-gunmetal text-steel-light">
                   0{index + 1}

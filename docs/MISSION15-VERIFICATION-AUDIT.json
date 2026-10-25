@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-10-25T14:14:38.938Z",
+  "viewportsTested": [
+    "desktop_1440x900",
+    "laptop_1280x800",
+    "mobile_390x844",
+    "mobile_360x800"
+  ],
+  "networkMetrics": {
+    "totalRequests": 1788,
+    "jpgFrameRequests": 1626,
+    "webpFrameRequests": 0,
+    "headshotJpgRequests": 4,
+    "projectAssetRequests": {
+      "lumineOverview": 9,
+      "lumineAnalysis": 4,
+      "lumineDashboard": 4,
+      "lumineHistory": 4,
+      "currentCapitalCommand": 8,
+      "currentCapitalAnalytics": 1,
+      "currentCapitalAdvisor": 1,
+      "currentCapitalLedger": 1,
+      "satqueryAi": 8,
+      "satqueryArch": 0
+    },
+    "failedRequests": []
+  },
+  "consoleErrors": [],
+  "featuresVerified": {
+    "lumineCrossfadeLayerSwitching": true,
+    "lumineAllFourPerspectivesRendered": true,
+    "lumineBoundedTilt3D": true,
+    "cinematicHorizonBridgeRendered": true,
+    "currentCapitalDedicatedGalleryTested": true,
+    "currentCapitalFourViewsVerified": true,
+    "satqueryAuthenticVisualsConfirmed": true,
+    "noDuplicateLumineForSatquery": true,
+    "accordionFluidExpansionTested": true,
+    "modalFocusTrappingAndEscape": true,
+    "modalArrowKeyCyclingSafe": true,
+    "worksWheel3DReelOperational": true,
+    "reducedMotionCompliant": true
+  },
+  "privacyAudit": {
+    "forbiddenPhoneDetected": false,
+    "forbiddenGpsDetected": false,
+    "cityLevelLocationConfirmed": true,
+    "locationFound": "Noida, Uttar Pradesh, India"
+  }
+}

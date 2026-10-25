@@ -6,11 +6,11 @@ export const projects: Project[] = [
     title: "Lumine AI",
     subtitle: "Computer Vision Skin Intelligence Platform",
     date: "July 2026",
-    technologies: ["React", "FastAPI", "PostgreSQL", "DINOv2", "Google Gemini", "Pytest"],
+    technologies: ["React", "FastAPI", "PostgreSQL", "Meta DINOv2", "Google Gemini", "Pytest"],
     description:
       "A clinical-grade computer vision platform engineered to classify 31 dermatological conditions from image inputs, pairing diagnostic precision with an encrypted patient history vault.",
     details: [
-      "Integrated Meta's DINOv2 self-supervised vision transformer alongside Google Gemini and Hugging Face APIs to produce context-aware clinical explanations based on patient longitudinal history.",
+      "Integrated Meta's DINOv2 self-supervised vision transformer alongside Google Gemini to produce context-aware clinical explanations based on patient longitudinal history.",
       "Engineered an asynchronous FastAPI backend deployed across Vercel and Render with token-bucket rate limiting, encrypted image pipelines, and 40+ automated Pytest test suites."
     ],
     deliverables: [
@@ -26,7 +26,7 @@ export const projects: Project[] = [
         label: "01 Overview",
         image: "/media/projects/lumine.webp",
         caption: "Production Skin Intelligence Interface",
-        telemetry: "MODEL: DINOv2 ViT • 31 DERMATOLOGICAL CLASSES"
+        telemetry: "MODEL: META DINOv2 ViT • 31 SUPPORTED CLASSES"
       },
       {
         id: "analysis",
@@ -101,20 +101,50 @@ export const projects: Project[] = [
     title: "Current Capital",
     subtitle: "Autonomous Financial Management and Analytics",
     date: "February 2026",
-    technologies: ["React", "Node.js", "Express", "Tailwind CSS", "Gemini Vision AI"],
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Recharts"],
     description:
-      "A modern financial architecture addressing manual bookkeeping through dynamic envelope budgeting, automated ledger synchronization, and real-time visual cashflow models.",
+      "A high-performance personal finance command center engineered to eliminate manual spreadsheets through real-time visual cashflow models, envelope budgeting guardrails, and JWT-secured ledger management.",
     details: [
-      "Engineered a low-latency Node.js and Express REST API secured by stateless JWT authentication and strict input schema validation.",
-      "Integrated Google Gemini Vision AI to parse receipt imagery, extracting vendor names, amounts, tax breakdowns, and category classifications directly into the database."
+      "Architected a low-latency Node.js and Express REST API with MongoDB aggregation pipelines for server-side financial metric calculations.",
+      "Engineered interactive Recharts cashflow visualizations, multi-envelope budgeting thresholds, and automated transaction categorizations."
     ],
     deliverables: [
-      "Vision-Powered Receipt Extraction",
-      "Dynamic Multi-Envelope Budgeting Engine",
-      "Interactive Real-Time Financial Telemetry"
+      "Real-Time Cashflow & Category Analytics Engine",
+      "Dynamic Multi-Envelope Budgeting Guardrails",
+      "Stateless JWT Session & Transaction Ledger"
     ],
-    stats: "Automated OCR Ingestion | Envelope Budgeting | Sub-100ms API Latency",
+    stats: "Real-Time Visual Analytics | Envelope Budgeting | Sub-100ms API Latency",
     image: "/media/projects/current-capital.webp",
+    gallery: [
+      {
+        id: "cc-command",
+        label: "01 Command Center",
+        image: "/media/projects/current-capital.webp",
+        caption: "Personal Finance Command Dashboard",
+        telemetry: "MERN STACK • REAL-TIME CASHFLOW TELEMETRY"
+      },
+      {
+        id: "cc-analytics",
+        label: "02 Visual Analytics",
+        image: "/media/projects/current-capital-analytics.webp",
+        caption: "Recharts Category Breakdown & Spending Trends",
+        telemetry: "MONGODB AGGREGATIONS • DYNAMIC BUDGET ENVELOPES"
+      },
+      {
+        id: "cc-advisor",
+        label: "03 AI Advisor",
+        image: "/media/projects/current-capital-advisor.webp",
+        caption: "Automated Financial Recommendations & Budget Guardrails",
+        telemetry: "CONTEXTUAL ADVISORY • THRESHOLD NOTIFICATIONS"
+      },
+      {
+        id: "cc-ledger",
+        label: "04 Ledger Vault",
+        image: "/media/projects/current-capital-ledger.webp",
+        caption: "Encrypted Transaction Ledger & CRUD Operations",
+        telemetry: "STATELESS JWT • BCRYPT SESSION PRIVACY"
+      }
+    ],
     links: {
       live: "https://finance-manager-zeta.vercel.app/",
       github: "https://github.com/Rayhan-099/finance-manager"

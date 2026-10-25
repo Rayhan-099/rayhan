@@ -224,21 +224,37 @@ export function Projects() {
                 ARCHITECTURAL LAYER DISSECTION:
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-eclipse-surface border border-gunmetal">
+            <div
+              className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-eclipse-surface border border-gunmetal"
+              role="tablist"
+              aria-label="Lumine AI Architectural Perspectives"
+            >
               {lumine.gallery?.map((view, idx) => (
                 <button
                   key={view.id}
+                  role="tab"
+                  id={`lumine-tab-${view.id}`}
+                  aria-selected={activeLumineLayer === idx}
+                  aria-controls="lumine-media-canvas"
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     setActiveLumineLayer(idx);
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-300 ${
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowRight") {
+                      e.preventDefault();
+                      setActiveLumineLayer((prev) => (prev + 1) % (lumine.gallery?.length || 1));
+                    } else if (e.key === "ArrowLeft") {
+                      e.preventDefault();
+                      setActiveLumineLayer((prev) => (prev - 1 + (lumine.gallery?.length || 1)) % (lumine.gallery?.length || 1));
+                    }
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson ${
                     activeLumineLayer === idx
                       ? "bg-crimson text-porcelain font-bold shadow-md border border-crimson/50"
                       : "text-steel-light hover:text-porcelain hover:bg-gunmetal/60"
                   }`}
-                  aria-pressed={activeLumineLayer === idx}
                 >
                   {view.label}
                 </button>
@@ -249,6 +265,7 @@ export function Projects() {
           {/* Interactive Cinematic Media Canvas with ScrollTrigger Clip-Mask Expansion (ECHO Work.tsx) */}
           <Tilt3DCard maxTilt={4} perspective={1200} glareOpacity={0.12} className="w-full">
             <div
+              id="lumine-media-canvas"
               onClick={() => setActiveProject(lumine)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -259,25 +276,33 @@ export function Projects() {
               role="button"
               tabIndex={0}
               aria-label="Inspect Lumine AI architectural dossier"
-              className="lumine-clip-frame lumine-card group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus:outline-none focus:ring-2 focus:ring-ember will-change-[clip-path,transform]"
+              className="lumine-clip-frame lumine-card group relative cursor-pointer w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[2/1] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember will-change-[clip-path,transform]"
               style={{ transformStyle: "preserve-3d" }}
             >
               <div className="lumine-inner-image absolute inset-0 w-full h-full will-change-transform">
-                <Image
-                  key={currentLumineView.image}
-                  src={currentLumineView.image}
-                  alt={currentLumineView.caption || lumine.title}
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700 ease-out"
-                />
+                {lumine.gallery?.map((view, idx) => (
+                  <div
+                    key={view.id}
+                    className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      activeLumineLayer === idx ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                    }`}
+                  >
+                    <Image
+                      src={view.image}
+                      alt={view.caption || lumine.title}
+                      fill
+                      priority={idx === 0}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 95vw, 1200px"
+                      className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.02] group-hover:grayscale-0 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                ))}
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/95 via-eclipse-black/20 to-eclipse-black/60 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/95 via-eclipse-black/20 to-eclipse-black/60 pointer-events-none z-20" />
 
               {/* Diagnostic Telemetry Overlay with 3D Z-Depth Floating Parallax */}
               <div
-                className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90 pointer-events-none"
+                className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90 pointer-events-none z-30"
                 style={{ transform: "translateZ(26px)" }}
               >
                 <div className="flex items-center gap-2 bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal backdrop-blur-sm shadow-lg">
@@ -290,7 +315,7 @@ export function Projects() {
               </div>
 
               <div
-                className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain pointer-events-none"
+                className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain pointer-events-none z-30"
                 style={{ transform: "translateZ(20px)" }}
               >
                 <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light backdrop-blur-sm shadow-lg">
@@ -311,41 +336,41 @@ export function Projects() {
                 {lumine.description}
               </p>
 
-              {/* Direct Architectural Highlights */}
+              {/* Direct Architectural Highlights Grounded in Actual Repository */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-3.5 rounded-xl bg-eclipse-surface border border-gunmetal">
                   <span className="text-[11px] font-mono text-ember font-bold block mb-1">
-                    NEURAL EMBEDDINGS
+                    VISION TRANSFORMER
                   </span>
                   <h4 className="font-heading text-xs font-bold text-porcelain uppercase">
                     Meta DINOv2 ViT
                   </h4>
                   <p className="text-[11px] font-sans text-steel-light mt-1">
-                    Frozen patch token embeddings with high dermatological sensitivity.
+                    31 dermatological classes with Top-3 probability vectors.
                   </p>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-eclipse-surface border border-gunmetal">
                   <span className="text-[11px] font-mono text-ember font-bold block mb-1">
-                    EDGE INFERENCE
+                    BACKEND ENGINE
                   </span>
                   <h4 className="font-heading text-xs font-bold text-porcelain uppercase">
-                    Sub-12ms Latency
+                    FastAPI & Postgres
                   </h4>
                   <p className="text-[11px] font-sans text-steel-light mt-1">
-                    Client-side ONNX Runtime Web acceleration with WebAssembly.
+                    Asynchronous inference, rate limiting, and 40+ Pytest suites.
                   </p>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-eclipse-surface border border-gunmetal">
                   <span className="text-[11px] font-mono text-ember font-bold block mb-1">
-                    ZERO UPLOAD PRIVACY
+                    LONGITUDINAL VAULT
                   </span>
                   <h4 className="font-heading text-xs font-bold text-porcelain uppercase">
-                    Client-Side Isolation
+                    Gemini Explanations
                   </h4>
                   <p className="text-[11px] font-sans text-steel-light mt-1">
-                    100% in-browser processing with zero patient image transmission.
+                    Longitudinal scan timeline and contextual clinical insights.
                   </p>
                 </div>
               </div>
@@ -385,9 +410,23 @@ export function Projects() {
         </article>
 
         {/* ============================================================
+            CINEMATIC LUMINE-TO-SECONDARY ARCHITECTURAL BRIDGE
+            (ECHO Design Studio Horizon Threshold & Analog Editorial Rhythm)
+            ============================================================ */}
+        <div className="relative py-6 my-4 flex items-center justify-center">
+          <div className="h-px bg-gradient-to-r from-transparent via-crimson/40 to-transparent w-full absolute top-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="relative z-10 px-5 py-2 rounded-full bg-eclipse-surface border border-gunmetal text-[11px] font-mono text-steel uppercase tracking-wider flex items-center gap-2.5 shadow-lg backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-ember animate-pulse" />
+            <span className="font-medium text-steel-light">
+              SECONDARY ARCHITECTURES &bull; 04 PRODUCTION SYSTEMS
+            </span>
+          </div>
+        </div>
+
+        {/* ============================================================
             3. EXPANDABLE SYSTEMS MATRIX: EXPAND-ON-HOVER (ECHO skiper52)
             ============================================================ */}
-        <div className="project-fade-in pt-8 border-t border-gunmetal/80 space-y-4">
+        <div className="project-fade-in pt-4 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-ember" />

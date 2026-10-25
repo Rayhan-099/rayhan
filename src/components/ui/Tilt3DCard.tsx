@@ -76,13 +76,15 @@ export function Tilt3DCard({
   }, [isHovered, maxTilt, perspective, scale, reducedMotion]);
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (reducedMotion) return;
+    if (reducedMotion || e.pointerType === "touch") return;
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
 
-    // Normalized coordinates from -0.5 to +0.5 relative to center
-    const normX = (e.clientX - rect.left) / rect.width - 0.5;
-    const normY = (e.clientY - rect.top) / rect.height - 0.5;
+    // Strictly bounded normalized coordinates from -0.5 to +0.5 relative to center
+    const rawX = (e.clientX - rect.left) / rect.width - 0.5;
+    const rawY = (e.clientY - rect.top) / rect.height - 0.5;
+    const normX = Math.max(-0.5, Math.min(0.5, rawX));
+    const normY = Math.max(-0.5, Math.min(0.5, rawY));
 
     // Pitch (rotateX) and Yaw (rotateY)
     targetAngles.current.x = -normY * maxTilt * 2;
@@ -97,8 +99,9 @@ export function Tilt3DCard({
     }
   };
 
-  const handlePointerEnter = () => {
-    if (reducedMotion) return;
+  const handlePointerEnter = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (reducedMotion || e.pointerType === "touch") return;
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) return;
     setIsHovered(true);
   };
 
