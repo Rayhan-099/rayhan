@@ -1,15 +1,11 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/content/projects";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 import { Project } from "@/types";
 import { ProjectModal } from "../ui/ProjectModal";
 import {
@@ -17,13 +13,22 @@ import {
   IconGitHub,
   IconCrosshair,
   IconArrowRight,
-  IconTerminal,
   IconShield,
+  IconTerminal,
 } from "../ui/CustomIcons";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [selectedFeatureTab, setSelectedFeatureTab] = useState<"vision" | "latency" | "privacy">("vision");
+  const [wheelIndex, setWheelIndex] = useState(0);
   const containerRef = useRef<HTMLElement>(null);
+
+  const lumine = projects.find((p) => p.id === "lumine")!;
+  const wheelProjects = projects.filter((p) => p.id !== "lumine");
 
   useGSAP(
     () => {
@@ -32,16 +37,16 @@ export function Projects() {
       ).matches;
       if (prefersReducedMotion) return;
 
-      const items = gsap.utils.toArray<HTMLElement>(".project-showcase-stage");
+      const items = gsap.utils.toArray<HTMLElement>(".project-fade-in");
       items.forEach((item) => {
         gsap.from(item, {
           scrollTrigger: {
             trigger: item,
-            start: "top 78%",
+            start: "top 80%",
           },
-          y: 45,
+          y: 35,
           opacity: 0,
-          duration: 1.0,
+          duration: 0.9,
           ease: "power2.out",
         });
       });
@@ -49,20 +54,24 @@ export function Projects() {
     { scope: containerRef }
   );
 
-  const lumine = projects.find((p) => p.id === "lumine")!;
-  const satquery = projects.find((p) => p.id === "satquery-ai")!;
-  const capital = projects.find((p) => p.id === "current-capital")!;
-  const handTracking = projects.find((p) => p.id === "hand-tracking-visualizer")!;
-  const health = projects.find((p) => p.id === "health-assistant")!;
+  const handleNextWheel = () => {
+    setWheelIndex((prev) => (prev + 1) % wheelProjects.length);
+  };
+
+  const handlePrevWheel = () => {
+    setWheelIndex((prev) => (prev - 1 + wheelProjects.length) % wheelProjects.length);
+  };
+
+  const currentWheelProject = wheelProjects[wheelIndex];
 
   return (
     <section
       id="projects"
       ref={containerRef}
-      className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
+      className="py-24 md:py-36 px-6 md:px-14 max-w-7xl mx-auto border-t border-gunmetal/60"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-6 border-b border-gunmetal/60 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/80 gap-6">
         <div>
           <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
             02 / Flagship Systems & Applied Research
@@ -76,33 +85,35 @@ export function Projects() {
         </p>
       </div>
 
-      <div className="space-y-32">
+      <div className="space-y-28">
         {/* ============================================================
-            PROJECT 01: LUMINE AI (Full-Bleed Wide Diagnostic Canvas)
+            1. FEATURED SYSTEM SHOWCASE: LUMINE AI (ECHO Liquid Perspective Preset)
             ============================================================ */}
-        <article className="project-showcase-stage space-y-6">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+        <article className="project-fade-in space-y-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
-                  FLAGSHIP 01
+                  FLAGSHIP 01 &bull; FEATURED ARCHITECTURE
                 </span>
-                <span className="px-2.5 py-0.5 text-[11px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
+                <span className="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
                   {lumine.date}
                 </span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
+              <h3 className="text-3xl sm:text-5xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
                 {lumine.title}
               </h3>
-              <p className="text-sm font-medium text-steel mt-1">{lumine.subtitle}</p>
+              <p className="text-sm font-sans font-medium text-steel-light mt-1">
+                {lumine.subtitle}
+              </p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setActiveProject(lumine)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
               >
-                <span>Inspect Dossier</span>
+                <span>Inspect Full Dossier</span>
                 <IconArrowRight className="w-3.5 h-3.5" />
               </button>
               {lumine.links.live && (
@@ -110,383 +121,306 @@ export function Projects() {
                   href={lumine.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
                 >
-                  <span>Live Site</span>
-                  <IconExternalLink className="w-3 h-3 text-steel" />
+                  <span>Live Deployment</span>
+                  <IconExternalLink className="w-3.5 h-3.5 text-steel" />
                 </a>
               )}
             </div>
           </div>
 
-          {/* Full-bleed media canvas with interactive diagnostic crosshairs */}
+          {/* Interactive Liquid Perspective Media Canvas */}
           <div
             onClick={() => setActiveProject(lumine)}
-            className="group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal-border bg-eclipse-surface shadow-2xl"
+            className="group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-crimson/60"
+            style={{ perspective: "1000px" }}
           >
             <Image
               src={lumine.image}
               alt={lumine.title}
               fill
+              priority
               sizes="100vw"
               className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/90 via-transparent to-eclipse-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/95 via-eclipse-black/30 to-eclipse-black/60 pointer-events-none" />
 
-            {/* Diagnostic telemetry HUD */}
+            {/* Diagnostic Telemetry Overlay */}
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90">
-              <div className="flex items-center gap-2 bg-eclipse-black/80 px-3 py-1.5 rounded border border-gunmetal">
+              <div className="flex items-center gap-2 bg-eclipse-black/85 px-3 py-1.5 rounded-lg border border-gunmetal">
                 <IconCrosshair className="w-3.5 h-3.5 text-ember" />
                 <span>MODEL: DINOv2 (VISION TRANSFORMER)</span>
               </div>
-              <span className="hidden sm:inline-block px-3 py-1.5 rounded bg-eclipse-black/80 border border-gunmetal text-steel">
+              <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg bg-eclipse-black/85 border border-gunmetal text-steel">
                 31 CLASSIFIED DERMATOLOGICAL CLASSES
               </span>
             </div>
 
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain">
-              <span className="bg-eclipse-black/85 px-3 py-1.5 rounded border border-gunmetal text-steel-light">
+              <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light">
                 {lumine.stats}
               </span>
-              <span className="hidden sm:inline-block text-ember uppercase tracking-wider text-[11px] font-bold">
-                Click to inspect full architecture →
+              <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-sans font-bold">
+                <span>Click to inspect complete architectural dossier</span>
+                <span>&rarr;</span>
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
-            <p className="md:col-span-8 text-sm md:text-base text-porcelain/85 leading-relaxed">
-              {lumine.description}
-            </p>
-            <div className="md:col-span-4 flex flex-wrap gap-1.5 justify-start md:justify-end items-start">
-              {lumine.technologies.map((t) => (
-                <span
-                  key={t}
-                  className="px-2.5 py-1 text-xs font-mono bg-eclipse-elevated text-steel border border-gunmetal rounded"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </article>
-
-        {/* ============================================================
-            PROJECT 02: SATQUERY AI (Geospatial Radar Telemetry Command Deck)
-            ============================================================ */}
-        <article className="project-showcase-stage grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 md:p-10 rounded-2xl bg-eclipse-surface border border-gunmetal">
-          {/* Left: Custom Radar Telemetry Stage */}
-          <div className="lg:col-span-6 relative aspect-square max-w-[420px] mx-auto w-full rounded-xl overflow-hidden bg-eclipse-black border border-gunmetal flex items-center justify-center">
-            {/* Concentric radar rings */}
-            <div className="absolute inset-8 rounded-full border border-gunmetal/80" />
-            <div className="absolute inset-16 rounded-full border border-gunmetal/60" />
-            <div className="absolute inset-28 rounded-full border border-gunmetal/40" />
-
-            {/* Radar crosshairs */}
-            <div className="absolute inset-x-0 top-1/2 h-px bg-gunmetal" />
-            <div className="absolute inset-y-0 left-1/2 w-px bg-gunmetal" />
-
-            {/* Rotating radar sweep beam */}
-            <div className="absolute inset-8 rounded-full pointer-events-none radar-sweep-beam">
-              <div
-                className="w-1/2 h-1/2 origin-bottom-right"
-                style={{
-                  background:
-                    "conic-gradient(from 0deg, rgba(255, 73, 61, 0.4) 0deg, rgba(165, 31, 48, 0.1) 40deg, transparent 60deg)",
-                }}
-              />
-            </div>
-
-            {/* Center Satellite Position Indicator */}
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="w-3 h-3 rounded-full bg-ember animate-ping" />
-              <div className="w-2.5 h-2.5 rounded-full bg-crimson absolute" />
-              <span className="font-mono text-[10px] tracking-widest text-porcelain mt-3 bg-eclipse-surface/90 px-2 py-0.5 rounded border border-gunmetal">
-                SENTINEL-1 SAR (10m)
-              </span>
-            </div>
-
-            {/* Live coordinates telemetry */}
-            <div className="absolute bottom-3 left-3 text-[10px] font-mono text-steel">
-              <div>NDVI / NDWI ENGINE</div>
-              <div className="text-ember">POLARIZATION: VV + VH</div>
-            </div>
-            <div className="absolute top-3 right-3 text-[10px] font-mono text-steel bg-burgundy/80 px-2 py-0.5 rounded border border-crimson/30">
-              SIH 2026 SELECTED
-            </div>
-          </div>
-
-          {/* Right: Technical Dossier */}
-          <div className="lg:col-span-6 space-y-5">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold block mb-1">
-                SYSTEM 02 / GEOSPATIAL INTELLIGENCE
-              </span>
-              <h3 className="text-3xl md:text-4xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-                {satquery.title}
-              </h3>
-              <p className="text-sm font-medium text-steel mt-1">{satquery.subtitle}</p>
-            </div>
-
-            <p className="text-sm md:text-base text-porcelain/85 leading-relaxed">
-              {satquery.description}
-            </p>
-
-            <ul className="space-y-2 text-xs md:text-sm font-sans text-steel-light leading-relaxed">
-              {satquery.details.map((d, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-crimson font-mono mt-0.5 select-none">›</span>
-                  <span>{d}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap gap-1.5 pt-2">
-              {satquery.technologies.map((t) => (
-                <span
-                  key={t}
-                  className="px-2.5 py-1 text-xs font-mono bg-eclipse-elevated text-steel border border-gunmetal rounded"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-4 pt-4 border-t border-gunmetal">
-              <button
-                onClick={() => setActiveProject(satquery)}
-                className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors"
-              >
-                <span>Inspect Architecture</span>
-                <IconArrowRight className="w-3.5 h-3.5" />
-              </button>
-              {satquery.links.live && (
-                <a
-                  href={satquery.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors"
-                >
-                  <span>Live Assistant</span>
-                  <IconExternalLink className="w-3.5 h-3.5" />
-                </a>
-              )}
-            </div>
-          </div>
-        </article>
-
-        {/* ============================================================
-            PROJECT 03: CURRENT CAPITAL (Structured Financial Architecture)
-            ============================================================ */}
-        <article className="project-showcase-stage grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div className="lg:col-span-5 space-y-5 order-2 lg:order-1">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold block mb-1">
-                SYSTEM 03 / FINANCIAL INFRASTRUCTURE
-              </span>
-              <h3 className="text-3xl md:text-4xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-                {capital.title}
-              </h3>
-              <p className="text-sm font-medium text-steel mt-1">{capital.subtitle}</p>
-            </div>
-
-            <p className="text-sm md:text-base text-porcelain/85 leading-relaxed">
-              {capital.description}
-            </p>
-
-            <div className="p-4 rounded-lg bg-eclipse-surface border border-gunmetal space-y-2 text-xs font-mono">
-              <div className="flex items-center gap-2 text-porcelain font-semibold font-mono text-xs">
-                <IconTerminal className="w-3.5 h-3.5 text-ember" />
-                <span>GEMINI VISION AI RECEIPT INGESTION</span>
-              </div>
-              <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed">
-                Automated parsing of vendor names, itemized lines, taxes, and dynamic envelope budgeting allocation in sub-100ms API response loops.
+          {/* Interactive Diagnostic Tabs & System Specifications */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-2">
+            <div className="lg:col-span-7 space-y-4">
+              <p className="text-sm md:text-base text-porcelain/90 leading-relaxed font-sans">
+                {lumine.description}
               </p>
-            </div>
 
-            <div className="flex flex-wrap gap-1.5 pt-2">
-              {capital.technologies.map((t) => (
-                <span
-                  key={t}
-                  className="px-2.5 py-1 text-xs font-mono bg-eclipse-elevated text-steel border border-gunmetal rounded"
+              {/* Feature Switcher Tabs */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                <button
+                  onClick={() => setSelectedFeatureTab("vision")}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-sans font-medium uppercase tracking-wider transition-all border ${
+                    selectedFeatureTab === "vision"
+                      ? "bg-crimson border-crimson text-porcelain"
+                      : "bg-eclipse-elevated border-gunmetal text-steel hover:text-porcelain"
+                  }`}
                 >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-4 pt-4 border-t border-gunmetal/60">
-              <button
-                onClick={() => setActiveProject(capital)}
-                className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors"
-              >
-                <span>Inspect Ledger Engine</span>
-                <IconArrowRight className="w-3.5 h-3.5" />
-              </button>
-              {capital.links.live && (
-                <a
-                  href={capital.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors"
+                  Neural Architecture
+                </button>
+                <button
+                  onClick={() => setSelectedFeatureTab("latency")}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-sans font-medium uppercase tracking-wider transition-all border ${
+                    selectedFeatureTab === "latency"
+                      ? "bg-crimson border-crimson text-porcelain"
+                      : "bg-eclipse-elevated border-gunmetal text-steel hover:text-porcelain"
+                  }`}
                 >
-                  <span>Live App</span>
-                  <IconExternalLink className="w-3.5 h-3.5" />
-                </a>
-              )}
-            </div>
-          </div>
+                  Edge Inference
+                </button>
+                <button
+                  onClick={() => setSelectedFeatureTab("privacy")}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-sans font-medium uppercase tracking-wider transition-all border ${
+                    selectedFeatureTab === "privacy"
+                      ? "bg-crimson border-crimson text-porcelain"
+                      : "bg-eclipse-elevated border-gunmetal text-steel hover:text-porcelain"
+                  }`}
+                >
+                  Privacy Guarantee
+                </button>
+              </div>
 
-          <div
-            onClick={() => setActiveProject(capital)}
-            className="lg:col-span-7 group relative cursor-pointer aspect-[16/10] rounded-2xl overflow-hidden border border-gunmetal-border bg-eclipse-surface shadow-2xl order-1 lg:order-2"
-          >
-            <Image
-              src={capital.image}
-              alt={capital.title}
-              fill
-              sizes="(max-width: 1024px) 100vw, 60vw"
-              className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-eclipse-black/30" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-steel bg-eclipse-black/80 p-2.5 rounded border border-gunmetal">
-              <span>{capital.stats}</span>
-              <span className="text-ember font-semibold uppercase tracking-wider text-[11px]">
-                {capital.date}
+              {/* Tab Narrative Content */}
+              <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal text-xs font-sans leading-relaxed text-steel-light">
+                {selectedFeatureTab === "vision" && (
+                  <p>
+                    Leverages Meta AI&apos;s self-supervised DINOv2 vision transformer with frozen patch token embeddings and custom multi-layer perceptron heads trained to classify 31 dermatological conditions with high sensitivity.
+                  </p>
+                )}
+                {selectedFeatureTab === "latency" && (
+                  <p>
+                    Engineered with ONNX Runtime Web and WebAssembly acceleration directly in the user&apos;s browser, achieving sub-12ms inference latency without sending image payloads across the network.
+                  </p>
+                )}
+                {selectedFeatureTab === "privacy" && (
+                  <p>
+                    100% zero-upload architecture: patient diagnostic imagery is processed exclusively in browser memory and discarded immediately following analysis, ensuring zero HIPAA or privacy exposure.
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Stack Tags and Deliverables */}
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs font-mono uppercase tracking-wider text-steel block">
+                ENGINEERED STACK
               </span>
+              <div className="flex flex-wrap gap-1.5">
+                {lumine.technologies.map((t) => (
+                  <span
+                    key={t}
+                    className="px-2.5 py-1 text-xs font-mono bg-eclipse-elevated text-steel border border-gunmetal rounded"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <span className="text-xs font-mono uppercase tracking-wider text-steel block mb-2">
+                  VERIFIED DELIVERABLES
+                </span>
+                <ul className="space-y-1.5 text-xs font-sans text-steel-light">
+                  {lumine.deliverables?.map((d, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-crimson font-mono">&rsaquo;</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </article>
 
         {/* ============================================================
-            PROJECT 04 & 05: SPLIT-GRID FOR HAND TRACKING & HEALTH ASSISTANT
+            2. 3D DRUM REEL SHOWCASE (ECHO WorksWheel 3D Projection)
             ============================================================ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Hand Tracking Visualizer */}
-          <article className="project-showcase-stage p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-crimson font-bold uppercase tracking-wider">
-                  SYSTEM 04 / 3D GRAPHICS
+        <div className="project-fade-in pt-8 border-t border-gunmetal/80">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
+                  SPECIALIZED PRODUCTION ARCHITECTURES
                 </span>
-                <span className="px-2 py-0.5 rounded bg-gunmetal text-steel">
-                  {handTracking.date}
+                <span className="text-steel/40">|</span>
+                <span className="font-mono text-xs text-ember">
+                  0{wheelIndex + 1} / 0{wheelProjects.length}
                 </span>
               </div>
-
-              <h3 className="text-2xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-                {handTracking.title}
+              <h3 className="text-2xl sm:text-4xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
+                Engineered Systems Archive
               </h3>
-              <p className="text-xs text-steel">{handTracking.subtitle}</p>
+            </div>
 
-              <div
-                onClick={() => setActiveProject(handTracking)}
-                className="group relative cursor-pointer aspect-[16/10] rounded-xl overflow-hidden border border-gunmetal bg-eclipse-black"
+            {/* Navigation Wheel Controls */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handlePrevWheel}
+                aria-label="Previous System in 3D Wheel"
+                className="w-10 h-10 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface text-steel hover:text-porcelain flex items-center justify-center transition-colors"
               >
-                <Image
-                  src={handTracking.image}
-                  alt={handTracking.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover grayscale contrast-115 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500"
-                />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-steel bg-eclipse-black/80 px-2.5 py-1 rounded border border-gunmetal">
-                  <span>60 FPS EDGE AI INFERENCE</span>
-                  <span className="text-ember">21 LANDMARKS</span>
+                &larr;
+              </button>
+              <button
+                onClick={handleNextWheel}
+                aria-label="Next System in 3D Wheel"
+                className="w-10 h-10 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface text-steel hover:text-porcelain flex items-center justify-center transition-colors"
+              >
+                &rarr;
+              </button>
+            </div>
+          </div>
+
+          {/* Active 3D Perspective Card Stage */}
+          <div className="relative w-full rounded-2xl bg-eclipse-surface border border-gunmetal p-6 md:p-10 shadow-2xl overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Media Preview Stage */}
+              <div
+                onClick={() => setActiveProject(currentWheelProject)}
+                className="lg:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden border border-gunmetal-border cursor-pointer group bg-eclipse-black"
+              >
+                {currentWheelProject.image ? (
+                  <Image
+                    src={currentWheelProject.image}
+                    alt={currentWheelProject.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.03] group-hover:grayscale-0 transition-all duration-700 ease-out"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center text-steel font-mono text-xs p-6 text-center">
+                    <IconCrosshair className="w-8 h-8 text-crimson mb-2" />
+                    <span>DIAGNOSTIC ARCHITECTURE PREVIEW</span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
+
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-porcelain">
+                  <span className="bg-eclipse-black/85 px-2.5 py-1 rounded border border-gunmetal text-steel-light text-[11px]">
+                    {currentWheelProject.stats}
+                  </span>
+                  <span className="text-ember font-sans font-medium text-[11px] uppercase">
+                    Inspect &rarr;
+                  </span>
                 </div>
               </div>
 
-              <p className="text-xs md:text-sm text-porcelain/85 leading-relaxed">
-                {handTracking.description}
-              </p>
-            </div>
+              {/* System Specifications Dossier */}
+              <div className="lg:col-span-6 space-y-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
+                    SYSTEM 0{wheelIndex + 2}
+                  </span>
+                  <span className="px-2 py-0.5 text-[10px] font-mono uppercase bg-burgundy text-porcelain border border-crimson/30 rounded">
+                    {currentWheelProject.date}
+                  </span>
+                </div>
 
-            <div className="pt-6 mt-6 border-t border-gunmetal flex items-center justify-between">
-              <button
-                onClick={() => setActiveProject(handTracking)}
-                className="text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors inline-flex items-center gap-1.5"
-              >
-                <span>Inspect Shader Loop</span>
-                <IconArrowRight className="w-3.5 h-3.5" />
-              </button>
-              {handTracking.links.live && (
-                <a
-                  href={handTracking.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors inline-flex items-center gap-1"
-                >
-                  <span>Simulation</span>
-                  <IconExternalLink className="w-3 h-3" />
-                </a>
-              )}
-            </div>
-          </article>
+                <h4 className="text-2xl sm:text-3xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
+                  {currentWheelProject.title}
+                </h4>
+                <p className="text-xs sm:text-sm font-sans font-medium text-steel">
+                  {currentWheelProject.subtitle}
+                </p>
 
-          {/* Health Assistant Platform */}
-          <article className="project-showcase-stage p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-crimson font-bold uppercase tracking-wider">
-                  SYSTEM 05 / HACKATHON WINNER
-                </span>
-                <span className="px-2 py-0.5 rounded bg-burgundy/80 text-porcelain border border-crimson/30">
-                  SIH 2025
-                </span>
-              </div>
+                <p className="text-xs sm:text-sm font-sans text-steel-light leading-relaxed">
+                  {currentWheelProject.description}
+                </p>
 
-              <h3 className="text-2xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-                {health.title}
-              </h3>
-              <p className="text-xs text-steel">{health.subtitle}</p>
+                {/* Detail Highlights */}
+                <ul className="space-y-1.5 text-xs font-sans text-steel-light">
+                  {currentWheelProject.details.slice(0, 3).map((detail, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-crimson font-mono">&rsaquo;</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div
-                onClick={() => setActiveProject(health)}
-                className="group relative cursor-pointer aspect-[16/10] rounded-xl overflow-hidden border border-gunmetal bg-eclipse-black"
-              >
-                <Image
-                  src={health.image}
-                  alt={health.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover grayscale contrast-115 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500"
-                />
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-steel bg-eclipse-black/80 px-2.5 py-1 rounded border border-gunmetal">
-                  <span>SUPABASE &bull; &lt;250MS QUERY</span>
-                  <span className="text-ember">&gt;95% RELIABILITY</span>
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {currentWheelProject.technologies.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2.5 py-1 text-xs font-mono bg-eclipse-elevated text-steel border border-gunmetal rounded"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Actions */}
+                <div className="pt-4 flex items-center gap-3">
+                  <button
+                    onClick={() => setActiveProject(currentWheelProject)}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                  >
+                    <span>View Dossier</span>
+                    <IconArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  {currentWheelProject.links.github && (
+                    <a
+                      href={currentWheelProject.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-steel hover:text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                    >
+                      <IconGitHub className="w-3.5 h-3.5" />
+                      <span>Source Code</span>
+                    </a>
+                  )}
                 </div>
               </div>
-
-              <p className="text-xs md:text-sm text-porcelain/85 leading-relaxed">
-                {health.description}
-              </p>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-gunmetal flex items-center justify-between">
-              <button
-                onClick={() => setActiveProject(health)}
-                className="text-xs font-sans font-medium uppercase tracking-wider text-porcelain hover:text-ember transition-colors inline-flex items-center gap-1.5"
-              >
-                <span>Inspect Hackathon Dossier</span>
-                <IconArrowRight className="w-3.5 h-3.5" />
-              </button>
-              {health.links.live && (
-                <a
-                  href={health.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-sans font-medium uppercase tracking-wider text-steel hover:text-porcelain transition-colors inline-flex items-center gap-1"
-                >
-                  <span>Portal</span>
-                  <IconExternalLink className="w-3 h-3" />
-                </a>
-              )}
+            {/* Step Indicators */}
+            <div className="flex items-center justify-center gap-2 pt-8 mt-6 border-t border-gunmetal/60">
+              {wheelProjects.map((p, idx) => (
+                <button
+                  key={p.id}
+                  onClick={() => setWheelIndex(idx)}
+                  aria-label={`Jump to ${p.title}`}
+                  className={`h-1.5 rounded-full transition-all ${
+                    wheelIndex === idx ? "w-8 bg-ember" : "w-2 bg-gunmetal hover:bg-steel"
+                  }`}
+                />
+              ))}
             </div>
-          </article>
+          </div>
         </div>
       </div>
 
-      {/* Deep Inspection Modal */}
+      {/* Project Modal Dossier Viewer */}
       <ProjectModal
         project={activeProject}
         onClose={() => setActiveProject(null)}

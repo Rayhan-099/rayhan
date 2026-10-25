@@ -3,7 +3,7 @@
 This document records the empirical browser inspection of computed font families and weights across all active routes and rendered components in Rayhan Khan's portfolio.
 
 **Inspection Environment:** Headless Chromium (/home/rayhan/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome) at 1440x900 viewport.  
-**Audit Timestamp:** 2026-10-24T16:36:51.341Z  
+**Audit Timestamp:** 2026-10-25T04:57:53.487Z  
 **Intended Typography System:**
 - **Display Headlines:** Syne (Weights 700, 800)
 - **Body & UI Interface:** Instrument Sans (Weights 400, 500, 600, 700)
@@ -13,7 +13,7 @@ This document records the empirical browser inspection of computed font families
 
 ## 1. Executive Summary
 
-- **Total Inspected Samples:** 113 elements across 4 routes (Home, Terms, Privacy, 404)
+- **Total Inspected Samples:** 114 elements across 4 routes (Home, Terms, Privacy, 404)
 - **Unexpected / Prohibited Font Families Found:** **0**
 - **Computed Font Compliance:** **100% Verified**
 - **Plus Jakarta Sans Status:** Completely eliminated (0 references detected in computed styles)
@@ -30,30 +30,31 @@ This document records the empirical browser inspection of computed font families
 | Home | Navigation | `<span>` | "RAYHAN KHAN" | `Syne, sans-serif` | `700` | ✓ Valid |
 | Home | Navigation | `<a>` | "ABOUT" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
 | Home | Navigation | `<a>` | "PROJECTS" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
-| Home | Primary Headlines (H1) | `<h1>` | "RAYHANKHAN" | `Syne, sans-serif` | `800` | ✓ Valid |
+| Home | Primary Headlines (H1) | `<h1>` | "RAYHAN KHAN" | `Syne, sans-serif` | `800` | ✓ Valid |
 | Home | Section Headlines (H2) | `<h2>` | "SYSTEMATIC" | `Syne, sans-serif` | `800` | ✓ Valid |
 | Home | Section Headlines (H2) | `<h2>` | "ARCHITECTURE" | `Syne, sans-serif` | `800` | ✓ Valid |
 | Home | Section Headlines (H2) | `<h2>` | "FLAGSHIP SYSTEMS" | `Syne, sans-serif` | `800` | ✓ Valid |
-| Home | Section Headlines (H2) | `<h2>` | "EXPERIENCE" | `Syne, sans-serif` | `800` | ✓ Valid |
+| Home | Section Headlines (H2) | `<h2>` | "WHERE I'VE BEEN" | `Syne, sans-serif` | `800` | ✓ Valid |
 | Home | Sub-Headings (H3) | `<h3>` | "TURNING RESEARCH & MACHINE LEARNING" | `Syne, sans-serif` | `700` | ✓ Valid |
 | Home | Sub-Headings (H3) | `<h3>` | "LUMINE AI" | `Syne, sans-serif` | `800` | ✓ Valid |
-| Home | Sub-Headings (H3) | `<h3>` | "SATQUERY AI" | `Syne, sans-serif` | `800` | ✓ Valid |
-| Home | Sub-Headings (H3) | `<h3>` | "CURRENT CAPITAL" | `Syne, sans-serif` | `800` | ✓ Valid |
+| Home | Sub-Headings (H3) | `<h3>` | "ENGINEERED SYSTEMS ARCHIVE" | `Syne, sans-serif` | `800` | ✓ Valid |
+| Home | Sub-Headings (H3) | `<h3>` | "ARTIFICIAL INTELLIGENCE INTERN" | `Syne, sans-serif` | `800` | ✓ Valid |
 | Home | Pillar Headings (H4) | `<h4>` | "FULL-STACK SYSTEMS" | `Syne, sans-serif` | `700` | ✓ Valid |
 | Home | Pillar Headings (H4) | `<h4>` | "APPLIED AI & VISION" | `Syne, sans-serif` | `700` | ✓ Valid |
 | Home | Pillar Headings (H4) | `<h4>` | "AUTONOMOUS RAG" | `Syne, sans-serif` | `700` | ✓ Valid |
+| Home | Pillar Headings (H4) | `<h4>` | "SATQUERY AI" | `Syne, sans-serif` | `800` | ✓ Valid |
 | Home | Paragraphs / Body Copy | `<p>` | "FULL-STACK SYSTEMS & APPLIED MACHIN" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
 | Home | Paragraphs / Body Copy | `<p>` | "Engineering resilient backend archi" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `400` | ✓ Valid |
 | Home | Paragraphs / Body Copy | `<p>` | "SCROLL TO EXPLORE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `400` | ✓ Valid |
 | Home | Paragraphs / Body Copy | `<p>` | "Computer Science undergraduate at A" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `400` | ✓ Valid |
 | Home | Technical Telemetry | `<div>` | "LOCATION: 28.5355° N, 77.3910° E |" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
 | Home | Technical Telemetry | `<span>` | "ENGINEERING ETHOS" | `"Chivo Mono", monospace` | `700` | ✓ Valid |
-| Home | Technical Telemetry | `<div>` | "CORE SPECIALIZATIONS 01 // FULL-STA" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
 | Home | Technical Telemetry | `<span>` | "01 / ABOUT" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
+| Home | Technical Telemetry | `<span>` | "PILLAR 01" | `"Chivo Mono", monospace` | `700` | ✓ Valid |
 | Home | Interactive Buttons | `<button>` | "" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `400` | ✓ Valid |
-| Home | Interactive Buttons | `<button>` | "INSPECT DOSSIER" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
-| Home | Interactive Buttons | `<button>` | "INSPECT ARCHITECTURE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
-| Home | Interactive Buttons | `<button>` | "INSPECT LEDGER ENGINE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
+| Home | Interactive Buttons | `<button>` | "INSPECT FULL DOSSIER" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
+| Home | Interactive Buttons | `<button>` | "NEURAL ARCHITECTURE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
+| Home | Interactive Buttons | `<button>` | "EDGE INFERENCE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
 | Home | Action Pill Links | `<a>` | "ABOUT" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
 | Home | Action Pill Links | `<a>` | "PROJECTS" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
 | Home | Action Pill Links | `<a>` | "EXPERIENCE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `500` | ✓ Valid |
