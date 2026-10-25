@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-10-25T12:20:13.631Z",
+  "viewportsTested": [
+    {
+      "name": "desktop_1440x900",
+      "width": 1440,
+      "height": 900,
+      "status": "SUCCESS"
+    },
+    {
+      "name": "laptop_1280x800",
+      "width": 1280,
+      "height": 800,
+      "status": "SUCCESS"
+    },
+    {
+      "name": "mobile_390x844",
+      "width": 390,
+      "height": 844,
+      "status": "SUCCESS"
+    },
+    {
+      "name": "mobile_360x800",
+      "width": 360,
+      "height": 800,
+      "status": "SUCCESS"
+    }
+  ],
+  "networkMetrics": {
+    "totalRequests": 1768,
+    "jpgFrameRequests": 1626,
+    "webpFrameRequests": 0,
+    "headshotJpgRequests": 4,
+    "headshotWebpRequests": 0,
+    "failedRequests": []
+  },
+  "consoleErrors": [],
+  "modalInteractionVerified": true,
+  "reducedMotionVerified": true
+}

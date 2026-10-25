@@ -198,7 +198,7 @@ export function Projects() {
                 {lumine.stats}
               </span>
               <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-heading font-bold">
-                <span>Click to inspect complete architectural dossier</span>
+                <span>View Dossier</span>
                 <span>&rarr;</span>
               </span>
             </div>

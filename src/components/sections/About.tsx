@@ -386,7 +386,7 @@ export function About() {
                 ref={scrollPromptRef}
                 className="font-heading text-[10px] sm:text-xs uppercase tracking-widest text-steel mt-3 will-change-transform"
               >
-                Scroll to explore &bull; 241 frames
+                Scroll to explore
               </p>
             </div>
 

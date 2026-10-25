@@ -350,10 +350,10 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
             {/* Ambient Vignette Overlay */}
             <div className="absolute inset-0 bg-radial from-transparent via-eclipse-surface/40 to-eclipse-black/90 pointer-events-none z-10" />
 
-            {/* Hint Badge */}
+            {/* Reel Status Badge */}
             <div className="pointer-events-none absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-eclipse-black/85 border border-gunmetal text-[11px] font-mono text-steel">
               <span className="w-1.5 h-1.5 rounded-full bg-ember animate-pulse" />
-              <span>DRAG OR SCROLL TO ROTATE 3D DRUM</span>
+              <span>INTERACTIVE 3D REEL</span>
             </div>
 
             {/* Perspective Wheel 3D Anchor */}
@@ -529,7 +529,7 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
           {/* Quick-Jump Index Navigation Bar */}
           <div className="pt-2 border-t border-gunmetal/40">
             <span className="text-[11px] font-mono text-steel uppercase tracking-wider block mb-2">
-              Fast Jump Reel Index
+              Reel Index
             </span>
             <div className="flex flex-col space-y-1">
               {projects.map((proj, idx) => (
