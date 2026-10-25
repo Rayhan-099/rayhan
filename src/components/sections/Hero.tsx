@@ -113,10 +113,10 @@ export function Hero() {
 
     const urls: string[] = [];
     for (let i = 1; i <= TOTAL_HERO_FRAMES; i += stride) {
-      urls.push(`/hero-frames/ezgif-frame-${String(i).padStart(3, "0")}.jpg`);
+      urls.push(`/hero-frames/ezgif-frame-${String(i).padStart(3, "0")}.webp`);
     }
 
-    const finalFrameUrl = `/hero-frames/ezgif-frame-${String(TOTAL_HERO_FRAMES).padStart(3, "0")}.jpg`;
+    const finalFrameUrl = `/hero-frames/ezgif-frame-${String(TOTAL_HERO_FRAMES).padStart(3, "0")}.webp`;
     if (urls[urls.length - 1] !== finalFrameUrl) {
       urls.push(finalFrameUrl);
     }

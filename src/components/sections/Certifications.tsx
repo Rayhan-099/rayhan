@@ -5,18 +5,36 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { certifications } from "@/content/certifications";
+import { IconExternalLink, IconShield } from "../ui/CustomIcons";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-import { IconExternalLink, IconShield } from "../ui/CustomIcons";
 
 export function Certifications() {
-  const [showAll, setShowAll] = useState(false);
+  const [filter, setFilter] = useState<string>("featured");
   const containerRef = useRef<HTMLElement>(null);
 
-  const featured = certifications.filter((c) => c.featured);
-  const displayed = showAll ? certifications : featured;
+  const getFilteredCertifications = () => {
+    switch (filter) {
+      case "featured":
+        return certifications.filter((c) => c.featured);
+      case "all":
+        return certifications;
+      case "ibm":
+        return certifications.filter((c) => c.issuer.toLowerCase().includes("ibm"));
+      case "google":
+        return certifications.filter((c) => c.issuer.toLowerCase().includes("google"));
+      case "other":
+        return certifications.filter(
+          (c) => !c.issuer.toLowerCase().includes("ibm") && !c.issuer.toLowerCase().includes("google")
+        );
+      default:
+        return certifications.filter((c) => c.featured);
+    }
+  };
+
+  const displayed = getFilteredCertifications();
 
   useGSAP(
     () => {
@@ -30,14 +48,14 @@ export function Certifications() {
           trigger: containerRef.current,
           start: "top 75%",
         },
-        y: 25,
+        y: 20,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 0.6,
+        stagger: 0.05,
         ease: "power2.out",
       });
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [filter] }
   );
 
   return (
@@ -45,20 +63,84 @@ export function Certifications() {
       id="certifications"
       ref={containerRef}
       className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
+      aria-label="Verified Certifications and Credentials"
     >
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
-            07 / Verified Certifications & Credentials
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-2 h-2 rounded-full bg-ember" />
+            <span className="font-mono text-xs uppercase tracking-wider text-ember font-medium">
+              07 / Verified Certifications &amp; Credentials
+            </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
             Certifications
           </h2>
         </div>
         <p className="font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed">
-          30+ verified industry specializations spanning agentic systems, vector databases, deep learning, and cloud infrastructure.
+          30 verified industry specializations spanning agentic systems, vector databases, deep learning, and cloud infrastructure.
         </p>
+      </div>
+
+      {/* Filter Tabs & Live Counter */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => setFilter("featured")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+              filter === "featured"
+                ? "bg-crimson text-porcelain font-bold shadow-sm"
+                : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
+            }`}
+          >
+            Featured ({certifications.filter((c) => c.featured).length})
+          </button>
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+              filter === "all"
+                ? "bg-crimson text-porcelain font-bold shadow-sm"
+                : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
+            }`}
+          >
+            All Archive (30)
+          </button>
+          <button
+            onClick={() => setFilter("ibm")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+              filter === "ibm"
+                ? "bg-crimson text-porcelain font-bold shadow-sm"
+                : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
+            }`}
+          >
+            IBM (14)
+          </button>
+          <button
+            onClick={() => setFilter("google")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+              filter === "google"
+                ? "bg-crimson text-porcelain font-bold shadow-sm"
+                : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
+            }`}
+          >
+            Google (12)
+          </button>
+          <button
+            onClick={() => setFilter("other")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+              filter === "other"
+                ? "bg-crimson text-porcelain font-bold shadow-sm"
+                : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
+            }`}
+          >
+            Packt &amp; Others (4)
+          </button>
+        </div>
+
+        <span className="font-mono text-xs text-steel/80 shrink-0">
+          Displaying {displayed.length} of 30 verified credentials
+        </span>
       </div>
 
       {/* Grid of Certifications */}
@@ -66,19 +148,19 @@ export function Certifications() {
         {displayed.map((cert) => (
           <div
             key={cert.id}
-            className="cert-item p-5 rounded-xl bg-eclipse-surface border border-gunmetal hover:border-crimson/50 transition-colors flex flex-col justify-between"
+            className="cert-item p-5 rounded-xl bg-eclipse-surface border border-gunmetal/80 hover:border-crimson/50 transition-colors flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between pb-3 mb-2 text-xs font-mono text-steel border-b border-gunmetal/40">
-                <span className="text-crimson font-bold">{cert.issuer}</span>
-                <span className="text-steel/70">ID: {cert.id.slice(0, 12)}...</span>
+                <span className="text-crimson font-bold uppercase">{cert.issuer}</span>
+                <span className="text-steel/70">ID: {cert.id.slice(0, 14)}...</span>
               </div>
-              <h3 className="text-sm font-bold text-porcelain leading-snug">
+              <h3 className="text-sm font-bold font-syne uppercase tracking-tight text-porcelain leading-snug">
                 {cert.name}
               </h3>
             </div>
 
-            <div className="pt-4 mt-3 flex items-center justify-between text-xs font-mono">
+            <div className="pt-4 mt-3 flex items-center justify-between text-xs font-mono border-t border-gunmetal/30">
               <span className="text-steel/70">{cert.date}</span>
               {cert.link && cert.link !== "#" ? (
                 <a
@@ -102,19 +184,18 @@ export function Certifications() {
         ))}
       </div>
 
-      {/* Toggle View More Button */}
-      <div className="mt-10 text-center">
-        <button
-          onClick={() => setShowAll(!showAll)}
-          className="inline-flex items-center gap-2 px-6 py-3 font-sans font-medium text-xs uppercase tracking-wider bg-gunmetal hover:bg-gunmetal-border text-porcelain rounded-full transition-colors"
-        >
-          <span>
-            {showAll
-              ? "Collapse to Featured Credentials"
-              : `View Full Archive (${certifications.length} Specializations)`}
-          </span>
-        </button>
-      </div>
+      {/* Action Toggle if on featured */}
+      {filter === "featured" && (
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => setFilter("all")}
+            className="px-6 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider bg-eclipse-surface hover:bg-gunmetal border border-gunmetal/80 hover:border-crimson/50 text-porcelain transition-colors inline-flex items-center gap-2"
+          >
+            <span>View All 30 Credentials</span>
+            <span>→</span>
+          </button>
+        </div>
+      )}
     </section>
   );
 }

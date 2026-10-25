@@ -40,12 +40,16 @@ export function Achievements() {
       id="achievements"
       ref={containerRef}
       className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
+      aria-label="Verified Achievements and Leadership"
     >
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <div className="font-mono text-xs uppercase tracking-wider text-ember mb-2 font-medium">
-            05 / Verified Achievements & Leadership
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-2 h-2 rounded-full bg-ember" />
+            <span className="font-mono text-xs uppercase tracking-wider text-ember font-medium">
+              05 / Verified Achievements &amp; Leadership
+            </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
             Achievements
@@ -60,32 +64,40 @@ export function Achievements() {
         {achievements.map((item, index) => (
           <div
             key={item.id || index}
-            className="achievement-card p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal flex flex-col justify-between"
+            className="achievement-card relative p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal/80 hover:border-crimson/50 transition-colors flex flex-col justify-between overflow-hidden group"
           >
+            {/* Top Border Highlight */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-crimson via-ember to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
+
             <div>
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-gunmetal/60">
-                <span className="font-mono text-xs text-crimson font-bold">
+                <span className="font-mono text-xs text-crimson font-bold tracking-wider">
                   MILESTONE 0{index + 1}
                 </span>
-                <span className="px-3 py-1 text-xs font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded-full">
+                <span className="px-3 py-1 text-xs font-mono uppercase bg-burgundy/60 text-porcelain border border-crimson/40 rounded-full font-medium">
                   {item.role}
                 </span>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-syne font-bold uppercase tracking-tight text-porcelain mb-4">
+              <h3 className="text-xl md:text-2xl font-syne font-bold uppercase tracking-tight text-porcelain mb-4 leading-tight">
                 {item.title}
               </h3>
 
               <ul className="space-y-3 text-sm text-steel leading-relaxed">
                 {item.details.map((detail, dIdx) => (
-                  <li key={dIdx} className="flex items-start gap-2">
-                    <span className="font-mono text-crimson text-xs select-none mt-1">
+                  <li key={dIdx} className="flex items-start gap-2.5">
+                    <span className="font-mono text-crimson text-sm select-none shrink-0 mt-0.5">
                       ›
                     </span>
-                    <span>{detail}</span>
+                    <span className="text-steel-light">{detail}</span>
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-gunmetal/40 flex items-center justify-between text-xs font-mono text-steel">
+              <span className="uppercase text-steel/70">National Competitive Selection</span>
+              <span className="text-ember font-medium">Verified Record</span>
             </div>
           </div>
         ))}

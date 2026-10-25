@@ -16,6 +16,7 @@ const STRIDE_MOBILE = 2;
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null);
+  const pinWrapperRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const mediaContainerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -105,7 +106,7 @@ export function About() {
   );
 
   /**
-   * Preload image frames for the sequence
+   * Preload WebP image frames for the sequence
    */
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -119,11 +120,11 @@ export function About() {
 
     const urls: string[] = [];
     for (let i = 1; i <= TOTAL_FRAMES; i += stride) {
-      urls.push(`/frames/ezgif-frame-${String(i).padStart(3, "0")}.jpg`);
+      urls.push(`/frames/ezgif-frame-${String(i).padStart(3, "0")}.webp`);
     }
 
     // Guarantee the final ending frame is preserved
-    const finalFrameUrl = `/frames/ezgif-frame-${String(TOTAL_FRAMES).padStart(3, "0")}.jpg`;
+    const finalFrameUrl = `/frames/ezgif-frame-${String(TOTAL_FRAMES).padStart(3, "0")}.webp`;
     if (urls[urls.length - 1] !== finalFrameUrl) {
       urls.push(finalFrameUrl);
     }
@@ -195,9 +196,9 @@ export function About() {
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
-      if (!sectionRef.current || !stageRef.current) return;
+      if (!sectionRef.current || !stageRef.current || !pinWrapperRef.current) return;
 
-      const section = sectionRef.current;
+      const pinWrapper = pinWrapperRef.current;
       const stage = stageRef.current;
       const mediaContainer = mediaContainerRef.current;
       const contentOverlay = contentOverlayRef.current;
@@ -282,11 +283,11 @@ export function About() {
 
       let stInstance: ScrollTrigger | null = null;
       stInstance = ScrollTrigger.create({
-        trigger: section,
+        trigger: pinWrapper,
         start: "top top",
         end: "bottom bottom",
         pin: stage,
-        pinSpacing: false,
+        pinSpacing: true,
         anticipatePin: 1,
         scrub: 0.5,
         onUpdate: (self) => {
@@ -295,6 +296,19 @@ export function About() {
         onRefresh: (self) => {
           applyFrame(self ? self.progress : (stInstance ? stInstance.progress : 0));
         },
+      });
+
+      // Animate the Editorial Identity cards when scrolled into view
+      gsap.from(".identity-element", {
+        scrollTrigger: {
+          trigger: ".identity-showcase",
+          start: "top 75%",
+        },
+        y: 35,
+        opacity: 0,
+        duration: 0.85,
+        stagger: 0.12,
+        ease: "power2.out",
       });
 
       return () => {
@@ -309,129 +323,260 @@ export function About() {
       id="about"
       ref={sectionRef}
       className="relative w-full bg-eclipse-black text-porcelain"
-      style={{ height: "240vh" }}
       aria-label="About Rayhan Khan"
     >
-      {/* Pinned Viewport Stage (ECHO-inspired ScrollExpandMedia) */}
-      <div
-        ref={stageRef}
-        className="w-full h-screen overflow-hidden flex flex-col items-center justify-center z-10 px-4 will-change-transform"
-      >
-        {/* Subtle ambient depth */}
-        <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-eclipse-black via-burgundy-muted/30 to-eclipse-black opacity-60" />
-
-        {/* Center Expanding Media Stage */}
+      {/* ================= STAGE 1: PINNED CANVAS EXPANSION (ECHO-INSPIRED) ================= */}
+      <div ref={pinWrapperRef} className="relative w-full" style={{ height: "200vh" }}>
         <div
-          ref={mediaContainerRef}
-          className="relative z-10 rounded-2xl overflow-hidden border border-gunmetal-border bg-eclipse-surface shadow-2xl transition-none flex items-center justify-center will-change-[width,height]"
-          style={{
-            width: "320px",
-            height: "420px",
-            maxWidth: "96vw",
-            maxHeight: "88vh",
-          }}
+          ref={stageRef}
+          className="w-full h-screen overflow-hidden flex flex-col items-center justify-center z-10 px-4 will-change-transform"
         >
-          {/* Living Canvas Image Sequence */}
-          <canvas
-            ref={canvasRef}
-            className="absolute inset-0 w-full h-full object-cover block select-none pointer-events-none"
-          />
+          {/* Subtle ambient depth */}
+          <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-eclipse-black via-burgundy-muted/30 to-eclipse-black opacity-60" />
 
-          {/* Vignette Gradient for Text Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-eclipse-black/85 via-eclipse-black/40 to-eclipse-black/90 pointer-events-none" />
-
-          {/* Initial Center Text (Splits and slides away on scroll) */}
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none select-none px-4 text-center">
-            <h2
-              ref={titleLeftRef}
-              className="font-syne text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-porcelain leading-tight will-change-transform"
-            >
-              Systematic
-            </h2>
-            <h2
-              ref={titleRightRef}
-              className="font-syne text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-ember leading-tight will-change-transform"
-            >
-              Architecture
-            </h2>
-            <p
-              ref={scrollPromptRef}
-              className="font-sans text-[11px] uppercase tracking-wider text-steel mt-2 will-change-transform"
-            >
-              Scroll to explore
-            </p>
-          </div>
-
-          {/* Minimalist Perimeter Content - Revealed When Fully Expanded */}
+          {/* Center Expanding Media Stage */}
           <div
-            ref={contentOverlayRef}
-            className="absolute inset-0 z-30 flex flex-col justify-between p-6 md:p-10 opacity-0 select-none pointer-events-none will-change-[transform,opacity]"
+            ref={mediaContainerRef}
+            className="relative z-10 rounded-2xl overflow-hidden border border-gunmetal-border bg-eclipse-surface shadow-2xl transition-none flex items-center justify-center will-change-[width,height]"
+            style={{
+              width: "320px",
+              height: "420px",
+              maxWidth: "96vw",
+              maxHeight: "88vh",
+            }}
           >
-            {/* Top Perimeter Header */}
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-gunmetal/80 pb-4">
-              <h3 className="font-syne text-base sm:text-lg md:text-xl font-bold uppercase tracking-tight text-porcelain max-w-xl">
-                Turning Research & Machine Learning into Resilient Software Systems
-              </h3>
-              <span className="font-mono text-xs text-ember tracking-widest shrink-0 uppercase">
-                01 / ABOUT
-              </span>
+            {/* Living Canvas Image Sequence */}
+            <canvas
+              ref={canvasRef}
+              className="absolute inset-0 w-full h-full object-cover block select-none pointer-events-none"
+            />
+
+            {/* Vignette Gradient for Text Contrast */}
+            <div className="absolute inset-0 bg-gradient-to-b from-eclipse-black/85 via-eclipse-black/40 to-eclipse-black/90 pointer-events-none" />
+
+            {/* Initial Center Text (Splits and slides away on scroll) */}
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none select-none px-4 text-center">
+              <h2
+                ref={titleLeftRef}
+                className="font-syne text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-porcelain leading-tight will-change-transform"
+              >
+                Systematic
+              </h2>
+              <h2
+                ref={titleRightRef}
+                className="font-syne text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-ember leading-tight will-change-transform"
+              >
+                Architecture
+              </h2>
+              <p
+                ref={scrollPromptRef}
+                className="font-sans text-[11px] uppercase tracking-wider text-steel mt-2 will-change-transform"
+              >
+                Scroll to explore
+              </p>
             </div>
 
-            {/* Center Zone: OPEN & UNOBSCURED */}
-            <div className="flex-1 pointer-events-none min-h-[80px] md:min-h-[160px]" />
-
-            {/* Bottom Perimeter: Core Architecture Pillars & Summary */}
-            <div className="pt-4 border-t border-gunmetal/80 flex flex-col md:flex-row md:items-end justify-between gap-6 bg-eclipse-surface/85 p-4 md:p-6 rounded-xl border border-gunmetal/60">
-              <div className="max-w-2xl space-y-3">
-                <p className="text-xs sm:text-sm text-porcelain/90 leading-relaxed font-sans">
-                  {profile.summary}
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
-                  <div>
-                    <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
-                      PILLAR 01
-                    </span>
-                    <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
-                      Full-Stack Systems
-                    </h4>
-                    <p className="font-sans text-[11px] text-steel mt-0.5">
-                      FastAPI, Next.js, PostgreSQL
-                    </p>
+            {/* Minimalist Perimeter Content - Revealed When Fully Expanded */}
+            <div
+              ref={contentOverlayRef}
+              className="absolute inset-0 z-30 flex flex-col justify-between p-6 md:p-10 opacity-0 select-none pointer-events-none will-change-[transform,opacity]"
+            >
+              {/* Top Perimeter Header with Author Thumbnail */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gunmetal/80 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-crimson/60 shrink-0 bg-eclipse-surface">
+                    <picture>
+                      <source srcSet="/rayhan-headshot.webp" type="image/webp" />
+                      <img
+                        src="/rayhan-headshot.jpg"
+                        alt="Rayhan Khan"
+                        className="w-full h-full object-cover object-[center_20%]"
+                      />
+                    </picture>
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
-                      PILLAR 02
-                    </span>
-                    <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
-                      Applied AI & Vision
-                    </h4>
-                    <p className="font-sans text-[11px] text-steel mt-0.5">
-                      DINOv2, MediaPipe 60fps
-                    </p>
-                  </div>
-                  <div>
-                    <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
-                      PILLAR 03
-                    </span>
-                    <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
-                      Autonomous RAG
-                    </h4>
-                    <p className="font-sans text-[11px] text-steel mt-0.5">
-                      LangGraph, Vector Engines
+                    <h3 className="font-syne text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight text-porcelain">
+                      Turning Research &amp; Machine Learning into Resilient Software
+                    </h3>
+                    <p className="font-mono text-[10px] text-steel">
+                      RAYHAN KHAN • AKTU CSE NOIDA
                     </p>
                   </div>
                 </div>
+                <span className="font-mono text-xs text-ember tracking-widest shrink-0 uppercase">
+                  01 / ABOUT
+                </span>
               </div>
 
-              <div className="flex items-center gap-3 shrink-0">
-                <a
-                  href="#projects"
-                  className="pointer-events-auto px-5 py-2.5 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
-                >
-                  <span>Explore Systems</span>
-                  <span className="text-xs">↓</span>
-                </a>
+              {/* Center Zone: OPEN & UNOBSCURED */}
+              <div className="flex-1 pointer-events-none min-h-[60px] md:min-h-[140px]" />
+
+              {/* Bottom Perimeter: Core Architecture Pillars & Summary */}
+              <div className="pt-4 border-t border-gunmetal/80 flex flex-col md:flex-row md:items-end justify-between gap-6 bg-eclipse-surface/90 p-4 md:p-6 rounded-xl border border-gunmetal/60">
+                <div className="max-w-2xl space-y-3">
+                  <p className="text-xs sm:text-sm text-porcelain/90 leading-relaxed font-sans">
+                    {profile.summary}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+                    <div>
+                      <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
+                        PILLAR 01
+                      </span>
+                      <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
+                        Full-Stack Systems
+                      </h4>
+                      <p className="font-sans text-[11px] text-steel mt-0.5">
+                        FastAPI, Next.js, PostgreSQL
+                      </p>
+                    </div>
+                    <div>
+                      <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
+                        PILLAR 02
+                      </span>
+                      <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
+                        Applied AI &amp; Vision
+                      </h4>
+                      <p className="font-sans text-[11px] text-steel mt-0.5">
+                        DINOv2, MediaPipe 60fps
+                      </p>
+                    </div>
+                    <div>
+                      <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
+                        PILLAR 03
+                      </span>
+                      <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
+                        Autonomous RAG
+                      </h4>
+                      <p className="font-sans text-[11px] text-steel mt-0.5">
+                        LangGraph, Vector Engines
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 shrink-0">
+                  <a
+                    href="#projects"
+                    className="pointer-events-auto px-5 py-2.5 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
+                  >
+                    <span>Explore Systems</span>
+                    <span className="text-xs">↓</span>
+                  </a>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= STAGE 2: EDITORIAL PERSONAL IDENTITY SHOWCASE ================= */}
+      <div className="identity-showcase relative z-20 py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Authentic Portrait */}
+          <div className="identity-element lg:col-span-5 relative">
+            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-eclipse-surface border border-gunmetal/80 shadow-2xl group">
+              <picture>
+                <source srcSet="/rayhan-headshot.webp" type="image/webp" />
+                <img
+                  src="/rayhan-headshot.jpg"
+                  alt="Rayhan Khan, Computer Science Engineer and AI Systems Architect based in Noida, India"
+                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+              </picture>
+              <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
+              
+              {/* Bottom Credential Badge */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono bg-eclipse-surface/90 px-3.5 py-2 rounded-lg border border-gunmetal/80">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
+                  <span className="text-porcelain font-bold">AKTU CSE</span>
+                </div>
+                <span className="text-steel">NOIDA, UP, INDIA</span>
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between text-xs font-mono border-b border-gunmetal/50 pb-2">
+              <span className="font-syne font-bold uppercase tracking-wider text-porcelain">
+                Rayhan Khan
+              </span>
+              <span className="text-ember uppercase font-semibold">
+                Available for Engineering Roles
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: Statement, Academic Grounding & Manifesto */}
+          <div className="identity-element lg:col-span-7 flex flex-col justify-center lg:pl-4">
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="w-2 h-2 rounded-full bg-ember" />
+              <span className="font-mono text-xs font-semibold tracking-[0.25em] uppercase text-ember">
+                Engineering Identity &amp; Philosophy
+              </span>
+            </div>
+
+            <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-porcelain leading-[1.08] mb-6">
+              Architecting scalable software at the intersection of systems engineering and artificial intelligence.
+            </h2>
+
+            <div className="space-y-4 text-steel-light font-sans text-sm md:text-base leading-relaxed">
+              <p>
+                I am a Computer Science undergraduate at Dr. A.P.J. Abdul Kalam Technical University (AKTU) in Noida, focused on the engineering discipline required to take machine learning models from mathematical prototypes into production-grade, fault-tolerant software.
+              </p>
+              <p>
+                My technical work spans low-latency asynchronous APIs, clinical computer vision platforms with DINOv2 self-supervised vision transformers, Sentinel satellite remote sensing pipelines with automated raster thresholding, and autonomous agentic workflows orchestrated via LangGraph.
+              </p>
+              <p>
+                I prioritize sound data structures, minimal code surface area, strict type contracts, and verifiable runtime performance over decorative developer trends.
+              </p>
+            </div>
+
+            {/* Core Capability Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-gunmetal/60">
+              <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80">
+                <span className="font-mono text-[10px] text-crimson font-bold block mb-1">
+                  DISCIPLINE 01
+                </span>
+                <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                  Distributed Systems &amp; APIs
+                </h4>
+                <p className="font-sans text-xs text-steel leading-normal">
+                  Next.js, FastAPI, Node.js, and PostgreSQL with strict ACID guarantees, automated testing, and Docker isolation.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80">
+                <span className="font-mono text-[10px] text-crimson font-bold block mb-1">
+                  DISCIPLINE 02
+                </span>
+                <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                  Applied Machine Learning &amp; Vision
+                </h4>
+                <p className="font-sans text-xs text-steel leading-normal">
+                  DINOv2 self-supervised feature extraction, Google MediaPipe Edge AI, and SAR remote sensing with Rasterio.
+                </p>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mt-8 pt-6 border-t border-gunmetal/40">
+              <a
+                href="#projects"
+                className="px-6 py-3 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
+              >
+                <span>Explore Technical Systems</span>
+                <span className="text-xs">↓</span>
+              </a>
+
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-eclipse-surface hover:bg-gunmetal border border-gunmetal/80 hover:border-crimson/50 text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2"
+              >
+                <span>Download Verified Resume</span>
+                <span className="text-xs">↗</span>
+              </a>
             </div>
           </div>
         </div>

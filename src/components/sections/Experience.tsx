@@ -214,7 +214,7 @@ export function Experience() {
                   <span className="metallic-title">BEEN</span>
                 </h2>
                 <p className="font-sans text-sm md:text-base text-steel-light leading-relaxed pt-2">
-                  A continuous progression from computer science foundations at Amity University to applied artificial intelligence research and enterprise-scale data science pipelines.
+                  A continuous progression from computer science foundations at Dr. A.P.J. Abdul Kalam Technical University (AKTU) to applied artificial intelligence research and enterprise-scale data science pipelines.
                 </p>
                 <div className="pt-4 flex items-center gap-3 text-xs font-sans text-steel">
                   <span>Scroll vertically to traverse timeline</span>

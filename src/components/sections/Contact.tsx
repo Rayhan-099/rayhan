@@ -58,11 +58,14 @@ export function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left: Closing Bold Statement */}
         <div className="lg:col-span-7 space-y-6 contact-fade">
-          <div className="font-mono text-xs uppercase tracking-telemetry text-ember">
-            08 / Direct Communication & Contact
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-2 h-2 rounded-full bg-ember" />
+            <span className="font-mono text-xs uppercase tracking-wider text-ember font-medium">
+              08 / Direct Communication &amp; Contact
+            </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-extrabold uppercase tracking-tighter leading-[0.88] text-porcelain">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-extrabold uppercase tracking-tight leading-[0.92] text-porcelain">
             LET&apos;S BUILD SOMETHING
           </h2>
 
