@@ -31,7 +31,7 @@ export default function PrivacyPage() {
 
       <div className="space-y-8 text-sm md:text-base text-porcelain/85 leading-relaxed font-sans">
         <section className="space-y-3">
-          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-ember">
             Principles of Transparency
           </h2>
           <p>
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-ember">
             Cookies and Tracking Technologies
           </h2>
           <p>
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-ember">
             Hosting Infrastructure and Server Telemetry
           </h2>
           <p>
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-ember">
             User-Initiated Contact
           </h2>
           <p>
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+          <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-ember">
             Data Protection Inquiries
           </h2>
           <p>

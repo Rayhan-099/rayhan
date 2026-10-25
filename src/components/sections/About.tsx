@@ -121,11 +121,11 @@ export function About() {
 
     const urls: string[] = [];
     for (let i = 1; i <= TOTAL_FRAMES; i += stride) {
-      urls.push(`/frames/ezgif-frame-${String(i).padStart(3, "0")}.webp`);
+      urls.push(`/frames/ezgif-frame-${String(i).padStart(3, "0")}.jpg`);
     }
 
     // Guarantee the final ending frame is preserved
-    const finalFrameUrl = `/frames/ezgif-frame-${String(TOTAL_FRAMES).padStart(3, "0")}.webp`;
+    const finalFrameUrl = `/frames/ezgif-frame-${String(TOTAL_FRAMES).padStart(3, "0")}.jpg`;
     if (urls[urls.length - 1] !== finalFrameUrl) {
       urls.push(finalFrameUrl);
     }
@@ -384,7 +384,7 @@ export function About() {
               </span>
               <p
                 ref={scrollPromptRef}
-                className="font-chakra text-[10px] sm:text-xs uppercase tracking-widest text-steel mt-3 will-change-transform"
+                className="font-heading text-[10px] sm:text-xs uppercase tracking-widest text-steel mt-3 will-change-transform"
               >
                 Scroll to explore &bull; 241 frames
               </p>
@@ -399,25 +399,22 @@ export function About() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gunmetal/80 pb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full overflow-hidden border border-crimson/60 shrink-0 bg-eclipse-surface">
-                    <picture>
-                      <source srcSet="/rayhan-headshot.webp" type="image/webp" />
-                      <img
-                        src="/rayhan-headshot.jpg"
-                        alt="Rayhan Khan"
-                        className="w-full h-full object-cover object-[center_20%]"
-                      />
-                    </picture>
+                    <img
+                      src="/rayhan-headshot.jpg"
+                      alt="Rayhan Khan"
+                      className="w-full h-full object-cover object-[center_20%]"
+                    />
                   </div>
                   <div>
-                    <h3 className="font-chakra text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight text-porcelain">
+                    <h3 className="font-heading text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight text-porcelain">
                       Turning Research &amp; Machine Learning into Resilient Software
                     </h3>
                     <p className="font-mono text-[11px] text-steel">
-                      RAYHAN KHAN • AKTU CSE NOIDA
+                      RAYHAN KHAN • NOIDA, INDIA
                     </p>
                   </div>
                 </div>
-                <span className="font-chakra text-xs text-ember tracking-widest shrink-0 uppercase font-bold">
+                <span className="font-heading text-xs text-ember tracking-widest shrink-0 uppercase font-bold">
                   SYSTEMS ARCHITECT
                 </span>
               </div>
@@ -436,7 +433,7 @@ export function About() {
                       <span className="font-mono text-[11px] text-ember font-bold block mb-0.5">
                         CORE PILLAR
                       </span>
-                      <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain">
+                      <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain">
                         Full-Stack Systems
                       </h4>
                       <p className="font-sans text-[11px] text-steel mt-0.5">
@@ -447,7 +444,7 @@ export function About() {
                       <span className="font-mono text-[11px] text-ember font-bold block mb-0.5">
                         CORE PILLAR
                       </span>
-                      <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain">
+                      <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain">
                         Applied AI &amp; Vision
                       </h4>
                       <p className="font-sans text-[11px] text-steel mt-0.5">
@@ -458,7 +455,7 @@ export function About() {
                       <span className="font-mono text-[11px] text-ember font-bold block mb-0.5">
                         CORE PILLAR
                       </span>
-                      <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain">
+                      <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain">
                         Autonomous RAG
                       </h4>
                       <p className="font-sans text-[11px] text-steel mt-0.5">
@@ -489,15 +486,12 @@ export function About() {
           {/* Left Column: Authentic Portrait */}
           <div className="identity-element lg:col-span-5 relative">
             <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-eclipse-surface border border-gunmetal/80 shadow-2xl group">
-              <picture>
-                <source srcSet="/rayhan-headshot.webp" type="image/webp" />
-                <img
-                  src="/rayhan-headshot.jpg"
-                  alt="Rayhan Khan, Computer Science Engineer and AI Systems Architect based in Noida, India"
-                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-              </picture>
+              <img
+                src="/rayhan-headshot.jpg"
+                alt="Rayhan Khan, Computer Science Engineer and AI Systems Architect based in Noida, India"
+                className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
               
               {/* Bottom Credential Badge */}
@@ -511,7 +505,7 @@ export function About() {
             </div>
 
             <div className="mt-4 flex items-center justify-between text-xs font-mono border-b border-gunmetal/50 pb-2">
-              <span className="font-chakra font-bold uppercase tracking-wider text-porcelain">
+              <span className="font-heading font-bold uppercase tracking-wider text-porcelain">
                 Rayhan Khan
               </span>
               <span className="text-ember uppercase font-semibold">
@@ -522,7 +516,7 @@ export function About() {
 
           {/* Right Column: Statement, Academic Grounding & Manifesto */}
           <div className="identity-element lg:col-span-7 flex flex-col justify-center lg:pl-4">
-            <span className="font-chakra text-xs font-bold tracking-[0.2em] uppercase text-ember mb-3 block">
+            <span className="font-heading text-xs font-bold tracking-[0.2em] uppercase text-ember mb-3 block">
               Engineering Identity &amp; Philosophy
             </span>
 
@@ -548,7 +542,7 @@ export function About() {
                 <span className="font-mono text-[11px] text-ember font-bold block mb-1">
                   CORE DISCIPLINE
                 </span>
-                <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
                   Distributed Systems &amp; APIs
                 </h4>
                 <p className="font-sans text-xs text-steel-light leading-normal">
@@ -560,7 +554,7 @@ export function About() {
                 <span className="font-mono text-[11px] text-ember font-bold block mb-1">
                   CORE DISCIPLINE
                 </span>
-                <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
                   Applied Machine Learning &amp; Vision
                 </h4>
                 <p className="font-sans text-xs text-steel-light leading-normal">

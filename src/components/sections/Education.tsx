@@ -45,7 +45,7 @@ export function Education() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-2">
+          <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block mb-2">
             ACADEMIC FOUNDATION &amp; RIGOR
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
@@ -75,7 +75,7 @@ export function Education() {
 
               <div>
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-gunmetal/50">
-                  <span className="font-chakra text-xs text-ember font-bold uppercase tracking-wider">
+                  <span className="font-heading text-xs text-ember font-bold uppercase tracking-wider">
                     {isPrimary ? "Primary Degree" : "Academic Credential"}
                   </span>
                   {isPrimary && (
@@ -85,7 +85,7 @@ export function Education() {
                   )}
                 </div>
 
-                <h3 className="text-base sm:text-lg font-chakra font-bold uppercase tracking-tight text-porcelain mb-2 leading-snug">
+                <h3 className="text-base sm:text-lg font-heading font-bold uppercase tracking-tight text-porcelain mb-2 leading-snug">
                   {item.degree}
                 </h3>
                 <p className="text-xs sm:text-sm text-steel-light font-medium mb-3">

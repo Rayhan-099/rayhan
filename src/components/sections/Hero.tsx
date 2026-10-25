@@ -15,23 +15,7 @@ const TOTAL_HERO_FRAMES = 300;
 const STRIDE_DESKTOP = 1;
 const STRIDE_MOBILE = 2;
 
-interface HeroProps {
-  initialVariant?: "A" | "B";
-}
-
-export function Hero({ initialVariant = "B" }: HeroProps) {
-  const [activeVariant, setActiveVariant] = React.useState<"A" | "B">(initialVariant);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const param = new URLSearchParams(window.location.search).get("hero");
-      if (param === "A" || param === "a") {
-        setActiveVariant("A");
-      } else if (param === "B" || param === "b") {
-        setActiveVariant("B");
-      }
-    }
-  }, []);
+export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -129,10 +113,10 @@ export function Hero({ initialVariant = "B" }: HeroProps) {
 
     const urls: string[] = [];
     for (let i = 1; i <= TOTAL_HERO_FRAMES; i += stride) {
-      urls.push(`/hero-frames/ezgif-frame-${String(i).padStart(3, "0")}.webp`);
+      urls.push(`/hero-frames/ezgif-frame-${String(i).padStart(3, "0")}.jpg`);
     }
 
-    const finalFrameUrl = `/hero-frames/ezgif-frame-${String(TOTAL_HERO_FRAMES).padStart(3, "0")}.webp`;
+    const finalFrameUrl = `/hero-frames/ezgif-frame-${String(TOTAL_HERO_FRAMES).padStart(3, "0")}.jpg`;
     if (urls[urls.length - 1] !== finalFrameUrl) {
       urls.push(finalFrameUrl);
     }
@@ -390,201 +374,80 @@ export function Hero({ initialVariant = "B" }: HeroProps) {
           ref={contentWrapRef}
           className="relative z-10 w-full max-w-[1400px] mx-auto h-full flex flex-col justify-between will-change-[opacity,transform]"
         >
-          {/* Top Telemetry Header Bar */}
+          {/* Top Bar — Clean Identity & Real Status */}
           <div className="hero-telemetry-tag flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gunmetal/80 text-xs font-mono text-steel">
             <div className="flex items-center gap-2.5 flex-wrap">
-              <IconCrosshair className="w-3.5 h-3.5 text-ember shrink-0" />
-              <span>LOCATION: NOIDA, UTTAR PRADESH, INDIA</span>
-              <span className="text-steel/40 hidden sm:inline">|</span>
-              <span className="text-steel-light font-mono">UTC +05:30</span>
+              <span className="font-heading font-bold text-porcelain tracking-wider uppercase text-xs">
+                RAYHAN KHAN
+              </span>
+              <span className="text-steel/40 hidden sm:inline">&bull;</span>
+              <span className="text-steel-light font-mono text-[11px]">NOIDA, UTTAR PRADESH, INDIA</span>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-1 border border-gunmetal/80 rounded bg-eclipse-surface/60 px-1.5 py-0.5 text-[10px] font-mono">
-                <span className="text-steel px-1">POSTER:</span>
-                <button
-                  type="button"
-                  onClick={() => setActiveVariant("A")}
-                  className={`px-1.5 py-0.5 rounded transition-colors ${
-                    activeVariant === "A" ? "bg-ember text-eclipse-black font-bold" : "text-steel hover:text-porcelain"
-                  }`}
-                  aria-label="Switch to Hero Variant A (Symmetrical)"
-                >
-                  A
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveVariant("B")}
-                  className={`px-1.5 py-0.5 rounded transition-colors ${
-                    activeVariant === "B" ? "bg-ember text-eclipse-black font-bold" : "text-steel hover:text-porcelain"
-                  }`}
-                  aria-label="Switch to Hero Variant B (Asymmetrical)"
-                >
-                  B
-                </button>
-              </div>
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-burgundy/40 border border-ember/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-ember animate-pulse" />
+              <span className="text-porcelain uppercase tracking-widest text-[11px] font-mono font-medium">
+                AVAILABLE FOR ENGINEERING ROLES
+              </span>
+            </div>
+          </div>
 
-              <div className="flex items-center gap-2 px-2.5 py-1 rounded bg-burgundy/40 border border-ember/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-ember" />
-                <span className="text-porcelain uppercase tracking-widest text-[11px] font-mono font-semibold">
-                  AVAILABLE FOR ENGINEERING ROLES
+          {/* Central Stage: Integrated Monumental Stack with Centred Portrait Anchor */}
+          <div className="my-auto py-4 md:py-6 flex flex-col items-center text-center justify-center relative z-10 w-full">
+            <h1 className="font-display text-[clamp(3.8rem,11.5vw,12.5rem)] font-extrabold uppercase leading-[0.80] tracking-tight text-porcelain select-none">
+              <span className="hero-word-first block">
+                RAYHAN
+              </span>
+            </h1>
+
+            {/* Centred Portrait Anchor with Ambient Crimson Halo */}
+            <div className="relative flex justify-center items-center -my-3 sm:-my-6 z-20">
+              <div className="absolute w-72 h-72 rounded-full bg-crimson/20 blur-3xl pointer-events-none" />
+
+              <div className="relative w-[200px] h-[250px] sm:w-[240px] sm:h-[300px] md:w-[270px] md:h-[340px] hero-portrait-mask flex items-end justify-center">
+                <img
+                  src="/rayhan-headshot.jpg"
+                  alt="Rayhan Khan"
+                  className="w-full h-full object-cover object-top select-none pointer-events-none filter contrast-105 brightness-95"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/90 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+
+            <h1 className="font-display text-[clamp(3.8rem,11.5vw,12.5rem)] font-extrabold uppercase leading-[0.80] tracking-tight select-none z-10">
+              <span className="hero-word-second block metallic-title">
+                KHAN
+              </span>
+            </h1>
+
+            <div className="mt-4 max-w-2xl">
+              <span className="font-heading font-bold text-xs sm:text-sm md:text-base text-ember tracking-widest uppercase block">
+                Full-Stack Systems &amp; Applied Machine Learning Engineer
+              </span>
+              <div className="flex flex-wrap justify-center gap-2 mt-3 font-mono text-[11px] text-steel-light">
+                <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
+                  FastAPI
+                </span>
+                <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
+                  PyTorch
+                </span>
+                <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
+                  DINOv2
+                </span>
+                <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
+                  Next.js
+                </span>
+                <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
+                  PostgreSQL
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Editorial Grid: Controlled by activeVariant ("A" vs "B") */}
-          {activeVariant === "A" ? (
-            /* ============================================================
-               VARIANT A: Symmetrical Architectural Balance & Pedestal Portrait
-               ============================================================ */
-            <div className="my-auto py-4 md:py-6 flex flex-col items-center text-center justify-center relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border border-gunmetal bg-eclipse-surface/60 font-mono text-[10px] tracking-widest uppercase text-steel">
-                <span className="w-1.5 h-1.5 rounded-full bg-ember animate-pulse" />
-                <span>ARCHITECTURAL MASTHEAD // VARIANT A</span>
-              </div>
-
-              <h1 className="font-display text-[clamp(3.5rem,11vw,12rem)] font-extrabold uppercase leading-[0.82] tracking-tight text-porcelain select-none">
-                <span className="hero-word-first block">
-                  RAYHAN
-                </span>
-                <span className="hero-word-second block metallic-title -mt-2 sm:-mt-4">
-                  KHAN
-                </span>
-              </h1>
-
-              <div className="mt-4 max-w-2xl">
-                <span className="font-chakra font-bold text-xs sm:text-sm md:text-base text-ember tracking-widest uppercase">
-                  Full-Stack Systems &amp; Applied Machine Learning Engineer
-                </span>
-              </div>
-
-              {/* Symmetrical Flanking Data with Center Pedestal Portrait */}
-              <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 mt-6 w-full max-w-4xl">
-                <div className="hidden md:flex flex-col items-end text-right space-y-1 font-mono text-xs text-steel">
-                  <span className="text-ember font-bold">CORE FOCUS</span>
-                  <span>COMPUTER VISION</span>
-                  <span>DISTRIBUTED BACKENDS</span>
-                  <span>EDGE INFERENCE</span>
-                </div>
-
-                <div className="flex justify-center items-center">
-                  <div className="relative w-[180px] h-[220px] sm:w-[210px] sm:h-[260px] hero-portrait-mask flex items-end justify-center">
-                    <picture>
-                      <source srcSet="/rayhan-headshot.webp" type="image/webp" />
-                      <img
-                        src="/rayhan-headshot.jpg"
-                        alt="Rayhan Khan"
-                        className="w-full h-full object-cover object-top select-none pointer-events-none filter contrast-105 brightness-95"
-                      />
-                    </picture>
-                    <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/90 via-transparent to-transparent pointer-events-none" />
-                  </div>
-                </div>
-
-                <div className="hidden md:flex flex-col items-start text-left space-y-1 font-mono text-xs text-steel">
-                  <span className="text-ember font-bold">TELEMETRY</span>
-                  <span>NOIDA, UTTAR PRADESH</span>
-                  <span>STATUS: AVAILABLE</span>
-                  <span>STACK: PYTORCH / FASTAPI</span>
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* ============================================================
-               VARIANT B: Asymmetrical Editorial Film-Tension & Analog Frame
-               ============================================================ */
-            <div className="my-auto py-4 md:py-6 grid grid-cols-1 md:grid-cols-12 items-center gap-6 lg:gap-10 relative z-10">
-              <div className="md:col-span-7 lg:col-span-8 flex flex-col items-start justify-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1 mb-2.5 rounded-full border border-gunmetal/80 bg-eclipse-surface/60 font-mono text-[10px] tracking-widest uppercase text-steel">
-                  <span className="w-1.5 h-1.5 rounded-full bg-ember animate-pulse" />
-                  <span>DOSSIER // APPLIED AI &amp; DISTRIBUTED ARCHITECTURE</span>
-                </div>
-
-                <h1 className="font-display text-[clamp(3.5rem,10vw,11rem)] font-extrabold uppercase leading-[0.84] tracking-tight text-porcelain select-none">
-                  <div className="overflow-hidden pb-1 sm:pb-2">
-                    <span className="hero-word-first inline-block">
-                      RAYHAN
-                    </span>
-                  </div>
-                  <div className="overflow-hidden pb-1 sm:pb-2 ml-4 sm:ml-12 md:ml-16">
-                    <span className="hero-word-second inline-block metallic-title">
-                      KHAN
-                    </span>
-                  </div>
-                </h1>
-
-                <div className="flex flex-wrap items-center gap-2.5 mt-3">
-                  <span className="font-chakra font-bold text-xs sm:text-sm md:text-base text-ember tracking-wider uppercase">
-                    Full-Stack Systems &amp; Applied Machine Learning Engineer
-                  </span>
-                  <span className="hidden sm:inline-block font-mono text-xs text-steel/50">&bull;</span>
-                  <span className="hidden sm:inline-block font-mono text-xs text-steel">NOIDA, INDIA</span>
-                </div>
-
-                {/* Technical Focus Chips */}
-                <div className="flex flex-wrap gap-2 mt-4 font-mono text-[11px] text-steel-light">
-                  <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
-                    FastAPI
-                  </span>
-                  <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
-                    PyTorch
-                  </span>
-                  <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
-                    DINOv2
-                  </span>
-                  <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
-                    Next.js
-                  </span>
-                  <span className="px-2.5 py-1 rounded bg-gunmetal/40 border border-gunmetal/80 text-porcelain">
-                    PostgreSQL
-                  </span>
-                </div>
-              </div>
-
-              {/* Right Column: Analog Film-Framed Dossier Card */}
-              <div className="hidden md:flex md:col-span-5 lg:col-span-4 justify-center items-center relative">
-                {/* Darkroom Amber / Crimson Ambient Backlight */}
-                <div className="absolute w-48 h-48 rounded-full bg-crimson/25 blur-3xl pointer-events-none" />
-
-                {/* Tactile Analog Card with Film Brackets */}
-                <div className="film-bracket relative w-full max-w-[280px] lg:max-w-[310px] rounded-lg border border-gunmetal/90 bg-eclipse-surface/80 backdrop-blur-md p-3.5 shadow-2xl">
-                  {/* Film Plate Header */}
-                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-gunmetal/80 font-mono text-[9px] uppercase tracking-wider text-steel">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-ember" />
-                      35MM MONOCHROME
-                    </span>
-                    <span>ISO 400 / D-76</span>
-                  </div>
-
-                  {/* Headshot Portrait */}
-                  <div className="relative w-full aspect-[4/5] overflow-hidden rounded hero-portrait-mask">
-                    <picture>
-                      <source srcSet="/rayhan-headshot.webp" type="image/webp" />
-                      <img
-                        src="/rayhan-headshot.jpg"
-                        alt="Rayhan Khan"
-                        className="w-full h-full object-cover object-top select-none pointer-events-none filter contrast-105 brightness-95"
-                      />
-                    </picture>
-                    <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/90 via-transparent to-transparent pointer-events-none" />
-                  </div>
-
-                  {/* Film Plate Footer */}
-                  <div className="pt-2 mt-2 border-t border-gunmetal/80 flex items-center justify-between font-mono text-[9px] text-steel">
-                    <span className="text-porcelain font-semibold">VERIFIED IDENTITY</span>
-                    <span>NOIDA, INDIA</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
           {/* Bottom Editorial Panel & Action Navigation */}
           <div className="hero-footer-bar pt-6 border-t border-gunmetal/80 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="max-w-xl space-y-2">
-              <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block">
+              <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block">
                 ENGINEERING ETHOS
               </span>
               <p className="font-sans text-xs sm:text-sm md:text-base text-steel-light leading-relaxed">

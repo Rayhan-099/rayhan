@@ -3,19 +3,19 @@
 @import "@fontsource/syne/600.css";
 @import "@fontsource/syne/700.css";
 @import "@fontsource/syne/800.css";
-@import "@fontsource/instrument-sans/400.css";
-@import "@fontsource/instrument-sans/500.css";
-@import "@fontsource/instrument-sans/600.css";
-@import "@fontsource/instrument-sans/700.css";
-@import "@fontsource/chivo-mono/400.css";
-@import "@fontsource/chivo-mono/500.css";
-@import "@fontsource/chivo-mono/600.css";
-@import "@fontsource/chivo-mono/700.css";
-@import "@fontsource/chivo-mono/800.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/space-mono/400.css";
+@import "@fontsource/space-mono/700.css";
 @import "@fontsource/dela-gothic-one/400.css";
-@import "@fontsource/chakra-petch/400.css";
-@import "@fontsource/chakra-petch/600.css";
-@import "@fontsource/chakra-petch/700.css";
 
 @tailwind base;
 @tailwind components;
@@ -41,7 +41,7 @@ html {
 body {
   background-color: #110D13;
   color: #F5E8E8;
-  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -57,19 +57,23 @@ button, input, textarea, select, optgroup {
 }
 
 .font-sans {
-  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .font-mono {
-  font-family: 'Chivo Mono', monospace;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
 }
 
 .font-display {
-  font-family: 'Dela Gothic One', 'Syne', sans-serif;
+  font-family: 'Syne', 'Dela Gothic One', sans-serif;
+}
+
+.font-heading {
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .font-chakra {
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 ::selection {

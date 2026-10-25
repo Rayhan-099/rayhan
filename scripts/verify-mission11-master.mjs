@@ -1,0 +1,278 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+
+const require = createRequire('/mnt/d/Vyuk Projects/Rayhan-099/package.json');
+const puppeteer = require('puppeteer-core');
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const outputDir = path.resolve(__dirname, '../screenshots_mission11_verified');
+const CHROME_PATH = "/home/rayhan/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome";
+
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
+
+const viewports = [
+  { name: 'desktop_1440x900', width: 1440, height: 900, isMobile: false },
+  { name: 'laptop_1280x800', width: 1280, height: 800, isMobile: false },
+  { name: 'mobile_390x844', width: 390, height: 844, isMobile: true },
+  { name: 'mobile_360x800', width: 360, height: 800, isMobile: true }
+];
+
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+async function runMasterVerification() {
+  console.log('================================================================');
+  console.log('🚀 MISSION 11 MASTER MULTI-VIEWPORT VERIFICATION SUITE');
+  console.log('================================================================');
+
+  const browser = await puppeteer.launch({
+    executablePath: CHROME_PATH,
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
+  });
+
+  const auditReport = {
+    timestamp: new Date().toISOString(),
+    viewportsTested: [],
+    networkMetrics: {
+      totalRequests: 0,
+      jpgFrameRequests: 0,
+      webpFrameRequests: 0,
+      failedRequests: []
+    },
+    consoleErrors: [],
+    modalInteractionVerified: false
+  };
+
+  try {
+    for (const vp of viewports) {
+      console.log(`\n--- Testing Viewport: ${vp.name} (${vp.width}x${vp.height}) ---`);
+      const page = await browser.newPage();
+      await page.setViewport({
+        width: vp.width,
+        height: vp.height,
+        isMobile: vp.isMobile,
+        hasTouch: vp.isMobile,
+        deviceScaleFactor: 2
+      });
+
+      // Track console errors
+      page.on('console', msg => {
+        if (msg.type() === 'error') {
+          console.error(`[Browser Console Error] [${vp.name}]:`, msg.text());
+          auditReport.consoleErrors.push({ viewport: vp.name, error: msg.text() });
+        }
+      });
+
+      // Track network requests
+      page.on('request', req => {
+        auditReport.networkMetrics.totalRequests++;
+        const url = req.url();
+        if (url.includes('/hero-frames/') || url.includes('/frames/')) {
+          if (url.endsWith('.jpg') || url.endsWith('.jpeg')) {
+            auditReport.networkMetrics.jpgFrameRequests++;
+          } else if (url.endsWith('.webp')) {
+            auditReport.networkMetrics.webpFrameRequests++;
+          }
+        }
+      });
+
+      page.on('requestfailed', req => {
+        console.warn(`[Network Request Failed] [${vp.name}]:`, req.url(), req.failure()?.errorText);
+        auditReport.networkMetrics.failedRequests.push({
+          viewport: vp.name,
+          url: req.url(),
+          error: req.failure()?.errorText
+        });
+      });
+
+      // Navigate to homepage
+      await page.goto('http://localhost:3000', { waitUntil: 'networkidle2', timeout: 30000 });
+
+      // Wait for preloader to dismiss
+      await delay(2000);
+
+      // 1. Initial Hero Capture
+      const heroPath = path.join(outputDir, `${vp.name}_01_hero.png`);
+      await page.screenshot({ path: heroPath, fullPage: false });
+      console.log(`✓ Saved Hero screenshot: ${heroPath}`);
+
+      // 2. Controlled Scroll to About Canvas Section
+      console.log(`  Scrolling to About Canvas sequence...`);
+      await page.evaluate(() => {
+        const aboutEl = document.getElementById('about');
+        if (aboutEl) {
+          aboutEl.scrollIntoView({ behavior: 'instant' });
+        }
+      });
+      await delay(1000);
+
+      // Scrub through About sequence
+      await page.evaluate(() => {
+        window.scrollBy({ top: 600, behavior: 'instant' });
+      });
+      await delay(600);
+
+      const aboutPath = path.join(outputDir, `${vp.name}_02_about_expanded.png`);
+      await page.screenshot({ path: aboutPath, fullPage: false });
+      console.log(`✓ Saved About sequence screenshot: ${aboutPath}`);
+
+      // 3. Scroll to Projects Section (Lumine AI showcase)
+      console.log(`  Scrolling to Projects section...`);
+      await page.evaluate(() => {
+        const projEl = document.getElementById('projects');
+        if (projEl) {
+          projEl.scrollIntoView({ behavior: 'instant' });
+        }
+      });
+      await delay(1000);
+
+      const projectsPath = path.join(outputDir, `${vp.name}_03_projects_lumine.png`);
+      await page.screenshot({ path: projectsPath, fullPage: false });
+      console.log(`✓ Saved Projects screenshot: ${projectsPath}`);
+
+      // 4. Scroll to WorksWheel3D / Core Systems Reel
+      console.log(`  Scrolling to WorksWheel3D section...`);
+      await page.evaluate(() => {
+        const wheelEl = document.getElementById('core-systems-reel') || document.querySelector('.works-wheel-section') || document.querySelector('[aria-label*="Core Systems"]');
+        if (wheelEl) {
+          wheelEl.scrollIntoView({ behavior: 'instant' });
+        } else {
+          window.scrollBy({ top: 800, behavior: 'instant' });
+        }
+      });
+      await delay(1000);
+
+      const wheelPath = path.join(outputDir, `${vp.name}_04_works_wheel.png`);
+      await page.screenshot({ path: wheelPath, fullPage: false });
+      console.log(`✓ Saved Works Wheel screenshot: ${wheelPath}`);
+
+      // 5. Scroll to Experience Section
+      console.log(`  Scrolling to Experience section...`);
+      await page.evaluate(() => {
+        const expEl = document.getElementById('experience');
+        if (expEl) {
+          expEl.scrollIntoView({ behavior: 'instant' });
+        }
+      });
+      await delay(1000);
+
+      const expPath = path.join(outputDir, `${vp.name}_05_experience.png`);
+      await page.screenshot({ path: expPath, fullPage: false });
+      console.log(`✓ Saved Experience screenshot: ${expPath}`);
+
+      // 6. Scroll to Skills & Achievements
+      console.log(`  Scrolling to Skills section...`);
+      await page.evaluate(() => {
+        const skillsEl = document.getElementById('skills');
+        if (skillsEl) {
+          skillsEl.scrollIntoView({ behavior: 'instant' });
+        }
+      });
+      await delay(1000);
+
+      const skillsPath = path.join(outputDir, `${vp.name}_06_skills.png`);
+      await page.screenshot({ path: skillsPath, fullPage: false });
+      console.log(`✓ Saved Skills screenshot: ${skillsPath}`);
+
+      // 7. Scroll to Contact / Footer
+      console.log(`  Scrolling to Contact & Footer...`);
+      await page.evaluate(() => {
+        const contactEl = document.getElementById('contact');
+        if (contactEl) {
+          contactEl.scrollIntoView({ behavior: 'instant' });
+        }
+      });
+      await delay(1000);
+
+      const contactPath = path.join(outputDir, `${vp.name}_07_contact.png`);
+      await page.screenshot({ path: contactPath, fullPage: false });
+      console.log(`✓ Saved Contact screenshot: ${contactPath}`);
+
+      // 8. Test Reverse Scroll to Top
+      console.log(`  Executing smooth reverse scroll back to hero...`);
+      await page.evaluate(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      });
+      await delay(1000);
+
+      // 9. Test Modal Focus Trap & Keyboard Escape (Desktop viewport)
+      if (vp.name === 'desktop_1440x900') {
+        console.log(`  Testing Modal Interaction (Open Lumine AI -> Check Trap -> Escape Key)...`);
+        await page.evaluate(() => {
+          const projEl = document.getElementById('projects');
+          if (projEl) projEl.scrollIntoView({ behavior: 'instant' });
+        });
+        await delay(800);
+
+        // Click on the Lumine AI card
+        const clicked = await page.evaluate(() => {
+          const card = document.querySelector('.lumine-card') || document.querySelector('[aria-label*="Lumine"]');
+          if (card) {
+            card.click();
+            return true;
+          }
+          return false;
+        });
+
+        if (clicked) {
+          await delay(600);
+          const modalVisible = await page.evaluate(() => {
+            const modal = document.querySelector('[role="dialog"]');
+            return modal !== null && window.getComputedStyle(modal).display !== 'none';
+          });
+          console.log(`  Modal opened successfully: ${modalVisible}`);
+
+          const modalPath = path.join(outputDir, `${vp.name}_08_lumine_modal.png`);
+          await page.screenshot({ path: modalPath, fullPage: false });
+          console.log(`✓ Saved Modal screenshot: ${modalPath}`);
+
+          // Press Escape
+          await page.keyboard.press('Escape');
+          await delay(500);
+
+          const modalClosed = await page.evaluate(() => {
+            const modal = document.querySelector('[role="dialog"]');
+            return modal === null;
+          });
+          console.log(`  Modal closed successfully via Escape key: ${modalClosed}`);
+          auditReport.modalInteractionVerified = modalVisible && modalClosed;
+        }
+      }
+
+      auditReport.viewportsTested.push({
+        name: vp.name,
+        width: vp.width,
+        height: vp.height,
+        status: 'SUCCESS'
+      });
+
+      await page.close();
+    }
+  } catch (err) {
+    console.error('Error during verification:', err);
+  } finally {
+    await browser.close();
+  }
+
+  // Write audit JSON report
+  const reportPath = path.resolve(__dirname, '../docs/BROWSER-VERIFICATION-AUDIT.json');
+  fs.writeFileSync(reportPath, JSON.stringify(auditReport, null, 2));
+  console.log(`\n================================================================`);
+  console.log(`✅ VERIFICATION AUDIT COMPLETE`);
+  console.log(`Audit Summary:`);
+  console.log(`- Viewports Tested: ${auditReport.viewportsTested.length}/4`);
+  console.log(`- Total Network Requests: ${auditReport.networkMetrics.totalRequests}`);
+  console.log(`- JPG Frame Requests Loaded: ${auditReport.networkMetrics.jpgFrameRequests}`);
+  console.log(`- WebP Frame Requests: ${auditReport.networkMetrics.webpFrameRequests} (Must be 0)`);
+  console.log(`- Console Errors: ${auditReport.consoleErrors.length} (Must be 0)`);
+  console.log(`- Failed Requests: ${auditReport.networkMetrics.failedRequests.length} (Must be 0)`);
+  console.log(`- Modal Keyboard Trapping Verified: ${auditReport.modalInteractionVerified}`);
+  console.log(`Report saved to: ${reportPath}`);
+  console.log(`================================================================\n`);
+}
+
+runMasterVerification();

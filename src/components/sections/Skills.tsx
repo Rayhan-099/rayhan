@@ -62,8 +62,8 @@ export function Skills() {
       {/* ================= HEADER ================= */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-gunmetal/60 gap-6">
         <div>
-          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-2">
-            TECHNICAL MATRIX &amp; DISCIPLINE
+          <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block mb-2">
+            TECHNICAL MATRIX
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
             Engineering Matrix
@@ -78,7 +78,7 @@ export function Skills() {
       <div className="flex flex-wrap items-center gap-2 mb-12">
         <button
           onClick={() => setActiveCategory("all")}
-          className={`px-4 py-2 rounded-full text-xs font-chakra uppercase tracking-wider transition-all ${
+          className={`px-4 py-2 rounded-full text-xs font-heading uppercase tracking-wider transition-all ${
             activeCategory === "all"
               ? "bg-crimson text-porcelain font-bold shadow-sm"
               : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
@@ -93,7 +93,7 @@ export function Skills() {
             <button
               key={c.category}
               onClick={() => setActiveCategory(isSelected ? "all" : key)}
-              className={`px-4 py-2 rounded-full text-xs font-chakra uppercase tracking-wider transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-heading uppercase tracking-wider transition-all ${
                 isSelected
                   ? "bg-crimson text-porcelain font-bold shadow-sm"
                   : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
@@ -110,16 +110,16 @@ export function Skills() {
         {/* Left Column: Systems Architecture Foundations */}
         <div className="skill-spotlight-panel lg:col-span-5 rounded-2xl bg-eclipse-surface border border-gunmetal p-6 md:p-8 relative overflow-hidden space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-gunmetal/60">
-            <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+            <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
               CORE SPECIALIZATION
             </span>
             <span className="font-mono text-xs uppercase text-steel-light">
-              AKTU CSE • NOIDA
+              NOIDA, INDIA
             </span>
           </div>
 
           <div>
-            <h3 className="font-chakra text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-3 leading-tight">
+            <h3 className="font-heading text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-3 leading-tight">
               Distributed Backends &amp; Applied Computer Vision
             </h3>
             <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed">
@@ -130,7 +130,7 @@ export function Skills() {
           {/* Architectural Pillars */}
           <div className="space-y-3 pt-2">
             <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-              <span className="font-chakra text-xs font-bold text-porcelain uppercase block mb-1">
+              <span className="font-heading text-xs font-bold text-porcelain uppercase block mb-1">
                 Zero-Trust API Architecture
               </span>
               <p className="font-sans text-xs text-steel-light">
@@ -139,7 +139,7 @@ export function Skills() {
             </div>
 
             <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-              <span className="font-chakra text-xs font-bold text-ember uppercase block mb-1">
+              <span className="font-heading text-xs font-bold text-ember uppercase block mb-1">
                 Edge AI &amp; WebAssembly Runtimes
               </span>
               <p className="font-sans text-xs text-steel-light">
@@ -148,7 +148,7 @@ export function Skills() {
             </div>
 
             <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-              <span className="font-chakra text-xs font-bold text-porcelain uppercase block mb-1">
+              <span className="font-heading text-xs font-bold text-porcelain uppercase block mb-1">
                 Geospatial &amp; Multimodal Pipelines
               </span>
               <p className="font-sans text-xs text-steel-light">
@@ -173,7 +173,7 @@ export function Skills() {
               className="skill-domain-card p-6 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-gunmetal-border transition-colors"
             >
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-gunmetal/60">
-                <h3 className="font-chakra text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
+                <h3 className="font-heading text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
                   {category.category}
                 </h3>
                 <span className="font-mono text-xs uppercase tracking-wider text-steel">

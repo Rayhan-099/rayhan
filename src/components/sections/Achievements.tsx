@@ -45,7 +45,7 @@ export function Achievements() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-2">
+          <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block mb-2">
             VERIFIED RECOGNITION &amp; LEADERSHIP
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
@@ -68,7 +68,7 @@ export function Achievements() {
 
             <div>
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-gunmetal/60">
-                <span className="font-chakra text-xs text-ember font-bold tracking-wider uppercase">
+                <span className="font-heading text-xs text-ember font-bold tracking-wider uppercase">
                   NATIONAL SELECTION
                 </span>
                 <span className="px-3 py-1 text-xs font-mono uppercase bg-burgundy/60 text-porcelain border border-crimson/40 rounded-full font-medium">
@@ -76,7 +76,7 @@ export function Achievements() {
                 </span>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-chakra font-bold uppercase tracking-tight text-porcelain mb-4 leading-tight">
+              <h3 className="text-xl md:text-2xl font-heading font-bold uppercase tracking-tight text-porcelain mb-4 leading-tight">
                 {item.title}
               </h3>
 

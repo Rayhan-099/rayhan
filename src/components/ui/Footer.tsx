@@ -26,7 +26,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div className="md:col-span-3 space-y-3">
-            <h3 className="font-chakra text-xs uppercase tracking-wider text-porcelain font-bold">
+            <h3 className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold">
               Navigation
             </h3>
             <ul className="space-y-2 text-xs font-sans text-steel-light">
@@ -65,7 +65,7 @@ export function Footer() {
 
           {/* Social and Verified Outlets */}
           <div className="md:col-span-3 space-y-3">
-            <h3 className="font-chakra text-xs uppercase tracking-wider text-porcelain font-bold">
+            <h3 className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold">
               Connected Profiles
             </h3>
             <div className="flex flex-col space-y-2 text-xs font-sans text-steel">

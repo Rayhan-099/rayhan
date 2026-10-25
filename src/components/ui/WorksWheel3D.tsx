@@ -294,11 +294,11 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
       {/* Top Header & Navigation Controls */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-gunmetal/80">
         <div>
-          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-1">
-            ECHO 3D WORKS REEL
+          <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block mb-1">
+            CORE SYSTEMS REEL
           </span>
           <h3 className="text-2xl sm:text-4xl font-display font-extrabold uppercase tracking-tight text-porcelain">
-            Specialized Architectures Archive
+            Specialized Architectures
           </h3>
         </div>
 
@@ -416,7 +416,7 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
                       </div>
 
                       <div>
-                        <h4 className="font-chakra text-lg sm:text-2xl font-bold uppercase tracking-tight text-porcelain drop-shadow-sm mb-1">
+                        <h4 className="font-heading text-lg sm:text-2xl font-bold uppercase tracking-tight text-porcelain drop-shadow-sm mb-1">
                           {proj.title}
                         </h4>
                         <p className="font-sans text-xs text-steel-light line-clamp-2">
@@ -445,11 +445,11 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
           </div>
         </div>
 
-        {/* Side Index Directory (Faithfully Adapted from ECHO WorksWheel) */}
+        {/* Side Index Directory */}
         <div className="lg:col-span-4 space-y-6 bg-eclipse-surface p-6 rounded-2xl border border-gunmetal">
           <div className="flex items-center justify-between border-b border-gunmetal/60 pb-3">
-            <span className="font-chakra text-xs uppercase tracking-wider text-porcelain font-bold">
-              Active System Dossier
+            <span className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold">
+              Active System
             </span>
             <span className="text-xs font-mono text-ember">
               ID: {activeProject.id.toUpperCase()}
@@ -460,7 +460,7 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
             <h4 className="text-xl sm:text-2xl font-display font-extrabold uppercase tracking-tight text-porcelain">
               {activeProject.title}
             </h4>
-            <p className="text-xs font-chakra font-medium text-ember uppercase tracking-wider">
+            <p className="text-xs font-heading font-medium text-ember uppercase tracking-wider">
               {activeProject.subtitle}
             </p>
             <p className="text-xs sm:text-sm font-sans text-steel-light leading-relaxed">

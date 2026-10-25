@@ -66,7 +66,7 @@ A bespoke, high-performance editorial software engineering portfolio showcasing 
 - **Language:** TypeScript 5.4 (Strict Mode, 0 `any`)
 - **Styling:** Tailwind CSS v3
 - **Motion & Physics:** GSAP 3.12, ScrollTrigger 3.12, Lenis Smooth Scroll
-- **Typefaces:** `@fontsource/syne`, `@fontsource/instrument-sans`, `@fontsource/chivo-mono`
+- **Typefaces:** `@fontsource/syne`, `@fontsource/space-grotesk`, `@fontsource/plus-jakarta-sans`, `@fontsource/jetbrains-mono`
 
 ---
 

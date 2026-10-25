@@ -58,7 +58,7 @@ export function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left: Closing Bold Statement */}
         <div className="lg:col-span-7 space-y-6 contact-fade">
-          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block">
+          <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block">
             INITIATE COLLABORATION
           </span>
 
@@ -92,7 +92,7 @@ export function Contact() {
 
         {/* Right: Verified Coordinates & Profiles */}
         <div className="lg:col-span-5 contact-fade p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal space-y-6">
-          <h3 className="font-chakra text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
+          <h3 className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
             Direct Routing
           </h3>
 

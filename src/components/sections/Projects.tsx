@@ -69,8 +69,8 @@ export function Projects() {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-gunmetal/80 gap-6">
         <div>
-          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-2">
-            ENGINEERED SYSTEMS ARCHIVE
+          <span className="font-heading text-xs uppercase tracking-widest text-ember font-bold block mb-2">
+            ENGINEERED SYSTEMS
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
             Flagship Systems
@@ -83,19 +83,16 @@ export function Projects() {
 
       <div className="space-y-24">
         {/* ============================================================
-            1. ECHO SIGNATURE INTERACTION: FLEXCAROUSEL (WebGL Liquid Mesh Displacement)
+            1. FEATURED SYSTEMS: FLEXCAROUSEL (WebGL Liquid Displacement)
             ============================================================ */}
         <div className="project-fade-in space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+          <div className="flex items-center justify-between pb-2">
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full bg-ember animate-pulse" />
-              <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
-                FEATURED SYSTEMS &bull; LIQUID WEBGL DISPLACEMENT
+              <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
+                INTERACTIVE GALLERY
               </span>
             </div>
-            <span className="font-mono text-[11px] text-steel">
-              DRAG HORIZONTALLY &bull; CLICK CARD TO INSPECT DOSSIER
-            </span>
           </div>
 
           <div className="rounded-3xl border border-gunmetal bg-eclipse-surface overflow-hidden shadow-2xl relative w-full h-[540px] md:h-[620px]">
@@ -124,7 +121,7 @@ export function Projects() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+                <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
                   FLAGSHIP ARCHITECTURE
                 </span>
                 <span className="px-2.5 py-0.5 text-[11px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
@@ -134,7 +131,7 @@ export function Projects() {
               <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
                 {lumine.title}
               </h3>
-              <p className="text-sm font-chakra font-medium text-steel-light mt-1">
+              <p className="text-sm font-heading font-medium text-steel-light mt-1">
                 {lumine.subtitle}
               </p>
             </div>
@@ -164,7 +161,16 @@ export function Projects() {
           {/* Interactive Cinematic Media Canvas */}
           <div
             onClick={() => setActiveProject(lumine)}
-            className="group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setActiveProject(lumine);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Inspect Lumine AI architectural dossier"
+            className="lumine-card group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus:outline-none focus:ring-2 focus:ring-ember"
           >
             <Image
               src={lumine.image}
@@ -191,7 +197,7 @@ export function Projects() {
               <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light">
                 {lumine.stats}
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-chakra font-bold">
+              <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-heading font-bold">
                 <span>Click to inspect complete architectural dossier</span>
                 <span>&rarr;</span>
               </span>
@@ -211,7 +217,7 @@ export function Projects() {
                   <span className="text-[11px] font-mono text-ember font-bold block mb-1">
                     NEURAL EMBEDDINGS
                   </span>
-                  <h4 className="font-chakra text-xs font-bold text-porcelain uppercase">
+                  <h4 className="font-heading text-xs font-bold text-porcelain uppercase">
                     Meta DINOv2 ViT
                   </h4>
                   <p className="text-[11px] font-sans text-steel-light mt-1">
@@ -223,7 +229,7 @@ export function Projects() {
                   <span className="text-[11px] font-mono text-ember font-bold block mb-1">
                     EDGE INFERENCE
                   </span>
-                  <h4 className="font-chakra text-xs font-bold text-porcelain uppercase">
+                  <h4 className="font-heading text-xs font-bold text-porcelain uppercase">
                     Sub-12ms Latency
                   </h4>
                   <p className="text-[11px] font-sans text-steel-light mt-1">
@@ -235,7 +241,7 @@ export function Projects() {
                   <span className="text-[11px] font-mono text-ember font-bold block mb-1">
                     ZERO UPLOAD PRIVACY
                   </span>
-                  <h4 className="font-chakra text-xs font-bold text-porcelain uppercase">
+                  <h4 className="font-heading text-xs font-bold text-porcelain uppercase">
                     Client-Side Isolation
                   </h4>
                   <p className="text-[11px] font-sans text-steel-light mt-1">
@@ -247,7 +253,7 @@ export function Projects() {
 
             {/* Stack Tags and Deliverables */}
             <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-chakra uppercase tracking-wider text-ember font-bold block">
+              <span className="text-xs font-heading uppercase tracking-wider text-ember font-bold block">
                 ENGINEERED STACK
               </span>
               <div className="flex flex-wrap gap-1.5">
@@ -262,7 +268,7 @@ export function Projects() {
               </div>
 
               <div className="pt-2">
-                <span className="text-xs font-chakra uppercase tracking-wider text-ember font-bold block mb-2">
+                <span className="text-xs font-heading uppercase tracking-wider text-ember font-bold block mb-2">
                   VERIFIED DELIVERABLES
                 </span>
                 <ul className="space-y-1.5 text-xs font-sans text-steel-light">

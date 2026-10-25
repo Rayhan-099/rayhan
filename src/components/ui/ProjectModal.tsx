@@ -64,7 +64,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             >
               {project.title}
             </h2>
-            <p className="text-sm font-chakra font-medium text-ember mt-1">{project.subtitle}</p>
+            <p className="text-sm font-heading font-medium text-ember mt-1">{project.subtitle}</p>
           </div>
 
           <button
@@ -85,7 +85,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Body content */}
         <div className="space-y-6 text-sm text-porcelain/90">
           <div>
-            <h3 className="font-chakra font-bold text-xs uppercase tracking-wider text-ember mb-2">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-ember mb-2">
               System Purpose
             </h3>
             <p className="leading-relaxed text-porcelain/80 font-sans">{project.description}</p>
@@ -93,7 +93,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {project.details && project.details.length > 0 && (
             <div>
-              <h3 className="font-chakra font-bold text-xs uppercase tracking-wider text-ember mb-2">
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-ember mb-2">
                 Engineering Decisions
               </h3>
               <ul className="space-y-2">
@@ -109,7 +109,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {project.deliverables && project.deliverables.length > 0 && (
             <div>
-              <h3 className="font-chakra font-bold text-xs uppercase tracking-wider text-ember mb-2">
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-ember mb-2">
                 Verified Deliverables
               </h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">

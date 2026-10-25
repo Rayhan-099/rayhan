@@ -122,7 +122,7 @@ export function OrbitalPreloader() {
           className="select-none pointer-events-none"
         />
         <div className="mt-4 flex flex-col items-center gap-1">
-          <span className="font-chakra text-xs font-bold uppercase tracking-widest text-ember">
+          <span className="font-heading text-xs font-bold uppercase tracking-widest text-ember">
             INITIALIZING ARCHITECTURE
           </span>
           <span className="font-mono text-[10px] text-steel tabular-nums">

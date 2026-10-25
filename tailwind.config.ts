@@ -46,11 +46,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Instrument Sans", "sans-serif"],
+        sans: ["'Plus Jakarta Sans'", "sans-serif"],
         syne: ["Syne", "sans-serif"],
-        mono: ["Chivo Mono", "monospace"],
-        display: ["'Dela Gothic One'", "Syne", "sans-serif"],
-        chakra: ["'Chakra Petch'", "sans-serif"],
+        mono: ["'JetBrains Mono'", "'Space Mono'", "monospace"],
+        display: ["'Syne'", "'Dela Gothic One'", "sans-serif"],
+        heading: ["'Space Grotesk'", "sans-serif"],
+        chakra: ["'Space Grotesk'", "sans-serif"],
       },
       letterSpacing: {
         tighter: "-0.04em",

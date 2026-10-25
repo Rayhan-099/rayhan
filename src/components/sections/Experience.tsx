@@ -180,11 +180,11 @@ export function Experience() {
         {/* Top HUD Status Bar */}
         <header className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gunmetal/80 text-xs font-mono text-steel">
           <div className="flex items-center gap-3">
-            <span className="text-ember font-chakra uppercase tracking-widest font-bold">
-              WHERE I&apos;VE BEEN
+            <span className="text-ember font-heading uppercase tracking-widest font-bold">
+              EXPERIENCE
             </span>
             <span className="text-steel/40">|</span>
-            <span className="text-porcelain font-chakra font-medium tracking-wider">{activePhase}</span>
+            <span className="text-porcelain font-heading font-medium tracking-wider">{activePhase}</span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -202,10 +202,10 @@ export function Experience() {
             className="flex flex-col md:flex-row items-stretch md:items-center h-full will-change-transform transition-none gap-12 md:gap-0"
             style={{ width: "100%", maxWidth: "none" }}
           >
-            {/* ================= ENVIRONMENT 00: INTRO ENV (0vw - 80vw) ================= */}
+            {/* ================= ENVIRONMENT 00: INTRO ENV ================= */}
             <div className="relative flex-shrink-0 w-full md:w-[75vw] px-4 md:px-12 flex flex-col justify-center">
               <div className="max-w-2xl space-y-4">
-                <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold block">
+                <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold block">
                   TRAJECTORY &amp; FOCUS
                 </span>
                 <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold uppercase tracking-tight text-porcelain leading-[0.9]">
@@ -215,14 +215,10 @@ export function Experience() {
                 <p className="font-sans text-sm md:text-base text-steel-light leading-relaxed pt-2">
                   A continuous progression from computer science foundations at Dr. A.P.J. Abdul Kalam Technical University (AKTU) to applied artificial intelligence research and enterprise-scale data science pipelines.
                 </p>
-                <div className="pt-4 flex items-center gap-3 text-xs font-sans text-steel">
-                  <span>Scroll vertically to traverse timeline</span>
-                  <span className="text-ember">&rarr;</span>
-                </div>
               </div>
             </div>
 
-            {/* ================= CHAPTER 01: SYNK AI (80vw - 175vw) ================= */}
+            {/* ================= CHAPTER 01: SYNK AI ================= */}
             <div className="exp-panel relative flex-shrink-0 w-full md:w-[95vw] px-4 md:px-16 flex flex-col justify-center">
               {/* Background Parallax Year Typography */}
               <div
@@ -234,7 +230,7 @@ export function Experience() {
 
               <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-2xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+                  <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
                     MILESTONE / {synk.date}
                   </span>
                   <span className="px-2.5 py-0.5 text-[11px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
@@ -245,7 +241,7 @@ export function Experience() {
                 <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain leading-[0.92] mb-3">
                   {synk.role}
                 </h3>
-                <p className="text-sm font-chakra font-bold text-ember uppercase tracking-wider mb-6">
+                <p className="text-sm font-heading font-bold text-ember uppercase tracking-wider mb-6">
                   {synk.company}
                 </p>
 
@@ -275,7 +271,7 @@ export function Experience() {
               </div>
             </div>
 
-            {/* ================= CHAPTER 02: BCG DATA SCIENCE (175vw - 270vw) ================= */}
+            {/* ================= CHAPTER 02: BCG DATA SCIENCE ================= */}
             <div className="exp-panel relative flex-shrink-0 w-full md:w-[95vw] px-4 md:px-16 flex flex-col justify-center">
               {/* Background Parallax Year Typography */}
               <div
@@ -287,7 +283,7 @@ export function Experience() {
 
               <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-2xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+                  <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
                     MILESTONE / {bcg.date}
                   </span>
                   <span className="px-2.5 py-0.5 text-[11px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
@@ -298,7 +294,7 @@ export function Experience() {
                 <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain leading-[0.92] mb-3">
                   {bcg.role}
                 </h3>
-                <p className="text-sm font-chakra font-bold text-ember uppercase tracking-wider mb-6">
+                <p className="text-sm font-heading font-bold text-ember uppercase tracking-wider mb-6">
                   {bcg.company}
                 </p>
 
