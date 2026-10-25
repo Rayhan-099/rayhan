@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Project } from "@/types";
 import { IconClose, IconExternalLink, IconGitHub, IconCrosshair } from "./CustomIcons";
 
@@ -10,12 +11,26 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const [activeViewIdx, setActiveViewIdx] = useState(0);
+
+  useEffect(() => {
+    setActiveViewIdx(0);
+  }, [project?.id]);
+
   useEffect(() => {
     if (!project) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
+      } else if (e.key === "ArrowRight") {
+        if (project.gallery && project.gallery.length > 1) {
+          setActiveViewIdx((prev) => (prev + 1) % project.gallery!.length);
+        }
+      } else if (e.key === "ArrowLeft") {
+        if (project.gallery && project.gallery.length > 1) {
+          setActiveViewIdx((prev) => (prev - 1 + project.gallery!.length) % project.gallery!.length);
+        }
       }
     };
 
@@ -30,6 +45,15 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   }, [project, onClose]);
 
   if (!project) return null;
+
+  const currentView = project.gallery?.[activeViewIdx] || {
+    id: "default",
+    label: "Overview",
+    image: project.image,
+    caption: project.subtitle,
+    telemetry: project.stats,
+  };
+  const totalViews = project.gallery?.length || 1;
 
   return (
     <div
@@ -74,6 +98,53 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           >
             <IconClose className="w-5 h-5" />
           </button>
+        </div>
+
+        {/* Interactive Architectural Media Stage (analog-editorial & ECHO reference) */}
+        <div className="space-y-3 mb-6">
+          {project.gallery && project.gallery.length > 1 && (
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[11px] font-mono text-steel uppercase tracking-wider mr-1 hidden sm:inline-block">
+                VIEWS:
+              </span>
+              {project.gallery.map((view, idx) => (
+                <button
+                  key={view.id}
+                  onClick={() => setActiveViewIdx(idx)}
+                  className={`px-3 py-1 rounded-md text-[11px] font-mono uppercase tracking-wider transition-all duration-200 ${
+                    activeViewIdx === idx
+                      ? "bg-crimson text-porcelain font-bold shadow-sm ring-1 ring-ember/40"
+                      : "bg-eclipse-elevated text-steel hover:text-porcelain border border-gunmetal hover:border-steel"
+                  }`}
+                  aria-pressed={activeViewIdx === idx}
+                >
+                  {view.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-gunmetal bg-eclipse-black shadow-xl group">
+            <Image
+              src={currentView.image}
+              alt={currentView.caption || project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover object-top transition-opacity duration-300"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
+
+            {/* Bottom Telemetry Caption within Media Stage */}
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-steel-light bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal shadow-md">
+              <span className="truncate">{currentView.telemetry || project.stats}</span>
+              {totalViews > 1 && (
+                <span className="text-ember shrink-0 ml-2 font-bold font-mono">
+                  VIEW {activeViewIdx + 1}/{totalViews}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Telemetry bar */}

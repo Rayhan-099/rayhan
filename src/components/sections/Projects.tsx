@@ -25,10 +25,19 @@ if (typeof window !== "undefined") {
 
 export function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [activeLumineLayer, setActiveLumineLayer] = useState<number>(0);
   const containerRef = useRef<HTMLElement>(null);
 
   const lumine = projects.find((p) => p.id === "lumine")!;
   const wheelProjects = projects.filter((p) => p.id !== "lumine");
+
+  const currentLumineView = lumine.gallery?.[activeLumineLayer] || {
+    id: "overview",
+    label: "01 Overview",
+    image: lumine.image,
+    caption: "31 CLASSIFIED DERMATOLOGICAL CLASSES",
+    telemetry: "MODEL: DINOv2 (VISION TRANSFORMER)",
+  };
 
   const carouselItems: FlexCarouselItem[] = projects.map((p) => ({
     src: p.image,
@@ -207,6 +216,36 @@ export function Projects() {
             </div>
           </div>
 
+          {/* Interactive Architectural Layer Switcher (analog-editorial dissection & ECHO view switching) */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+            <div className="flex items-center gap-2">
+              <IconCrosshair className="w-3.5 h-3.5 text-ember" />
+              <span className="font-mono text-[11px] uppercase tracking-wider text-steel-light font-medium">
+                ARCHITECTURAL LAYER DISSECTION:
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-eclipse-surface border border-gunmetal">
+              {lumine.gallery?.map((view, idx) => (
+                <button
+                  key={view.id}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveLumineLayer(idx);
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-300 ${
+                    activeLumineLayer === idx
+                      ? "bg-crimson text-porcelain font-bold shadow-md border border-crimson/50"
+                      : "text-steel-light hover:text-porcelain hover:bg-gunmetal/60"
+                  }`}
+                  aria-pressed={activeLumineLayer === idx}
+                >
+                  {view.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Interactive Cinematic Media Canvas with ScrollTrigger Clip-Mask Expansion (ECHO Work.tsx) */}
           <Tilt3DCard maxTilt={4} perspective={1200} glareOpacity={0.12} className="w-full">
             <div
@@ -221,11 +260,13 @@ export function Projects() {
               tabIndex={0}
               aria-label="Inspect Lumine AI architectural dossier"
               className="lumine-clip-frame lumine-card group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus:outline-none focus:ring-2 focus:ring-ember will-change-[clip-path,transform]"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <div className="lumine-inner-image absolute inset-0 w-full h-full will-change-transform">
                 <Image
-                  src={lumine.image}
-                  alt={lumine.title}
+                  key={currentLumineView.image}
+                  src={currentLumineView.image}
+                  alt={currentLumineView.caption || lumine.title}
                   fill
                   priority
                   sizes="100vw"
@@ -234,22 +275,28 @@ export function Projects() {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/95 via-eclipse-black/20 to-eclipse-black/60 pointer-events-none" />
 
-              {/* Diagnostic Telemetry Overlay */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90">
-                <div className="flex items-center gap-2 bg-eclipse-black/85 px-3 py-1.5 rounded-lg border border-gunmetal">
-                  <IconCrosshair className="w-3.5 h-3.5 text-ember" />
-                  <span>MODEL: DINOv2 (VISION TRANSFORMER)</span>
+              {/* Diagnostic Telemetry Overlay with 3D Z-Depth Floating Parallax */}
+              <div
+                className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90 pointer-events-none"
+                style={{ transform: "translateZ(26px)" }}
+              >
+                <div className="flex items-center gap-2 bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal backdrop-blur-sm shadow-lg">
+                  <IconCrosshair className="w-3.5 h-3.5 text-ember animate-pulse" />
+                  <span>{currentLumineView.telemetry || "MODEL: DINOv2 (VISION TRANSFORMER)"}</span>
                 </div>
-                <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg bg-eclipse-black/85 border border-gunmetal text-steel-light">
-                  31 CLASSIFIED DERMATOLOGICAL CLASSES
+                <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg bg-eclipse-black/90 border border-gunmetal text-steel-light backdrop-blur-sm shadow-lg">
+                  {currentLumineView.caption}
                 </span>
               </div>
 
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain">
-                <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light">
+              <div
+                className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain pointer-events-none"
+                style={{ transform: "translateZ(20px)" }}
+              >
+                <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light backdrop-blur-sm shadow-lg">
                   {lumine.stats}
                 </span>
-                <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-heading font-bold">
+                <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-heading font-bold bg-eclipse-black/85 px-3 py-1.5 rounded-lg border border-gunmetal/80">
                   <span>View Dossier</span>
                   <span>&rarr;</span>
                 </span>

@@ -1,3 +1,11 @@
+export interface ProjectGalleryView {
+  id: string;
+  label: string;
+  image: string;
+  caption?: string;
+  telemetry?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -9,6 +17,7 @@ export interface Project {
   deliverables: string[];
   stats: string;
   image: string;
+  gallery?: ProjectGalleryView[];
   contextLabel?: string;
   links: {
     live?: string;

@@ -20,6 +20,36 @@ export const projects: Project[] = [
     ],
     stats: "31 Classified Conditions | <350ms Model Inference | 40+ Automated Tests",
     image: "/media/projects/lumine.webp",
+    gallery: [
+      {
+        id: "overview",
+        label: "01 Overview",
+        image: "/media/projects/lumine.webp",
+        caption: "Production Skin Intelligence Interface",
+        telemetry: "MODEL: DINOv2 ViT • 31 DERMATOLOGICAL CLASSES"
+      },
+      {
+        id: "analysis",
+        label: "02 Neural Diagnostics",
+        image: "/media/projects/lumine-analysis.webp",
+        caption: "Vision Transformer Feature Embeddings & Top-3 Prediction Logic",
+        telemetry: "INFERENCE: SUB-350MS • TOP-3 PROBABILITY VECTORS"
+      },
+      {
+        id: "dashboard",
+        label: "03 Telemetry Cockpit",
+        image: "/media/projects/lumine-dashboard.webp",
+        caption: "FastAPI + PostgreSQL Longitudinal Severity Dashboard",
+        telemetry: "DATABASE: ACID POSTGRESQL • REAL-TIME RISK SPREAD"
+      },
+      {
+        id: "history",
+        label: "04 History Vault",
+        image: "/media/projects/lumine-history.webp",
+        caption: "Encrypted Longitudinal Patient Timeline & Privacy Control",
+        telemetry: "PRIVACY: ZERO PERSISTENCE OPT-IN • JWT ENCRYPTION"
+      }
+    ],
     links: {
       live: "https://lumineai.vercel.app/",
       github: "https://github.com/Rayhan-099/lumine"
@@ -44,7 +74,23 @@ export const projects: Project[] = [
       "Dual-Polarization Sentinel-1 SAR Analysis Pipeline"
     ],
     stats: "SIH 2026 Selected | Multimodal SAR and Optical | 10m Resolution Analysis",
-    image: "/media/projects/lumine.webp",
+    image: "/media/projects/satquery-ai.webp",
+    gallery: [
+      {
+        id: "sih-overview",
+        label: "01 Mission Overview",
+        image: "/media/projects/satquery-ai.webp",
+        caption: "Smart India Hackathon 2026 Space Technology Submission",
+        telemetry: "SIH26167 • TEAM LUNARIS • 10M SPATIAL RESOLUTION"
+      },
+      {
+        id: "pipeline-arch",
+        label: "02 Multimodal Pipeline",
+        image: "/media/projects/satquery-arch.webp",
+        caption: "Deterministic Sentinel-1 SAR & Sentinel-2 Optical Raster Orchestration",
+        telemetry: "PYTORCH + RASTERIO • SAR BACKSCATTER + NDVI"
+      }
+    ],
     links: {
       live: "https://aisatquery.vercel.app/",
       github: "https://github.com/Rayhan-099/satquery-ai"
