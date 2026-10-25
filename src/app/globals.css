@@ -12,6 +12,10 @@
 @import "@fontsource/chivo-mono/600.css";
 @import "@fontsource/chivo-mono/700.css";
 @import "@fontsource/chivo-mono/800.css";
+@import "@fontsource/dela-gothic-one/400.css";
+@import "@fontsource/chakra-petch/400.css";
+@import "@fontsource/chakra-petch/600.css";
+@import "@fontsource/chakra-petch/700.css";
 
 @tailwind base;
 @tailwind components;
@@ -60,6 +64,14 @@ button, input, textarea, select, optgroup {
   font-family: 'Chivo Mono', monospace;
 }
 
+.font-display {
+  font-family: 'Dela Gothic One', 'Syne', sans-serif;
+}
+
+.font-chakra {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
 ::selection {
   background-color: #A51F30;
   color: #F5E8E8;
@@ -69,12 +81,10 @@ button, input, textarea, select, optgroup {
    ECHO-INSPIRED EDITORIAL COMPOSITION UTILITIES
    ============================================================ */
 
-/* Metallic title gradient clipping */
+/* Solid highlight title */
 .metallic-title {
   display: inline-block;
-  background: linear-gradient(180deg, #F5E8E8 0%, #DEC8C8 35%, #A9A5B2 70%, #5E1E2C 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FF493D;
 }
 
 /* Portrait mask fading bottom seamlessly into canvas */

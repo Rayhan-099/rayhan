@@ -56,7 +56,7 @@ export function Navigation() {
           className="group flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-eclipse-surface border border-gunmetal text-porcelain focus:outline-none"
         >
           <div className="w-2 h-2 bg-ember rounded-full group-hover:scale-125 transition-transform" />
-          <span className="font-syne font-bold tracking-tight text-xs md:text-sm uppercase group-hover:text-ember transition-colors">
+          <span className="font-chakra font-bold tracking-tight text-xs md:text-sm uppercase group-hover:text-ember transition-colors">
             RAYHAN KHAN
           </span>
         </Link>

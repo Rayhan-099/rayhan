@@ -17,13 +17,13 @@ export function Experience() {
   const tickerTopRef = useRef<HTMLDivElement>(null);
   const tickerBottomRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const [activePhase, setActivePhase] = useState("01 / FOUNDATIONS & ACADEMIC RIGOR");
+  const [activePhase, setActivePhase] = useState("FOUNDATIONS & RIGOR");
   const [activeChapter, setActiveChapter] = useState(0);
 
   const chapters = [
-    { target: 0.05, label: "01 / ORIGIN" },
-    { target: 0.45, label: "02 / SYNK AI" },
-    { target: 0.85, label: "03 / BCG DATA SCIENCE" },
+    { target: 0.05, label: "ORIGIN" },
+    { target: 0.45, label: "SYNK AI" },
+    { target: 0.85, label: "BCG DATA SCIENCE" },
   ];
 
   useGSAP(
@@ -85,13 +85,13 @@ export function Experience() {
 
         // 5. Update phase and active chapter indicator
         if (clampedProgress < 0.30) {
-          setActivePhase("01 / FOUNDATIONS & ACADEMIC RIGOR");
+          setActivePhase("FOUNDATIONS & RIGOR");
           setActiveChapter(0);
         } else if (clampedProgress < 0.70) {
-          setActivePhase("02 / APPLIED AI & VISION BENCHMARKS");
+          setActivePhase("APPLIED AI & BENCHMARKS");
           setActiveChapter(1);
         } else {
-          setActivePhase("03 / ENTERPRISE DATA SCIENCE & SIMULATION");
+          setActivePhase("ENTERPRISE DATA SCIENCE");
           setActiveChapter(2);
         }
       };
@@ -180,12 +180,11 @@ export function Experience() {
         {/* Top HUD Status Bar */}
         <header className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gunmetal/80 text-xs font-mono text-steel">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-crimson" />
-            <span className="text-porcelain uppercase tracking-widest font-bold">
-              03 / WHERE I&apos;VE BEEN
+            <span className="text-ember font-chakra uppercase tracking-widest font-bold">
+              WHERE I&apos;VE BEEN
             </span>
             <span className="text-steel/40">|</span>
-            <span className="text-ember font-medium tracking-wider">{activePhase}</span>
+            <span className="text-porcelain font-chakra font-medium tracking-wider">{activePhase}</span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -206,10 +205,10 @@ export function Experience() {
             {/* ================= ENVIRONMENT 00: INTRO ENV (0vw - 80vw) ================= */}
             <div className="relative flex-shrink-0 w-full md:w-[75vw] px-4 md:px-12 flex flex-col justify-center">
               <div className="max-w-2xl space-y-4">
-                <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold block">
-                  TRAJECTORY & FOCUS
+                <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold block">
+                  TRAJECTORY &amp; FOCUS
                 </span>
-                <h2 className="text-4xl sm:text-6xl md:text-7xl font-syne font-extrabold uppercase tracking-tight text-porcelain leading-[0.9]">
+                <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold uppercase tracking-tight text-porcelain leading-[0.9]">
                   WHERE I&apos;VE <br />
                   <span className="metallic-title">BEEN</span>
                 </h2>
@@ -218,7 +217,7 @@ export function Experience() {
                 </p>
                 <div className="pt-4 flex items-center gap-3 text-xs font-sans text-steel">
                   <span>Scroll vertically to traverse timeline</span>
-                  <span className="text-ember">→</span>
+                  <span className="text-ember">&rarr;</span>
                 </div>
               </div>
             </div>
@@ -227,7 +226,7 @@ export function Experience() {
             <div className="exp-panel relative flex-shrink-0 w-full md:w-[95vw] px-4 md:px-16 flex flex-col justify-center">
               {/* Background Parallax Year Typography */}
               <div
-                className="exp-date-bg hidden md:block absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-syne font-black uppercase text-porcelain/[0.035] tracking-tighter select-none pointer-events-none will-change-transform"
+                className="exp-date-bg hidden md:block absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-display font-black uppercase text-porcelain/[0.035] tracking-tighter select-none pointer-events-none will-change-transform"
                 data-parallax-factor="0.15"
               >
                 2026
@@ -235,18 +234,18 @@ export function Experience() {
 
               <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-2xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
-                    MILESTONE 01 / {synk.date}
+                  <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+                    MILESTONE / {synk.date}
                   </span>
-                  <span className="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
+                  <span className="px-2.5 py-0.5 text-[11px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
                     {synk.location}
                   </span>
                 </div>
 
-                <h3 className="text-3xl sm:text-5xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain leading-[0.92] mb-3">
+                <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain leading-[0.92] mb-3">
                   {synk.role}
                 </h3>
-                <p className="text-sm font-sans font-bold text-ember uppercase tracking-wider mb-6">
+                <p className="text-sm font-chakra font-bold text-ember uppercase tracking-wider mb-6">
                   {synk.company}
                 </p>
 
@@ -257,7 +256,7 @@ export function Experience() {
                 {/* Milestone Deliverable Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gunmetal/80">
                   <div className="p-4 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-                    <span className="font-mono text-[10px] text-crimson uppercase tracking-wider block mb-1">
+                    <span className="font-mono text-[11px] text-crimson uppercase tracking-wider block mb-1">
                       CORE CONTRIBUTION
                     </span>
                     <p className="font-sans text-xs text-porcelain/90 leading-relaxed">
@@ -265,7 +264,7 @@ export function Experience() {
                     </p>
                   </div>
                   <div className="p-4 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-                    <span className="font-mono text-[10px] text-crimson uppercase tracking-wider block mb-1">
+                    <span className="font-mono text-[11px] text-crimson uppercase tracking-wider block mb-1">
                       STACK & BENCHMARKS
                     </span>
                     <p className="font-mono text-xs text-steel">
@@ -280,7 +279,7 @@ export function Experience() {
             <div className="exp-panel relative flex-shrink-0 w-full md:w-[95vw] px-4 md:px-16 flex flex-col justify-center">
               {/* Background Parallax Year Typography */}
               <div
-                className="exp-date-bg hidden md:block absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-syne font-black uppercase text-porcelain/[0.035] tracking-tighter select-none pointer-events-none will-change-transform"
+                className="exp-date-bg hidden md:block absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-display font-black uppercase text-porcelain/[0.035] tracking-tighter select-none pointer-events-none will-change-transform"
                 data-parallax-factor="0.15"
               >
                 OCT 2026
@@ -288,18 +287,18 @@ export function Experience() {
 
               <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-2xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
-                    MILESTONE 02 / {bcg.date}
+                  <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+                    MILESTONE / {bcg.date}
                   </span>
-                  <span className="px-2.5 py-0.5 text-[10px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
+                  <span className="px-2.5 py-0.5 text-[11px] font-mono uppercase bg-burgundy/80 text-porcelain border border-crimson/30 rounded">
                     {bcg.location}
                   </span>
                 </div>
 
-                <h3 className="text-3xl sm:text-5xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain leading-[0.92] mb-3">
+                <h3 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain leading-[0.92] mb-3">
                   {bcg.role}
                 </h3>
-                <p className="text-sm font-sans font-bold text-ember uppercase tracking-wider mb-6">
+                <p className="text-sm font-chakra font-bold text-ember uppercase tracking-wider mb-6">
                   {bcg.company}
                 </p>
 
@@ -310,7 +309,7 @@ export function Experience() {
                 {/* Milestone Deliverable Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gunmetal/80">
                   <div className="p-4 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-                    <span className="font-mono text-[10px] text-crimson uppercase tracking-wider block mb-1">
+                    <span className="font-mono text-[11px] text-crimson uppercase tracking-wider block mb-1">
                       CLASSIFIER PRECISION
                     </span>
                     <p className="font-sans text-xs text-porcelain/90 leading-relaxed">
@@ -318,7 +317,7 @@ export function Experience() {
                     </p>
                   </div>
                   <div className="p-4 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-                    <span className="font-mono text-[10px] text-crimson uppercase tracking-wider block mb-1">
+                    <span className="font-mono text-[11px] text-crimson uppercase tracking-wider block mb-1">
                       STACK & TOOLS
                     </span>
                     <p className="font-mono text-xs text-steel">

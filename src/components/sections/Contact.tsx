@@ -58,18 +58,15 @@ export function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left: Closing Bold Statement */}
         <div className="lg:col-span-7 space-y-6 contact-fade">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-ember" />
-            <span className="font-mono text-xs uppercase tracking-wider text-ember font-medium">
-              08 / Direct Communication &amp; Contact
-            </span>
-          </div>
+          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block">
+            INITIATE COLLABORATION
+          </span>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-syne font-extrabold uppercase tracking-tight leading-[0.92] text-porcelain">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold uppercase tracking-tight leading-[0.92] text-porcelain">
             LET&apos;S BUILD SOMETHING
           </h2>
 
-          <p className="text-base md:text-lg text-steel max-w-xl leading-relaxed">
+          <p className="text-base md:text-lg text-steel-light max-w-xl leading-relaxed">
             I am currently open to software engineering opportunities, collaborative systems research, and challenging full-stack or machine learning initiatives.
           </p>
 
@@ -94,7 +91,7 @@ export function Contact() {
 
         {/* Right: Verified Coordinates & Profiles */}
         <div className="lg:col-span-5 contact-fade p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal space-y-6">
-          <h3 className="font-syne text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
+          <h3 className="font-chakra text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
             Direct Routing
           </h3>
 
@@ -110,19 +107,16 @@ export function Contact() {
             </div>
 
             <div>
-              <span className="text-xs text-steel/70 uppercase block mb-1">Direct Telephony</span>
-              <a
-                href={`tel:${profile.phone}`}
-                className="text-porcelain hover:text-ember transition-colors"
-              >
-                {profile.phone}
-              </a>
+              <span className="text-xs text-steel/70 uppercase block mb-1">Primary Location</span>
+              <p className="text-porcelain font-sans font-medium">
+                {profile.location}
+              </p>
             </div>
 
             <div>
-              <span className="text-xs text-steel/70 uppercase block mb-1">Physical Coordinates</span>
-              <p className="text-steel-light">
-                {profile.location} ({profile.coordinates})
+              <span className="text-xs text-steel/70 uppercase block mb-1">Availability</span>
+              <p className="text-steel-light font-sans text-xs">
+                Open to Full-Time Engineering Roles &amp; Remote Teams Worldwide
               </p>
             </div>
           </div>

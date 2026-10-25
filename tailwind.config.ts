@@ -36,7 +36,7 @@ const config: Config = {
         },
         steel: {
           DEFAULT: "#A9A5B2",
-          dark: "#7B7784",
+          dark: "#8E8A97",
           light: "#C7C4CF",
         },
         gunmetal: {
@@ -49,6 +49,8 @@ const config: Config = {
         sans: ["Instrument Sans", "sans-serif"],
         syne: ["Syne", "sans-serif"],
         mono: ["Chivo Mono", "monospace"],
+        display: ["'Dela Gothic One'", "Syne", "sans-serif"],
+        chakra: ["'Chakra Petch'", "sans-serif"],
       },
       letterSpacing: {
         tighter: "-0.04em",

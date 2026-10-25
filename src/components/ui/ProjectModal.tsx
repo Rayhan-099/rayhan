@@ -53,18 +53,18 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {project.date}
               </span>
               {project.contextLabel && (
-                <span className="px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-burgundy text-porcelain border border-crimson/30 rounded">
+                <span className="px-2 py-0.5 text-[11px] font-mono uppercase tracking-wider bg-burgundy text-porcelain border border-crimson/30 rounded">
                   {project.contextLabel}
                 </span>
               )}
             </div>
             <h2
               id="modal-project-title"
-              className="text-2xl md:text-3xl font-syne font-extrabold tracking-tight text-porcelain uppercase"
+              className="text-2xl md:text-3xl font-display font-extrabold tracking-tight text-porcelain uppercase"
             >
               {project.title}
             </h2>
-            <p className="text-sm font-sans text-steel mt-1">{project.subtitle}</p>
+            <p className="text-sm font-chakra font-medium text-ember mt-1">{project.subtitle}</p>
           </div>
 
           <button
@@ -78,14 +78,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
         {/* Telemetry bar */}
         <div className="flex items-center gap-2 p-3 bg-eclipse-elevated border border-gunmetal/60 rounded-md mb-6 text-xs font-mono text-steel">
-          <IconCrosshair className="w-4 h-4 text-crimson flex-shrink-0" />
+          <IconCrosshair className="w-4 h-4 text-ember flex-shrink-0" />
           <span className="truncate">{project.stats}</span>
         </div>
 
         {/* Body content */}
         <div className="space-y-6 text-sm text-porcelain/90">
           <div>
-            <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
+            <h3 className="font-chakra font-bold text-xs uppercase tracking-wider text-ember mb-2">
               System Purpose
             </h3>
             <p className="leading-relaxed text-porcelain/80 font-sans">{project.description}</p>
@@ -93,13 +93,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {project.details && project.details.length > 0 && (
             <div>
-              <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
+              <h3 className="font-chakra font-bold text-xs uppercase tracking-wider text-ember mb-2">
                 Engineering Decisions
               </h3>
               <ul className="space-y-2">
                 {project.details.map((detail, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-steel-light leading-relaxed font-sans">
-                    <span className="font-mono text-xs text-crimson mt-1 select-none">›</span>
+                    <span className="font-mono text-xs text-ember mt-1 select-none">&rsaquo;</span>
                     <span>{detail}</span>
                   </li>
                 ))}
@@ -109,7 +109,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {project.deliverables && project.deliverables.length > 0 && (
             <div>
-              <h3 className="font-sans font-semibold text-xs uppercase tracking-wider text-steel mb-2">
+              <h3 className="font-chakra font-bold text-xs uppercase tracking-wider text-ember mb-2">
                 Verified Deliverables
               </h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">

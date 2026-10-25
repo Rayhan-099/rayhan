@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "totalFramesEvaluated": 541,
+    "originalJpegMB": "26.42",
+    "optimizedWebpMB": "23.16",
+    "totalSavedMB": "3.26",
+    "overallSavingsPercent": "12.35%"
+  },
+  "heroSequence": {
+    "frameCount": 300,
+    "originalJpegMB": "10.01",
+    "optimizedWebpMB": "8.73",
+    "savingsPercent": "12.81%",
+    "sampleFrames": [
+      {
+        "frame": "ezgif-frame-001",
+        "jpegBytes": 116293,
+        "webpBytes": 57598,
+        "savingsBytes": 58695,
+        "savingsPercent": "50.47%"
+      },
+      {
+        "frame": "ezgif-frame-150",
+        "jpegBytes": 26231,
+        "webpBytes": 22038,
+        "savingsBytes": 4193,
+        "savingsPercent": "15.98%"
+      },
+      {
+        "frame": "ezgif-frame-300",
+        "jpegBytes": 43138,
+        "webpBytes": 45218,
+        "savingsBytes": -2080,
+        "savingsPercent": "-4.82%"
+      }
+    ]
+  },
+  "aboutSequence": {
+    "frameCount": 241,
+    "originalJpegMB": "16.40",
+    "optimizedWebpMB": "14.43",
+    "savingsPercent": "12.06%",
+    "sampleFrames": [
+      {
+        "frame": "ezgif-frame-001",
+        "jpegBytes": 156893,
+        "webpBytes": 82474,
+        "savingsBytes": 74419,
+        "savingsPercent": "47.43%"
+      },
+      {
+        "frame": "ezgif-frame-120",
+        "jpegBytes": 66652,
+        "webpBytes": 59388,
+        "savingsBytes": 7264,
+        "savingsPercent": "10.90%"
+      },
+      {
+        "frame": "ezgif-frame-241",
+        "jpegBytes": 63487,
+        "webpBytes": 54650,
+        "savingsBytes": 8837,
+        "savingsPercent": "13.92%"
+      }
+    ]
+  }
+}

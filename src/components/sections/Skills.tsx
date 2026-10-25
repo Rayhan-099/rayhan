@@ -59,35 +59,32 @@ export function Skills() {
       className="py-24 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-gunmetal/60"
       aria-label="Technical Skills and Disciplines"
     >
-      {/* ================= HEADER & CATEGORY FILTER ================= */}
+      {/* ================= HEADER ================= */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-gunmetal/60 gap-6">
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-ember" />
-            <span className="font-mono text-xs uppercase tracking-wider text-ember font-medium">
-              04 / Technical Matrix &amp; Disciplines
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
-            Technical Skills
+          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-2">
+            TECHNICAL MATRIX &amp; DISCIPLINE
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
+            Engineering Matrix
           </h2>
         </div>
         <p className="font-sans text-sm md:text-base text-steel-light max-w-md leading-relaxed">
-          Disciplined selection of programming languages, machine learning frameworks, data backends, and systems architecture.
+          Rigorous stack selection across distributed backend runtimes, deep learning vision models, relational databases, and low-latency edge inference.
         </p>
       </div>
 
-      {/* Filter Navigation Chips */}
+      {/* Domain Navigation Tabs */}
       <div className="flex flex-wrap items-center gap-2 mb-12">
         <button
           onClick={() => setActiveCategory("all")}
-          className={`px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+          className={`px-4 py-2 rounded-full text-xs font-chakra uppercase tracking-wider transition-all ${
             activeCategory === "all"
               ? "bg-crimson text-porcelain font-bold shadow-sm"
               : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
           }`}
         >
-          All Domains ({skills.length})
+          All Domains
         </button>
         {skills.map((c) => {
           const key = c.category.toLowerCase().split(" ")[0];
@@ -96,115 +93,101 @@ export function Skills() {
             <button
               key={c.category}
               onClick={() => setActiveCategory(isSelected ? "all" : key)}
-              className={`px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-chakra uppercase tracking-wider transition-all ${
                 isSelected
                   ? "bg-crimson text-porcelain font-bold shadow-sm"
                   : "bg-eclipse-surface text-steel hover:text-porcelain border border-gunmetal"
               }`}
             >
-              {c.category} ({c.items.length})
+              {c.category}
             </button>
           );
         })}
       </div>
 
-      {/* ================= ASYMMETRIC DUAL-COLUMN ARCHITECTURE ================= */}
+      {/* ================= ART-DIRECTED DUAL-COLUMN ARCHITECTURE ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Specialization Spotlight Command Hub */}
-        <div className="skill-spotlight-panel lg:col-span-5 rounded-2xl bg-eclipse-surface border border-gunmetal/80 p-6 md:p-8 relative overflow-hidden">
-          {/* Subtle Burgundy Gradient Haze */}
-          <div className="absolute top-0 right-0 w-48 h-48 bg-burgundy/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Left Column: Systems Architecture Foundations */}
+        <div className="skill-spotlight-panel lg:col-span-5 rounded-2xl bg-eclipse-surface border border-gunmetal p-6 md:p-8 relative overflow-hidden space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-gunmetal/60">
+            <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+              CORE SPECIALIZATION
+            </span>
+            <span className="font-mono text-xs uppercase text-steel-light">
+              AKTU CSE • NOIDA
+            </span>
+          </div>
 
-          <div className="relative z-10">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-gunmetal/60">
-              <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
-                CORE FOCUS
-              </span>
-              <span className="font-mono text-xs uppercase text-steel">
-                AKTU CSE • 2024–PRES
-              </span>
-            </div>
-
-            <h3 className="font-syne text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-4 leading-tight">
-              Systems Engineering &amp; Autonomous AI
+          <div>
+            <h3 className="font-chakra text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-3 leading-tight">
+              Distributed Backends &amp; Applied Computer Vision
             </h3>
-
-            <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed mb-6">
-              Engineering emphasis centered on high-throughput backend APIs, vision transformer fine-tuning, and deterministic multi-agent state machines.
+            <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed">
+              Engineering focus centered on high-throughput asynchronous APIs, vision transformer fine-tuning, deterministic satellite raster computation, and client-side Edge AI runtimes.
             </p>
+          </div>
 
-            {/* Architecture Invariants Grid */}
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/70">
-                <span className="font-syne font-black text-2xl text-porcelain block">39</span>
-                <span className="font-mono text-[10px] text-steel uppercase tracking-wider">
-                  Verified Tools
-                </span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/70">
-                <span className="font-syne font-black text-2xl text-ember block">60 FPS</span>
-                <span className="font-mono text-[10px] text-steel uppercase tracking-wider">
-                  Edge AI MediaPipe
-                </span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/70">
-                <span className="font-syne font-black text-2xl text-crimson block">31 ViT</span>
-                <span className="font-mono text-[10px] text-steel uppercase tracking-wider">
-                  DINOv2 Classes
-                </span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/70">
-                <span className="font-syne font-black text-2xl text-porcelain block">ACID</span>
-                <span className="font-mono text-[10px] text-steel uppercase tracking-wider">
-                  PostgreSQL Relational
-                </span>
-              </div>
-            </div>
-
-            {/* Engineering Tenet */}
-            <div className="p-4 rounded-xl bg-eclipse-black/60 border border-gunmetal/60">
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-ember" />
-                <span className="font-mono text-[10px] text-ember uppercase font-bold tracking-wider">
-                  Architectural Principle
-                </span>
-              </div>
-              <p className="font-sans text-xs text-steel leading-relaxed italic">
-                &ldquo;Minimal code surface area, strict interface contracts, and verifiable runtime performance across client and server.&rdquo;
+          {/* Architectural Pillars */}
+          <div className="space-y-3 pt-2">
+            <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
+              <span className="font-chakra text-xs font-bold text-porcelain uppercase block mb-1">
+                Zero-Trust API Architecture
+              </span>
+              <p className="font-sans text-xs text-steel-light">
+                Stateless token authentication, token-bucket rate limiting, structured Pydantic data schemas, and transactional PostgreSQL integrity.
               </p>
             </div>
+
+            <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
+              <span className="font-chakra text-xs font-bold text-ember uppercase block mb-1">
+                Edge AI &amp; WebAssembly Runtimes
+              </span>
+              <p className="font-sans text-xs text-steel-light">
+                Browser-local neural model inference via ONNX Runtime Web and Google MediaPipe, achieving sub-15ms latency with 100% data confidentiality.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
+              <span className="font-chakra text-xs font-bold text-porcelain uppercase block mb-1">
+                Geospatial &amp; Multimodal Pipelines
+              </span>
+              <p className="font-sans text-xs text-steel-light">
+                High-throughput raster computation across Sentinel-1 SAR and Sentinel-2 multispectral imagery with automated band thresholding.
+              </p>
+            </div>
+          </div>
+
+          {/* Core Principle Quote */}
+          <div className="pt-2 border-t border-gunmetal/60">
+            <p className="font-sans text-xs text-steel-light italic leading-relaxed">
+              &ldquo;Minimal code surface area, strict interface contracts, and verifiable runtime performance across client and server.&rdquo;
+            </p>
           </div>
         </div>
 
         {/* Right Column: Categorized Domain Matrix */}
         <div ref={matrixRef} className="lg:col-span-7 space-y-6">
-          {displayedSkills.map((category, index) => (
+          {displayedSkills.map((category) => (
             <div
               key={category.category}
-              className="skill-domain-card p-6 rounded-2xl bg-eclipse-surface border border-gunmetal/80 hover:border-gunmetal transition-colors"
+              className="skill-domain-card p-6 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-gunmetal-border transition-colors"
             >
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-gunmetal/60">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs uppercase tracking-wider text-crimson font-bold">
-                    DOMAIN 0{index + 1}
-                  </span>
-                  <span className="text-gunmetal">|</span>
-                  <h3 className="font-syne text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
-                    {category.category}
-                  </h3>
-                </div>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-steel">
-                  {category.items.length} {category.items.length === 1 ? "Tool" : "Tools"}
+                <h3 className="font-chakra text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
+                  {category.category}
+                </h3>
+                <span className="font-mono text-xs uppercase tracking-wider text-steel">
+                  {category.items.length} {category.items.length === 1 ? "Technology" : "Technologies"}
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
-                    className="group relative px-3.5 py-2 text-xs font-mono bg-eclipse-elevated text-steel-light border border-gunmetal/80 hover:border-crimson/60 hover:text-porcelain hover:bg-burgundy/30 rounded-lg transition-all duration-200 cursor-default flex items-center gap-2"
+                    className="group px-3 py-1.5 text-xs font-mono bg-eclipse-elevated text-steel-light border border-gunmetal hover:border-ember/60 hover:text-porcelain transition-all duration-200 cursor-default flex items-center gap-2 rounded-lg"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-steel/40 group-hover:bg-crimson transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-steel/50 group-hover:bg-ember transition-colors" />
                     <span>{item.name}</span>
                   </div>
                 ))}

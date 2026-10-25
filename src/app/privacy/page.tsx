@@ -31,8 +31,8 @@ export default function PrivacyPage() {
 
       <div className="space-y-8 text-sm md:text-base text-porcelain/85 leading-relaxed font-sans">
         <section className="space-y-3">
-          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
-            01 / Principles of Transparency
+          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+            Principles of Transparency
           </h2>
           <p>
             Your privacy is respected. This static portfolio website is engineered to operate with minimal data collection. We do not sell, rent, monetize, or trade visitor data under any circumstances.
@@ -40,8 +40,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
-            02 / Cookies and Tracking Technologies
+          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+            Cookies and Tracking Technologies
           </h2>
           <p>
             This website does not use tracking cookies, advertising trackers, or profiling scripts. No Google Analytics, Meta Pixel, or third-party behavioral monitors are embedded in this website.
@@ -52,8 +52,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
-            03 / Hosting Infrastructure and Server Telemetry
+          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+            Hosting Infrastructure and Server Telemetry
           </h2>
           <p>
             This portfolio is hosted via standard cloud infrastructure (such as Vercel or similar content delivery networks). Like all web hosting platforms, edge servers automatically log basic HTTP request metadata:
@@ -70,17 +70,17 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
-            04 / User-Initiated Contact
+          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+            User-Initiated Contact
           </h2>
           <p>
-            When you send an email to khanrayhan8307@gmail.com or initiate a phone conversation, the personal data you choose to disclose (such as your name, corporate email, and message contents) will be used exclusively to reply to your inquiry.
+            When you send an email to khanrayhan8307@gmail.com or initiate contact via verified professional channels, the personal data you choose to disclose (such as your name, corporate email, and message contents) will be used exclusively to reply to your inquiry.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-sans font-semibold text-xs uppercase tracking-wider text-ember">
-            05 / Data Protection Inquiries
+          <h2 className="font-chakra font-semibold text-xs uppercase tracking-wider text-ember">
+            Data Protection Inquiries
           </h2>
           <p>
             To request information about any correspondence or data retention, contact Rayhan Khan directly at:

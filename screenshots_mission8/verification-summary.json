@@ -1,0 +1,20 @@
+{
+  "viewportsTested": [
+    "desktop_1440x900",
+    "desktop_1280x800",
+    "mobile_390x844",
+    "mobile_360x800"
+  ],
+  "privacyPassed": true,
+  "fontComputedStyles": {
+    "heroTitleFont": "\"Dela Gothic One\", Syne, sans-serif",
+    "heroEthosFont": "\"Chakra Petch\", sans-serif",
+    "bodyFont": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "telemetryFont": "\"Chivo Mono\", monospace"
+  },
+  "worksWheel3DVerified": true,
+  "projectModalVerified": false,
+  "scrollTestPassed": true,
+  "consoleErrors": [],
+  "failedRequests": []
+}

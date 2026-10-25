@@ -5,9 +5,7 @@ export const profile: Profile = {
   role: "Software Engineer",
   tagline: "Building resilient full-stack systems and machine learning applications.",
   location: "Noida, Uttar Pradesh, India",
-  coordinates: "28.5355° N, 77.3910° E",
   email: "khanrayhan8307@gmail.com",
-  phone: "+91 9315945414",
   social: {
     github: "https://github.com/Rayhan-099/",
     linkedin: "https://www.linkedin.com/in/rayhan-khan-081851340/",

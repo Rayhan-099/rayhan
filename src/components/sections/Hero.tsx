@@ -378,14 +378,14 @@ export function Hero() {
           <div className="hero-telemetry-tag flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gunmetal/80 text-xs font-mono text-steel">
             <div className="flex items-center gap-2.5 flex-wrap">
               <IconCrosshair className="w-3.5 h-3.5 text-ember shrink-0" />
-              <span>LOCATION: {profile.coordinates}</span>
+              <span>LOCATION: NOIDA, UTTAR PRADESH, INDIA</span>
               <span className="text-steel/40 hidden sm:inline">|</span>
-              <span className="text-steel-light">NOIDA, UTTAR PRADESH</span>
+              <span className="text-steel-light font-mono">UTC +05:30</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-ember animate-pulse" />
-              <span className="text-porcelain uppercase tracking-widest text-[11px] font-semibold">
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded bg-burgundy/40 border border-ember/30">
+              <span className="w-1.5 h-1.5 rounded-full bg-ember" />
+              <span className="text-porcelain uppercase tracking-widest text-[11px] font-mono font-semibold">
                 AVAILABLE FOR ENGINEERING ROLES
               </span>
             </div>
@@ -393,7 +393,7 @@ export function Hero() {
 
           {/* Monolithic Staggered Typography Masthead */}
           <div className="my-auto py-6 md:py-10 flex flex-col items-start justify-center">
-            <h1 className="font-syne text-[clamp(3.8rem,11.2vw,12rem)] font-extrabold uppercase leading-[0.84] tracking-tight text-porcelain select-none">
+            <h1 className="font-display text-[clamp(3.8rem,11.2vw,12rem)] font-extrabold uppercase leading-[0.84] tracking-tight text-porcelain select-none">
               <div className="overflow-hidden pb-1 sm:pb-3">
                 <span className="hero-word-first inline-block">
                   RAYHAN
@@ -406,7 +406,7 @@ export function Hero() {
               </div>
             </h1>
 
-            <p className="font-sans font-medium text-xs sm:text-sm md:text-base text-ember tracking-wider uppercase mt-4 max-w-xl">
+            <p className="font-chakra font-medium text-xs sm:text-sm md:text-base text-ember tracking-wider uppercase mt-4 max-w-xl">
               Full-Stack Systems & Applied Machine Learning Engineer
             </p>
           </div>
@@ -414,7 +414,7 @@ export function Hero() {
           {/* Bottom Editorial Panel & Action Navigation */}
           <div className="hero-footer-bar pt-6 border-t border-gunmetal/80 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="max-w-xl space-y-2">
-              <span className="font-mono text-xs uppercase tracking-widest text-crimson font-bold block">
+              <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block">
                 ENGINEERING ETHOS
               </span>
               <p className="font-sans text-xs sm:text-sm md:text-base text-steel-light leading-relaxed">

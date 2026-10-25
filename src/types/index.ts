@@ -62,9 +62,7 @@ export interface Profile {
   role: string;
   tagline: string;
   location: string;
-  coordinates: string;
   email: string;
-  phone: string;
   social: {
     github: string;
     linkedin: string;

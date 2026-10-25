@@ -68,13 +68,10 @@ export function Certifications() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-gunmetal/60 gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-ember" />
-            <span className="font-mono text-xs uppercase tracking-wider text-ember font-medium">
-              07 / Verified Certifications &amp; Credentials
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-syne font-extrabold uppercase tracking-tight text-porcelain">
+          <span className="font-chakra text-xs uppercase tracking-widest text-ember font-bold block mb-2">
+            INDUSTRY CREDENTIALS &amp; ARCHIVE
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-porcelain">
             Certifications
           </h2>
         </div>

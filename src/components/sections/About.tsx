@@ -358,19 +358,19 @@ export function About() {
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none select-none px-4 text-center">
               <h2
                 ref={titleLeftRef}
-                className="font-syne text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-porcelain leading-tight will-change-transform"
+                className="font-display text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-porcelain leading-tight will-change-transform"
               >
                 Systematic
               </h2>
               <h2
                 ref={titleRightRef}
-                className="font-syne text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-ember leading-tight will-change-transform"
+                className="font-display text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-ember leading-tight will-change-transform"
               >
                 Architecture
               </h2>
               <p
                 ref={scrollPromptRef}
-                className="font-sans text-[11px] uppercase tracking-wider text-steel mt-2 will-change-transform"
+                className="font-chakra text-[11px] uppercase tracking-wider text-steel mt-2 will-change-transform"
               >
                 Scroll to explore
               </p>
@@ -395,16 +395,16 @@ export function About() {
                     </picture>
                   </div>
                   <div>
-                    <h3 className="font-syne text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight text-porcelain">
+                    <h3 className="font-chakra text-sm sm:text-base md:text-lg font-bold uppercase tracking-tight text-porcelain">
                       Turning Research &amp; Machine Learning into Resilient Software
                     </h3>
-                    <p className="font-mono text-[10px] text-steel">
+                    <p className="font-mono text-[11px] text-steel">
                       RAYHAN KHAN • AKTU CSE NOIDA
                     </p>
                   </div>
                 </div>
-                <span className="font-mono text-xs text-ember tracking-widest shrink-0 uppercase">
-                  01 / ABOUT
+                <span className="font-chakra text-xs text-ember tracking-widest shrink-0 uppercase font-bold">
+                  SYSTEMS ARCHITECT
                 </span>
               </div>
 
@@ -419,10 +419,10 @@ export function About() {
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
                     <div>
-                      <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
-                        PILLAR 01
+                      <span className="font-mono text-[11px] text-ember font-bold block mb-0.5">
+                        CORE PILLAR
                       </span>
-                      <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
+                      <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain">
                         Full-Stack Systems
                       </h4>
                       <p className="font-sans text-[11px] text-steel mt-0.5">
@@ -430,10 +430,10 @@ export function About() {
                       </p>
                     </div>
                     <div>
-                      <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
-                        PILLAR 02
+                      <span className="font-mono text-[11px] text-ember font-bold block mb-0.5">
+                        CORE PILLAR
                       </span>
-                      <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
+                      <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain">
                         Applied AI &amp; Vision
                       </h4>
                       <p className="font-sans text-[11px] text-steel mt-0.5">
@@ -441,10 +441,10 @@ export function About() {
                       </p>
                     </div>
                     <div>
-                      <span className="font-mono text-[10px] text-crimson font-bold block mb-0.5">
-                        PILLAR 03
+                      <span className="font-mono text-[11px] text-ember font-bold block mb-0.5">
+                        CORE PILLAR
                       </span>
-                      <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain">
+                      <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain">
                         Autonomous RAG
                       </h4>
                       <p className="font-sans text-[11px] text-steel mt-0.5">
@@ -489,7 +489,7 @@ export function About() {
               {/* Bottom Credential Badge */}
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono bg-eclipse-surface/90 px-3.5 py-2 rounded-lg border border-gunmetal/80">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-ember" />
                   <span className="text-porcelain font-bold">AKTU CSE</span>
                 </div>
                 <span className="text-steel">NOIDA, UP, INDIA</span>
@@ -497,7 +497,7 @@ export function About() {
             </div>
 
             <div className="mt-4 flex items-center justify-between text-xs font-mono border-b border-gunmetal/50 pb-2">
-              <span className="font-syne font-bold uppercase tracking-wider text-porcelain">
+              <span className="font-chakra font-bold uppercase tracking-wider text-porcelain">
                 Rayhan Khan
               </span>
               <span className="text-ember uppercase font-semibold">
@@ -508,14 +508,11 @@ export function About() {
 
           {/* Right Column: Statement, Academic Grounding & Manifesto */}
           <div className="identity-element lg:col-span-7 flex flex-col justify-center lg:pl-4">
-            <div className="flex items-center gap-2.5 mb-4">
-              <span className="w-2 h-2 rounded-full bg-ember" />
-              <span className="font-mono text-xs font-semibold tracking-[0.25em] uppercase text-ember">
-                Engineering Identity &amp; Philosophy
-              </span>
-            </div>
+            <span className="font-chakra text-xs font-bold tracking-[0.2em] uppercase text-ember mb-3 block">
+              Engineering Identity &amp; Philosophy
+            </span>
 
-            <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-porcelain leading-[1.08] mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-porcelain leading-[1.08] mb-6">
               Architecting scalable software at the intersection of systems engineering and artificial intelligence.
             </h2>
 
@@ -534,25 +531,25 @@ export function About() {
             {/* Core Capability Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-gunmetal/60">
               <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80">
-                <span className="font-mono text-[10px] text-crimson font-bold block mb-1">
-                  DISCIPLINE 01
+                <span className="font-mono text-[11px] text-ember font-bold block mb-1">
+                  CORE DISCIPLINE
                 </span>
-                <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
                   Distributed Systems &amp; APIs
                 </h4>
-                <p className="font-sans text-xs text-steel leading-normal">
+                <p className="font-sans text-xs text-steel-light leading-normal">
                   Next.js, FastAPI, Node.js, and PostgreSQL with strict ACID guarantees, automated testing, and Docker isolation.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80">
-                <span className="font-mono text-[10px] text-crimson font-bold block mb-1">
-                  DISCIPLINE 02
+                <span className="font-mono text-[11px] text-ember font-bold block mb-1">
+                  CORE DISCIPLINE
                 </span>
-                <h4 className="font-syne font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                <h4 className="font-chakra font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
                   Applied Machine Learning &amp; Vision
                 </h4>
-                <p className="font-sans text-xs text-steel leading-normal">
+                <p className="font-sans text-xs text-steel-light leading-normal">
                   DINOv2 self-supervised feature extraction, Google MediaPipe Edge AI, and SAR remote sensing with Rasterio.
                 </p>
               </div>
