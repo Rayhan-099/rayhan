@@ -10,6 +10,9 @@ import { Project } from "@/types";
 import { ProjectModal } from "../ui/ProjectModal";
 import { WorksWheel3D } from "../ui/WorksWheel3D";
 import FlexCarousel, { FlexCarouselItem } from "../ui/FlexCarousel";
+import { ProjectAccordion } from "../ui/ProjectAccordion";
+import { MagneticButton } from "../ui/MagneticButton";
+import { Tilt3DCard } from "../ui/Tilt3DCard";
 import {
   IconExternalLink,
   IconArrowRight,
@@ -56,6 +59,48 @@ export function Projects() {
           ease: "power2.out",
         });
       });
+
+      // ScrollTrigger Clip-Mask Frame Expansion (ECHO Work.tsx architecture)
+      const lumineFrame = containerRef.current?.querySelector<HTMLElement>(".lumine-clip-frame");
+      const lumineInner = containerRef.current?.querySelector<HTMLElement>(".lumine-inner-image");
+
+      if (lumineFrame && lumineInner) {
+        gsap.fromTo(
+          lumineFrame,
+          {
+            clipPath: "inset(7% 3.5% 7% 3.5% round 24px)",
+            scale: 0.94,
+          },
+          {
+            clipPath: "inset(0% 0% 0% 0% round 16px)",
+            scale: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: lumineFrame,
+              start: "top 85%",
+              end: "top 25%",
+              scrub: 1.6,
+            },
+          }
+        );
+
+        gsap.fromTo(
+          lumineInner,
+          {
+            scale: 1.15,
+          },
+          {
+            scale: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: lumineFrame,
+              start: "top 85%",
+              end: "top 25%",
+              scrub: 1.6,
+            },
+          }
+        );
+      }
     },
     { scope: containerRef }
   );
@@ -137,72 +182,80 @@ export function Projects() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => setActiveProject(lumine)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
-              >
-                <span>Inspect Full Dossier</span>
-                <IconArrowRight className="w-3.5 h-3.5" />
-              </button>
-              {lumine.links.live && (
-                <a
-                  href={lumine.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+              <MagneticButton strength={0.3} radius={80}>
+                <button
+                  onClick={() => setActiveProject(lumine)}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
                 >
-                  <span>Live Deployment</span>
-                  <IconExternalLink className="w-3.5 h-3.5 text-steel" />
-                </a>
+                  <span>Inspect Full Dossier</span>
+                  <IconArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </MagneticButton>
+              {lumine.links.live && (
+                <MagneticButton strength={0.3} radius={80}>
+                  <a
+                    href={lumine.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                  >
+                    <span>Live Deployment</span>
+                    <IconExternalLink className="w-3.5 h-3.5 text-steel" />
+                  </a>
+                </MagneticButton>
               )}
             </div>
           </div>
 
-          {/* Interactive Cinematic Media Canvas */}
-          <div
-            onClick={() => setActiveProject(lumine)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setActiveProject(lumine);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-            aria-label="Inspect Lumine AI architectural dossier"
-            className="lumine-card group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus:outline-none focus:ring-2 focus:ring-ember"
-          >
-            <Image
-              src={lumine.image}
-              alt={lumine.title}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/95 via-eclipse-black/20 to-eclipse-black/60 pointer-events-none" />
-
-            {/* Diagnostic Telemetry Overlay */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90">
-              <div className="flex items-center gap-2 bg-eclipse-black/85 px-3 py-1.5 rounded-lg border border-gunmetal">
-                <IconCrosshair className="w-3.5 h-3.5 text-ember" />
-                <span>MODEL: DINOv2 (VISION TRANSFORMER)</span>
+          {/* Interactive Cinematic Media Canvas with ScrollTrigger Clip-Mask Expansion (ECHO Work.tsx) */}
+          <Tilt3DCard maxTilt={4} perspective={1200} glareOpacity={0.12} className="w-full">
+            <div
+              onClick={() => setActiveProject(lumine)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActiveProject(lumine);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label="Inspect Lumine AI architectural dossier"
+              className="lumine-clip-frame lumine-card group relative cursor-pointer w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus:outline-none focus:ring-2 focus:ring-ember will-change-[clip-path,transform]"
+            >
+              <div className="lumine-inner-image absolute inset-0 w-full h-full will-change-transform">
+                <Image
+                  src={lumine.image}
+                  alt={lumine.title}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover object-top grayscale contrast-115 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700 ease-out"
+                />
               </div>
-              <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg bg-eclipse-black/85 border border-gunmetal text-steel-light">
-                31 CLASSIFIED DERMATOLOGICAL CLASSES
-              </span>
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/95 via-eclipse-black/20 to-eclipse-black/60 pointer-events-none" />
 
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain">
-              <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light">
-                {lumine.stats}
-              </span>
-              <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-heading font-bold">
-                <span>View Dossier</span>
-                <span>&rarr;</span>
-              </span>
+              {/* Diagnostic Telemetry Overlay */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain/90">
+                <div className="flex items-center gap-2 bg-eclipse-black/85 px-3 py-1.5 rounded-lg border border-gunmetal">
+                  <IconCrosshair className="w-3.5 h-3.5 text-ember" />
+                  <span>MODEL: DINOv2 (VISION TRANSFORMER)</span>
+                </div>
+                <span className="hidden sm:inline-block px-3 py-1.5 rounded-lg bg-eclipse-black/85 border border-gunmetal text-steel-light">
+                  31 CLASSIFIED DERMATOLOGICAL CLASSES
+                </span>
+              </div>
+
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-porcelain">
+                <span className="bg-eclipse-black/90 px-3 py-1.5 rounded-lg border border-gunmetal text-steel-light">
+                  {lumine.stats}
+                </span>
+                <span className="hidden sm:inline-flex items-center gap-1.5 text-ember uppercase tracking-wider text-[11px] font-heading font-bold">
+                  <span>View Dossier</span>
+                  <span>&rarr;</span>
+                </span>
+              </div>
             </div>
-          </div>
+          </Tilt3DCard>
 
           {/* Streamlined Architectural Narrative & Verified Specifications */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-2">
@@ -285,7 +338,29 @@ export function Projects() {
         </article>
 
         {/* ============================================================
-            2. ECHO WORKSWHEEL 3D PROJECTION REEL
+            3. EXPANDABLE SYSTEMS MATRIX: EXPAND-ON-HOVER (ECHO skiper52)
+            ============================================================ */}
+        <div className="project-fade-in pt-8 border-t border-gunmetal/80 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-ember" />
+              <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
+                EXPANDABLE ARCHITECTURES
+              </span>
+            </div>
+            <span className="font-mono text-xs text-steel-light">
+              HOVER OR FOCUS CARDS TO EXPAND SYSTEM DETAILS
+            </span>
+          </div>
+
+          <ProjectAccordion
+            projects={wheelProjects}
+            onSelectProject={setActiveProject}
+          />
+        </div>
+
+        {/* ============================================================
+            4. ECHO WORKSWHEEL 3D PROJECTION REEL
             ============================================================ */}
         <div className="project-fade-in pt-8 border-t border-gunmetal/80">
           <WorksWheel3D

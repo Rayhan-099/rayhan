@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-10-25T13:18:50.680Z",
+  "viewportsTested": [
+    "desktop_1440x900",
+    "laptop_1280x800",
+    "mobile_390x844",
+    "mobile_360x800"
+  ],
+  "networkMetrics": {
+    "totalRequests": 1771,
+    "jpgFrameRequests": 1626,
+    "webpFrameRequests": 0,
+    "headshotJpgRequests": 4,
+    "headshotWebpRequests": 0,
+    "failedRequests": []
+  },
+  "consoleErrors": [],
+  "interactionsTested": {
+    "multiPlaneHeroParallax": false,
+    "tilt3DPortrait": true,
+    "clipMaskLumineExpansion": true,
+    "tilt3DLumineCard": true,
+    "expandableProjectAccordion": true,
+    "spotlightLuminanceSkills": true,
+    "magneticButtonPull": true,
+    "modalDossierOpenAndEscape": true,
+    "reducedMotionFallback": true
+  },
+  "privacyAudit": {
+    "forbiddenPhoneDetected": false,
+    "forbiddenGpsDetected": false,
+    "forbiddenMockStampsDetected": false,
+    "cityLevelLocationConfirmed": true
+  }
+}

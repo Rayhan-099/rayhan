@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { skills } from "@/content/skills";
+import { SpotlightLuminance } from "../ui/SpotlightLuminance";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -107,91 +108,106 @@ export function Skills() {
 
       {/* ================= ART-DIRECTED DUAL-COLUMN ARCHITECTURE ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Systems Architecture Foundations */}
-        <div className="skill-spotlight-panel lg:col-span-5 rounded-2xl bg-eclipse-surface border border-gunmetal p-6 md:p-8 relative overflow-hidden space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-gunmetal/60">
-            <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
-              CORE SPECIALIZATION
-            </span>
-            <span className="font-mono text-xs uppercase text-steel-light">
-              NOIDA, INDIA
-            </span>
-          </div>
+        {/* Left Column: Systems Architecture Foundations with Cursor Luminance */}
+        <div className="skill-spotlight-panel lg:col-span-5">
+          <SpotlightLuminance
+            spotlightColor="rgba(165, 31, 48, 0.16)"
+            borderHighlightColor="rgba(255, 73, 61, 0.4)"
+            spotlightRadius={300}
+            className="rounded-2xl"
+          >
+            <div className="rounded-2xl bg-eclipse-surface border border-gunmetal p-6 md:p-8 relative overflow-hidden space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-gunmetal/60">
+                <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
+                  CORE SPECIALIZATION
+                </span>
+                <span className="font-mono text-xs uppercase text-steel-light">
+                  NOIDA, INDIA
+                </span>
+              </div>
 
-          <div>
-            <h3 className="font-heading text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-3 leading-tight">
-              Distributed Backends &amp; Applied Computer Vision
-            </h3>
-            <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed">
-              Engineering focus centered on high-throughput asynchronous APIs, vision transformer fine-tuning, deterministic satellite raster computation, and client-side Edge AI runtimes.
-            </p>
-          </div>
+              <div>
+                <h3 className="font-heading text-xl md:text-2xl font-bold uppercase tracking-tight text-porcelain mb-3 leading-tight">
+                  Distributed Backends &amp; Applied Computer Vision
+                </h3>
+                <p className="font-sans text-xs md:text-sm text-steel-light leading-relaxed">
+                  Engineering focus centered on high-throughput asynchronous APIs, vision transformer fine-tuning, deterministic satellite raster computation, and client-side Edge AI runtimes.
+                </p>
+              </div>
 
-          {/* Architectural Pillars */}
-          <div className="space-y-3 pt-2">
-            <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-              <span className="font-heading text-xs font-bold text-porcelain uppercase block mb-1">
-                Zero-Trust API Architecture
-              </span>
-              <p className="font-sans text-xs text-steel-light">
-                Stateless token authentication, token-bucket rate limiting, structured Pydantic data schemas, and transactional PostgreSQL integrity.
-              </p>
+              {/* Architectural Pillars */}
+              <div className="space-y-3 pt-2">
+                <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
+                  <span className="font-heading text-xs font-bold text-porcelain uppercase block mb-1">
+                    Zero-Trust API Architecture
+                  </span>
+                  <p className="font-sans text-xs text-steel-light">
+                    Stateless token authentication, token-bucket rate limiting, structured Pydantic data schemas, and transactional PostgreSQL integrity.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
+                  <span className="font-heading text-xs font-bold text-ember uppercase block mb-1">
+                    Edge AI &amp; WebAssembly Runtimes
+                  </span>
+                  <p className="font-sans text-xs text-steel-light">
+                    Browser-local neural model inference via ONNX Runtime Web and Google MediaPipe, achieving sub-15ms latency with 100% data confidentiality.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
+                  <span className="font-heading text-xs font-bold text-porcelain uppercase block mb-1">
+                    Geospatial &amp; Multimodal Pipelines
+                  </span>
+                  <p className="font-sans text-xs text-steel-light">
+                    High-throughput raster computation across Sentinel-1 SAR and Sentinel-2 multispectral imagery with automated band thresholding.
+                  </p>
+                </div>
+              </div>
+
+              {/* Core Principle Quote */}
+              <div className="pt-2 border-t border-gunmetal/60">
+                <p className="font-sans text-xs text-steel-light italic leading-relaxed">
+                  &ldquo;Minimal code surface area, strict interface contracts, and verifiable runtime performance across client and server.&rdquo;
+                </p>
+              </div>
             </div>
-
-            <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-              <span className="font-heading text-xs font-bold text-ember uppercase block mb-1">
-                Edge AI &amp; WebAssembly Runtimes
-              </span>
-              <p className="font-sans text-xs text-steel-light">
-                Browser-local neural model inference via ONNX Runtime Web and Google MediaPipe, achieving sub-15ms latency with 100% data confidentiality.
-              </p>
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-eclipse-elevated border border-gunmetal/60">
-              <span className="font-heading text-xs font-bold text-porcelain uppercase block mb-1">
-                Geospatial &amp; Multimodal Pipelines
-              </span>
-              <p className="font-sans text-xs text-steel-light">
-                High-throughput raster computation across Sentinel-1 SAR and Sentinel-2 multispectral imagery with automated band thresholding.
-              </p>
-            </div>
-          </div>
-
-          {/* Core Principle Quote */}
-          <div className="pt-2 border-t border-gunmetal/60">
-            <p className="font-sans text-xs text-steel-light italic leading-relaxed">
-              &ldquo;Minimal code surface area, strict interface contracts, and verifiable runtime performance across client and server.&rdquo;
-            </p>
-          </div>
+          </SpotlightLuminance>
         </div>
 
         {/* Right Column: Categorized Domain Matrix */}
         <div ref={matrixRef} className="lg:col-span-7 space-y-6">
           {displayedSkills.map((category) => (
-            <div
-              key={category.category}
-              className="skill-domain-card p-6 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-gunmetal-border transition-colors"
-            >
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-gunmetal/60">
-                <h3 className="font-heading text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
-                  {category.category}
-                </h3>
-                <span className="font-mono text-xs uppercase tracking-wider text-steel">
-                  {category.items.length} {category.items.length === 1 ? "Technology" : "Technologies"}
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {category.items.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group px-3 py-1.5 text-xs font-mono bg-eclipse-elevated text-steel-light border border-gunmetal hover:border-ember/60 hover:text-porcelain transition-all duration-200 cursor-default flex items-center gap-2 rounded-lg"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-steel/50 group-hover:bg-ember transition-colors" />
-                    <span>{item.name}</span>
+            <div key={category.category} className="skill-domain-card">
+              <SpotlightLuminance
+                spotlightColor="rgba(66, 21, 31, 0.22)"
+                borderHighlightColor="rgba(165, 31, 48, 0.35)"
+                spotlightRadius={260}
+                className="rounded-2xl"
+              >
+                <div className="p-6 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-gunmetal-border transition-colors">
+                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-gunmetal/60">
+                    <h3 className="font-heading text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
+                      {category.category}
+                    </h3>
+                    <span className="font-mono text-xs uppercase tracking-wider text-steel">
+                      {category.items.length} {category.items.length === 1 ? "Technology" : "Technologies"}
+                    </span>
                   </div>
-                ))}
-              </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {category.items.map((item) => (
+                      <div
+                        key={item.name}
+                        className="group px-3 py-1.5 text-xs font-mono bg-eclipse-elevated text-steel-light border border-gunmetal hover:border-ember/60 hover:text-porcelain transition-all duration-200 cursor-default flex items-center gap-2 rounded-lg"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-steel/50 group-hover:bg-ember transition-colors" />
+                        <span>{item.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </SpotlightLuminance>
             </div>
           ))}
         </div>

@@ -16,6 +16,8 @@ import {
   IconExternalLink,
   IconTerminal,
 } from "../ui/CustomIcons";
+import { MagneticButton } from "../ui/MagneticButton";
+import { SpotlightLuminance } from "../ui/SpotlightLuminance";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -72,101 +74,114 @@ export function Contact() {
           </p>
 
           <div className="pt-4 flex flex-wrap gap-4">
-            <button
-              onClick={copyEmail}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm focus:ring-1 focus:ring-ember"
-            >
-              <IconTerminal className="w-4 h-4" />
-              <span>{copied ? "Address Copied to Clipboard" : "Copy Direct Email"}</span>
-            </button>
+            <MagneticButton strength={0.3} radius={85}>
+              <button
+                onClick={copyEmail}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm focus:ring-1 focus:ring-ember"
+              >
+                <IconTerminal className="w-4 h-4" />
+                <span>{copied ? "Address Copied to Clipboard" : "Copy Direct Email"}</span>
+              </button>
+            </MagneticButton>
 
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
-            >
-              <span>Open Mail Client</span>
-              <IconExternalLink className="w-3.5 h-3.5 text-steel" />
-            </a>
+            <MagneticButton strength={0.3} radius={85}>
+              <a
+                href={`mailto:${profile.email}`}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gunmetal hover:bg-gunmetal-border text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+              >
+                <span>Open Mail Client</span>
+                <IconExternalLink className="w-3.5 h-3.5 text-steel" />
+              </a>
+            </MagneticButton>
           </div>
         </div>
 
         {/* Right: Verified Coordinates & Profiles */}
-        <div className="lg:col-span-5 contact-fade p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal space-y-6">
-          <h3 className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
-            Direct Routing
-          </h3>
+        <div className="lg:col-span-5 contact-fade">
+          <SpotlightLuminance
+            spotlightColor="rgba(165, 31, 48, 0.16)"
+            borderHighlightColor="rgba(255, 73, 61, 0.4)"
+            spotlightRadius={300}
+            className="rounded-2xl"
+          >
+            <div className="p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal space-y-6">
+              <h3 className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
+                Direct Routing
+              </h3>
 
-          <div className="space-y-4 text-sm font-mono">
-            <div>
-              <span className="text-xs text-steel/70 uppercase block mb-1">Electronic Mail</span>
-              <a
-                href={`mailto:${profile.email}`}
-                className="text-porcelain hover:text-ember transition-colors"
-              >
-                {profile.email}
-              </a>
-            </div>
-
-            <div>
-              <span className="text-xs text-steel/70 uppercase block mb-1">Primary Location</span>
-              <p className="text-porcelain font-sans font-medium">
-                {profile.location}
-              </p>
-            </div>
-
-            <div>
-              <span className="text-xs text-steel/70 uppercase block mb-1">Availability</span>
-              <p className="text-steel-light font-sans text-xs">
-                Open to Full-Time Engineering Roles &amp; Remote Teams Worldwide
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-4 border-t border-gunmetal/60">
-            <span className="text-xs font-sans text-steel/70 uppercase block mb-3">
-              Verified Profiles
-            </span>
-            <div className="flex flex-col space-y-2 text-xs font-sans font-medium">
-              <a
-                href={profile.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <IconGitHub className="w-4 h-4 text-crimson" />
-                  <span>GitHub Profile</span>
+              <div className="space-y-4 text-sm font-mono">
+                <div>
+                  <span className="text-xs text-steel/70 uppercase block mb-1">Electronic Mail</span>
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="text-porcelain hover:text-ember transition-colors"
+                  >
+                    {profile.email}
+                  </a>
                 </div>
-                <IconExternalLink className="w-3.5 h-3.5 text-steel/60" />
-              </a>
 
-              <a
-                href={profile.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <IconLinkedIn className="w-4 h-4 text-crimson" />
-                  <span>LinkedIn Network</span>
+                <div>
+                  <span className="text-xs text-steel/70 uppercase block mb-1">Primary Location</span>
+                  <p className="text-porcelain font-sans font-medium">
+                    {profile.location}
+                  </p>
                 </div>
-                <IconExternalLink className="w-3.5 h-3.5 text-steel/60" />
-              </a>
 
-              <a
-                href={profile.social.leetcode}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <IconLeetCode className="w-4 h-4 text-crimson" />
-                  <span>LeetCode Algorithms</span>
+                <div>
+                  <span className="text-xs text-steel/70 uppercase block mb-1">Availability</span>
+                  <p className="text-steel-light font-sans text-xs">
+                    Open to Full-Time Engineering Roles &amp; Remote Teams Worldwide
+                  </p>
                 </div>
-                <IconExternalLink className="w-3.5 h-3.5 text-steel/60" />
-              </a>
+              </div>
+
+              <div className="pt-4 border-t border-gunmetal/60">
+                <span className="text-xs font-sans text-steel/70 uppercase block mb-3">
+                  Verified Profiles
+                </span>
+                <div className="flex flex-col space-y-2 text-xs font-sans font-medium">
+                  <a
+                    href={profile.social.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
+                  >
+                    <div className="flex items-center gap-2">
+                      <IconGitHub className="w-4 h-4 text-crimson" />
+                      <span>GitHub Profile</span>
+                    </div>
+                    <IconExternalLink className="w-3.5 h-3.5 text-steel/60" />
+                  </a>
+
+                  <a
+                    href={profile.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
+                  >
+                    <div className="flex items-center gap-2">
+                      <IconLinkedIn className="w-4 h-4 text-crimson" />
+                      <span>LinkedIn Network</span>
+                    </div>
+                    <IconExternalLink className="w-3.5 h-3.5 text-steel/60" />
+                  </a>
+
+                  <a
+                    href={profile.social.leetcode}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 rounded-lg bg-eclipse-elevated border border-gunmetal/50 hover:border-crimson/50 text-steel hover:text-porcelain transition-colors"
+                  >
+                    <div className="flex items-center gap-2">
+                      <IconLeetCode className="w-4 h-4 text-crimson" />
+                      <span>LeetCode Algorithms</span>
+                    </div>
+                    <IconExternalLink className="w-3.5 h-3.5 text-steel/60" />
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          </SpotlightLuminance>
         </div>
       </div>
     </section>

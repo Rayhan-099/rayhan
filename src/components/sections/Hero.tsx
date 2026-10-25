@@ -6,6 +6,8 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { profile } from "@/content/profile";
 import { IconArrowRight, IconCrosshair } from "../ui/CustomIcons";
+import { Tilt3DCard } from "../ui/Tilt3DCard";
+import { MagneticButton } from "../ui/MagneticButton";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -248,7 +250,22 @@ export function Hero() {
           tickerBottom.style.transform = `translate3d(${xOffset.toFixed(1)}px, 0, 0)`;
         }
 
-        // 3. Foreground content lift and smooth handoff into About
+        // 3. Multi-Plane Spatial Parallax across typography and portrait (analog-editorial reference)
+        const wordFirst = contentWrap?.querySelector<HTMLElement>(".hero-word-first");
+        const wordSecond = contentWrap?.querySelector<HTMLElement>(".hero-word-second");
+        const portraitStage = contentWrap?.querySelector<HTMLElement>(".hero-portrait-stage");
+
+        if (wordFirst) {
+          wordFirst.style.transform = `translate3d(0, ${(-clampedProgress * 42).toFixed(1)}px, 0)`;
+        }
+        if (portraitStage) {
+          portraitStage.style.transform = `translate3d(0, ${(-clampedProgress * 24).toFixed(1)}px, 0)`;
+        }
+        if (wordSecond) {
+          wordSecond.style.transform = `translate3d(0, ${(-clampedProgress * 12).toFixed(1)}px, 0)`;
+        }
+
+        // 4. Foreground content lift and smooth handoff into About
         if (contentWrap) {
           if (clampedProgress >= 0.70) {
             const exitProgress = (clampedProgress - 0.70) / 0.30;
@@ -400,18 +417,20 @@ export function Hero() {
               </span>
             </h1>
 
-            {/* Centred Portrait Anchor with Ambient Crimson Halo */}
-            <div className="relative flex justify-center items-center -my-3 sm:-my-6 z-20">
+            {/* Centred Portrait Anchor with Ambient Crimson Halo & 3D Pointer Tilt (analog-editorial reference) */}
+            <div className="hero-portrait-stage relative flex justify-center items-center -my-3 sm:-my-6 z-20">
               <div className="absolute w-72 h-72 rounded-full bg-crimson/20 blur-3xl pointer-events-none" />
 
-              <div className="relative w-[200px] h-[250px] sm:w-[240px] sm:h-[300px] md:w-[270px] md:h-[340px] hero-portrait-mask flex items-end justify-center">
-                <img
-                  src="/rayhan-headshot.jpg"
-                  alt="Rayhan Khan"
-                  className="w-full h-full object-cover object-top select-none pointer-events-none filter contrast-105 brightness-95"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/90 via-transparent to-transparent pointer-events-none" />
-              </div>
+              <Tilt3DCard maxTilt={5} scale={1.02} glare={true} className="relative z-10">
+                <div className="relative w-[200px] h-[250px] sm:w-[240px] sm:h-[300px] md:w-[270px] md:h-[340px] hero-portrait-mask flex items-end justify-center">
+                  <img
+                    src="/rayhan-headshot.jpg"
+                    alt="Rayhan Khan"
+                    className="w-full h-full object-cover object-top select-none pointer-events-none filter contrast-105 brightness-95"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/90 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </Tilt3DCard>
             </div>
 
             <h1 className="font-display text-[clamp(3.8rem,11.5vw,12.5rem)] font-extrabold uppercase leading-[0.80] tracking-tight select-none z-10">
@@ -455,46 +474,63 @@ export function Hero() {
               </p>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons with Magnetic Pointer Attraction (ECHO reference) */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 shrink-0">
-              <a
-                href="#about"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
-              >
-                <span>Explore Systems</span>
-                <IconArrowRight className="w-3.5 h-3.5 rotate-90" />
-              </a>
+              <MagneticButton pullStrength={10}>
+                <a
+                  href="#about"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
+                >
+                  <span>Explore Systems</span>
+                  <IconArrowRight className="w-3.5 h-3.5 rotate-90" />
+                </a>
+              </MagneticButton>
 
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface/80 text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
-              >
-                Resume
-              </a>
+              <MagneticButton pullStrength={8}>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-5 py-3 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface/80 text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                >
+                  Resume
+                </a>
+              </MagneticButton>
 
-              <a
-                href={profile.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface/80 text-steel hover:text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
-              >
-                GitHub
-              </a>
+              <MagneticButton pullStrength={8}>
+                <a
+                  href={profile.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-5 py-3 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface/80 text-steel hover:text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                >
+                  GitHub
+                </a>
+              </MagneticButton>
 
-              <a
-                href={profile.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface/80 text-steel hover:text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
-              >
-                LinkedIn
-              </a>
+              <MagneticButton pullStrength={8}>
+                <a
+                  href={profile.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-5 py-3 rounded-full border border-gunmetal hover:border-steel bg-eclipse-surface/80 text-steel hover:text-porcelain font-sans font-medium text-xs uppercase tracking-wider transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </MagneticButton>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Continuous Bottom Horizon Blend — Seamlessly bridges hero into About (ECHO reference) */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-28 pointer-events-none z-30"
+        style={{
+          background: "linear-gradient(to bottom, transparent 0%, rgba(17, 13, 19, 0.7) 45%, #110D13 100%)",
+        }}
+        aria-hidden="true"
+      />
     </section>
   );
 }

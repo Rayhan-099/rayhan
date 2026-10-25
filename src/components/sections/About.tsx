@@ -5,6 +5,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { profile } from "@/content/profile";
+import { Tilt3DCard } from "../ui/Tilt3DCard";
+import { SpotlightLuminance } from "../ui/SpotlightLuminance";
+import { MagneticButton } from "../ui/MagneticButton";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -466,13 +469,15 @@ export function About() {
                 </div>
 
                 <div className="flex items-center gap-3 shrink-0">
-                  <a
-                    href="#projects"
-                    className="pointer-events-auto px-5 py-2.5 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
-                  >
-                    <span>Explore Systems</span>
-                    <span className="text-xs">↓</span>
-                  </a>
+                  <MagneticButton strength={0.35} radius={90}>
+                    <a
+                      href="#projects"
+                      className="pointer-events-auto px-5 py-2.5 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
+                    >
+                      <span>Explore Systems</span>
+                      <span className="text-xs">↓</span>
+                    </a>
+                  </MagneticButton>
                 </div>
               </div>
             </div>
@@ -485,24 +490,26 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Authentic Portrait */}
           <div className="identity-element lg:col-span-5 relative">
-            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-eclipse-surface border border-gunmetal/80 shadow-2xl group">
-              <img
-                src="/rayhan-headshot.jpg"
-                alt="Rayhan Khan, Computer Science Engineer and AI Systems Architect based in Noida, India"
-                className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
-              
-              {/* Bottom Credential Badge */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono bg-eclipse-surface/90 px-3.5 py-2 rounded-lg border border-gunmetal/80">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-ember" />
-                  <span className="text-porcelain font-bold">AKTU CSE</span>
+            <Tilt3DCard maxTilt={5.5} perspective={1100} glareOpacity={0.14} className="w-full">
+              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-eclipse-surface border border-gunmetal/80 shadow-2xl group">
+                <img
+                  src="/rayhan-headshot.jpg"
+                  alt="Rayhan Khan, Computer Science Engineer and AI Systems Architect based in Noida, India"
+                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Bottom Credential Badge */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono bg-eclipse-surface/90 px-3.5 py-2 rounded-lg border border-gunmetal/80">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-ember" />
+                    <span className="text-porcelain font-bold">AKTU CSE</span>
+                  </div>
+                  <span className="text-steel">NOIDA, UP, INDIA</span>
                 </div>
-                <span className="text-steel">NOIDA, UP, INDIA</span>
               </div>
-            </div>
+            </Tilt3DCard>
 
             <div className="mt-4 flex items-center justify-between text-xs font-mono border-b border-gunmetal/50 pb-2">
               <span className="font-heading font-bold uppercase tracking-wider text-porcelain">
@@ -536,56 +543,80 @@ export function About() {
               </p>
             </div>
 
-            {/* Core Capability Cards */}
+            {/* Core Capability Cards with Cursor-Responsive Spotlight Luminance */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-8 border-t border-gunmetal/60">
-              <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80">
-                <span className="font-mono text-[11px] text-ember font-bold block mb-1">
-                  CORE DISCIPLINE
-                </span>
-                <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
-                  Distributed Systems &amp; APIs
-                </h4>
-                <p className="font-sans text-xs text-steel-light leading-normal">
-                  Next.js, FastAPI, Node.js, and PostgreSQL with strict ACID guarantees, automated testing, and Docker isolation.
-                </p>
-              </div>
+              <SpotlightLuminance
+                spotlightColor="rgba(165, 31, 48, 0.16)"
+                borderHighlightColor="rgba(255, 73, 61, 0.45)"
+                spotlightRadius={260}
+                className="rounded-xl h-full"
+              >
+                <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80 h-full">
+                  <span className="font-mono text-[11px] text-ember font-bold block mb-1">
+                    CORE DISCIPLINE
+                  </span>
+                  <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                    Distributed Systems &amp; APIs
+                  </h4>
+                  <p className="font-sans text-xs text-steel-light leading-normal">
+                    Next.js, FastAPI, Node.js, and PostgreSQL with strict ACID guarantees, automated testing, and Docker isolation.
+                  </p>
+                </div>
+              </SpotlightLuminance>
 
-              <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80">
-                <span className="font-mono text-[11px] text-ember font-bold block mb-1">
-                  CORE DISCIPLINE
-                </span>
-                <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
-                  Applied Machine Learning &amp; Vision
-                </h4>
-                <p className="font-sans text-xs text-steel-light leading-normal">
-                  DINOv2 self-supervised feature extraction, Google MediaPipe Edge AI, and SAR remote sensing with Rasterio.
-                </p>
-              </div>
+              <SpotlightLuminance
+                spotlightColor="rgba(165, 31, 48, 0.16)"
+                borderHighlightColor="rgba(255, 73, 61, 0.45)"
+                spotlightRadius={260}
+                className="rounded-xl h-full"
+              >
+                <div className="p-4 rounded-xl bg-eclipse-surface border border-gunmetal/80 h-full">
+                  <span className="font-mono text-[11px] text-ember font-bold block mb-1">
+                    CORE DISCIPLINE
+                  </span>
+                  <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-porcelain mb-1">
+                    Applied Machine Learning &amp; Vision
+                  </h4>
+                  <p className="font-sans text-xs text-steel-light leading-normal">
+                    DINOv2 self-supervised feature extraction, Google MediaPipe Edge AI, and SAR remote sensing with Rasterio.
+                  </p>
+                </div>
+              </SpotlightLuminance>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons with Elastic Magnetic Attraction */}
             <div className="flex flex-wrap items-center gap-4 mt-8 pt-6 border-t border-gunmetal/40">
-              <a
-                href="#projects"
-                className="px-6 py-3 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
-              >
-                <span>Explore Technical Systems</span>
-                <span className="text-xs">↓</span>
-              </a>
+              <MagneticButton strength={0.32} radius={85}>
+                <a
+                  href="#projects"
+                  className="px-6 py-3 bg-crimson hover:bg-crimson-hover text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2 shadow-sm"
+                >
+                  <span>Explore Technical Systems</span>
+                  <span className="text-xs">↓</span>
+                </a>
+              </MagneticButton>
 
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-eclipse-surface hover:bg-gunmetal border border-gunmetal/80 hover:border-crimson/50 text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2"
-              >
-                <span>Download Verified Resume</span>
-                <span className="text-xs">↗</span>
-              </a>
+              <MagneticButton strength={0.32} radius={85}>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-eclipse-surface hover:bg-gunmetal border border-gunmetal/80 hover:border-crimson/50 text-porcelain font-sans font-medium text-xs uppercase tracking-wider rounded-full transition-colors inline-flex items-center gap-2"
+                >
+                  <span>Download Verified Resume</span>
+                  <span className="text-xs">↗</span>
+                </a>
+              </MagneticButton>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Continuous Horizon Blend to Projects (ECHO Transition Architecture) */}
+      <div
+        className="w-full h-24 pointer-events-none -mt-12 bg-gradient-to-b from-transparent via-burgundy-muted/20 to-transparent"
+        aria-hidden="true"
+      />
     </section>
   );
 }
