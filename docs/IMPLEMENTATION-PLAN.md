@@ -94,7 +94,7 @@ Rayhan-Portfolio/
 ### 3.1 Hero Section (`Hero.tsx`)
 - High-impact display typography: "RAYHAN KHAN" with subtitle "Software Engineer · AI/ML Systems Architect".
 - Asymmetric layout:
-  - Left: Coordinates `NOIDA / 28.5355° N, 77.3910° E`, live availability indicator, and quick index anchors.
+  - Left: Location `NOIDA, UTTAR PRADESH, INDIA`, live availability indicator, and quick index anchors.
   - Center: Atmospheric focal headshot with hairline border and depth mask.
   - Right: Concise engineering summary (focusing on full-stack architecture, machine learning models, and production deployment).
 - GSAP timeline reveals headline with staggered overflow-hidden masks.

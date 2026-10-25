@@ -20,7 +20,7 @@
 | :--- | :--- | :--- | :--- |
 | **Display / Masthead** | **Syne** (`font-syne`) | `700` (Bold), `800` (ExtraBold) | Hero masthead (`RAYHAN KHAN`), Section titles (`FLAGSHIP SYSTEMS`, `EXPERIENCE`, `SKILLS`), Card titles, Modal dossiers. |
 | **Editorial Prose & Interface** | **Instrument Sans** (`font-sans`) | `400` (Regular), `500` (Medium), `600` (SemiBold) | Target sentence, all section subtitles, project narratives, experience bullets, navigation links, buttons, modal descriptions, and legal pages. |
-| **Technical Telemetry & Tokens** | **Chivo Mono** (`font-mono`) | `400` (Regular), `500` (Medium), `700` (Bold) | Strictly reserved for real technical tokens: geographic coordinates (`28.5355° N, 77.3910° E`), numeric metrics (`<12ms`, `60 FPS`), stack pills (`[PyTorch]`, `[FastAPI]`), credential IDs (`ID: cert-...`), and step indices (`01 / ABOUT`). |
+| **Technical Telemetry & Tokens** | **Chivo Mono** (`font-mono`) | `400` (Regular), `500` (Medium), `700` (Bold) | Strictly reserved for real technical tokens: geographic timecodes (`UTC +05:30`), numeric metrics (`<12ms`, `60 FPS`), stack pills (`[PyTorch]`, `[FastAPI]`), credential IDs (`ID: cert-...`), and step indices. |
 
 ---
 

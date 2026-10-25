@@ -62,8 +62,9 @@ export function Contact() {
             INITIATE COLLABORATION
           </span>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold uppercase tracking-tight leading-[0.92] text-porcelain">
-            LET&apos;S BUILD SOMETHING
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold uppercase tracking-tight leading-[0.92] select-none">
+            <span className="block text-porcelain">LET&apos;S TALK &bull;</span>
+            <span className="block metallic-title mt-2">LET&apos;S BUILD</span>
           </h2>
 
           <p className="text-base md:text-lg text-steel-light max-w-xl leading-relaxed">

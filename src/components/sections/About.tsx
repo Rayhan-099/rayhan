@@ -24,6 +24,7 @@ export function About() {
   const titleLeftRef = useRef<HTMLHeadingElement>(null);
   const titleRightRef = useRef<HTMLHeadingElement>(null);
   const scrollPromptRef = useRef<HTMLParagraphElement>(null);
+  const mediaBlurRef = useRef<HTMLDivElement>(null);
 
   // In-memory image buffer cache
   const imagesRef = useRef<HTMLImageElement[]>([]);
@@ -205,6 +206,7 @@ export function About() {
       const titleLeft = titleLeftRef.current;
       const titleRight = titleRightRef.current;
       const scrollPrompt = scrollPromptRef.current;
+      const mediaBlur = mediaBlurRef.current;
 
       const isMobile = window.innerWidth < 768;
       const ASPECT_RATIO = 16 / 10;
@@ -249,6 +251,12 @@ export function About() {
         if (titleRight) {
           titleRight.style.transform = `translateX(${textTranslateX.toFixed(1)}vw) translateZ(0)`;
           titleRight.style.opacity = `${titleOpacity}`;
+        }
+
+        // Dual-Layer Hardware Unblur (ECHO ScrollExpandMedia)
+        if (mediaBlur) {
+          const blurFade = Math.max(0, 1 - clampedProgress * 2.3);
+          mediaBlur.style.opacity = `${blurFade.toFixed(3)}`;
         }
 
         // Subtitle prompt translation and fade
@@ -351,28 +359,34 @@ export function About() {
               className="absolute inset-0 w-full h-full object-cover block select-none pointer-events-none"
             />
 
+            {/* Dual-Layer Hardware Unblur Overlay (ECHO ScrollExpandMedia) */}
+            <div
+              ref={mediaBlurRef}
+              className="absolute inset-0 z-10 pointer-events-none backdrop-blur-md bg-eclipse-surface/30 transition-opacity duration-150 ease-out will-change-[opacity]"
+            />
+
             {/* Vignette Gradient for Text Contrast */}
-            <div className="absolute inset-0 bg-gradient-to-b from-eclipse-black/85 via-eclipse-black/40 to-eclipse-black/90 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-eclipse-black/85 via-eclipse-black/40 to-eclipse-black/90 pointer-events-none z-10" />
 
             {/* Initial Center Text (Splits and slides away on scroll) */}
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none select-none px-4 text-center">
-              <h2
+              <span
                 ref={titleLeftRef}
-                className="font-display text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-porcelain leading-tight will-change-transform"
+                className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-porcelain leading-none block will-change-transform"
               >
                 Systematic
-              </h2>
-              <h2
+              </span>
+              <span
                 ref={titleRightRef}
-                className="font-display text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-ember leading-tight will-change-transform"
+                className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-ember leading-none block mt-1.5 will-change-transform"
               >
                 Architecture
-              </h2>
+              </span>
               <p
                 ref={scrollPromptRef}
-                className="font-chakra text-[11px] uppercase tracking-wider text-steel mt-2 will-change-transform"
+                className="font-chakra text-[10px] sm:text-xs uppercase tracking-widest text-steel mt-3 will-change-transform"
               >
-                Scroll to explore
+                Scroll to explore &bull; 241 frames
               </p>
             </div>
 

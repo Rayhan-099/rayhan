@@ -9,6 +9,7 @@ import { projects } from "@/content/projects";
 import { Project } from "@/types";
 import { ProjectModal } from "../ui/ProjectModal";
 import { WorksWheel3D } from "../ui/WorksWheel3D";
+import FlexCarousel, { FlexCarouselItem } from "../ui/FlexCarousel";
 import {
   IconExternalLink,
   IconArrowRight,
@@ -25,6 +26,15 @@ export function Projects() {
 
   const lumine = projects.find((p) => p.id === "lumine")!;
   const wheelProjects = projects.filter((p) => p.id !== "lumine");
+
+  const carouselItems: FlexCarouselItem[] = projects.map((p) => ({
+    src: p.image,
+    alt: p.title,
+    title: p.title,
+    subtitle: p.subtitle,
+    description: p.description,
+    link: p.links.live || p.links.github,
+  }));
 
   useGSAP(
     () => {
@@ -71,11 +81,46 @@ export function Projects() {
         </p>
       </div>
 
-      <div className="space-y-28">
+      <div className="space-y-24">
         {/* ============================================================
-            1. FEATURED SYSTEM SHOWCASE: LUMINE AI (De-cluttered & Cinematic)
+            1. ECHO SIGNATURE INTERACTION: FLEXCAROUSEL (WebGL Liquid Mesh Displacement)
             ============================================================ */}
-        <article className="project-fade-in space-y-8">
+        <div className="project-fade-in space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-ember animate-pulse" />
+              <span className="font-chakra text-xs uppercase tracking-wider text-ember font-bold">
+                FEATURED SYSTEMS &bull; LIQUID WEBGL DISPLACEMENT
+              </span>
+            </div>
+            <span className="font-mono text-[11px] text-steel">
+              DRAG HORIZONTALLY &bull; CLICK CARD TO INSPECT DOSSIER
+            </span>
+          </div>
+
+          <div className="rounded-3xl border border-gunmetal bg-eclipse-surface overflow-hidden shadow-2xl relative w-full h-[540px] md:h-[620px]">
+            <FlexCarousel
+              items={carouselItems}
+              preset="liquid"
+              intro="rise"
+              cardHeight={0.62}
+              gap={16}
+              squeeze={0.2}
+              focusOnClick={true}
+              captions={true}
+              captureWheel={false}
+              onSelect={(index) => {
+                const selected = projects[index];
+                if (selected) setActiveProject(selected);
+              }}
+            />
+          </div>
+        </div>
+
+        {/* ============================================================
+            2. DEEP ARCHITECTURAL BREAKDOWN: LUMINE AI (Flagship System)
+            ============================================================ */}
+        <article className="project-fade-in space-y-8 pt-6 border-t border-gunmetal/80">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-2">

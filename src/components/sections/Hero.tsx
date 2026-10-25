@@ -391,24 +391,45 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Monolithic Staggered Typography Masthead */}
-          <div className="my-auto py-6 md:py-10 flex flex-col items-start justify-center">
-            <h1 className="font-display text-[clamp(3.8rem,11.2vw,12rem)] font-extrabold uppercase leading-[0.84] tracking-tight text-porcelain select-none">
-              <div className="overflow-hidden pb-1 sm:pb-3">
-                <span className="hero-word-first inline-block">
-                  RAYHAN
-                </span>
-              </div>
-              <div className="overflow-hidden pb-1 sm:pb-3 ml-6 sm:ml-16 md:ml-28">
-                <span className="hero-word-second inline-block metallic-title">
-                  KHAN
-                </span>
-              </div>
-            </h1>
+          {/* Editorial Grid: Monolithic Masthead & Personal Portrait Integration */}
+          <div className="my-auto py-4 md:py-6 grid grid-cols-1 md:grid-cols-12 items-center gap-6 lg:gap-8">
+            <div className="md:col-span-8 flex flex-col items-start justify-center">
+              <h1 className="font-display text-[clamp(3.5rem,10vw,11rem)] font-extrabold uppercase leading-[0.84] tracking-tight text-porcelain select-none">
+                <div className="overflow-hidden pb-1 sm:pb-2">
+                  <span className="hero-word-first inline-block">
+                    RAYHAN
+                  </span>
+                </div>
+                <div className="overflow-hidden pb-1 sm:pb-2 ml-4 sm:ml-12 md:ml-20">
+                  <span className="hero-word-second inline-block metallic-title">
+                    KHAN
+                  </span>
+                </div>
+              </h1>
 
-            <p className="font-chakra font-medium text-xs sm:text-sm md:text-base text-ember tracking-wider uppercase mt-4 max-w-xl">
-              Full-Stack Systems & Applied Machine Learning Engineer
-            </p>
+              <div className="flex flex-wrap items-center gap-2.5 mt-4">
+                <span className="font-chakra font-bold text-xs sm:text-sm md:text-base text-ember tracking-wider uppercase">
+                  Full-Stack Systems &amp; Applied Machine Learning Engineer
+                </span>
+                <span className="hidden sm:inline-block font-mono text-xs text-steel/50">&bull;</span>
+                <span className="hidden sm:inline-block font-mono text-xs text-steel">NOIDA, INDIA</span>
+              </div>
+            </div>
+
+            {/* Symmetrical / Complementary Portrait Anchor with Gradient Mask */}
+            <div className="hidden md:flex md:col-span-4 justify-center items-end relative z-10 -mb-4">
+              <div className="relative w-[220px] h-[300px] lg:w-[270px] lg:h-[360px] flex items-end justify-center hero-portrait-mask">
+                <picture>
+                  <source srcSet="/rayhan-headshot.webp" type="image/webp" />
+                  <img
+                    src="/rayhan-headshot.jpg"
+                    alt="Rayhan Khan"
+                    className="w-full h-full object-cover object-top select-none pointer-events-none filter contrast-105 brightness-95"
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-gradient-to-t from-eclipse-black/85 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
           </div>
 
           {/* Bottom Editorial Panel & Action Navigation */}

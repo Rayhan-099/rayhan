@@ -47,7 +47,7 @@ This document records the empirical browser inspection of computed font families
 | Home | Paragraphs / Body Copy | `<p>` | "Engineering resilient backend archi" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `400` | ✓ Valid |
 | Home | Paragraphs / Body Copy | `<p>` | "SCROLL TO EXPLORE" | `"Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | `400` | ✓ Valid |
 | Home | Paragraphs / Body Copy | `<p>` | "RAYHAN KHAN • AKTU CSE NOIDA" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
-| Home | Technical Telemetry | `<div>` | "LOCATION: 28.5355° N, 77.3910° E |" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
+| Home | Technical Telemetry | `<div>` | "LOCATION: NOIDA, UTTAR PRADESH, INDIA |" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
 | Home | Technical Telemetry | `<span>` | "ENGINEERING ETHOS" | `"Chivo Mono", monospace` | `700` | ✓ Valid |
 | Home | Technical Telemetry | `<p>` | "RAYHAN KHAN • AKTU CSE NOIDA" | `"Chivo Mono", monospace` | `400` | ✓ Valid |
 | Home | Technical Telemetry | `<span>` | "01 / ABOUT" | `"Chivo Mono", monospace` | `400` | ✓ Valid |

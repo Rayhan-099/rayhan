@@ -1,0 +1,14 @@
+{
+  "viewportsTested": [
+    "desktop_1440x900",
+    "desktop_1280x800",
+    "mobile_390x844",
+    "mobile_360x800"
+  ],
+  "consoleErrors": [],
+  "failedRequests": [],
+  "privacyPassed": true,
+  "flexCarouselMounted": true,
+  "worksWheelMounted": true,
+  "modalInteractive": true
+}
