@@ -63,7 +63,7 @@ export function Education() {
           return (
             <div
               key={item.institution + index}
-              className={`edu-block p-6 rounded-2xl bg-eclipse-surface border flex flex-col justify-between transition-colors ${
+              className={`edu-block p-6 rounded-xl bg-eclipse-surface border flex flex-col justify-between transition-colors ${
                 isPrimary
                   ? "border-gunmetal hover:border-ember/60 relative overflow-hidden"
                   : "border-gunmetal/60 hover:border-gunmetal"

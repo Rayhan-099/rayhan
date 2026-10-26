@@ -12,7 +12,7 @@ interface MagneticButtonProps {
 }
 
 /**
- * MagneticButton — Elastic Magnetic Pointer Attraction
+ * MagneticButton : Elastic Magnetic Pointer Attraction
  * Reverse-engineered from ECHO-Design-Studio interactive button physics.
  * Pulls the button element smoothly toward the cursor when hovering
  * within proximity, snapping back with spring release on exit.

@@ -114,9 +114,9 @@ export function Skills() {
             spotlightColor="rgba(165, 31, 48, 0.16)"
             borderHighlightColor="rgba(255, 73, 61, 0.4)"
             spotlightRadius={300}
-            className="rounded-2xl"
+            className="rounded-xl"
           >
-            <div className="rounded-2xl bg-eclipse-surface border border-gunmetal p-6 md:p-8 relative overflow-hidden space-y-6">
+            <div className="rounded-xl bg-eclipse-surface border border-gunmetal p-6 md:p-8 relative overflow-hidden space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-gunmetal/60">
                 <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
                   CORE SPECIALIZATION
@@ -183,9 +183,9 @@ export function Skills() {
                 spotlightColor="rgba(66, 21, 31, 0.22)"
                 borderHighlightColor="rgba(165, 31, 48, 0.35)"
                 spotlightRadius={260}
-                className="rounded-2xl"
+                className="rounded-xl"
               >
-                <div className="p-6 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-gunmetal-border transition-colors">
+                <div className="p-6 rounded-xl bg-eclipse-surface border border-gunmetal hover:border-gunmetal-border transition-colors">
                   <div className="flex items-center justify-between pb-3 mb-4 border-b border-gunmetal/60">
                     <h3 className="font-heading text-sm sm:text-base uppercase tracking-wider text-porcelain font-bold">
                       {category.category}

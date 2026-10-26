@@ -149,7 +149,7 @@ export function Projects() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-gunmetal bg-eclipse-surface overflow-hidden shadow-2xl relative w-full h-[540px] md:h-[620px]">
+          <div className="rounded-xl border border-gunmetal bg-eclipse-surface overflow-hidden shadow-2xl relative w-full h-[540px] md:h-[620px]">
             <FlexCarousel
               items={carouselItems}
               preset="liquid"
@@ -276,7 +276,7 @@ export function Projects() {
               role="button"
               tabIndex={0}
               aria-label="Inspect Lumine AI architectural dossier"
-              className="lumine-clip-frame lumine-card group relative cursor-pointer w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[2/1] rounded-2xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember will-change-[clip-path,transform]"
+              className="lumine-clip-frame lumine-card group relative cursor-pointer w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[2/1] rounded-xl overflow-hidden border border-gunmetal bg-eclipse-surface shadow-2xl transition-all duration-500 hover:border-ember/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember will-change-[clip-path,transform]"
               style={{ transformStyle: "preserve-3d" }}
             >
               <div className="lumine-inner-image absolute inset-0 w-full h-full will-change-transform">

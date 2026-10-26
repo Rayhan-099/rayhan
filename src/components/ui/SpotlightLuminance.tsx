@@ -15,7 +15,7 @@ interface SpotlightLuminanceProps {
 }
 
 /**
- * SpotlightLuminance — Cursor-Responsive Dynamic Radial Luminance
+ * SpotlightLuminance : Cursor-Responsive Dynamic Radial Luminance
  * Reverse-engineered from ECHO-Design-Studio SpotlightReveal.
  * Damped spring physics tracks pointer coordinates, projecting dynamic
  * specular luminance and border highlights across darkroom surfaces.

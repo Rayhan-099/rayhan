@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Project } from "@/types";
 import { IconClose, IconExternalLink, IconGitHub, IconCrosshair } from "./CustomIcons";
+import { SkeletonMedia } from "./SkeletonMedia";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -118,7 +119,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
       <div
         ref={modalContainerRef}
-        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col bg-eclipse-surface border border-gunmetal-border rounded-2xl shadow-2xl z-10 overflow-hidden"
+        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col bg-eclipse-surface border border-gunmetal-border rounded-xl shadow-2xl z-10 overflow-hidden"
       >
         {/* Header (sticky at top) */}
         <div className="flex items-start justify-between border-b border-gunmetal p-5 sm:p-6 pb-4 bg-eclipse-surface/95 backdrop-blur-sm shrink-0">
@@ -189,6 +190,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               id="modal-gallery-media"
               className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden border border-gunmetal bg-eclipse-black shadow-xl"
             >
+              <SkeletonMedia label={project.title} className="absolute inset-0 z-0" />
               {project.gallery && project.gallery.length > 0 ? (
                 project.gallery.map((view, idx) => (
                   <div

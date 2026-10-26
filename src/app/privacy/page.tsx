@@ -56,7 +56,7 @@ export default function PrivacyPage() {
             Hosting Infrastructure and Server Telemetry
           </h2>
           <p>
-            This portfolio is hosted via standard cloud infrastructure (such as Vercel or similar content delivery networks). Like all web hosting platforms, edge servers automatically log basic HTTP request metadata:
+            This portfolio is hosted via standard cloud infrastructure (including runs-on.dev and content delivery networks). Like all web hosting platforms, edge servers automatically log basic HTTP request metadata:
           </p>
           <ul className="space-y-1.5 font-mono text-xs text-steel pl-4">
             <li>› Requesting IP address (often anonymized)</li>

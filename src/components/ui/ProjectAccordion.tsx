@@ -12,7 +12,7 @@ interface ProjectAccordionProps {
 }
 
 /**
- * ProjectAccordion — ExpandOnHover Interactive Systems Accordion
+ * ProjectAccordion : ExpandOnHover Interactive Systems Accordion
  * Reverse-engineered from ECHO-Design-Studio skiper52.tsx.
  * Provides fluid flex ratio expansion (flex-[3.5] active vs flex-1 inactive)
  * with instant tactile responsiveness, revealing architectural specifications,
@@ -44,7 +44,7 @@ export function ProjectAccordion({ projects, onSelectProject }: ProjectAccordion
               tabIndex={0}
               aria-expanded={isActive}
               aria-label={`System: ${item.title}`}
-              className={`accordion-item relative cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between ${
+              className={`accordion-item relative cursor-pointer overflow-hidden rounded-xl border transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between ${
                 isActive
                   ? "flex-[3.5] border-ember/60 bg-eclipse-surface shadow-2xl p-7"
                   : "flex-1 border-gunmetal bg-eclipse-elevated/70 hover:border-gunmetal-border p-5"
@@ -198,7 +198,7 @@ export function ProjectAccordion({ projects, onSelectProject }: ProjectAccordion
           <div
             key={item.id}
             onClick={() => onSelectProject(item)}
-            className="p-6 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-ember/50 transition-colors space-y-4"
+            className="p-6 rounded-xl bg-eclipse-surface border border-gunmetal hover:border-ember/50 transition-colors space-y-4"
           >
             <div className="flex items-center justify-between pb-3 border-b border-gunmetal/60">
               <span className="font-mono text-xs text-ember uppercase tracking-wider font-bold">

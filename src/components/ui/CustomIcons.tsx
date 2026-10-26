@@ -5,6 +5,12 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
 }
 
+/**
+ * Bespoke Architectural Icons
+ * Designed with precision telemetry lines, miter joins, and technical geometry.
+ * Strictly non-Lucide, non-Feather custom vector artwork.
+ */
+
 export function IconExternalLink({ className = "w-4 h-4", size = 16, ...props }: IconProps) {
   return (
     <svg
@@ -14,14 +20,14 @@ export function IconExternalLink({ className = "w-4 h-4", size = 16, ...props }:
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       {...props}
     >
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
+      <path d="M14 4H4v16h16v-10" />
+      <line x1="11" y1="13" x2="20" y2="4" />
+      <polyline points="14 4 20 4 20 10" />
     </svg>
   );
 }
@@ -83,17 +89,17 @@ export function IconCrosshair({ className = "w-4 h-4", size = 16, ...props }: Ic
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="1.5"
       className={className}
       {...props}
     >
-      <circle cx="12" cy="12" r="10" />
-      <line x1="22" y1="12" x2="18" y2="12" />
-      <line x1="6" y1="12" x2="2" y2="12" />
-      <line x1="12" y1="6" x2="12" y2="2" />
-      <line x1="12" y1="22" x2="12" y2="18" />
+      <circle cx="12" cy="12" r="9" strokeWidth="1.25" strokeDasharray="3 3" />
+      <circle cx="12" cy="12" r="3.5" strokeWidth="1.5" />
+      <line x1="12" y1="1" x2="12" y2="6" strokeWidth="1.75" strokeLinecap="square" />
+      <line x1="12" y1="18" x2="12" y2="23" strokeWidth="1.75" strokeLinecap="square" />
+      <line x1="1" y1="12" x2="6" y2="12" strokeWidth="1.75" strokeLinecap="square" />
+      <line x1="18" y1="12" x2="23" y2="12" strokeWidth="1.75" strokeLinecap="square" />
+      <circle cx="12" cy="12" r="0.75" fill="currentColor" />
     </svg>
   );
 }
@@ -107,12 +113,14 @@ export function IconShield({ className = "w-4 h-4", size = 16, ...props }: IconP
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       {...props}
     >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <polygon points="12 2 21 6 21 13 12 22 3 13 3 6" />
+      <line x1="12" y1="2" x2="12" y2="22" strokeWidth="1" strokeDasharray="2 2" />
+      <polyline points="7 10 12 14 17 10" strokeWidth="1.5" />
     </svg>
   );
 }
@@ -126,13 +134,14 @@ export function IconTerminal({ className = "w-4 h-4", size = 16, ...props }: Ico
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       {...props}
     >
-      <polyline points="4 17 10 11 4 5" />
-      <line x1="12" y1="19" x2="20" y2="19" />
+      <polyline points="4 6 10 12 4 18" />
+      <line x1="13" y1="18" x2="20" y2="18" strokeWidth="2.5" />
+      <rect x="18" y="5" width="2" height="2" fill="currentColor" />
     </svg>
   );
 }
@@ -145,14 +154,14 @@ export function IconClose({ className = "w-4 h-4", size = 16, ...props }: IconPr
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="1.75"
+      strokeLinecap="square"
       className={className}
       {...props}
     >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
+      <rect x="11" y="11" width="2" height="2" fill="currentColor" />
     </svg>
   );
 }
@@ -165,15 +174,16 @@ export function IconMenu({ className = "w-5 h-5", size = 20, ...props }: IconPro
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="1.75"
+      strokeLinecap="square"
       className={className}
       {...props}
     >
-      <line x1="3" y1="12" x2="21" y2="12" />
-      <line x1="3" y1="6" x2="21" y2="6" />
-      <line x1="3" y1="18" x2="21" y2="18" />
+      <line x1="3" y1="7" x2="21" y2="7" />
+      <line x1="7" y1="13" x2="21" y2="13" />
+      <line x1="13" y1="19" x2="21" y2="19" />
+      <rect x="3" y="12" width="2" height="2" fill="currentColor" />
+      <rect x="3" y="18" width="2" height="2" fill="currentColor" />
     </svg>
   );
 }
@@ -186,14 +196,14 @@ export function IconArrowRight({ className = "w-4 h-4", size = 16, ...props }: I
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="1.75"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       {...props}
     >
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
+      <line x1="3" y1="12" x2="19" y2="12" />
+      <polyline points="14 7 19 12 14 17" />
     </svg>
   );
 }

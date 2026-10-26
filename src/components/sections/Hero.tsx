@@ -348,7 +348,7 @@ export function Hero() {
       ref={sectionRef}
       className="relative w-full bg-eclipse-black text-porcelain"
       style={{ height: "220vh" }}
-      aria-label="Rayhan Khan — Portfolio Introduction"
+      aria-label="Rayhan Khan : Portfolio Introduction"
     >
       {/* Pinned Viewport Stage */}
       <div
@@ -391,7 +391,7 @@ export function Hero() {
           ref={contentWrapRef}
           className="relative z-10 w-full max-w-[1400px] mx-auto h-full flex flex-col justify-between will-change-[opacity,transform]"
         >
-          {/* Top Bar — Clean Identity & Real Status */}
+          {/* Top Bar : Clean Identity & Real Status */}
           <div className="hero-telemetry-tag flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gunmetal/80 text-xs font-mono text-steel">
             <div className="flex items-center gap-2.5 flex-wrap">
               <span className="font-heading font-bold text-porcelain tracking-wider uppercase text-xs">
@@ -523,7 +523,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Continuous Bottom Horizon Blend — Seamlessly bridges hero into About (ECHO reference) */}
+      {/* Continuous Bottom Horizon Blend : Seamlessly bridges hero into About (ECHO reference) */}
       <div
         className="absolute inset-x-0 bottom-0 h-28 pointer-events-none z-30"
         style={{

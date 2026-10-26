@@ -50,8 +50,8 @@ const config: Config = {
         syne: ["Syne", "sans-serif"],
         mono: ["'JetBrains Mono'", "'Space Mono'", "monospace"],
         display: ["'Syne'", "'Dela Gothic One'", "sans-serif"],
-        heading: ["'Space Grotesk'", "sans-serif"],
-        chakra: ["'Space Grotesk'", "sans-serif"],
+        heading: ["'Syne'", "sans-serif"],
+        chakra: ["'Syne'", "sans-serif"],
       },
       letterSpacing: {
         tighter: "-0.04em",

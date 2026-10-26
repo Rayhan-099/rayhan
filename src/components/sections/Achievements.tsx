@@ -61,7 +61,7 @@ export function Achievements() {
         {achievements.map((item, index) => (
           <div
             key={item.id || index}
-            className="achievement-card relative p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal hover:border-ember/50 transition-colors flex flex-col justify-between overflow-hidden group"
+            className="achievement-card relative p-6 md:p-8 rounded-xl bg-eclipse-surface border border-gunmetal hover:border-ember/50 transition-colors flex flex-col justify-between overflow-hidden group"
           >
             {/* Top Border Highlight */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-crimson via-ember to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />

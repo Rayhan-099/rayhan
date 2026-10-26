@@ -131,7 +131,7 @@ export function Navigation() {
 
       {/* Mobile Drawer (Restrained opaque surface, no glassmorphism) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-4 top-[70px] bg-eclipse-surface border border-gunmetal/90 rounded-2xl p-6 shadow-2xl z-50">
+        <div className="lg:hidden fixed inset-x-4 top-[70px] bg-eclipse-surface border border-gunmetal/90 rounded-xl p-6 shadow-2xl z-50">
           <nav className="flex flex-col space-y-3" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <a

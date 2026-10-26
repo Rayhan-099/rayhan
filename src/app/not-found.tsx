@@ -2,6 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { IconArrowRight, IconCrosshair } from "@/components/ui/CustomIcons";
 
+export const metadata = {
+  title: "404: Coordinate Not Found | Rayhan Khan Portfolio",
+  description: "The requested route does not exist in the active systems registry.",
+};
+
 export default function NotFound() {
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center px-6 text-center">

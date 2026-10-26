@@ -228,7 +228,7 @@ export function Experience() {
                 2026
               </div>
 
-              <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-2xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
+              <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
                     MILESTONE / {synk.date}
@@ -281,7 +281,7 @@ export function Experience() {
                 OCT 2026
               </div>
 
-              <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-2xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
+              <div className="relative z-10 max-w-4xl p-6 md:p-10 rounded-xl bg-eclipse-surface/85 border border-gunmetal shadow-2xl backdrop-blur-none">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="font-heading text-xs uppercase tracking-wider text-ember font-bold">
                     MILESTONE / {bcg.date}

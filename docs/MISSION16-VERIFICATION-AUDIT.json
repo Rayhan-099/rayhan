@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-10-26T15:23:35.548Z",
+  "testedUrl": "http://localhost:3000",
+  "productionUrl": "https://rayhan.runs-on.dev",
+  "viewportsTested": [
+    {
+      "viewport": "desktop_1440x900",
+      "width": 1440,
+      "height": 900,
+      "httpStatus": 200,
+      "consoleErrorsCount": 0,
+      "failedRequestsCount": 0
+    },
+    {
+      "viewport": "desktop_1280x800",
+      "width": 1280,
+      "height": 800,
+      "httpStatus": 304,
+      "consoleErrorsCount": 0,
+      "failedRequestsCount": 0
+    },
+    {
+      "viewport": "mobile_390x844",
+      "width": 390,
+      "height": 844,
+      "httpStatus": 304,
+      "consoleErrorsCount": 0,
+      "failedRequestsCount": 0
+    },
+    {
+      "viewport": "mobile_360x800",
+      "width": 360,
+      "height": 800,
+      "httpStatus": 304,
+      "consoleErrorsCount": 0,
+      "failedRequestsCount": 0
+    }
+  ],
+  "prohibitionsAudit": {
+    "fontHeading": "\"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+    "hasSpaceGroteskInFonts": false,
+    "hasLucideSvg": false,
+    "hasEmDash": false,
+    "hasSparkles": false,
+    "hasBentoGrid": false
+  },
+  "networkAudit": {
+    "totalRequests": 1777,
+    "failedRequests": 0,
+    "heroFramesLoadedJpg": 902,
+    "heroFramesLoadedWebp": 0,
+    "aboutFramesLoadedJpg": 724,
+    "aboutFramesLoadedWebp": 0
+  },
+  "consoleAudit": {
+    "errors": [],
+    "warnings": []
+  },
+  "accessibilityAudit": {
+    "skipToContent": {
+      "activeElement": {
+        "tagName": "A",
+        "href": "#main-content",
+        "text": "Skip to main content",
+        "id": ""
+      },
+      "mainContentExists": true,
+      "passed": true
+    },
+    "reducedMotionActive": true
+  },
+  "securityAudit": {
+    "hasCSP": true,
+    "cspValue": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https:; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    "hasXFrameOptions": true,
+    "hasXContentTypeOptions": true,
+    "hasReferrerPolicy": true,
+    "hasPermissionsPolicy": true,
+    "hasHSTS": true
+  },
+  "overallStatus": "PASSED"
+}

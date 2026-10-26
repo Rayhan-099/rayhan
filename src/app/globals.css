@@ -3,9 +3,6 @@
 @import "@fontsource/syne/600.css";
 @import "@fontsource/syne/700.css";
 @import "@fontsource/syne/800.css";
-@import "@fontsource/space-grotesk/500.css";
-@import "@fontsource/space-grotesk/600.css";
-@import "@fontsource/space-grotesk/700.css";
 @import "@fontsource/plus-jakarta-sans/400.css";
 @import "@fontsource/plus-jakarta-sans/500.css";
 @import "@fontsource/plus-jakarta-sans/600.css";
@@ -69,11 +66,11 @@ button, input, textarea, select, optgroup {
 }
 
 .font-heading {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Syne', sans-serif;
 }
 
 .font-chakra {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Syne', sans-serif;
 }
 
 ::selection {

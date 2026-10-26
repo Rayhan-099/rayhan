@@ -348,7 +348,7 @@ export function About() {
           {/* Center Expanding Media Stage */}
           <div
             ref={mediaContainerRef}
-            className="relative z-10 rounded-2xl overflow-hidden border border-gunmetal-border bg-eclipse-surface shadow-2xl transition-none flex items-center justify-center will-change-[width,height]"
+            className="relative z-10 rounded-xl overflow-hidden border border-gunmetal-border bg-eclipse-surface shadow-2xl transition-none flex items-center justify-center will-change-[width,height]"
             style={{
               width: "320px",
               height: "420px",
@@ -491,7 +491,7 @@ export function About() {
           {/* Left Column: Authentic Portrait */}
           <div className="identity-element lg:col-span-5 relative">
             <Tilt3DCard maxTilt={5.5} perspective={1100} glareOpacity={0.14} className="w-full">
-              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-eclipse-surface border border-gunmetal/80 shadow-2xl group">
+              <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-eclipse-surface border border-gunmetal/80 shadow-2xl group">
                 <img
                   src="/rayhan-headshot.jpg"
                   alt="Rayhan Khan, Computer Science Engineer and AI Systems Architect based in Noida, India"

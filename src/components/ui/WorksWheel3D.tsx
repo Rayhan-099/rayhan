@@ -345,7 +345,7 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
             onKeyDown={handleKeyDown}
-            className="relative w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-2xl bg-eclipse-surface border border-gunmetal overflow-hidden cursor-grab active:cursor-grabbing outline-none focus-visible:ring-1 focus-visible:ring-ember touch-pan-x"
+            className="relative w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-xl bg-eclipse-surface border border-gunmetal overflow-hidden cursor-grab active:cursor-grabbing outline-none focus-visible:ring-1 focus-visible:ring-ember touch-pan-x"
           >
             {/* Ambient Vignette Overlay */}
             <div className="absolute inset-0 bg-radial from-transparent via-eclipse-surface/40 to-eclipse-black/90 pointer-events-none z-10" />
@@ -385,7 +385,7 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
                     willChange: "transform, opacity",
                   }}
                 >
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden bg-eclipse-elevated border border-gunmetal shadow-2xl transition-all duration-300 group-hover:scale-[1.02]">
+                  <div className="relative w-full h-full rounded-xl overflow-hidden bg-eclipse-elevated border border-gunmetal shadow-2xl transition-all duration-300 group-hover:scale-[1.02]">
                     {/* Project Imagery */}
                     {proj.image ? (
                       <Image
@@ -446,7 +446,7 @@ export function WorksWheel3D({ projects, onSelectProject }: WorksWheel3DProps) {
         </div>
 
         {/* Side Index Directory */}
-        <div className="lg:col-span-4 space-y-6 bg-eclipse-surface p-6 rounded-2xl border border-gunmetal">
+        <div className="lg:col-span-4 space-y-6 bg-eclipse-surface p-6 rounded-xl border border-gunmetal">
           <div className="flex items-center justify-between border-b border-gunmetal/60 pb-3">
             <span className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold">
               Active System

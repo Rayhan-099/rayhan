@@ -102,9 +102,9 @@ export function Contact() {
             spotlightColor="rgba(165, 31, 48, 0.16)"
             borderHighlightColor="rgba(255, 73, 61, 0.4)"
             spotlightRadius={300}
-            className="rounded-2xl"
+            className="rounded-xl"
           >
-            <div className="p-6 md:p-8 rounded-2xl bg-eclipse-surface border border-gunmetal space-y-6">
+            <div className="p-6 md:p-8 rounded-xl bg-eclipse-surface border border-gunmetal space-y-6">
               <h3 className="font-heading text-xs uppercase tracking-wider text-porcelain font-bold pb-3 border-b border-gunmetal/60">
                 Direct Routing
               </h3>

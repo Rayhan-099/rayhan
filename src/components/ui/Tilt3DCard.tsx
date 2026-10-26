@@ -14,7 +14,7 @@ interface Tilt3DCardProps {
 }
 
 /**
- * Tilt3DCard — Quaternion-Damped 3D Perspective Tilt & Specular Flare
+ * Tilt3DCard : Quaternion-Damped 3D Perspective Tilt & Specular Flare
  * Reverse-engineered from analog-editorial-portfolio 3D object orientation matrix.
  * Calculates normalized pointer coordinates relative to card bounds and smoothly
  * interpolates pitch and yaw angles via requestAnimationFrame lerping.
