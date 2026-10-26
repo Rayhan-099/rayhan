@@ -44,11 +44,26 @@ export default function PrivacyPage() {
             Cookies and Tracking Technologies
           </h2>
           <p>
-            This website does not use tracking cookies, advertising trackers, or profiling scripts. No Google Analytics, Meta Pixel, or third-party behavioral monitors are embedded in this website.
+            This website does not use tracking cookies, advertising trackers, or invasive profiling scripts. No Google Analytics, Meta Pixel, or cross-site commercial behavioral monitors are embedded in this website.
           </p>
           <p>
             Client-side browser storage (such as localStorage) is strictly used for functional user experience preferences, such as remembering your operating system reduced-motion accessibility preference.
           </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-ember">
+            Privacy-Preserving Web Analytics
+          </h2>
+          <p>
+            To understand overall audience engagement, popular technical projects, and page traffic without compromising visitor privacy, this website integrates Vercel Web Analytics.
+          </p>
+          <ul className="space-y-1.5 font-mono text-xs text-steel pl-4">
+            <li>› Zero Cookies: Vercel Web Analytics does not use cookies, persistent local storage identifiers, or cross-site fingerprinting.</li>
+            <li>› Ephemeral Daily Hash: Unique visitors are calculated using an anonymous cryptographic hash derived from incoming request attributes (IP address and User Agent). This hash rotates and resets every 24 hours. Raw IP addresses are discarded immediately and never permanently stored.</li>
+            <li>› Aggregated Metrics: Data collected is strictly aggregated (page views, referring domain, operating system, browser, and approximate geographical region). Individual user sessions cannot be tracked across different days or external websites.</li>
+            <li>› Cookie Banner Exemption: Because no cookies or persistent identifiers are used, this implementation complies with GDPR, CCPA, and ePrivacy regulations by design without requiring a cookie consent banner.</li>
+          </ul>
         </section>
 
         <section className="space-y-3">

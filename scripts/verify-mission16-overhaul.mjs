@@ -67,6 +67,19 @@ async function runVerification() {
         hasTouch: vp.hasTouch || false,
       });
 
+      await page.setRequestInterception(true);
+      page.on("request", (req) => {
+        if (req.url().includes("/_vercel/insights/script.js")) {
+          req.respond({
+            status: 200,
+            contentType: "application/javascript",
+            body: "window.vaLoaded = true;",
+          });
+        } else {
+          req.continue();
+        }
+      });
+
       const consoleErrors = [];
       const failedRequests = [];
 
@@ -233,6 +246,18 @@ async function runVerification() {
     console.log("\n--- Auditing prefers-reduced-motion: reduce ---");
     const prmPage = await browser.newPage();
     await prmPage.setViewport({ width: 1440, height: 900 });
+    await prmPage.setRequestInterception(true);
+    prmPage.on("request", (req) => {
+      if (req.url().includes("/_vercel/insights/script.js")) {
+        req.respond({
+          status: 200,
+          contentType: "application/javascript",
+          body: "window.vaLoaded = true;",
+        });
+      } else {
+        req.continue();
+      }
+    });
     await prmPage.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
     await prmPage.goto(BASE_URL, { waitUntil: "networkidle2" });
     await new Promise((r) => setTimeout(r, 1000));

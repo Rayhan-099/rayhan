@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-26T15:23:35.548Z",
+  "timestamp": "2026-10-26T15:39:30.234Z",
   "testedUrl": "http://localhost:3000",
   "productionUrl": "https://rayhan.runs-on.dev",
   "viewportsTested": [
@@ -45,7 +45,7 @@
     "hasBentoGrid": false
   },
   "networkAudit": {
-    "totalRequests": 1777,
+    "totalRequests": 1781,
     "failedRequests": 0,
     "heroFramesLoadedJpg": 902,
     "heroFramesLoadedWebp": 0,
@@ -71,7 +71,7 @@
   },
   "securityAudit": {
     "hasCSP": true,
-    "cspValue": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https:; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    "cspValue": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https: https://va.vercel-scripts.com https://vitals.vercel-insights.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
     "hasXFrameOptions": true,
     "hasXContentTypeOptions": true,
     "hasReferrerPolicy": true,
