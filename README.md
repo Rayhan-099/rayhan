@@ -106,7 +106,7 @@ node scripts/verify-mission6.mjs
 ## ✦ Connect
 
 - **Email:** khanrayhan8307@gmail.com
-- **Phone:** +91 83074 15306
+- **Phone:** +91 9315945414
 - **GitHub:** [https://github.com/Rayhan-099](https://github.com/Rayhan-099)
 - **LinkedIn:** [https://www.linkedin.com/in/rayhan-khan-081851340/](https://www.linkedin.com/in/rayhan-khan-081851340/)
 - **LeetCode:** [https://leetcode.com/u/Rayhan_099/](https://leetcode.com/u/Rayhan_099/)
